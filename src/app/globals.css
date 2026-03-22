@@ -1,26 +1,246 @@
 @import "tailwindcss";
 
+@custom-variant light (&:where(.light, .light *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+  --hive-btn-from: #bda957;
+  --hive-btn-to: #ffe88c;
+  --hive-gold: #bda957;
+  --hive-gold-light: #ffe88c;
+  --hive-bg: #191919;
+  --hive-fg: #eaeaea;
+  --hive-border: rgba(255, 255, 255, 0.1);
+  --hive-border-subtle: rgba(255, 255, 255, 0.05);
+  --hive-nav-bg: rgba(25, 25, 25, 0.7);
+  --hive-input-bg: rgba(25, 25, 25, 0.8);
+  --hive-card-glass: rgba(255, 255, 255, 0.03);
+  --hive-pill-bg: rgba(255, 255, 255, 0.05);
+  --hive-hover-surface: rgba(255, 255, 255, 0.05);
+  --hive-contact-gradient: linear-gradient(
+    to bottom,
+    rgba(25, 25, 25, 1),
+    rgba(12, 12, 12, 1)
+  );
+  --hive-services-gradient: radial-gradient(
+    ellipse at top,
+    rgba(189, 169, 87, 0.08),
+    transparent 55%
+  );
+  --hive-vision-overlay: rgba(25, 25, 25, 0.92);
+  --hive-noise-opacity: 0.8;
+  /* بطاقات المعرض — بدون بقع سوداء ثقيلة */
+  --hive-portfolio-a: rgba(25, 25, 25, 0.14);
+  --hive-portfolio-b: rgba(25, 25, 25, 0.78);
+  --hive-portfolio-bottom: rgba(25, 25, 25, 0.88);
+}
+html.light {
+  color-scheme: light;
+  /* ذهبي أغمق للنصوص والتمييز — يبقى زر التدرج عبر --hive-btn-* */
+  --hive-gold: #6e5f1a;
+  --hive-gold-light: #8a7524;
+  --hive-bg: #e6e6e0;
+  --hive-fg: #0a0a0a;
+  --hive-border: rgba(0, 0, 0, 0.2);
+  --hive-border-subtle: rgba(0, 0, 0, 0.12);
+  --hive-nav-bg: rgba(255, 255, 255, 0.96);
+  --hive-input-bg: #ffffff;
+  --hive-card-glass: #ffffff;
+  --hive-pill-bg: rgba(0, 0, 0, 0.06);
+  --hive-hover-surface: rgba(0, 0, 0, 0.09);
+  --hive-contact-gradient: linear-gradient(to bottom, #e6e6e0, #d6d6ce);
+  --hive-services-gradient: radial-gradient(
+    ellipse at top,
+    rgba(110, 95, 26, 0.14),
+    transparent 58%
+  );
+  --hive-vision-overlay: rgba(236, 236, 230, 0.96);
+  --hive-noise-opacity: 0.28;
+  --hive-portfolio-a: rgba(255, 255, 255, 0.5);
+  --hive-portfolio-b: rgba(228, 228, 220, 0.78);
+  --hive-portfolio-bottom: rgba(238, 238, 232, 0.95);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-hive-btn-from: var(--hive-btn-from);
+  --color-hive-btn-to: var(--hive-btn-to);
+  --color-hive-gold: var(--hive-gold);
+  --color-hive-gold-light: var(--hive-gold-light);
+  --color-hive-black: var(--hive-bg);
+  --color-hive-off-white: var(--hive-fg);
+  --color-hive-border: var(--hive-border);
+  --color-hive-border-subtle: var(--hive-border-subtle);
+  --font-sans: var(--font-syne), var(--font-noto-arabic), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--hive-bg);
+  color: var(--hive-fg);
+  font-family: var(--font-sans);
+}
+
+/* Gold focus ring — حدود فقط بدون توهج */
+.ring-hive-gold {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--hive-gold) 45%, transparent);
+}
+
+/* Scroll-driven reveal */
+@keyframes hive-reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0) scale(0.98);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.animate-hive-reveal {
+  animation: hive-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes hive-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+.animate-hive-float {
+  animation: hive-float 7s ease-in-out infinite;
+}
+
+/* Service card hover — بدون ظلال ثقيلة */
+.service-card {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: none;
+}
+
+/* Subtle noise overlay */
+.hive-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: var(--hive-noise-opacity);
+}
+
+.hive-bg-services {
+  background-color: var(--hive-bg);
+  background-image: var(--hive-services-gradient);
+}
+
+.hive-bg-contact {
+  background-color: var(--hive-bg);
+  background-image: var(--hive-contact-gradient);
+}
+
+/* أزرار CTA — سداسي بزوايا جانبية (نقطتان يمين/يسار) */
+.hive-cta-hex {
+  --hive-cta-chamfer: 0.7rem;
+  clip-path: polygon(
+    var(--hive-cta-chamfer) 0%,
+    calc(100% - var(--hive-cta-chamfer)) 0%,
+    100% 50%,
+    calc(100% - var(--hive-cta-chamfer)) 100%,
+    var(--hive-cta-chamfer) 100%,
+    0% 50%
+  );
+}
+
+.hive-cta-hex--outline {
+  box-shadow: inset 0 0 0 1px var(--hive-border);
+}
+
+.hive-cta-hex--outline:hover {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hive-gold) 45%, transparent);
+}
+
+/* بادجات صغيرة — نفس الشكل السداسي بزوايا أضيق (يُستخدم مع .hive-cta-hex) */
+.hive-badge-hex {
+  --hive-cta-chamfer: 0.42rem;
+}
+
+/* مؤشر التمرير — حركة عمودية + توهج ذهبي حول الخط أثناء الحركة */
+.hive-scroll-cue {
+  animation: hive-scroll-cue-bounce 1.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.hive-scroll-cue-glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--hive-gold-light) 55%, transparent) 0%,
+    color-mix(in srgb, var(--hive-gold) 35%, transparent) 45%,
+    transparent 70%
+  );
+  filter: blur(10px);
+  opacity: 0.35;
+  transform: translate(-50%, -50%);
+  animation: hive-scroll-cue-glow-pulse 1.5s ease-in-out infinite;
+}
+
+html.light .hive-scroll-cue-glow {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--hive-gold-light) 45%, transparent) 0%,
+    transparent 65%
+  );
+  opacity: 0.28;
+}
+
+@keyframes hive-scroll-cue-bounce {
+  0%,
+  100% {
+    transform: translateY(-6px);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes hive-scroll-cue-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    filter: blur(8px);
+    transform: translate(-50%, -50%) scale(0.88);
+  }
+  50% {
+    opacity: 0.65;
+    filter: blur(14px);
+    transform: translate(-50%, -50%) scale(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hive-scroll-cue {
+    animation: none;
+  }
+  .hive-scroll-cue-glow {
+    animation: none;
+    opacity: 0.35;
+    filter: blur(10px);
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
