@@ -17,6 +17,7 @@ export function HeroHexCursorEffect() {
     let isTicking = false;
     let lingerUntil = 0;
     const MAIN_FOLLOW = 0.16;
+    const COARSE_FOLLOW = 0.24;
     const HOVER_IN_OUT = 0.08;
     const LEAVE_LINGER_MS = 220;
     const LEAVE_LINGER_MS_COARSE = 520;
@@ -34,8 +35,9 @@ export function HeroHexCursorEffect() {
       const shouldStayVisible = isInside || performance.now() < lingerUntil;
 
       // Smooth movement so highlighted hex borders fade naturally while moving.
-      currentX += (targetX - currentX) * MAIN_FOLLOW;
-      currentY += (targetY - currentY) * MAIN_FOLLOW;
+      const follow = isCoarsePointer ? COARSE_FOLLOW : MAIN_FOLLOW;
+      currentX += (targetX - currentX) * follow;
+      currentY += (targetY - currentY) * follow;
       hoverValue += ((shouldStayVisible ? 1 : 0) - hoverValue) * HOVER_IN_OUT;
 
       hero.style.setProperty("--hive-hero-mx", `${currentX}px`);
@@ -55,23 +57,19 @@ export function HeroHexCursorEffect() {
     };
 
     const updateCursorVars = (x: number, y: number) => {
-      if (isCoarsePointer) {
-        currentX = x;
-        currentY = y;
-        targetX = x;
-        targetY = y;
-        hoverValue = 1;
-        hero.style.setProperty("--hive-hero-mx", `${x}px`);
-        hero.style.setProperty("--hive-hero-my", `${y}px`);
-        hero.style.setProperty("--hive-hero-hover", "1");
-        return;
-      }
-
       targetX = x;
       targetY = y;
       if (hoverValue === 0 && !isTicking) {
         currentX = x;
         currentY = y;
+      }
+      if (isCoarsePointer) {
+        // Keep touch responsive while avoiding hard jumps between taps.
+        if (hoverValue < 0.08) {
+          currentX = x;
+          currentY = y;
+        }
+        hoverValue = Math.max(hoverValue, 0.65);
       }
       startTick();
     };
