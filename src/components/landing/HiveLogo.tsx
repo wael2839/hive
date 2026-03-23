@@ -21,8 +21,9 @@ type Props = {
   decorative?: boolean;
 };
 
-const REF_W = 320;
-const REF_H = 96;
+// Keep intrinsic dimensions close to rendered size to avoid load-time jump.
+const REF_W = 156;
+const REF_H = 47;
 
 /** إذا لم يُمرَّر variant، يُختار تلقائياً حسب الثيم: داكن → dark، فاتح → light */
 export function HiveLogo({

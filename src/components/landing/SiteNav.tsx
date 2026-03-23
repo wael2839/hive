@@ -17,18 +17,18 @@ const anchors = [
 export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-hive-border-subtle bg-[var(--hive-nav-bg)] backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Link
           href={`/${locale}#hero`}
-          className="flex min-w-0 max-w-[min(100%,18rem)] shrink-0 items-center gap-2.5 py-1 sm:max-w-none sm:gap-3"
+          className="flex min-w-0 max-w-[min(100%,18rem)] shrink-0 items-center gap-2 py-0.5 sm:max-w-none sm:gap-2.5"
         >
           <HiveLogo
             priority
-            heightClass="h-9 sm:h-10"
-            maxWidthClass="max-w-[min(100%,9rem)] sm:max-w-[10.5rem]"
+            heightClass="h-8 sm:h-9"
+            maxWidthClass="max-w-[min(100%,8.5rem)] sm:max-w-[9.75rem]"
             alt={t.meta.title}
           />
-          <span className="truncate text-base font-semibold tracking-tight text-hive-off-white sm:text-2xl">
+          <span className="truncate text-base font-semibold tracking-tight text-hive-off-white sm:text-[1.55rem]">
             {t.nav.brand}
           </span>
         </Link>
