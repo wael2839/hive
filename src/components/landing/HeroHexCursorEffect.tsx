@@ -19,6 +19,7 @@ export function HeroHexCursorEffect() {
     const MAIN_FOLLOW = 0.16;
     const HOVER_IN_OUT = 0.08;
     const LEAVE_LINGER_MS = 220;
+    const LEAVE_LINGER_MS_COARSE = 520;
     const isCoarsePointer =
       typeof window !== "undefined" &&
       window.matchMedia("(hover: none), (pointer: coarse)").matches;
@@ -90,8 +91,8 @@ export function HeroHexCursorEffect() {
     const onPointerLeave = () => {
       isInside = false;
       if (isCoarsePointer) {
-        hoverValue = 0;
-        hero.style.setProperty("--hive-hero-hover", "0");
+        lingerUntil = performance.now() + LEAVE_LINGER_MS_COARSE;
+        startTick();
         return;
       }
       lingerUntil = performance.now() + LEAVE_LINGER_MS;
