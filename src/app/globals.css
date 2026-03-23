@@ -181,7 +181,7 @@ body {
   background-repeat: repeat;
   opacity: calc(var(--hive-hero-hover, 0) * 1);
   mask-image: radial-gradient(
-    circle 118px at var(--hive-hero-mx, 50%) var(--hive-hero-my, 50%),
+    circle 140px at var(--hive-hero-mx, 50%) var(--hive-hero-my, 50%),
     rgba(0, 0, 0, 1) 0%,
     rgba(0, 0, 0, 0.96) 18%,
     rgba(0, 0, 0, 0.82) 34%,
