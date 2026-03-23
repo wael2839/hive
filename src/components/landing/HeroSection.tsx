@@ -13,7 +13,8 @@ export function HeroSection({ t }: Props) {
     >
       <HeroHexCursorEffect />
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="hive-hero-hex-grid absolute inset-0" />
+        <div className="hive-hero-hex-grid-dark absolute inset-0" />
+        <div className="hive-hero-hex-grid-light absolute inset-0" />
         <div className="hive-hero-vignette absolute inset-0" />
         <div className="hive-hero-hex-highlight absolute inset-0" />
       </div>
