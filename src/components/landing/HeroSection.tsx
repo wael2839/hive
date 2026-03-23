@@ -42,7 +42,7 @@ export function HeroSection({ t }: Props) {
             </a>
             <a
               href="#about"
-              className="hive-cta-hex hive-cta-hex--outline inline-flex items-center justify-center bg-[var(--hive-pill-bg)] px-8 py-3 text-sm font-semibold text-hive-off-white transition hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+              className="hive-cta-hex inline-flex items-center justify-center bg-[var(--hive-pill-bg)] px-8 py-3 text-sm font-semibold text-hive-off-white transition hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
             >
               {t.secondary}
             </a>

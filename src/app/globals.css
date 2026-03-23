@@ -276,9 +276,10 @@ html.light .hive-hero-hex-highlight {
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hive-gold) 45%, transparent);
 }
 
-/* بادجات صغيرة — نفس الشكل السداسي بزوايا أضيق (يُستخدم مع .hive-cta-hex) */
+/* بادجات صغيرة — شكل pill ناعم (بدل السداسي) */
 .hive-badge-hex {
-  --hive-cta-chamfer: 0.42rem;
+  clip-path: none;
+  border-radius: 9999px;
 }
 
 /* مؤشر التمرير — حركة عمودية + توهج ذهبي حول الخط أثناء الحركة */
