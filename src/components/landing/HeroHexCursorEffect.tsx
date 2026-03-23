@@ -17,10 +17,11 @@ export function HeroHexCursorEffect() {
     let isTicking = false;
     let lingerUntil = 0;
     const MAIN_FOLLOW = 0.16;
-    const COARSE_FOLLOW = 0.24;
+    const COARSE_FOLLOW = 0.2;
     const HOVER_IN_OUT = 0.08;
+    const HOVER_IN_OUT_COARSE = 0.28;
     const LEAVE_LINGER_MS = 220;
-    const LEAVE_LINGER_MS_COARSE = 520;
+    const LEAVE_LINGER_MS_COARSE = 280;
     const isCoarsePointer =
       typeof window !== "undefined" &&
       window.matchMedia("(hover: none), (pointer: coarse)").matches;
@@ -38,7 +39,8 @@ export function HeroHexCursorEffect() {
       const follow = isCoarsePointer ? COARSE_FOLLOW : MAIN_FOLLOW;
       currentX += (targetX - currentX) * follow;
       currentY += (targetY - currentY) * follow;
-      hoverValue += ((shouldStayVisible ? 1 : 0) - hoverValue) * HOVER_IN_OUT;
+      const hoverLerp = isCoarsePointer ? HOVER_IN_OUT_COARSE : HOVER_IN_OUT;
+      hoverValue += ((shouldStayVisible ? 1 : 0) - hoverValue) * hoverLerp;
 
       hero.style.setProperty("--hive-hero-mx", `${currentX}px`);
       hero.style.setProperty("--hive-hero-my", `${currentY}px`);
@@ -69,7 +71,7 @@ export function HeroHexCursorEffect() {
           currentX = x;
           currentY = y;
         }
-        hoverValue = Math.max(hoverValue, 0.65);
+        hoverValue = Math.max(hoverValue, 1);
       }
       startTick();
     };
@@ -86,6 +88,30 @@ export function HeroHexCursorEffect() {
       updateCursorVars(event.clientX - rect.left, event.clientY - rect.top);
     };
 
+    const onPointerDown = (event: PointerEvent) => {
+      const rect = hero.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      isInside = true;
+      if (isCoarsePointer) {
+        // First tap: show immediately. Next taps: keep smooth travel to new target.
+        targetX = x;
+        targetY = y;
+        if (hoverValue < 0.08) {
+          currentX = x;
+          currentY = y;
+          hoverValue = 1;
+        } else {
+          hoverValue = Math.max(hoverValue, 0.94);
+        }
+        hero.style.setProperty("--hive-hero-mx", `${x}px`);
+        hero.style.setProperty("--hive-hero-my", `${y}px`);
+        hero.style.setProperty("--hive-hero-hover", `${hoverValue}`);
+      }
+      updateCursorVars(x, y);
+      startTick();
+    };
+
     const onPointerLeave = () => {
       isInside = false;
       if (isCoarsePointer) {
@@ -99,12 +125,14 @@ export function HeroHexCursorEffect() {
 
     hero.addEventListener("pointermove", onPointerMove);
     hero.addEventListener("pointerenter", onPointerEnter);
+    hero.addEventListener("pointerdown", onPointerDown);
     hero.addEventListener("pointerleave", onPointerLeave);
 
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
       hero.removeEventListener("pointermove", onPointerMove);
       hero.removeEventListener("pointerenter", onPointerEnter);
+      hero.removeEventListener("pointerdown", onPointerDown);
       hero.removeEventListener("pointerleave", onPointerLeave);
     };
   }, []);
