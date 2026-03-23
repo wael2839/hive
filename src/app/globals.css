@@ -213,7 +213,7 @@ body {
       rgba(0, 0, 0, 0.16) 86%,
       transparent 100%
     );
-    transition: opacity 420ms ease;
+    transition: opacity 520ms ease-in-out;
   }
 }
 
