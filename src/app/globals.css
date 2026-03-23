@@ -193,6 +193,23 @@ body {
   transition: opacity 220ms ease;
 }
 
+@media (hover: none), (pointer: coarse) {
+  .hive-hero-hex-highlight {
+    opacity: calc(var(--hive-hero-hover, 0) * 1);
+    mask-image: radial-gradient(
+      circle 142px at var(--hive-hero-mx, 50%) var(--hive-hero-my, 50%),
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.96) 20%,
+      rgba(0, 0, 0, 0.84) 38%,
+      rgba(0, 0, 0, 0.62) 56%,
+      rgba(0, 0, 0, 0.36) 72%,
+      rgba(0, 0, 0, 0.16) 86%,
+      transparent 100%
+    );
+    transition: opacity 140ms ease;
+  }
+}
+
 .hive-hero-lighting {
   background:
     radial-gradient(

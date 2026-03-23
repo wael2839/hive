@@ -19,6 +19,9 @@ export function HeroHexCursorEffect() {
     const MAIN_FOLLOW = 0.16;
     const HOVER_IN_OUT = 0.08;
     const LEAVE_LINGER_MS = 220;
+    const isCoarsePointer =
+      typeof window !== "undefined" &&
+      window.matchMedia("(hover: none), (pointer: coarse)").matches;
 
     const startTick = () => {
       if (isTicking) return;
@@ -51,6 +54,18 @@ export function HeroHexCursorEffect() {
     };
 
     const updateCursorVars = (x: number, y: number) => {
+      if (isCoarsePointer) {
+        currentX = x;
+        currentY = y;
+        targetX = x;
+        targetY = y;
+        hoverValue = 1;
+        hero.style.setProperty("--hive-hero-mx", `${x}px`);
+        hero.style.setProperty("--hive-hero-my", `${y}px`);
+        hero.style.setProperty("--hive-hero-hover", "1");
+        return;
+      }
+
       targetX = x;
       targetY = y;
       if (hoverValue === 0 && !isTicking) {
@@ -74,6 +89,11 @@ export function HeroHexCursorEffect() {
 
     const onPointerLeave = () => {
       isInside = false;
+      if (isCoarsePointer) {
+        hoverValue = 0;
+        hero.style.setProperty("--hive-hero-hover", "0");
+        return;
+      }
       lingerUntil = performance.now() + LEAVE_LINGER_MS;
       startTick();
     };
