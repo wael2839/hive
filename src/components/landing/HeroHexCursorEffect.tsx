@@ -12,17 +12,12 @@ export function HeroHexCursorEffect() {
     let targetY = 0;
     let currentX = 0;
     let currentY = 0;
-    let trailX = 0;
-    let trailY = 0;
     let hoverValue = 0;
-    let trailHover = 0;
     let isInside = false;
     let isTicking = false;
     let lingerUntil = 0;
     const MAIN_FOLLOW = 0.16;
-    const TRAIL_FOLLOW = 0.04;
     const HOVER_IN_OUT = 0.08;
-    const TRAIL_IN_OUT = 0.045;
     const LEAVE_LINGER_MS = 220;
 
     const startTick = () => {
@@ -37,21 +32,15 @@ export function HeroHexCursorEffect() {
       // Smooth movement so highlighted hex borders fade naturally while moving.
       currentX += (targetX - currentX) * MAIN_FOLLOW;
       currentY += (targetY - currentY) * MAIN_FOLLOW;
-      trailX += (currentX - trailX) * TRAIL_FOLLOW;
-      trailY += (currentY - trailY) * TRAIL_FOLLOW;
       hoverValue += ((shouldStayVisible ? 1 : 0) - hoverValue) * HOVER_IN_OUT;
-      trailHover += ((shouldStayVisible ? 1 : 0) - trailHover) * TRAIL_IN_OUT;
 
       hero.style.setProperty("--hive-hero-mx", `${currentX}px`);
       hero.style.setProperty("--hive-hero-my", `${currentY}px`);
       hero.style.setProperty("--hive-hero-hover", `${hoverValue}`);
-      hero.style.setProperty("--hive-hero-mx-trail", `${trailX}px`);
-      hero.style.setProperty("--hive-hero-my-trail", `${trailY}px`);
-      hero.style.setProperty("--hive-hero-hover-trail", `${trailHover}`);
 
       const closeToTarget =
         Math.abs(targetX - currentX) < 0.2 && Math.abs(targetY - currentY) < 0.2;
-      const fullyHidden = hoverValue < 0.01 && trailHover < 0.01;
+      const fullyHidden = hoverValue < 0.01;
 
       if (!isInside && closeToTarget && fullyHidden) {
         isTicking = false;
@@ -67,8 +56,6 @@ export function HeroHexCursorEffect() {
       if (hoverValue === 0 && !isTicking) {
         currentX = x;
         currentY = y;
-        trailX = x;
-        trailY = y;
       }
       startTick();
     };

@@ -1,4 +1,5 @@
 import type { Messages } from "@/lib/i18n";
+import { HeroHexCursorEffect } from "@/components/landing/HeroHexCursorEffect";
 
 type Props = {
   t: Messages["hero"];
@@ -10,11 +11,12 @@ export function HeroSection({ t }: Props) {
       id="hero"
       className="relative min-h-[100svh] overflow-hidden bg-hive-black pt-28"
     >
+      <HeroHexCursorEffect />
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="hive-hero-lighting absolute inset-0" />
         <div className="hive-hero-hex-grid absolute inset-0" />
         <div className="hive-hero-vignette absolute inset-0" />
-        <div className="hive-hero-hex-wave hive-hero-hex-wave--a absolute inset-0" />
+        <div className="hive-hero-hex-highlight absolute inset-0" />
       </div>
 
       <div className="relative mx-auto flex min-h-[calc(100svh-7rem)] w-full max-w-4xl items-center justify-center px-4 pb-24 sm:px-6 lg:px-8">

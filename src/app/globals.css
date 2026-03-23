@@ -174,72 +174,23 @@ body {
   mask-image: radial-gradient(circle at center, black 38%, transparent 100%);
 }
 
-.hive-hero-hex-wave {
+.hive-hero-hex-highlight {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='31.176' height='54' viewBox='0 0 31.176 54'%3E%3Cg fill='none' stroke='%23ffe88c' stroke-opacity='1' stroke-width='1.15' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M15.588 0L31.176 9V27L15.588 36L0 27V9L15.588 0Z'/%3E%3Cpath d='M0 27L15.588 36V54L0 63L-15.588 54V36L0 27Z'/%3E%3Cpath d='M31.176 27L46.764 36V54L31.176 63L15.588 54V36L31.176 27Z'/%3E%3C/g%3E%3C/svg%3E");
   background-size: var(--hive-hero-hex-tile-w) var(--hive-hero-hex-tile-h);
   background-position: center top;
   background-repeat: repeat;
-  opacity: 0;
-  will-change: mask-image, opacity;
-  --hive-wave-r: 0vmax;
+  opacity: calc(var(--hive-hero-hover, 0) * 1);
   mask-image: radial-gradient(
-    circle at 50% 50%,
-    transparent calc(var(--hive-wave-r) - 5.8vmax),
-    rgba(0, 0, 0, 0.08) calc(var(--hive-wave-r) - 4.7vmax),
-    rgba(0, 0, 0, 0.32) calc(var(--hive-wave-r) - 3.4vmax),
-    rgba(0, 0, 0, 0.68) calc(var(--hive-wave-r) - 1.95vmax),
-    rgba(0, 0, 0, 0.96) calc(var(--hive-wave-r) - 0.65vmax),
-    rgba(0, 0, 0, 0.96) calc(var(--hive-wave-r) + 0.65vmax),
-    rgba(0, 0, 0, 0.68) calc(var(--hive-wave-r) + 1.95vmax),
-    rgba(0, 0, 0, 0.32) calc(var(--hive-wave-r) + 3.4vmax),
-    rgba(0, 0, 0, 0.08) calc(var(--hive-wave-r) + 4.7vmax),
-    transparent calc(var(--hive-wave-r) + 5.8vmax)
+    circle 118px at var(--hive-hero-mx, 50%) var(--hive-hero-my, 50%),
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.96) 18%,
+    rgba(0, 0, 0, 0.82) 34%,
+    rgba(0, 0, 0, 0.58) 52%,
+    rgba(0, 0, 0, 0.32) 68%,
+    rgba(0, 0, 0, 0.14) 82%,
+    transparent 100%
   );
-  -webkit-mask-image: radial-gradient(
-    circle at 50% 50%,
-    transparent calc(var(--hive-wave-r) - 5.8vmax),
-    rgba(0, 0, 0, 0.08) calc(var(--hive-wave-r) - 4.7vmax),
-    rgba(0, 0, 0, 0.32) calc(var(--hive-wave-r) - 3.4vmax),
-    rgba(0, 0, 0, 0.68) calc(var(--hive-wave-r) - 1.95vmax),
-    rgba(0, 0, 0, 0.96) calc(var(--hive-wave-r) - 0.65vmax),
-    rgba(0, 0, 0, 0.96) calc(var(--hive-wave-r) + 0.65vmax),
-    rgba(0, 0, 0, 0.68) calc(var(--hive-wave-r) + 1.95vmax),
-    rgba(0, 0, 0, 0.32) calc(var(--hive-wave-r) + 3.4vmax),
-    rgba(0, 0, 0, 0.08) calc(var(--hive-wave-r) + 4.7vmax),
-    transparent calc(var(--hive-wave-r) + 5.8vmax)
-  );
-}
-
-.hive-hero-hex-wave--a {
-  animation: hive-hex-wave-ring 8.8s linear infinite;
-}
-
-.hive-hero-hex-wave--b {
-  animation: none;
-}
-
-@keyframes hive-hex-wave-ring {
-  0% {
-    opacity: 0;
-    --hive-wave-r: 0.8vmax;
-  }
-  8% {
-    opacity: 0.9;
-  }
-  50% {
-    opacity: 0.85;
-    --hive-wave-r: 35vmax;
-  }
-  100% {
-    opacity: 0;
-    --hive-wave-r: 76vmax;
-  }
-}
-
-@property --hive-wave-r {
-  syntax: "<length>";
-  inherits: false;
-  initial-value: 0px;
+  transition: opacity 220ms ease;
 }
 
 .hive-hero-lighting {
@@ -270,16 +221,13 @@ html.light .hive-hero-hex-grid {
 
 }
 
-html.light .hive-hero-hex-wave {
+html.light .hive-hero-hex-highlight {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='31.176' height='54' viewBox='0 0 31.176 54'%3E%3Cg fill='none' stroke='%236e5f1a' stroke-opacity='1' stroke-width='1.15' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M15.588 0L31.176 9V27L15.588 36L0 27V9L15.588 0Z'/%3E%3Cpath d='M0 27L15.588 36V54L0 63L-15.588 54V36L0 27Z'/%3E%3Cpath d='M31.176 27L46.764 36V54L31.176 63L15.588 54V36L31.176 27Z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hive-hero-hex-wave {
-    animation: none;
-    opacity: 0;
-    mask-image: none;
-    -webkit-mask-image: none;
+  .hive-hero-hex-highlight {
+    transition: none;
   }
 }
 
