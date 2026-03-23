@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
 import { Noto_Sans_Arabic, Syne } from "next/font/google";
+import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
@@ -14,6 +15,23 @@ const notoArabic = Noto_Sans_Arabic({
   variable: "--font-noto-arabic",
   subsets: ["arabic"],
   weight: ["400", "500", "600", "700"],
+});
+
+const ubuntuArabic = localFont({
+  src: [
+    {
+      path: "../../public/Ubuntu-Arabic-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/Ubuntu-Arabic-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-ubuntu-arabic",
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -38,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="h-full">
       <body
-        className={`${syne.variable} ${notoArabic.variable} ${geistMono.variable} min-h-full antialiased bg-hive-black text-hive-off-white`}
+        className={`${syne.variable} ${notoArabic.variable} ${ubuntuArabic.variable} ${geistMono.variable} min-h-full antialiased bg-hive-black text-hive-off-white`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>

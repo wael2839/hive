@@ -42,7 +42,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     <>
       <DocumentLocale locale={locale} />
       <div
-        className={`min-h-screen bg-hive-black ${locale === "ar" ? "font-[family-name:var(--font-noto-arabic)]" : "font-[family-name:var(--font-syne)]"}`}
+        className="min-h-screen bg-hive-black font-[family-name:var(--font-ubuntu-arabic)]"
         dir={locale === "ar" ? "rtl" : "ltr"}
         lang={locale}
       >

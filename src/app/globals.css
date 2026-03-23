@@ -83,7 +83,7 @@ html.light {
   --color-hive-off-white: var(--hive-fg);
   --color-hive-border: var(--hive-border);
   --color-hive-border-subtle: var(--hive-border-subtle);
-  --font-sans: var(--font-syne), var(--font-noto-arabic), system-ui, sans-serif;
+  --font-sans: var(--font-syne), var(--font-ubuntu-arabic), var(--font-noto-arabic), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
