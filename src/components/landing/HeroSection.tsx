@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { Messages } from "@/lib/i18n";
 
 type Props = {
@@ -11,8 +10,15 @@ export function HeroSection({ t }: Props) {
       id="hero"
       className="relative min-h-[100svh] overflow-hidden bg-hive-black pt-28"
     >
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 pb-24 sm:gap-12 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-8 xl:gap-14">
-        <div className="relative mt-6 flex w-full min-w-0 flex-col items-start text-start sm:mt-8 lg:mt-0 lg:max-w-none">
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className="hive-hero-lighting absolute inset-0" />
+        <div className="hive-hero-hex-grid absolute inset-0" />
+        <div className="hive-hero-vignette absolute inset-0" />
+        <div className="hive-hero-hex-wave hive-hero-hex-wave--a absolute inset-0" />
+      </div>
+
+      <div className="relative mx-auto flex min-h-[calc(100svh-7rem)] w-full max-w-4xl items-center justify-center px-4 pb-24 sm:px-6 lg:px-8">
+        <div className="relative flex w-full min-w-0 flex-col items-center text-center">
           <p className="hive-cta-hex hive-badge-hex hive-cta-hex--outline mb-4 inline-flex items-center gap-2 bg-[var(--hive-pill-bg)] px-5 py-2.5 text-base font-semibold uppercase tracking-[0.2em] text-hive-gold-light">
             <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-hive-gold" />
             {t.kicker}
@@ -26,7 +32,7 @@ export function HeroSection({ t }: Props) {
           <p className="mt-6 max-w-prose text-base leading-relaxed text-hive-off-white/75 light:text-neutral-700 sm:text-lg">
             {t.subtitle}
           </p>
-          <div className="mt-10 flex flex-wrap justify-start gap-4">
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a
               href="#portfolio"
               className="hive-cta-hex inline-flex items-center justify-center bg-gradient-to-r from-hive-btn-from to-hive-btn-to px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
@@ -42,18 +48,6 @@ export function HeroSection({ t }: Props) {
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-lg min-w-0 justify-self-center sm:max-w-xl lg:mx-0 lg:max-w-none lg:justify-self-end">
-          <div className="relative aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:h-[min(72svh,560px)] lg:min-h-[280px] xl:min-h-[320px]">
-            <Image
-              src="/hero_img.png"
-              alt={t.imageAlt}
-              fill
-              priority
-              sizes="(max-width: 640px) 100vw, (max-width: 1023px) 90vw, 50vw"
-              className="object-contain object-center"
-            />
-          </div>
-        </div>
       </div>
 
       <div className="pointer-events-none absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.35em] text-hive-off-white/35 light:text-neutral-500">
