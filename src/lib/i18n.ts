@@ -1,7 +1,7 @@
-export type Locale = "en" | "ar";
+export type Locale = "ar" | "en";
 
-export const locales: Locale[] = ["en", "ar"];
-export const defaultLocale: Locale = "en";
+export const locales: Locale[] = ["ar", "en"];
+export const defaultLocale: Locale = "ar";
 
 export function isLocale(s: string): s is Locale {
   return locales.includes(s as Locale);
