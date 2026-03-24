@@ -11,7 +11,7 @@ export function PackagesSection({ locale, t }: Props) {
   return (
     <section
       id="packages"
-      className="relative border-t border-hive-border-subtle bg-hive-black py-24 sm:py-32"
+      className="hive-section-alt relative border-t border-hive-border-subtle py-24 sm:py-32"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-hive-gold/35 to-transparent" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -31,7 +31,7 @@ export function PackagesSection({ locale, t }: Props) {
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3 lg:gap-5 lg:items-stretch">
           {t.items.map((item, i) => (
-            <ScrollReveal key={item.name} delayMs={50 + i * 45}>
+            <ScrollReveal key={item.name} delayMs={50 + i * 45} className="h-full">
               <article
                 className={`relative flex h-full flex-col rounded-2xl border p-7 transition-colors ${
                   item.featured
@@ -71,10 +71,10 @@ export function PackagesSection({ locale, t }: Props) {
                 </ul>
                 <Link
                   href={`/${locale}#contact`}
-                  className={`hive-cta-hex mt-8 inline-flex w-full items-center justify-center px-6 py-3 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold ${
+                  className={`mt-8 inline-flex w-full items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold ${
                     item.featured
                       ? "bg-gradient-to-r from-hive-btn-from to-hive-btn-to text-neutral-900 hover:brightness-110"
-                      : "hive-cta-hex--outline bg-[var(--hive-pill-bg)] text-hive-off-white hover:text-hive-gold-light"
+                      : "border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white hover:border-hive-gold/40 hover:text-hive-gold-light"
                   }`}
                 >
                   {item.cta}

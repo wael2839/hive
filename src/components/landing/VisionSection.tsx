@@ -25,7 +25,7 @@ export function VisionSection({ t }: { t: Messages["vision"] }) {
   return (
     <section
       id="vision"
-      className="relative overflow-hidden border-t border-hive-border-subtle bg-hive-black py-28 sm:py-36"
+      className="hive-section-main relative overflow-hidden border-t border-hive-border-subtle py-28 sm:py-36"
     >
       <div
         ref={bg}
@@ -34,7 +34,7 @@ export function VisionSection({ t }: { t: Messages["vision"] }) {
           transform: "translate3d(0, var(--parallax, 0px), 0)",
           transition: "transform 0.1s linear",
           backgroundImage:
-            "linear-gradient(to bottom, var(--hive-vision-overlay), var(--hive-vision-overlay)), radial-gradient(ellipse at 20% 30%, rgba(189,169,87,0.2), transparent 55%), radial-gradient(ellipse at 80% 60%, rgba(255,232,140,0.08), transparent 50%)",
+            "linear-gradient(to bottom, var(--hive-vision-overlay), var(--hive-vision-overlay))",
         }}
       />
       <div className="pointer-events-none absolute inset-0 hive-noise opacity-50" />

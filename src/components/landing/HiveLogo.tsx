@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 
 export const HIVE_LOGO = {
   dark: "/hive_logo_new_dark.png",
@@ -35,31 +33,43 @@ export function HiveLogo({
   alt = "",
   decorative,
 }: Props) {
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const autoVariant: HiveLogoVariant =
-    mounted && resolvedTheme === "light" ? "light" : "dark";
-  const variant = forcedVariant ?? autoVariant;
-
   return (
     <span
       className={`inline-block shrink-0 ${className}`}
       aria-hidden={decorative ? true : undefined}
     >
-      <Image
-        src={HIVE_LOGO[variant]}
-        alt={alt}
-        width={REF_W}
-        height={REF_H}
-        priority={priority}
-        className={`${heightClass} w-auto ${maxWidthClass} object-contain object-left rtl:object-right`}
-        sizes="(max-width: 640px) 168px, 192px"
-      />
+      {forcedVariant ? (
+        <Image
+          src={HIVE_LOGO[forcedVariant]}
+          alt={alt}
+          width={REF_W}
+          height={REF_H}
+          priority={priority}
+          className={`${heightClass} w-auto ${maxWidthClass} object-contain object-left rtl:object-right`}
+          sizes="(max-width: 640px) 168px, 192px"
+        />
+      ) : (
+        <>
+          <Image
+            src={HIVE_LOGO.dark}
+            alt={alt}
+            width={REF_W}
+            height={REF_H}
+            priority={priority}
+            className={`${heightClass} w-auto ${maxWidthClass} object-contain object-left rtl:object-right light:hidden`}
+            sizes="(max-width: 640px) 168px, 192px"
+          />
+          <Image
+            src={HIVE_LOGO.light}
+            alt={alt}
+            width={REF_W}
+            height={REF_H}
+            priority={priority}
+            className={`${heightClass} hidden w-auto ${maxWidthClass} object-contain object-left rtl:object-right light:block`}
+            sizes="(max-width: 640px) 168px, 192px"
+          />
+        </>
+      )}
     </span>
   );
 }

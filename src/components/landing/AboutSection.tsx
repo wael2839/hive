@@ -11,14 +11,9 @@ export function AboutSection({ t }: { t: Messages["about"] }) {
   return (
     <section
       id="about"
-      className="relative overflow-hidden border-t border-hive-border-subtle bg-hive-black py-24 sm:py-32"
+      className="hive-section-main relative overflow-hidden border-t border-hive-border-subtle py-24 sm:py-32"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-hive-gold/35 to-transparent" />
-      <div
-        className="pointer-events-none absolute -right-32 top-1/4 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle_at_center,rgba(189,169,87,0.12),transparent_68%)] sm:-right-20 lg:right-0"
-        aria-hidden
-      />
-      <div className="pointer-events-none absolute -left-40 bottom-0 h-[320px] w-[320px] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,232,140,0.06),transparent_70%)]" aria-hidden />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>

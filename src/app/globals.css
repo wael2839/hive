@@ -33,14 +33,9 @@
   --hive-portfolio-a: rgba(25, 25, 25, 0.14);
   --hive-portfolio-b: rgba(25, 25, 25, 0.78);
   --hive-portfolio-bottom: rgba(25, 25, 25, 0.88);
-  --hive-hero-hex-line: rgba(255, 255, 255, 0.12);
-  --hive-hero-hex-glow-a: rgba(189, 169, 87, 0.26);
-  --hive-hero-hex-glow-b: rgba(255, 232, 140, 0.14);
   /* قياسات شبكة خلية النحل المعتمدة (لا تغيّر إلا عند إعادة معايرة كاملة) */
   --hive-hero-hex-tile-w: 62.352px;
   --hive-hero-hex-tile-h: 108px;
-  --hive-hero-hex-svg-w: 31.176;
-  --hive-hero-hex-svg-h: 54;
   --hive-hero-hex-opacity-dark: 0.58;
   --hive-hero-hex-opacity-light: 0.44;
 }
@@ -69,9 +64,6 @@ html.light {
   --hive-portfolio-a: rgba(255, 255, 255, 0.5);
   --hive-portfolio-b: rgba(228, 228, 220, 0.78);
   --hive-portfolio-bottom: rgba(238, 238, 232, 0.95);
-  --hive-hero-hex-line: rgba(110, 95, 26, 0.34);
-  --hive-hero-hex-glow-a: rgba(110, 95, 26, 0.2);
-  --hive-hero-hex-glow-b: rgba(189, 169, 87, 0.16);
 }
 
 @theme inline {
@@ -154,12 +146,27 @@ body {
 
 .hive-bg-services {
   background-color: var(--hive-bg);
-  background-image: var(--hive-services-gradient);
+  background-image: none;
 }
 
 .hive-bg-contact {
   background-color: var(--hive-bg);
-  background-image: var(--hive-contact-gradient);
+  background-image: none;
+}
+
+/* Two-tone alternating section backgrounds */
+.hive-section-main {
+  /* same tone used by footer/site base */
+  background-color: var(--hive-bg);
+}
+
+.hive-section-alt {
+  /* secondary tone for alternating sections */
+  background-color: color-mix(in srgb, var(--hive-bg) 90%, #000 10%);
+}
+
+html.light .hive-section-alt {
+  background-color: color-mix(in srgb, var(--hive-bg) 90%, #fff 10%);
 }
 
 /* Hero background: hex grid + ambient lights */
@@ -237,20 +244,6 @@ html.light .hive-hero-hex-highlight {
     );
     transition: opacity 140ms ease-out;
   }
-}
-
-.hive-hero-lighting {
-  background:
-    radial-gradient(
-      38% 50% at 18% 28%,
-      var(--hive-hero-hex-glow-a) 0%,
-      transparent 100%
-    ),
-    radial-gradient(
-      34% 46% at 78% 64%,
-      var(--hive-hero-hex-glow-b) 0%,
-      transparent 100%
-    );
 }
 
 .hive-hero-vignette {

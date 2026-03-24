@@ -36,7 +36,7 @@ export function ContactSection({
   return (
     <section
       id="contact"
-      className="hive-bg-contact relative border-t border-hive-border-subtle py-24 sm:py-32"
+      className="hive-bg-contact hive-section-alt relative border-t border-hive-border-subtle py-24 sm:py-32"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-hive-gold/35 to-transparent" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

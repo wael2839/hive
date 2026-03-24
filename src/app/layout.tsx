@@ -46,6 +46,11 @@ export const metadata: Metadata = {
   },
   description:
     "Premium digital agency — strategy, design, and engineering at enterprise scale.",
+  icons: {
+    icon: "/hive_logo_new_dark.png",
+    shortcut: "/hive_logo_new_dark.png",
+    apple: "/hive_logo_new_dark.png",
+  },
 };
 
 export default function RootLayout({
