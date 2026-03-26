@@ -1,44 +1,88 @@
+import Image from "next/image";
 import type { Messages } from "@/lib/i18n";
+import { serviceSlugs } from "@/lib/service-details";
+import {
+  Briefcase,
+  Code,
+  Hash,
+  Mail,
+  MapPin,
+  Monitor,
+  PenTool,
+  Smartphone,
+  Tags,
+  type LucideIcon,
+} from "lucide-react";
 import { ScrollReveal } from "./ScrollReveal";
+import SectionTitle from "../ui/SectionTitle";
 
-export function ServicesSection({ t }: { t: Messages["services"] }) {
+const serviceImages = [
+  "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1200&q=80",
+];
+
+const serviceIcons: LucideIcon[] = [Code, Smartphone, Monitor, PenTool, Hash, Briefcase, MapPin];
+
+export function ServicesSection({
+  locale,
+  t,
+}: {
+  locale: "ar" | "en";
+  t: Messages["services"];
+}) {
   return (
     <section
       id="services"
-      className="hive-bg-services hive-section-alt relative border-t border-hive-border-subtle py-24 sm:py-32"
+      className="hive-bg-services hive-section-alt relative border-t border-hive-border-subtle py-15 sm:py-15"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="flex flex-col items-center text-center">
-            <p className="hive-cta-hex hive-badge-hex rounded-md hive-cta-hex--outline inline-flex w-fit items-center bg-[var(--hive-pill-bg)] px-5 py-2.5 text-base font-semibold uppercase tracking-[0.2em] text-hive-gold-light/90">
-              {t.kicker}
-            </p>
-            <h2 className="mt-6 max-w-2xl text-3xl font-bold tracking-tight text-hive-off-white sm:text-4xl">
-              {t.title}
-            </h2>
+            <SectionTitle>{t.title}</SectionTitle>
           </div>
         </ScrollReveal>
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {t.items.map((item, i) => (
             <ScrollReveal key={item.title} delayMs={60 + i * 40}>
-              <article className="service-card group relative overflow-hidden rounded-md border border-hive-border bg-[var(--hive-card-glass)] p-7">
-                <div
-                  className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-md bg-[radial-gradient(circle_at_center,rgba(255,232,140,0.14),transparent_65%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                  aria-hidden
-                />
-                <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-md border border-hive-gold/25 bg-gradient-to-br from-hive-gold/25 to-transparent text-sm font-bold text-hive-gold-light">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-md bg-hive-black/40 text-[11px]">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+              <article className="svc-card group">
+                <div className="svc-card__data">
+                  <Image
+                    className="svc-card__image"
+                    src={serviceImages[i % serviceImages.length]}
+                    alt={item.title}
+                    width={1200}
+                    height={675}
+                    style={{ objectFit: "cover" }}
+                  />
+                  <div className="svc-card__social">
+                    <a href="#contact" aria-label="Contact">
+                      {(() => {
+                        const Icon = serviceIcons[i % serviceIcons.length];
+                        return <Icon size={16} strokeWidth={1.8} />;
+                      })()}
+                    </a>
+                    <a href="#contact" aria-label="Contact us">
+                      <Mail size={16} strokeWidth={1.8} />
+                    </a>
+                    <a href="#packages" aria-label="View packages">
+                      <Tags size={16} strokeWidth={1.8} />
+                    </a>
+                  </div>
+                  <div className="svc-card__info">
+                    <h3 className="svc-card__title">{item.title}</h3>
+                    <p className="svc-card__desc">{item.desc}</p>
+                    <p className="svc-card__more">{item.more}</p>
+                    <a href={`/${locale}/services/${serviceSlugs[i % serviceSlugs.length]}`} className="svc-card__btn">
+                      {t.moreCta}
+                    </a>
+                  </div>
                 </div>
-                <h3 className="text-lg font-semibold text-hive-off-white">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-hive-off-white/65 light:text-neutral-600">
-                  {item.desc}
-                </p>
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-hive-gold/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </article>
             </ScrollReveal>
           ))}

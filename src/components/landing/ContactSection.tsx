@@ -13,6 +13,7 @@ import {
 import { siteContact } from "@/config/site-contact";
 import type { Locale, Messages } from "@/lib/i18n";
 import { ScrollReveal } from "./ScrollReveal";
+import SectionTitle from "../ui/SectionTitle";
 
 export function ContactSection({
   locale,
@@ -36,19 +37,14 @@ export function ContactSection({
   return (
     <section
       id="contact"
-      className="hive-bg-contact hive-section-alt relative border-t border-hive-border-subtle py-24 sm:py-32"
+      className="hive-bg-contact hive-section-alt relative border-t border-hive-border-subtle py-15 sm:py-15"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-hive-gold/35 to-transparent" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="flex flex-col items-center text-center">
-            <p className="hive-cta-hex hive-badge-hex rounded-md hive-cta-hex--outline inline-flex w-fit items-center bg-[var(--hive-pill-bg)] px-5 py-2.5 text-base font-semibold uppercase tracking-[0.2em] text-hive-gold-light/90">
-              {t.kicker}
-            </p>
-            <h2 className="mt-6 max-w-2xl text-3xl font-bold tracking-tight text-hive-off-white sm:text-4xl">
-              {t.title}
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-hive-off-white/65 light:text-neutral-600">
+            <SectionTitle>{t.title}</SectionTitle>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-hive-off-white/70 light:text-neutral-600">
               {t.subtitle}
             </p>
           </div>

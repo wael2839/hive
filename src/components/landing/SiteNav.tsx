@@ -28,7 +28,7 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
             maxWidthClass="max-w-[min(100%,8.5rem)] sm:max-w-[9.75rem]"
             alt={t.meta.title}
           />
-          <span className="truncate text-base font-semibold tracking-tight text-hive-off-white sm:text-[1.55rem]">
+          <span className="truncate text-base font-semibold tracking-tight text-hive-off-white sm:text-lg">
             {t.nav.brand}
           </span>
         </Link>

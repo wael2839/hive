@@ -21,17 +21,17 @@ export function HeroSection({ t }: Props) {
 
       <div className="relative mx-auto flex min-h-[calc(100svh-7rem)] w-full max-w-4xl items-center justify-center px-4 pb-24 sm:px-6 lg:px-8">
         <div className="relative flex w-full min-w-0 flex-col items-center text-center">
-          <p className="hive-cta-hex hive-badge-hex rounded-md hive-cta-hex--outline mb-4 inline-flex items-center gap-2 bg-[var(--hive-pill-bg)] px-5 py-2.5 text-base font-semibold uppercase tracking-[0.2em] text-hive-gold-light">
+          <p className="hive-cta-hex hive-badge-hex rounded-md hive-cta-hex--outline mb-4 inline-flex items-center gap-2 bg-[var(--hive-pill-bg)] px-4 py-2 text-sm font-semibold tracking-[0.04em] text-hive-gold-light sm:px-5 sm:py-2.5 sm:text-base">
             <span className="h-1.5 w-1.5 shrink-0 rounded-md bg-hive-gold" />
             {t.kicker}
           </p>
-          <h1 className="mt-4 text-balance text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="mt-4 text-balance text-[2.1rem] font-extrabold leading-[1.12] tracking-tight sm:text-5xl sm:leading-[1.06] lg:text-6xl">
             <span className="block text-hive-off-white ">{t.title}</span>
-            <span className="mt-8 block bg-gradient-to-r from-hive-gold-light via-hive-gold to-[#8a7a45] bg-clip-text text-transparent animate-hive-float light:from-[#5c4a12] light:via-[#735f18] light:to-[#3a300c]">
+            <span className="mt-4 block bg-gradient-to-r from-hive-gold-light via-hive-gold to-[#8a7a45] bg-clip-text text-transparent animate-hive-float sm:mt-6 light:from-[#5c4a12] light:via-[#735f18] light:to-[#3a300c]">
               {t.titleAccent}
             </span>
           </h1>
-          <p className="mt-6 max-w-prose text-base leading-relaxed text-hive-off-white/75 light:text-neutral-700 sm:text-lg">
+          <p className="mt-6 max-w-3xl text-base leading-8 text-hive-off-white/75 light:text-neutral-700 sm:text-lg">
             {t.subtitle}
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">

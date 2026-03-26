@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hive Digital Solutions</title>
+    <script>
+      (function () {
+        try {
+          var root = document.documentElement;
+          var theme = localStorage.getItem("hive-theme");
+          var lang = localStorage.getItem("hive-lang");
+          var safeTheme = theme === "light" ? "light" : "dark";
+          var safeLang = lang === "ar" ? "ar" : "en";
+          root.setAttribute("data-theme", safeTheme);
+          root.setAttribute("lang", safeLang);
+          root.setAttribute("dir", safeLang === "ar" ? "rtl" : "ltr");
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+      (function () {
+        try {
+          if (sessionStorage.getItem("hive-splash-seen-v1") !== "1") {
+            document.documentElement.classList.add("hive-splash-wait");
+          }
+        } catch (e) {
+          document.documentElement.classList.add("hive-splash-wait");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="splash-root" style="display: contents"></div>
+
+    <header class="header" id="site-header">
+      <div class="header__inner">
+        <div class="header__logo">
+          <a href="#home" class="header__logo-link" aria-label="Hive">
+            <img class="header__logo-img logo--dark" src="images/hive_logo_new_dark.png" alt="Hive" />
+            <img class="header__logo-img logo--light" src="images/hive_logo_new_light.png" alt="Hive" />
+          </a>
+        </div>
+        <nav class="header__nav" aria-label="Main navigation">
+          <ul class="header__nav-list">
+            <li class="header__nav-item">
+              <a href="#home" class="header__nav-link" data-i18n="nav.home">Home</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="#about" class="header__nav-link" data-i18n="nav.about">About</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="#services" class="header__nav-link" data-i18n="nav.services">Services</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="#work-steps" class="header__nav-link" data-i18n="nav.workflow">Workflow</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="#packages" class="header__nav-link" data-i18n="nav.packages">Packages</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="#contact" class="header__nav-link" data-i18n="nav.contact">Contact</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header__controls">
+          <button class="ctrl-btn" id="lang-toggle" aria-label="Toggle language">
+            <span class="ctrl-btn__label" id="lang-label">AR</span>
+          </button>
+          <button class="ctrl-btn" id="theme-toggle" aria-label="Toggle theme">
+            <svg class="ctrl-btn__icon ctrl-btn__icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="ctrl-btn__icon ctrl-btn__icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          </button>
+        </div>
+        <button class="header__burger" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+    <aside class="sidebar" id="sidebar" aria-hidden="true" aria-label="Mobile menu">
+      <div class="sidebar__inner">
+        <a href="#home" class="sidebar__logo-link" aria-label="Hive">
+          <img class="header__logo-img logo--dark" src="images/hive_logo_new_dark.png" alt="Hive" />
+          <img class="header__logo-img logo--light" src="images/hive_logo_new_light.png" alt="Hive" />
+        </a>
+
+        <nav class="sidebar__nav" aria-label="Sidebar navigation">
+          <ul class="sidebar__list">
+            <li><a href="#home" class="sidebar__link" data-i18n="nav.home">Home</a></li>
+            <li><a href="#about" class="sidebar__link" data-i18n="nav.about">About</a></li>
+            <li><a href="#services" class="sidebar__link" data-i18n="nav.services">Services</a></li>
+            <li><a href="#work-steps" class="sidebar__link" data-i18n="nav.workflow">Workflow</a></li>
+            <li><a href="#packages" class="sidebar__link" data-i18n="nav.packages">Packages</a></li>
+            <li><a href="#contact" class="sidebar__link" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="sidebar__bottom">
+          <button class="sidebar__lang-btn" id="sidebar-lang-toggle" type="button" aria-label="Switch language">
+            <span class="sidebar__lang-icon" aria-hidden="true">A</span>
+            <span class="sidebar__lang-text">AR</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div id="hero-root"></div>
+
+      <section id="about" class="about">
+        <div class="about__inner">
+          <header class="about__header about__reveal">
+            <h2 class="about__heading main-title" data-i18n="about.title">
+              Our <span class="text-accent">Concept</span>
+            </h2>
+          </header>
+
+          <!-- مقطع مستقل داخل About: ثلاث سداسيات (من نحن / المفهوم / الالتزام) -->
+          <div id="about-intro" class="about__intro about-intro" role="region">
+            <article class="about-tw-hex about__reveal">
+              <div class="about-tw-hex__bg" aria-hidden="true"></div>
+              <div class="about-tw-hex__ring" aria-hidden="true"></div>
+              <div class="about-tw-hex__inner">
+                <span class="about-intro-card__hex" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                </span>
+                <h2 class="about-intro-card__title" data-i18n="about.who.title">من نحن</h2>
+                <p class="about-intro-card__text" data-i18n="about.who.desc">
+                  شركة تقدم حلولا وخدمات رقمية متكاملة، نمكن عملاءنا من التركيز على تنمية أعمالهم بينما نتولى الجوانب التقنية والتعقيدات بكفاءة.
+                </p>
+              </div>
+            </article>
+
+            <article class="about-tw-hex about-tw-hex--accent about__reveal">
+              <div class="about-tw-hex__bg" aria-hidden="true"></div>
+              <div class="about-tw-hex__ring" aria-hidden="true"></div>
+              <div class="about-tw-hex__inner">
+                <span class="about-intro-card__hex" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3v18"/>
+                    <path d="M3 12h18"/>
+                    <circle cx="12" cy="12" r="4"/>
+                  </svg>
+                </span>
+                <h2 class="about-intro-card__title" data-i18n="about.concept.title">المفهوم</h2>
+                <p class="about-intro-card__text" data-i18n="about.concept.desc">
+                  أسلوبنا يشبه خلية النحل، حيث يعمل كل جزء ضمن منظومة متكاملة بدقة وتنظيم لتحقيق نتائج عالية الجودة.
+                </p>
+              </div>
+            </article>
+
+            <article class="about-tw-hex about__reveal">
+              <div class="about-tw-hex__bg" aria-hidden="true"></div>
+              <div class="about-tw-hex__ring" aria-hidden="true"></div>
+              <div class="about-tw-hex__inner">
+                <span class="about-intro-card__hex" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                  </svg>
+                </span>
+                <h2 class="about-intro-card__title" data-i18n="about.commitment.title">التزامنا</h2>
+                <p class="about-intro-card__text" data-i18n="about.commitment.desc">
+                  تواصل واضح، وتسليم موثوق، وشراكة تمتد بعد الإطلاق—كي يبقى حضورك الرقمي متوافقاً مع أهدافك.
+                </p>
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="about-why" class="about about--subsection">
+        <div class="about__inner">
+          <header class="about__header about__reveal">
+            <h2 class="about__heading main-title" data-i18n="about.why.title">
+              Why Choose <span class="text-accent">Hive</span>
+            </h2>
+          </header>
+
+          <div class="about__intro about__intro--four about__intro--compact">
+            <article class="about-tw-hex about__reveal">
+              <div class="about-tw-hex__bg" aria-hidden="true"></div>
+              <div class="about-tw-hex__ring" aria-hidden="true"></div>
+              <div class="about-tw-hex__inner">
+                <span class="about-intro-card__hex" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2l2.9 5.9 6.5 1-4.7 4.6 1.1 6.5L12 16.9 6.2 20l1.1-6.5-4.7-4.6 6.5-1z"/>
+                  </svg>
+                </span>
+                <h3 class="about-intro-card__title" data-i18n="about.why.1t">الجودة أولاً</h3>
+                <p class="about-intro-card__text" data-i18n="about.why.1d">نضع الجودة في قلب كل تفصيل وكل مخرج نقدمه.</p>
+              </div>
+            </article>
+
+            <article class="about-tw-hex about-tw-hex--accent about__reveal">
+              <div class="about-tw-hex__bg" aria-hidden="true"></div>
+              <div class="about-tw-hex__ring" aria-hidden="true"></div>
+              <div class="about-tw-hex__inner">
+                <span class="about-intro-card__hex" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12h18"/>
+                    <path d="M12 3v18"/>
+                  </svg>
+                </span>
+                <h3 class="about-intro-card__title" data-i18n="about.why.2t">خبرات متكاملة</h3>
+                <p class="about-intro-card__text" data-i18n="about.why.2d">تخصصات متعددة تعمل بتناغم ضمن فريق واحد متكامل.</p>
+              </div>
+            </article>
+
+            <article class="about-tw-hex about__reveal">
+              <div class="about-tw-hex__bg" aria-hidden="true"></div>
+              <div class="about-tw-hex__ring" aria-hidden="true"></div>
+              <div class="about-tw-hex__inner">
+                <span class="about-intro-card__hex" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 7h18M6 12h12M8 17h8"/>
+                  </svg>
+                </span>
+                <h3 class="about-intro-card__title" data-i18n="about.why.3t">حلول شاملة</h3>
+                <p class="about-intro-card__text" data-i18n="about.why.3d">نقدم حلولاً رقمية متكاملة تناسب احتياجات المشاريع والأعمال المختلفة.</p>
+              </div>
+            </article>
+
+            <article class="about-tw-hex about-tw-hex--accent about__reveal">
+              <div class="about-tw-hex__bg" aria-hidden="true"></div>
+              <div class="about-tw-hex__ring" aria-hidden="true"></div>
+              <div class="about-tw-hex__inner">
+                <span class="about-intro-card__hex" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                </span>
+                <h3 class="about-intro-card__title" data-i18n="about.why.4t">تنفيذ موثوق</h3>
+                <p class="about-intro-card__text" data-i18n="about.why.4d">تنفيذ منظم يضمن سير المشروع بثبات من البداية حتى التسليم.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="about-values" class="about about--subsection">
+        <div class="about__inner">
+          <header class="about__header about__reveal">
+            <h2 class="about__heading main-title" data-i18n="about.vision.title">
+              Vision &amp; <span class="text-accent">Values</span>
+            </h2>
+          </header>
+
+          <div class="about__intro about__intro--four about__intro--compact">
+            <article class="about-tw-hex about__reveal">
+              <div class="about-tw-hex__bg" aria-hidden="true"></div>
+              <div class="about-tw-hex__ring" aria-hidden="true"></div>
+              <div class="about-tw-hex__inner">
+                <span class="about-intro-card__hex" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3v6"/>
+                    <path d="M18.36 6.64l-4.24 4.24"/>
+                    <path d="M21 12h-6"/>
+                    <path d="M18.36 17.36l-4.24-4.24"/>
+                    <path d="M12 21v-6"/>
+                    <path d="M5.64 17.36l4.24-4.24"/>
+                    <path d="M3 12h6"/>
+                    <path d="M5.64 6.64l4.24 4.24"/>
+                  </svg>
+                </span>
+                <h3 class="about-intro-card__title" data-i18n="about.val.1t">Innovation</h3>
+                <p class="about-intro-card__text" data-i18n="about.val.1d">Pushing boundaries with cutting-edge technology</p>
+              </div>
+            </article>
+
+            <article class="about-tw-hex about-tw-hex--accent about__reveal">
+              <div class="about-tw-hex__bg" aria-hidden="true"></div>
+              <div class="about-tw-hex__ring" aria-hidden="true"></div>
+              <div class="about-tw-hex__inner">
+                <span class="about-intro-card__hex" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 7h16"/>
+                    <path d="M4 12h16"/>
+                    <path d="M4 17h16"/>
+                  </svg>
+                </span>
+                <h3 class="about-intro-card__title" data-i18n="about.val.2t">Transparency</h3>
+                <p class="about-intro-card__text" data-i18n="about.val.2d">Open communication at every stage</p>
+              </div>
+            </article>
+
+            <article class="about-tw-hex about__reveal">
+              <div class="about-tw-hex__bg" aria-hidden="true"></div>
+              <div class="about-tw-hex__ring" aria-hidden="true"></div>
+              <div class="about-tw-hex__inner">
+                <span class="about-intro-card__hex" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2l2.9 5.9 6.5 1-4.7 4.6 1.1 6.5L12 16.9 6.2 20l1.1-6.5-4.7-4.6 6.5-1z"/>
+                  </svg>
+                </span>
+                <h3 class="about-intro-card__title" data-i18n="about.val.3t">Excellence</h3>
+                <p class="about-intro-card__text" data-i18n="about.val.3d">Uncompromising quality in every pixel</p>
+              </div>
+            </article>
+
+            <article class="about-tw-hex about-tw-hex--accent about__reveal">
+              <div class="about-tw-hex__bg" aria-hidden="true"></div>
+              <div class="about-tw-hex__ring" aria-hidden="true"></div>
+              <div class="about-tw-hex__inner">
+                <span class="about-intro-card__hex" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="7" cy="12" r="2"/>
+                    <circle cx="17" cy="8" r="2"/>
+                    <circle cx="17" cy="16" r="2"/>
+                    <path d="M8.8 11.2l6.4-2.4"/>
+                    <path d="M8.8 12.8l6.4 2.4"/>
+                  </svg>
+                </span>
+                <h3 class="about-intro-card__title" data-i18n="about.val.4t">Collaboration</h3>
+                <p class="about-intro-card__text" data-i18n="about.val.4d">Your vision, amplified by our expertise</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="services">
+        <div class="services__inner">
+          <div class="services__header services__reveal">
+            <h2 class="services__heading main-title" data-i18n="svc.title">
+              Our <span class="text-accent">Services</span>
+            </h2>
+            <p class="services__lead" data-i18n="svc.lead">
+              Comprehensive digital solutions tailored to elevate your brand
+              and streamline your operations.
+            </p>
+          </div>
+          <div class="services__grid">
+            <article id="svc-web-apps" class="svc-card services__reveal">
+              <div class="svc-card__data">
+                <img class="svc-card__image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80" alt="Web apps development service" />
+                <div class="svc-card__social">
+                  <a href="services/web-apps.html" aria-label="Web apps details"><i class="fa-solid fa-code"></i></a>
+                  <a href="#contact" aria-label="Contact us"><i class="fa-solid fa-envelope"></i></a>
+                  <a href="#packages" aria-label="View packages"><i class="fa-solid fa-tags"></i></a>
+                </div>
+                <div class="svc-card__info">
+                <h3 class="svc-card__title" data-i18n="svc.s1.t">Web Apps</h3>
+                <p class="svc-card__desc" data-i18n="svc.s1.d">Modern web applications built for performance, scalability, and seamless user experience.</p>
+                <p class="svc-card__more" data-i18n="svc.s1.m">We build tailored web platforms with secure architecture, intuitive dashboards, and integrations that fit your workflow.</p>
+                <a class="svc-card__btn btn btn--outline" href="services/web-apps.html" data-i18n="svc.more">Learn More</a>
+              </div>
+              </div>
+            </article>
+
+            <article id="svc-mobile-apps" class="svc-card services__reveal">
+              <div class="svc-card__data">
+                <img class="svc-card__image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80" alt="Mobile applications service" />
+                <div class="svc-card__social">
+                  <a href="services/mobile-apps.html" aria-label="Mobile apps details"><i class="fa-solid fa-mobile-screen-button"></i></a>
+                  <a href="#contact" aria-label="Contact us"><i class="fa-solid fa-envelope"></i></a>
+                  <a href="#packages" aria-label="View packages"><i class="fa-solid fa-tags"></i></a>
+                </div>
+                <div class="svc-card__info">
+                <h3 class="svc-card__title" data-i18n="svc.s2.t">Mobile Apps</h3>
+                <p class="svc-card__desc" data-i18n="svc.s2.d">Native and cross-platform mobile solutions that put your business in your customers' pockets.</p>
+                <p class="svc-card__more" data-i18n="svc.s2.m">From idea to app store, we deliver mobile products with smooth UX, strong performance, and scalable backend connectivity.</p>
+                <a class="svc-card__btn btn btn--outline" href="services/mobile-apps.html" data-i18n="svc.more">Learn More</a>
+              </div>
+              </div>
+            </article>
+
+            <article id="svc-desktop-apps" class="svc-card services__reveal">
+              <div class="svc-card__data">
+                <img class="svc-card__image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=1200&q=80" alt="Desktop software service" />
+                <div class="svc-card__social">
+                  <a href="services/desktop-apps.html" aria-label="Desktop apps details"><i class="fa-solid fa-desktop"></i></a>
+                  <a href="#contact" aria-label="Contact us"><i class="fa-solid fa-envelope"></i></a>
+                  <a href="#packages" aria-label="View packages"><i class="fa-solid fa-tags"></i></a>
+                </div>
+                <div class="svc-card__info">
+                <h3 class="svc-card__title" data-i18n="svc.s3.t">Desktop Apps</h3>
+                <p class="svc-card__desc" data-i18n="svc.s3.d">Powerful desktop software tailored to your workflows — Windows, macOS, and Linux.</p>
+                <p class="svc-card__more" data-i18n="svc.s3.m">We craft robust desktop tools for business operations, internal systems, and heavy workflows across all major operating systems.</p>
+                <a class="svc-card__btn btn btn--outline" href="services/desktop-apps.html" data-i18n="svc.more">Learn More</a>
+              </div>
+              </div>
+            </article>
+
+            <article id="svc-visual-identity" class="svc-card services__reveal">
+              <div class="svc-card__data">
+                <img class="svc-card__image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80" alt="Visual identity and branding service" />
+                <div class="svc-card__social">
+                  <a href="services/visual-identity.html" aria-label="Visual identity details"><i class="fa-solid fa-pen-ruler"></i></a>
+                  <a href="#contact" aria-label="Contact us"><i class="fa-solid fa-envelope"></i></a>
+                  <a href="#packages" aria-label="View packages"><i class="fa-solid fa-tags"></i></a>
+                </div>
+                <div class="svc-card__info">
+                <h3 class="svc-card__title" data-i18n="svc.s4.t">Visual Identity</h3>
+                <p class="svc-card__desc" data-i18n="svc.s4.d">Logos, color systems, typography, and brand guidelines that make you unforgettable.</p>
+                <p class="svc-card__more" data-i18n="svc.s4.m">We design cohesive brand identities that align your message across logo, typography, colors, and digital touchpoints.</p>
+                <a class="svc-card__btn btn btn--outline" href="services/visual-identity.html" data-i18n="svc.more">Learn More</a>
+              </div>
+              </div>
+            </article>
+
+            <article id="svc-social-media" class="svc-card services__reveal">
+              <div class="svc-card__data">
+                <img class="svc-card__image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=1200&q=80" alt="Social media management service" />
+                <div class="svc-card__social">
+                  <a href="services/social-media.html" aria-label="Social media details"><i class="fa-solid fa-hashtag"></i></a>
+                  <a href="#contact" aria-label="Contact us"><i class="fa-solid fa-envelope"></i></a>
+                  <a href="#packages" aria-label="View packages"><i class="fa-solid fa-tags"></i></a>
+                </div>
+                <div class="svc-card__info">
+                <h3 class="svc-card__title" data-i18n="svc.s5.t">Social Media</h3>
+                <p class="svc-card__desc" data-i18n="svc.s5.d">Strategic content creation, management, and advertising across all major platforms.</p>
+                <p class="svc-card__more" data-i18n="svc.s5.m">We manage your social presence with strategic content, audience growth plans, and targeted paid campaigns.</p>
+                <a class="svc-card__btn btn btn--outline" href="services/social-media.html" data-i18n="svc.more">Learn More</a>
+              </div>
+              </div>
+            </article>
+
+            <article id="svc-office-solutions" class="svc-card services__reveal">
+              <div class="svc-card__data">
+                <img class="svc-card__image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="Office productivity solutions service" />
+                <div class="svc-card__social">
+                  <a href="services/office-solutions.html" aria-label="Office solutions details"><i class="fa-solid fa-briefcase"></i></a>
+                  <a href="#contact" aria-label="Contact us"><i class="fa-solid fa-envelope"></i></a>
+                  <a href="#packages" aria-label="View packages"><i class="fa-solid fa-tags"></i></a>
+                </div>
+                <div class="svc-card__info">
+                <h3 class="svc-card__title" data-i18n="svc.s6.t">Office Solutions</h3>
+                <p class="svc-card__desc" data-i18n="svc.s6.d">Productivity tools, internal systems, and automation that streamline your operations.</p>
+                <p class="svc-card__more" data-i18n="svc.s6.m">We automate repetitive tasks and build internal tools to improve productivity and reduce operational bottlenecks.</p>
+                <a class="svc-card__btn btn btn--outline" href="services/office-solutions.html" data-i18n="svc.more">Learn More</a>
+              </div>
+              </div>
+            </article>
+
+            <article id="svc-google-maps" class="svc-card services__reveal">
+              <div class="svc-card__data">
+                <img class="svc-card__image" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1200&q=80" alt="Google maps and location service" />
+                <div class="svc-card__social">
+                  <a href="services/google-maps.html" aria-label="Google maps details"><i class="fa-solid fa-map-location-dot"></i></a>
+                  <a href="#contact" aria-label="Contact us"><i class="fa-solid fa-envelope"></i></a>
+                  <a href="#packages" aria-label="View packages"><i class="fa-solid fa-tags"></i></a>
+                </div>
+                <div class="svc-card__info">
+                <h3 class="svc-card__title" data-i18n="svc.s7.t">Google Maps</h3>
+                <p class="svc-card__desc" data-i18n="svc.s7.d">Custom map integrations, business listings, and location-based solutions.</p>
+                <p class="svc-card__more" data-i18n="svc.s7.m">We optimize location visibility through map integrations, business profile setup, and customer navigation experience.</p>
+                <a class="svc-card__btn btn btn--outline" href="services/google-maps.html" data-i18n="svc.more">Learn More</a>
+              </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="work-steps" class="work-steps">
+        <div class="work-steps__inner">
+          <div class="work-steps__header work-steps__reveal">
+            <h2 class="work-steps__heading main-title" data-i18n="work.title">
+              How It <span class="text-accent">Works</span>
+            </h2>
+          </div>
+          <div class="work-steps__content">
+            <div class="work-steps__figure work-steps__reveal">
+              <img
+                class="work-steps__image logo--dark"
+                src="images/hive_logo_with_text_dark.png"
+                width="640"
+                height="200"
+                decoding="async"
+                loading="lazy"
+                alt="Hive"
+              />
+              <img
+                class="work-steps__image logo--light"
+                src="images/hive_logo_with_text_light.png"
+                width="640"
+                height="200"
+                decoding="async"
+                loading="lazy"
+                alt="Hive"
+              />
+            </div>
+            <div class="work-steps__info">
+              <article class="work-step-box work-steps__reveal">
+                <span class="work-step-box__icon" aria-hidden="true">
+                  <i class="fa-solid fa-globe"></i>
+                </span>
+                <div class="work-step-box__text">
+                  <h3 data-i18n="work.s1.t">Online Operations</h3>
+                  <p data-i18n="work.s1.d">We manage your digital operations fully online with clear communication and smooth workflows from kickoff to delivery.</p>
+                </div>
+              </article>
+              <article class="work-step-box work-steps__reveal">
+                <span class="work-step-box__icon" aria-hidden="true">
+                  <i class="fa-solid fa-credit-card"></i>
+                </span>
+                <div class="work-step-box__text">
+                  <h3 data-i18n="work.s2.t">Electronic Payments</h3>
+                  <p data-i18n="work.s2.d">We integrate secure payment gateways and modern billing flows to help your business accept online payments reliably.</p>
+                </div>
+              </article>
+              <article class="work-step-box work-steps__reveal">
+                <span class="work-step-box__icon" aria-hidden="true">
+                  <i class="fa-solid fa-handshake"></i>
+                </span>
+                <div class="work-step-box__text">
+                  <h3 data-i18n="work.s3.t">On-Ground Delivery</h3>
+                  <p data-i18n="work.s3.d">When needed, we work directly on-site to align implementation with your real operations and team requirements.</p>
+                </div>
+              </article>
+              <article class="work-step-box work-steps__reveal">
+                <span class="work-step-box__icon" aria-hidden="true">
+                  <i class="fa-solid fa-headset"></i>
+                </span>
+                <div class="work-step-box__text">
+                  <h3 data-i18n="work.s4.t">Ongoing Support</h3>
+                  <p data-i18n="work.s4.d">Long-term service plans, continuous improvements, and responsive technical support keep your systems stable and evolving.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="packages" class="packages">
+        <div class="packages__inner">
+          <div class="packages__header packages__reveal">
+            <h2 class="packages__heading main-title" data-i18n="pkg.title">
+              Choose Your <span class="text-accent">Package</span>
+            </h2>
+          </div>
+
+          <div class="packages__grid">
+            <!-- Basic Presence -->
+            <div class="pkg-card packages__reveal">
+              <div class="pkg-card__hex" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <h3 class="pkg-card__name" data-i18n="pkg.p1.name">Basic Presence</h3>
+              <p class="pkg-card__desc" data-i18n="pkg.p1.desc">
+                Everything you need to launch your digital footprint.
+              </p>
+              <ul class="pkg-card__features">
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p1.f1">Custom Landing Page</span></li>
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p1.f2">Mobile-Responsive Design</span></li>
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p1.f3">Basic SEO Setup</span></li>
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p1.f4">Social Media Kit (2 platforms)</span></li>
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p1.f5">Google Maps Listing</span></li>
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p1.f6">1 Month Support</span></li>
+              </ul>
+              <a href="#contact" class="btn btn--outline pkg-card__btn" data-i18n="pkg.cta">Get Started</a>
+            </div>
+
+            <!-- Business Growth (featured) -->
+            <div class="pkg-card pkg-card--featured packages__reveal">
+              <span class="pkg-card__badge" data-i18n="pkg.badge">Most Popular</span>
+              <div class="pkg-card__hex" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </div>
+              <h3 class="pkg-card__name" data-i18n="pkg.p2.name">Business Growth</h3>
+              <p class="pkg-card__desc" data-i18n="pkg.p2.desc">
+                Scale your brand with a full digital strategy.
+              </p>
+              <ul class="pkg-card__features">
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p2.f1">Multi-Page Web Application</span></li>
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p2.f2">Visual Identity Package</span></li>
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p2.f3">Social Media Management (4 platforms)</span></li>
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p2.f4">Google Maps Integration</span></li>
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p2.f5">Analytics Dashboard</span></li>
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p2.f6">3 Months Priority Support</span></li>
+              </ul>
+              <a href="#contact" class="btn btn--primary pkg-card__btn" data-i18n="pkg.cta">Get Started</a>
+            </div>
+
+            <!-- Enterprise Solution -->
+            <div class="pkg-card packages__reveal">
+              <div class="pkg-card__hex" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
+              </div>
+              <h3 class="pkg-card__name" data-i18n="pkg.p3.name">Enterprise Solution</h3>
+              <p class="pkg-card__desc" data-i18n="pkg.p3.desc">
+                A complete digital ecosystem for maximum impact.
+              </p>
+              <ul class="pkg-card__features">
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p3.f1">Full Web + Mobile Apps</span></li>
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p3.f2">Complete Brand System</span></li>
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p3.f3">Social Media + Ad Campaigns</span></li>
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p3.f4">Office Automation Suite</span></li>
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p3.f5">Dedicated Project Manager</span></li>
+                <li><span class="pkg-card__check" aria-hidden="true"></span><span data-i18n="pkg.p3.f6">12 Months Premium Support</span></li>
+              </ul>
+              <a href="#contact" class="btn btn--outline pkg-card__btn" data-i18n="pkg.cta3">Contact Sales</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="contact__inner">
+          <div class="contact__header contact__reveal">
+            <h2 class="contact__heading main-title" data-i18n="ctc.title">
+              Contact <span class="text-accent">Us</span>
+            </h2>
+          </div>
+
+          <div class="contact__columns">
+            <form class="contact__form contact__reveal" id="contact-form" action="#" method="post">
+              <div class="form__group">
+                <label for="form-name" class="form__label" data-i18n="ctc.name">Full Name</label>
+                <input type="text" id="form-name" name="name" class="form__input" data-i18n-ph="ctc.name.ph" placeholder="John Doe" required />
+              </div>
+              <div class="form__group">
+                <label for="form-email" class="form__label" data-i18n="ctc.email">Email Address</label>
+                <input type="email" id="form-email" name="email" class="form__input" data-i18n-ph="ctc.email.ph" placeholder="john@example.com" required />
+              </div>
+              <div class="form__group form__group--grow">
+                <label for="form-message" class="form__label" data-i18n="ctc.msg">Your Message</label>
+                <textarea id="form-message" name="message" class="form__input form__textarea" rows="5" data-i18n-ph="ctc.msg.ph" placeholder="Tell us about your project..." required></textarea>
+              </div>
+              <p class="contact__form-status" id="contact-form-status" role="status" aria-live="polite" hidden></p>
+              <button type="submit" class="btn btn--primary contact__submit" data-i18n="ctc.send">
+                Get Started
+              </button>
+            </form>
+
+            <div class="contact__info contact__reveal">
+              <div class="contact__reach">
+                <span class="contact__reach-hex" aria-hidden="true">
+                  <svg class="contact__reach-icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                </span>
+                <p class="contact__reach-text" data-i18n="ctc.reach">
+                  Connect with our team at either location below.
+                </p>
+              </div>
+              <div class="contact__locations">
+                <div class="contact__location">
+                  <span class="contact__loc-hex" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </span>
+                  <div>
+                    <strong data-i18n="ctc.loc.1n">Aleppo, Syria</strong>
+                    <p data-i18n="ctc.loc.1d">Main Development Hub</p>
+                  </div>
+                </div>
+                <div class="contact__location">
+                  <span class="contact__loc-hex" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </span>
+                  <div>
+                    <strong data-i18n="ctc.loc.2n">Saudi Arabia</strong>
+                    <p data-i18n="ctc.loc.2d">Regional Business Office</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact__cta-box">
+                <div class="contact__cta-row">
+                  <span class="contact__cta-hex" aria-hidden="true">
+                    <svg class="contact__cta-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="9 17 4 12 9 7" />
+                      <path d="M20 18v-2a4 4 0 0 0-4-4H4" />
+                    </svg>
+                  </span>
+                  <p class="contact__cta-text" data-i18n="ctc.cta.hint">
+                    We reply within 24 hours.
+                  </p>
+                </div>
+                <a href="links.html" class="btn btn--primary contact__cta-btn" data-i18n="ctc.links">View Our Links</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <a href="#home" class="footer__logo" aria-label="Hive">
+            <img class="footer__logo-img logo--dark" src="images/hive_logo_new_dark.png" alt="Hive" />
+            <img class="footer__logo-img logo--light" src="images/hive_logo_new_light.png" alt="Hive" />
+          </a>
+          <p class="footer__tagline" data-i18n="footer.tagline">Building digital ecosystems that scale.</p>
+          <p class="footer__about" data-i18n="footer.about">
+            Hive Digital Solutions designs and builds web, mobile, and automation experiences that help brands grow with clarity and long-term support.
+          </p>
+        </div>
+
+        <nav class="footer__nav" aria-labelledby="footer-quick-title">
+          <h4 id="footer-quick-title" class="footer__nav-title" data-i18n="footer.quick">Quick links</h4>
+          <ul class="footer__nav-list">
+            <li><a href="#home" class="footer__nav-link" data-i18n="nav.home">Home</a></li>
+            <li><a href="#about" class="footer__nav-link" data-i18n="nav.about">About</a></li>
+            <li><a href="#services" class="footer__nav-link" data-i18n="nav.services">Services</a></li>
+            <li><a href="#packages" class="footer__nav-link" data-i18n="nav.packages">Packages</a></li>
+            <li><a href="#contact" class="footer__nav-link" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="links.html" class="footer__nav-link" data-i18n="footer.links_page">All links</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer__services" aria-labelledby="footer-services-title">
+          <h4 id="footer-services-title" class="footer__nav-title" data-i18n="footer.services_title">Our services</h4>
+          <ul class="footer__nav-list">
+            <li><a href="#svc-web-apps" class="footer__nav-link" data-i18n="svc.s1.t">Web Apps</a></li>
+            <li><a href="#svc-mobile-apps" class="footer__nav-link" data-i18n="svc.s2.t">Mobile Apps</a></li>
+            <li><a href="#svc-desktop-apps" class="footer__nav-link" data-i18n="svc.s3.t">Desktop Apps</a></li>
+            <li><a href="#svc-visual-identity" class="footer__nav-link" data-i18n="svc.s4.t">Visual Identity</a></li>
+            <li><a href="#svc-social-media" class="footer__nav-link" data-i18n="svc.s5.t">Social Media</a></li>
+            <li><a href="#svc-office-solutions" class="footer__nav-link" data-i18n="svc.s6.t">Office Solutions</a></li>
+            <li><a href="#svc-google-maps" class="footer__nav-link" data-i18n="svc.s7.t">Google Maps</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer__contact" aria-labelledby="footer-contact-title">
+          <h4 id="footer-contact-title" class="footer__nav-title" data-i18n="footer.connect">Connect</h4>
+          <ul class="footer__nav-list">
+            <li>
+              <a href="#contact" class="footer__nav-link footer__nav-link--with-icon">
+                <i class="fa-solid fa-paper-plane footer__nav-link-icon" aria-hidden="true"></i>
+                <span data-i18n="footer.contact_form">Contact form</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/+963947735745" class="footer__nav-link footer__nav-link--with-icon" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-whatsapp footer__nav-link-icon" aria-hidden="true"></i>
+                <span data-i18n="footer.whatsapp_label">WhatsApp</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://facebook.com/hiveds" class="footer__nav-link footer__nav-link--with-icon" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-facebook-f footer__nav-link-icon" aria-hidden="true"></i>
+                <span data-i18n="footer.facebook_label">Facebook</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/hive_digital_solutions/" class="footer__nav-link footer__nav-link--with-icon" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-instagram footer__nav-link-icon" aria-hidden="true"></i>
+                <span data-i18n="footer.instagram_label">Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/company/hivedigitalsolutions" class="footer__nav-link footer__nav-link--with-icon" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin-in footer__nav-link-icon" aria-hidden="true"></i>
+                <span data-i18n="footer.linkedin_label">LinkedIn</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.tiktok.com/@hivedigitalsolutions" class="footer__nav-link footer__nav-link--with-icon" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-tiktok footer__nav-link-icon" aria-hidden="true"></i>
+                <span data-i18n="footer.tiktok_label">TikTok</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:contact.hivedigitalsolutions@gmail.com" class="footer__nav-link footer__nav-link--with-icon footer__mailto-link">
+                <i class="fa-solid fa-envelope footer__nav-link-icon" aria-hidden="true"></i>
+                <span data-i18n="footer.email_gmail">Gmail</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__bottom-inner">
+          <p class="footer__copy" data-i18n="footer.copy">&copy; 2026 Hive Digital Solutions. All rights reserved.</p>
+          <nav class="footer__social-bar" aria-label="Social media">
+            <ul class="footer__social-list">
+              <li>
+                <a href="index.html" class="footer__social-link" aria-label="Website">
+                  <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/company/hivedigitalsolutions" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://facebook.com/hiveds" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com/hive_digital_solutions/" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.tiktok.com/@hivedigitalsolutions" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                  <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://wa.me/+963947735745" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
+    <script src="js/contact-config.js" defer></script>
+    <script src="js/i18n.js" defer></script>
+    <script src="js/hero-react.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </body>
+</html>

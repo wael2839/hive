@@ -28,7 +28,7 @@ export default async function LocaleHome({ params }: Props) {
       <main>
         <HeroSection t={t.hero} />
         <AboutSection t={t.about} />
-        <ServicesSection t={t.services} />
+        <ServicesSection locale={locale} t={t.services} />
         <VisionSection t={t.vision} />
         <PackagesSection locale={locale} t={t.packages} />
         <PortfolioSection t={t.portfolio} />

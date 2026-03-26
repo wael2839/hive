@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href="" id="hive-links-canonical" />
+    <script>
+      (function () {
+        var el = document.getElementById("hive-links-canonical");
+        if (el) el.href = window.location.href.split("#")[0];
+      })();
+    </script>
+    <title>Hive Digital Solutions | Links</title>
+    <script>
+      (function () {
+        try {
+          var root = document.documentElement;
+          var theme = localStorage.getItem("hive-theme");
+          var lang = localStorage.getItem("hive-lang");
+          var safeTheme = theme === "light" ? "light" : "dark";
+          var safeLang = lang === "ar" ? "ar" : "en";
+          root.setAttribute("data-theme", safeTheme);
+          root.setAttribute("lang", safeLang);
+          root.setAttribute("dir", safeLang === "ar" ? "rtl" : "ltr");
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/links-page.css" />
+  </head>
+  <body class="page-links">
+    <header class="header" id="site-header">
+      <div class="header__inner">
+        <div class="header__logo">
+          <a href="index.html#home" class="header__logo-link" aria-label="Hive">
+            <img class="header__logo-img logo--dark" src="images/hive_logo_new_dark.png" alt="Hive" />
+            <img class="header__logo-img logo--light" src="images/hive_logo_new_light.png" alt="Hive" />
+          </a>
+        </div>
+        <nav class="header__nav" aria-label="Main navigation">
+          <ul class="header__nav-list">
+            <li class="header__nav-item">
+              <a href="index.html#home" class="header__nav-link" data-i18n="nav.home">Home</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="index.html#about" class="header__nav-link" data-i18n="nav.about">About</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="index.html#services" class="header__nav-link" data-i18n="nav.services">Services</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="index.html#work-steps" class="header__nav-link" data-i18n="nav.workflow">Workflow</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="index.html#packages" class="header__nav-link" data-i18n="nav.packages">Packages</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="index.html#contact" class="header__nav-link" data-i18n="nav.contact">Contact</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header__controls">
+          <button class="ctrl-btn" id="lang-toggle" aria-label="Toggle language">
+            <span class="ctrl-btn__label" id="lang-label">AR</span>
+          </button>
+          <button class="ctrl-btn" id="theme-toggle" aria-label="Toggle theme">
+            <svg class="ctrl-btn__icon ctrl-btn__icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="ctrl-btn__icon ctrl-btn__icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          </button>
+        </div>
+        <button class="header__burger" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+    <aside class="sidebar" id="sidebar" aria-hidden="true" aria-label="Mobile menu">
+      <div class="sidebar__inner">
+        <a href="index.html#home" class="sidebar__logo-link" aria-label="Hive">
+          <img class="header__logo-img logo--dark" src="images/hive_logo_new_dark.png" alt="Hive" />
+          <img class="header__logo-img logo--light" src="images/hive_logo_new_light.png" alt="Hive" />
+        </a>
+
+        <nav class="sidebar__nav" aria-label="Sidebar navigation">
+          <ul class="sidebar__list">
+            <li><a href="index.html#home" class="sidebar__link" data-i18n="nav.home">Home</a></li>
+            <li><a href="index.html#about" class="sidebar__link" data-i18n="nav.about">About</a></li>
+            <li><a href="index.html#services" class="sidebar__link" data-i18n="nav.services">Services</a></li>
+            <li><a href="index.html#work-steps" class="sidebar__link" data-i18n="nav.workflow">Workflow</a></li>
+            <li><a href="index.html#packages" class="sidebar__link" data-i18n="nav.packages">Packages</a></li>
+            <li><a href="index.html#contact" class="sidebar__link" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="sidebar__bottom">
+          <button class="sidebar__lang-btn" id="sidebar-lang-toggle" type="button" aria-label="Switch language">
+            <span class="sidebar__lang-icon" aria-hidden="true">A</span>
+            <span class="sidebar__lang-text">AR</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="links-page" aria-labelledby="links-heading">
+        <div class="links-page__inner">
+          <header class="links-page__head">
+            <h1 id="links-heading" class="links-page__title" data-i18n="links.title">Hive <span class="text-accent">Links</span></h1>
+            <p class="links-page__lead" data-i18n="links.lead">All official pages in one place.</p>
+          </header>
+
+          <ul class="links-page__list">
+            <li class="links-page__item">
+              <a class="links-page__card" href="index.html" aria-label="Website — main page">
+                <span class="links-page__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15.5 15.5 0 0 1 0 18"></path><path d="M12 3a15.5 15.5 0 0 0 0 18"></path></svg>
+                </span>
+                <div class="links-page__meta">
+                  <span class="links-page__name">Website</span>
+                  <span class="links-page__url">https://hive-digital-solutions.com</span>
+                </div>
+              </a>
+            </li>
+
+            <li class="links-page__item">
+              <a class="links-page__card" href="https://linkedin.com/company/hivedigitalsolutions" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)">
+                <span class="links-page__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5A1.56 1.56 0 1 1 6.94 5.4a1.56 1.56 0 0 1 0 3.1ZM5.57 9.7h2.74V18H5.57V9.7Zm4.42 0h2.62v1.13h.04c.36-.69 1.26-1.42 2.6-1.42 2.78 0 3.29 1.83 3.29 4.2V18H15.8v-3.9c0-.93-.02-2.13-1.3-2.13-1.3 0-1.5 1.01-1.5 2.05V18H10V9.7Z"/></svg>
+                </span>
+                <div class="links-page__meta">
+                  <span class="links-page__name">LinkedIn</span>
+                  <span class="links-page__url">https://linkedin.com/company/hivedigitalsolutions</span>
+                </div>
+              </a>
+            </li>
+
+            <li class="links-page__item">
+              <a class="links-page__card" href="https://facebook.com/hiveds" target="_blank" rel="noopener noreferrer" aria-label="Facebook (opens in new tab)">
+                <span class="links-page__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12"/></svg>
+                </span>
+                <div class="links-page__meta">
+                  <span class="links-page__name">Facebook</span>
+                  <span class="links-page__url">https://facebook.com/hiveds</span>
+                </div>
+              </a>
+            </li>
+
+            <li class="links-page__item">
+              <a class="links-page__card" href="https://instagram.com/hive_digital_solutions/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (opens in new tab)">
+                <span class="links-page__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.98 1.65a1.07 1.07 0 1 1 0 2.14 1.07 1.07 0 0 1 0-2.14ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8A3.2 3.2 0 1 0 12 15.2 3.2 3.2 0 0 0 12 8.8Z"/></svg>
+                </span>
+                <div class="links-page__meta">
+                  <span class="links-page__name">Instagram</span>
+                  <span class="links-page__url">https://instagram.com/hive_digital_solutions/</span>
+                </div>
+              </a>
+            </li>
+
+            <li class="links-page__item">
+              <a class="links-page__card" href="https://www.tiktok.com/@hivedigitalsolutions" target="_blank" rel="noopener noreferrer" aria-label="TikTok (opens in new tab)">
+                <span class="links-page__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.17V2h-3.25v13.16a2.72 2.72 0 1 1-1.89-2.59V9.23a6.03 6.03 0 1 0 5.92 6.03V8.59a8.03 8.03 0 0 0 4.99 1.73V7.06c-.71.01-1.4-.11-2-.37Z"/></svg>
+                </span>
+                <div class="links-page__meta">
+                  <span class="links-page__name">TikTok</span>
+                  <span class="links-page__url">https://www.tiktok.com/@hivedigitalsolutions</span>
+                </div>
+              </a>
+            </li>
+
+            <li class="links-page__item">
+              <a class="links-page__card" href="https://wa.me/+963947735745" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (opens in new tab)">
+                <span class="links-page__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.9 11.9 0 0 0 12.03 0C5.41 0 .01 5.38 0 12c0 2.12.55 4.2 1.6 6.03L0 24l6.13-1.58A11.96 11.96 0 0 0 12.03 24C18.64 24 24 18.62 24 12a11.9 11.9 0 0 0-3.48-8.52ZM12.03 21.9a9.86 9.86 0 0 1-5.02-1.37l-.36-.21-3.64.94.97-3.55-.24-.36A9.84 9.84 0 1 1 12.03 21.9Zm5.4-7.37c-.3-.15-1.79-.88-2.07-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.96 1.18-.18.2-.36.22-.66.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.34.44-.51.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.63-.93-2.23-.25-.6-.5-.52-.68-.53h-.58c-.2 0-.53.07-.8.38-.28.3-1.06 1.04-1.06 2.53s1.09 2.92 1.24 3.12c.15.2 2.14 3.27 5.18 4.59.72.31 1.28.5 1.72.64.72.23 1.37.2 1.89.12.58-.09 1.79-.73 2.04-1.43.25-.7.25-1.31.18-1.43-.08-.12-.28-.2-.58-.35Z"/></svg>
+                </span>
+                <div class="links-page__meta">
+                  <span class="links-page__name">WhatsApp</span>
+                  <span class="links-page__url">https://wa.me/+963947735745</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+
+          <a class="links-page__back" href="index.html" data-i18n="links.back">← Back to Home</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <a href="index.html#home" class="footer__logo" aria-label="Hive">
+            <img class="footer__logo-img logo--dark" src="images/hive_logo_new_dark.png" alt="Hive" />
+            <img class="footer__logo-img logo--light" src="images/hive_logo_new_light.png" alt="Hive" />
+          </a>
+          <p class="footer__tagline" data-i18n="footer.tagline">Building digital ecosystems that scale.</p>
+          <p class="footer__about" data-i18n="footer.about">
+            Hive Digital Solutions designs and builds web, mobile, and automation experiences that help brands grow with clarity and long-term support.
+          </p>
+        </div>
+
+        <nav class="footer__nav" aria-labelledby="footer-quick-title">
+          <h4 id="footer-quick-title" class="footer__nav-title" data-i18n="footer.quick">Quick links</h4>
+          <ul class="footer__nav-list">
+            <li><a href="index.html#home" class="footer__nav-link" data-i18n="nav.home">Home</a></li>
+            <li><a href="index.html#about" class="footer__nav-link" data-i18n="nav.about">About</a></li>
+            <li><a href="index.html#services" class="footer__nav-link" data-i18n="nav.services">Services</a></li>
+            <li><a href="index.html#packages" class="footer__nav-link" data-i18n="nav.packages">Packages</a></li>
+            <li><a href="index.html#contact" class="footer__nav-link" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="links.html" class="footer__nav-link" data-i18n="footer.links_page" aria-current="page">All links</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer__services" aria-labelledby="footer-services-title">
+          <h4 id="footer-services-title" class="footer__nav-title" data-i18n="footer.services_title">Our services</h4>
+          <ul class="footer__nav-list">
+            <li><a href="index.html#svc-web-apps" class="footer__nav-link" data-i18n="svc.s1.t">Web Apps</a></li>
+            <li><a href="index.html#svc-mobile-apps" class="footer__nav-link" data-i18n="svc.s2.t">Mobile Apps</a></li>
+            <li><a href="index.html#svc-desktop-apps" class="footer__nav-link" data-i18n="svc.s3.t">Desktop Apps</a></li>
+            <li><a href="index.html#svc-visual-identity" class="footer__nav-link" data-i18n="svc.s4.t">Visual Identity</a></li>
+            <li><a href="index.html#svc-social-media" class="footer__nav-link" data-i18n="svc.s5.t">Social Media</a></li>
+            <li><a href="index.html#svc-office-solutions" class="footer__nav-link" data-i18n="svc.s6.t">Office Solutions</a></li>
+            <li><a href="index.html#svc-google-maps" class="footer__nav-link" data-i18n="svc.s7.t">Google Maps</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer__contact" aria-labelledby="footer-contact-title">
+          <h4 id="footer-contact-title" class="footer__nav-title" data-i18n="footer.connect">Connect</h4>
+          <ul class="footer__nav-list">
+            <li>
+              <a href="index.html#contact" class="footer__nav-link footer__nav-link--with-icon">
+                <i class="fa-solid fa-paper-plane footer__nav-link-icon" aria-hidden="true"></i>
+                <span data-i18n="footer.contact_form">Contact form</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/+963947735745" class="footer__nav-link footer__nav-link--with-icon" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-whatsapp footer__nav-link-icon" aria-hidden="true"></i>
+                <span data-i18n="footer.whatsapp_label">WhatsApp</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://facebook.com/hiveds" class="footer__nav-link footer__nav-link--with-icon" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-facebook-f footer__nav-link-icon" aria-hidden="true"></i>
+                <span data-i18n="footer.facebook_label">Facebook</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/hive_digital_solutions/" class="footer__nav-link footer__nav-link--with-icon" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-instagram footer__nav-link-icon" aria-hidden="true"></i>
+                <span data-i18n="footer.instagram_label">Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/company/hivedigitalsolutions" class="footer__nav-link footer__nav-link--with-icon" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin-in footer__nav-link-icon" aria-hidden="true"></i>
+                <span data-i18n="footer.linkedin_label">LinkedIn</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.tiktok.com/@hivedigitalsolutions" class="footer__nav-link footer__nav-link--with-icon" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-tiktok footer__nav-link-icon" aria-hidden="true"></i>
+                <span data-i18n="footer.tiktok_label">TikTok</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:contact.hivedigitalsolutions@gmail.com" class="footer__nav-link footer__nav-link--with-icon footer__mailto-link">
+                <i class="fa-solid fa-envelope footer__nav-link-icon" aria-hidden="true"></i>
+                <span data-i18n="footer.email_gmail">Gmail</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__bottom-inner">
+          <p class="footer__copy" data-i18n="footer.copy">&copy; 2026 Hive Digital Solutions. All rights reserved.</p>
+          <nav class="footer__social-bar" aria-label="Social media">
+            <ul class="footer__social-list">
+              <li>
+                <a href="index.html" class="footer__social-link" aria-label="Website">
+                  <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/company/hivedigitalsolutions" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://facebook.com/hiveds" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com/hive_digital_solutions/" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.tiktok.com/@hivedigitalsolutions" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                  <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://wa.me/+963947735745" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
+    <script src="js/contact-config.js" defer></script>
+    <script src="js/i18n.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </body>
+</html>

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import type { Messages } from "@/lib/i18n";
 import { ScrollReveal } from "./ScrollReveal";
+import SectionTitle from "../ui/SectionTitle";
 
 export function VisionSection({ t }: { t: Messages["vision"] }) {
   const bg = useRef<HTMLDivElement>(null);
@@ -25,7 +26,7 @@ export function VisionSection({ t }: { t: Messages["vision"] }) {
   return (
     <section
       id="vision"
-      className="hive-section-main relative overflow-hidden border-t border-hive-border-subtle py-28 sm:py-36"
+      className="hive-section-main relative overflow-hidden border-t border-hive-border-subtle py-15 sm:py-15"
     >
       <div
         ref={bg}
@@ -42,13 +43,8 @@ export function VisionSection({ t }: { t: Messages["vision"] }) {
       <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="flex flex-col items-center text-center">
-            <p className="hive-cta-hex hive-badge-hex rounded-md hive-cta-hex--outline inline-flex w-fit items-center bg-[var(--hive-pill-bg)] px-5 py-2.5 text-base font-semibold uppercase tracking-[0.25em] text-hive-gold-light/90">
-              {t.kicker}
-            </p>
-            <h2 className="mt-6 max-w-3xl text-balance text-3xl font-bold tracking-tight text-hive-off-white sm:text-4xl lg:text-5xl">
-              {t.title}
-            </h2>
-            <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-hive-off-white/72 light:text-neutral-700 sm:text-xl">
+            <SectionTitle>{t.title}</SectionTitle>
+            <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-hive-off-white/76 light:text-neutral-700 sm:text-xl">
               {t.body}
             </p>
           </div>

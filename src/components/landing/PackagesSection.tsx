@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Locale, Messages } from "@/lib/i18n";
 import { ScrollReveal } from "./ScrollReveal";
+import SectionTitle from "../ui/SectionTitle";
 
 type Props = {
   locale: Locale;
@@ -11,19 +12,14 @@ export function PackagesSection({ locale, t }: Props) {
   return (
     <section
       id="packages"
-      className="hive-section-alt relative border-t border-hive-border-subtle py-24 sm:py-32"
+      className="hive-section-alt relative border-t border-hive-border-subtle py-15 sm:py-15"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-hive-gold/35 to-transparent" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="flex flex-col items-center text-center">
-            <p className="hive-cta-hex hive-badge-hex rounded-md hive-cta-hex--outline inline-flex w-fit items-center bg-[var(--hive-pill-bg)] px-5 py-2.5 text-base font-semibold uppercase tracking-[0.2em] text-hive-gold-light/90">
-              {t.kicker}
-            </p>
-            <h2 className="mt-6 max-w-2xl text-3xl font-bold tracking-tight text-hive-off-white sm:text-4xl">
-              {t.title}
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-hive-off-white/65 light:text-neutral-600">
+            <SectionTitle>{t.title}</SectionTitle>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-hive-off-white/70 light:text-neutral-600">
               {t.subtitle}
             </p>
           </div>
@@ -44,13 +40,13 @@ export function PackagesSection({ locale, t }: Props) {
                     {t.badgePopular}
                   </p>
                 ) : null}
-                <h3 className="text-lg font-semibold text-hive-off-white">
+                <h3 className="min-h-[3.5rem] text-lg font-semibold leading-7 text-hive-off-white">
                   {item.name}
                 </h3>
                 <p className="mt-3 text-2xl font-bold tracking-tight text-hive-gold-light sm:text-3xl">
                   {item.price}
                 </p>
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-hive-off-white/65 light:text-neutral-600">
+                <p className="mt-4 flex-1 text-sm leading-7 text-hive-off-white/70 light:text-neutral-600">
                   {item.description}
                 </p>
                 <ul className="mt-6 space-y-2.5 border-t border-hive-border-subtle pt-6">
