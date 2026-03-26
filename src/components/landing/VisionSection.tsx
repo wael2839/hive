@@ -42,7 +42,7 @@ export function VisionSection({ t }: { t: Messages["vision"] }) {
       <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="flex flex-col items-center text-center">
-            <p className="hive-cta-hex hive-badge-hex hive-cta-hex--outline inline-flex w-fit items-center bg-[var(--hive-pill-bg)] px-5 py-2.5 text-base font-semibold uppercase tracking-[0.25em] text-hive-gold-light/90">
+            <p className="hive-cta-hex hive-badge-hex rounded-md hive-cta-hex--outline inline-flex w-fit items-center bg-[var(--hive-pill-bg)] px-5 py-2.5 text-base font-semibold uppercase tracking-[0.25em] text-hive-gold-light/90">
               {t.kicker}
             </p>
             <h2 className="mt-6 max-w-3xl text-balance text-3xl font-bold tracking-tight text-hive-off-white sm:text-4xl lg:text-5xl">
@@ -59,3 +59,5 @@ export function VisionSection({ t }: { t: Messages["vision"] }) {
     </section>
   );
 }
+
+

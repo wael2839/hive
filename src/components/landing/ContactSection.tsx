@@ -42,7 +42,7 @@ export function ContactSection({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="flex flex-col items-center text-center">
-            <p className="hive-cta-hex hive-badge-hex hive-cta-hex--outline inline-flex w-fit items-center bg-[var(--hive-pill-bg)] px-5 py-2.5 text-base font-semibold uppercase tracking-[0.2em] text-hive-gold-light/90">
+            <p className="hive-cta-hex hive-badge-hex rounded-md hive-cta-hex--outline inline-flex w-fit items-center bg-[var(--hive-pill-bg)] px-5 py-2.5 text-base font-semibold uppercase tracking-[0.2em] text-hive-gold-light/90">
               {t.kicker}
             </p>
             <h2 className="mt-6 max-w-2xl text-3xl font-bold tracking-tight text-hive-off-white sm:text-4xl">
@@ -58,7 +58,7 @@ export function ContactSection({
         <ScrollReveal delayMs={80} className={`w-full min-w-0 flex-1 ${formOrderClass}`}>
           <form
             onSubmit={onSubmit}
-            className="space-y-6 rounded-3xl border border-hive-border bg-[var(--hive-card-glass)] p-8 backdrop-blur-md sm:p-10"
+            className="space-y-6 rounded-md border border-hive-border bg-[var(--hive-card-glass)] p-8 backdrop-blur-md sm:p-10"
           >
             <div className="grid gap-6 sm:grid-cols-2">
               <label className="block text-sm font-medium text-hive-off-white/85 light:text-neutral-800">
@@ -67,7 +67,7 @@ export function ContactSection({
                   name="name"
                   required
                   autoComplete="name"
-                  className="mt-2 w-full rounded-xl border border-hive-border bg-[var(--hive-input-bg)] px-4 py-3 text-hive-off-white outline-none transition placeholder:text-hive-off-white/35 light:placeholder:text-neutral-500 focus:border-hive-gold/50 focus:outline-none"
+                  className="mt-2 w-full rounded-md border border-hive-border bg-[var(--hive-input-bg)] px-4 py-3 text-hive-off-white outline-none transition placeholder:text-hive-off-white/35 light:placeholder:text-neutral-500 focus:border-hive-gold/50 focus:outline-none"
                   placeholder=""
                 />
               </label>
@@ -78,7 +78,7 @@ export function ContactSection({
                   type="email"
                   required
                   autoComplete="email"
-                  className="mt-2 w-full rounded-xl border border-hive-border bg-[var(--hive-input-bg)] px-4 py-3 text-hive-off-white outline-none transition placeholder:text-hive-off-white/35 light:placeholder:text-neutral-500 focus:border-hive-gold/50 focus:outline-none"
+                  className="mt-2 w-full rounded-md border border-hive-border bg-[var(--hive-input-bg)] px-4 py-3 text-hive-off-white outline-none transition placeholder:text-hive-off-white/35 light:placeholder:text-neutral-500 focus:border-hive-gold/50 focus:outline-none"
                 />
               </label>
             </div>
@@ -87,7 +87,7 @@ export function ContactSection({
               <input
                 name="company"
                 autoComplete="organization"
-                className="mt-2 w-full rounded-xl border border-hive-border bg-[var(--hive-input-bg)] px-4 py-3 text-hive-off-white outline-none transition focus:border-hive-gold/50 focus:outline-none"
+                className="mt-2 w-full rounded-md border border-hive-border bg-[var(--hive-input-bg)] px-4 py-3 text-hive-off-white outline-none transition focus:border-hive-gold/50 focus:outline-none"
               />
             </label>
             <label className="block text-sm font-medium text-hive-off-white/85 light:text-neutral-800">
@@ -96,7 +96,7 @@ export function ContactSection({
                 name="message"
                 required
                 rows={5}
-                className="mt-2 w-full resize-y rounded-xl border border-hive-border bg-[var(--hive-input-bg)] px-4 py-3 text-hive-off-white outline-none transition focus:border-hive-gold/50 focus:outline-none"
+                className="mt-2 w-full resize-y rounded-md border border-hive-border bg-[var(--hive-input-bg)] px-4 py-3 text-hive-off-white outline-none transition focus:border-hive-gold/50 focus:outline-none"
               />
             </label>
 
@@ -106,7 +106,7 @@ export function ContactSection({
               </p>
               <button
                 type="submit"
-                className="hive-cta-hex inline-flex items-center justify-center bg-gradient-to-r from-hive-btn-from to-hive-btn-to px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                className="hive-cta-hex rounded-md inline-flex items-center justify-center bg-gradient-to-r from-hive-btn-from to-hive-btn-to px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
               >
                 {sent ? t.sent : t.send}
               </button>
@@ -123,7 +123,7 @@ export function ContactSection({
               <a
                 href={siteContact.phone.href}
                 aria-label={t.ariaPhone}
-                className="flex items-center gap-3 rounded-xl border border-hive-border bg-[var(--hive-pill-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                className="flex items-center gap-3 rounded-md border border-hive-border bg-[var(--hive-pill-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
               >
                 <IconPhone className="h-5 w-5 shrink-0 text-hive-gold-light" />
                 <span dir="ltr" className="min-w-0 truncate font-medium">
@@ -133,7 +133,7 @@ export function ContactSection({
               <a
                 href={siteContact.email.href}
                 aria-label={t.ariaEmail}
-                className="flex items-center gap-3 rounded-xl border border-hive-border bg-[var(--hive-pill-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                className="flex items-center gap-3 rounded-md border border-hive-border bg-[var(--hive-pill-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
               >
                 <IconMail className="h-5 w-5 shrink-0 text-hive-gold-light" />
                 <span dir="ltr" className="min-w-0 truncate font-medium">
@@ -145,7 +145,7 @@ export function ContactSection({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={t.ariaWhatsApp}
-                className="flex items-center gap-3 rounded-xl border border-hive-border bg-[var(--hive-pill-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                className="flex items-center gap-3 rounded-md border border-hive-border bg-[var(--hive-pill-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
               >
                 <IconWhatsApp className="h-5 w-5 shrink-0 text-hive-gold-light" />
                 <span className="font-medium">{t.ariaWhatsApp}</span>
@@ -159,7 +159,7 @@ export function ContactSection({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={t.ariaInstagram}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                  className="flex h-11 w-11 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
                 >
                   <IconInstagram className="h-5 w-5" />
                 </a>
@@ -170,7 +170,7 @@ export function ContactSection({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={t.ariaFacebook}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                  className="flex h-11 w-11 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
                 >
                   <IconFacebook className="h-5 w-5" />
                 </a>
@@ -181,7 +181,7 @@ export function ContactSection({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={t.ariaTiktok}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                  className="flex h-11 w-11 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
                 >
                   <IconTikTok className="h-5 w-5" />
                 </a>
@@ -192,7 +192,7 @@ export function ContactSection({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={t.ariaLinkedin}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                  className="flex h-11 w-11 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
                 >
                   <IconLinkedIn className="h-5 w-5" />
                 </a>
@@ -205,3 +205,5 @@ export function ContactSection({
     </section>
   );
 }
+
+

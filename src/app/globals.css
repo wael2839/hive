@@ -17,6 +17,7 @@
   --hive-card-glass: rgba(255, 255, 255, 0.03);
   --hive-pill-bg: rgba(255, 255, 255, 0.05);
   --hive-hover-surface: rgba(255, 255, 255, 0.05);
+  --hive-radius: 0.9rem;
   --hive-contact-gradient: linear-gradient(
     to bottom,
     rgba(25, 25, 25, 1),
@@ -44,7 +45,7 @@ html.light {
   /* ذهبي أغمق للنصوص والتمييز — يبقى زر التدرج عبر --hive-btn-* */
   --hive-gold: #6e5f1a;
   --hive-gold-light: #8a7524;
-  --hive-bg: #e6e6e0;
+  --hive-bg: #eeeeee;
   --hive-fg: #0a0a0a;
   --hive-border: rgba(0, 0, 0, 0.2);
   --hive-border-subtle: rgba(0, 0, 0, 0.12);
@@ -75,8 +76,35 @@ html.light {
   --color-hive-off-white: var(--hive-fg);
   --color-hive-border: var(--hive-border);
   --color-hive-border-subtle: var(--hive-border-subtle);
+  --radius-sm: calc(var(--hive-radius) - 0.35rem);
+  --radius-md: calc(var(--hive-radius) - 0.2rem);
+  --radius-lg: calc(var(--hive-radius) - 0.1rem);
+  --radius-xl: var(--hive-radius);
+  --radius-2xl: calc(var(--hive-radius) + 0.25rem);
+  --radius-3xl: calc(var(--hive-radius) + 0.5rem);
   --font-sans: var(--font-syne), var(--font-ubuntu-arabic), var(--font-noto-arabic), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
+}
+
+@layer utilities {
+  .rounded-sm {
+    border-radius: var(--radius-sm) !important;
+  }
+  .rounded-md {
+    border-radius: var(--radius-md) !important;
+  }
+  .rounded-lg {
+    border-radius: var(--radius-lg) !important;
+  }
+  .rounded-xl {
+    border-radius: var(--radius-xl) !important;
+  }
+  .rounded-2xl {
+    border-radius: var(--radius-2xl) !important;
+  }
+  .rounded-3xl {
+    border-radius: var(--radius-3xl) !important;
+  }
 }
 
 html {
@@ -271,15 +299,7 @@ html.light .hive-hero-hex-grid-light {
 
 /* أزرار CTA — سداسي بزوايا جانبية (نقطتان يمين/يسار) */
 .hive-cta-hex {
-  --hive-cta-chamfer: 0.7rem;
-  clip-path: polygon(
-    var(--hive-cta-chamfer) 0%,
-    calc(100% - var(--hive-cta-chamfer)) 0%,
-    100% 50%,
-    calc(100% - var(--hive-cta-chamfer)) 100%,
-    var(--hive-cta-chamfer) 100%,
-    0% 50%
-  );
+  clip-path: none;
 }
 
 .hive-cta-hex--outline {
@@ -293,7 +313,6 @@ html.light .hive-hero-hex-grid-light {
 /* بادجات صغيرة — شكل pill ناعم (بدل السداسي) */
 .hive-badge-hex {
   clip-path: none;
-  border-radius: 9999px;
 }
 
 /* مؤشر التمرير — حركة عمودية + توهج ذهبي حول الخط أثناء الحركة */
@@ -308,7 +327,6 @@ html.light .hive-hero-hex-grid-light {
   top: 50%;
   width: 2.75rem;
   height: 2.75rem;
-  border-radius: 50%;
   background: radial-gradient(
     circle,
     color-mix(in srgb, var(--hive-gold-light) 55%, transparent) 0%,

@@ -41,7 +41,7 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
             <Link
               key={a.id}
               href={`/${locale}#${a.id}`}
-              className="rounded-full px-3 py-2 text-sm text-hive-off-white/75 light:text-neutral-700 transition-colors hover:bg-[var(--hive-hover-surface)] hover:text-hive-gold-light"
+              className="rounded-md px-3 py-2 text-sm text-hive-off-white/75 light:text-neutral-700 transition-colors hover:bg-[var(--hive-hover-surface)] hover:text-hive-gold-light"
             >
               {t.nav[a.key]}
             </Link>
@@ -56,7 +56,7 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
           <LanguageSwitcher active={locale} />
           <Link
             href={`/${locale}#contact`}
-            className="hive-cta-hex hidden items-center justify-center bg-gradient-to-r from-hive-btn-from to-hive-btn-to px-6 py-2.5 text-sm font-semibold text-neutral-900 transition hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold sm:inline-flex"
+            className="hive-cta-hex rounded-md hidden items-center justify-center bg-gradient-to-r from-hive-btn-from to-hive-btn-to px-6 py-2.5 text-sm font-semibold text-neutral-900 transition hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold sm:inline-flex"
           >
             {t.nav.cta}
           </Link>
@@ -65,3 +65,4 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
     </header>
   );
 }
+

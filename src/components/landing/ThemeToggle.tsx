@@ -19,7 +19,7 @@ export function ThemeToggle({ switchToLight, switchToDark }: Props) {
   if (!mounted) {
     return (
       <span
-        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-hive-border bg-[var(--hive-pill-bg)]"
+        className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-pill-bg)]"
         aria-hidden
       />
     );
@@ -31,7 +31,7 @@ export function ThemeToggle({ switchToLight, switchToDark }: Props) {
     <button
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:bg-[var(--hive-hover-surface)]"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:bg-[var(--hive-hover-surface)]"
       title={isDark ? switchToLight : switchToDark}
       aria-label={isDark ? switchToLight : switchToDark}
     >
@@ -78,3 +78,4 @@ function MoonIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+

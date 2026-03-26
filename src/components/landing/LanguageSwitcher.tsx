@@ -15,7 +15,7 @@ export function LanguageSwitcher({ active }: { active: Locale }) {
 
   return (
     <div
-      className="inline-flex items-center rounded-full border border-hive-border bg-[var(--hive-pill-bg)] p-1 backdrop-blur-md"
+      className="inline-flex items-center rounded-md border border-hive-border bg-[var(--hive-pill-bg)] p-1 backdrop-blur-md"
       role="group"
       aria-label="Language"
     >
@@ -27,7 +27,7 @@ export function LanguageSwitcher({ active }: { active: Locale }) {
             key={locale}
             href={href}
             prefetch
-            className={`relative rounded-full px-3 py-1 text-xs font-semibold tracking-wide transition-colors ${
+            className={`relative rounded-md px-3 py-1 text-xs font-semibold tracking-wide transition-colors ${
               isOn
                 ? "text-neutral-900"
                 : "text-hive-off-white/70 light:text-neutral-600 hover:text-hive-gold-light"
@@ -35,7 +35,7 @@ export function LanguageSwitcher({ active }: { active: Locale }) {
           >
             {isOn ? (
               <span
-                className="absolute inset-0 rounded-full bg-gradient-to-br from-hive-btn-to to-hive-btn-from"
+                className="absolute inset-0 rounded-md bg-gradient-to-br from-hive-btn-to to-hive-btn-from"
                 aria-hidden
               />
             ) : null}
@@ -46,3 +46,4 @@ export function LanguageSwitcher({ active }: { active: Locale }) {
     </div>
   );
 }
+

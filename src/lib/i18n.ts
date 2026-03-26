@@ -104,7 +104,7 @@ export type Messages = {
 const messages: Record<Locale, Messages> = {
   en: {
     meta: {
-      title: "Hive Digital Solutions | Premium Digital Agency",
+      title: "Hive Digital Solutions",
       description:
         "Hive Digital Solutions crafts immersive digital experiences, product strategy, and engineering at enterprise scale.",
     },
@@ -274,7 +274,7 @@ const messages: Record<Locale, Messages> = {
   },
   ar: {
     meta: {
-        title: "هايڤ لحلول الرقمية | وكالة رقمية راقية",
+        title: "هايڤ لحلول الرقمية",
       description:
         "هايڤ لحلول الرقمية تصمم وتنفّذ تجارب رقمية غامرة واستراتيجية منتجات وهندسة على مستوى المؤسسات.",
     },

@@ -15,7 +15,7 @@ export function PortfolioSection({ t }: { t: Messages["portfolio"] }) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="flex flex-col items-center text-center">
-            <p className="hive-cta-hex hive-badge-hex hive-cta-hex--outline inline-flex w-fit items-center bg-[var(--hive-pill-bg)] px-5 py-2.5 text-base font-semibold uppercase tracking-[0.2em] text-hive-gold-light/90">
+            <p className="hive-cta-hex hive-badge-hex rounded-md hive-cta-hex--outline inline-flex w-fit items-center bg-[var(--hive-pill-bg)] px-5 py-2.5 text-base font-semibold uppercase tracking-[0.2em] text-hive-gold-light/90">
               {t.kicker}
             </p>
               <h2 className="mt-6 max-w-2xl text-3xl font-bold tracking-tight text-hive-off-white sm:text-4xl">
@@ -40,10 +40,10 @@ export function PortfolioSection({ t }: { t: Messages["portfolio"] }) {
                   className="group mb-5 w-full break-inside-avoid text-start focus:outline-none"
                 >
                   <div
-                    className={`relative overflow-hidden rounded-2xl border transition duration-500 ${isActive ? "border-hive-gold/50" : "border-hive-border"}`}
+                    className={`relative overflow-hidden rounded-md border transition duration-500 ${isActive ? "border-hive-gold/50" : "border-hive-border"}`}
                   >
                     <div
-                      className={`relative ${h} w-full max-w-none overflow-hidden rounded-2xl bg-gradient-to-br from-hive-border/30 to-transparent light:from-hive-border/40`}
+                      className={`relative ${h} w-full max-w-none overflow-hidden rounded-md bg-gradient-to-br from-hive-border/30 to-transparent light:from-hive-border/40`}
                     >
                       <div
                         className="absolute inset-0 opacity-90 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
@@ -57,7 +57,7 @@ export function PortfolioSection({ t }: { t: Messages["portfolio"] }) {
                       />
                       <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--hive-portfolio-bottom),transparent_45%)]" />
                       <div className="absolute bottom-0 left-0 right-0 p-5">
-                        <p className="hive-cta-hex hive-badge-hex hive-cta-hex--outline inline-flex w-fit items-center bg-black/40 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-hive-gold-light/95 backdrop-blur-sm">
+                        <p className="hive-cta-hex hive-badge-hex rounded-md hive-cta-hex--outline inline-flex w-fit items-center bg-black/40 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-hive-gold-light/95 backdrop-blur-sm">
                           {item.tag}
                         </p>
                         <p className="mt-1 text-lg font-semibold text-hive-off-white">
@@ -75,3 +75,5 @@ export function PortfolioSection({ t }: { t: Messages["portfolio"] }) {
     </section>
   );
 }
+
+

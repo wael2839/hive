@@ -18,7 +18,7 @@ export function AboutSection({ t }: { t: Messages["about"] }) {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="flex flex-col items-center text-center">
-            <p className="hive-cta-hex hive-badge-hex hive-cta-hex--outline inline-flex w-fit items-center bg-[var(--hive-pill-bg)] px-5 py-2.5 text-base font-semibold uppercase tracking-[0.2em] text-hive-gold-light/90">
+            <p className="hive-cta-hex hive-badge-hex rounded-md hive-cta-hex--outline inline-flex w-fit items-center bg-[var(--hive-pill-bg)] px-5 py-2.5 text-base font-semibold uppercase tracking-[0.2em] text-hive-gold-light/90">
               {t.kicker}
             </p>
             <h2 className="mt-6 max-w-3xl text-3xl font-bold tracking-tight text-hive-off-white sm:text-4xl lg:text-[2.5rem] lg:leading-tight">
@@ -40,7 +40,7 @@ export function AboutSection({ t }: { t: Messages["about"] }) {
               {t.pillars.map((label) => (
                 <span
                   key={label}
-                  className="hive-cta-hex hive-badge-hex hive-cta-hex--outline inline-flex items-center bg-[var(--hive-pill-bg)] px-4 py-2 text-xs font-semibold uppercase tracking-wider text-hive-off-white/90 light:bg-white/90 light:text-neutral-800"
+                  className="hive-cta-hex hive-badge-hex rounded-md hive-cta-hex--outline inline-flex items-center bg-[var(--hive-pill-bg)] px-4 py-2 text-xs font-semibold uppercase tracking-wider text-hive-off-white/90 light:bg-white/90 light:text-neutral-800"
                 >
                   {label}
                 </span>
@@ -51,7 +51,7 @@ export function AboutSection({ t }: { t: Messages["about"] }) {
               {statKeys.map(({ valueKey, labelKey }) => (
                 <div
                   key={labelKey}
-                  className="group relative overflow-hidden rounded-2xl border border-hive-border bg-[var(--hive-card-glass)] p-6 text-center transition-colors duration-300 hover:border-hive-gold/25 light:hover:border-[#c4b896]/40 sm:text-start"
+                  className="group relative overflow-hidden rounded-md border border-hive-border bg-[var(--hive-card-glass)] p-6 text-center transition-colors duration-300 hover:border-hive-gold/25 light:hover:border-[#c4b896]/40 sm:text-start"
                 >
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-hive-gold/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   <p className="text-3xl font-bold tracking-tight text-transparent bg-gradient-to-r from-hive-gold-light via-hive-gold to-[#8a7a45] bg-clip-text sm:text-4xl light:from-[#6e5f1a] light:via-[#8a7524] light:to-[#5c4a12]">
@@ -69,3 +69,5 @@ export function AboutSection({ t }: { t: Messages["about"] }) {
     </section>
   );
 }
+
+

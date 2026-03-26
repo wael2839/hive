@@ -21,8 +21,8 @@ export function HeroSection({ t }: Props) {
 
       <div className="relative mx-auto flex min-h-[calc(100svh-7rem)] w-full max-w-4xl items-center justify-center px-4 pb-24 sm:px-6 lg:px-8">
         <div className="relative flex w-full min-w-0 flex-col items-center text-center">
-          <p className="hive-cta-hex hive-badge-hex hive-cta-hex--outline mb-4 inline-flex items-center gap-2 bg-[var(--hive-pill-bg)] px-5 py-2.5 text-base font-semibold uppercase tracking-[0.2em] text-hive-gold-light">
-            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-hive-gold" />
+          <p className="hive-cta-hex hive-badge-hex rounded-md hive-cta-hex--outline mb-4 inline-flex items-center gap-2 bg-[var(--hive-pill-bg)] px-5 py-2.5 text-base font-semibold uppercase tracking-[0.2em] text-hive-gold-light">
+            <span className="h-1.5 w-1.5 shrink-0 rounded-md bg-hive-gold" />
             {t.kicker}
           </p>
           <h1 className="mt-4 text-balance text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
@@ -37,13 +37,13 @@ export function HeroSection({ t }: Props) {
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a
               href="#portfolio"
-              className="hive-cta-hex inline-flex items-center justify-center bg-gradient-to-r from-hive-btn-from to-hive-btn-to px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+              className="hive-cta-hex rounded-md inline-flex items-center justify-center bg-gradient-to-r from-hive-btn-from to-hive-btn-to px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
             >
               {t.primary}
             </a>
             <a
               href="#about"
-              className="hive-cta-hex inline-flex items-center justify-center bg-[var(--hive-pill-bg)] px-8 py-3 text-sm font-semibold text-hive-off-white transition hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+              className="hive-cta-hex rounded-md inline-flex items-center justify-center bg-[var(--hive-pill-bg)] px-8 py-3 text-sm font-semibold text-hive-off-white transition hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
             >
               {t.secondary}
             </a>
@@ -56,7 +56,7 @@ export function HeroSection({ t }: Props) {
         <div className="hive-scroll-cue flex flex-col items-center gap-2">
           <span>Scroll</span>
           <div className="relative flex h-10 w-6 shrink-0 items-center justify-center">
-            <span className="hive-scroll-cue-glow" aria-hidden />
+            <span className="hive-scroll-cue-glow rounded-md" aria-hidden />
             <span className="relative z-[1] h-10 w-px bg-gradient-to-b from-hive-gold/60 to-transparent light:from-[#6e5f1a]/70" />
           </div>
         </div>
@@ -64,3 +64,6 @@ export function HeroSection({ t }: Props) {
     </section>
   );
 }
+
+
+
