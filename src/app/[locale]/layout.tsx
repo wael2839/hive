@@ -10,6 +10,9 @@ export async function generateStaticParams() {
 
 export const dynamic = "force-static";
 
+/** ISR (seconds): static pages refresh in the background after this interval. */
+export const revalidate = 3600;
+
 type Props = {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;

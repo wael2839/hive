@@ -11,8 +11,6 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { getMessages, isLocale, type Locale } from "@/lib/i18n";
 import { buildHomeJsonLd } from "@/lib/seo-jsonld";
 
-export const dynamic = "force-static";
-
 type Props = {
   params: Promise<{ locale: string }>;
 };

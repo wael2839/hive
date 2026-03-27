@@ -7,8 +7,6 @@ import { getMessages, isLocale, locales, type Locale } from "@/lib/i18n";
 import { buildLocalePageMetadata } from "@/lib/seo-metadata";
 import { getServiceDetail, isServiceSlug, serviceSlugs } from "@/lib/service-details";
 
-export const dynamic = "force-static";
-
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
