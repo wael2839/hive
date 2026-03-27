@@ -35,7 +35,7 @@ export function LanguageSwitcher({ active }: { active: Locale }) {
           >
             {isOn ? (
               <span
-                className="absolute inset-0 rounded-md bg-gradient-to-br from-hive-btn-to to-hive-btn-from"
+                className="absolute inset-0 rounded-sm bg-gradient-to-br from-hive-btn-to to-hive-btn-from"
                 aria-hidden
               />
             ) : null}

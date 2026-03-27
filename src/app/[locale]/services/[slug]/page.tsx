@@ -1,8 +1,10 @@
 import { Fragment } from "react";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/landing/SiteFooter";
 import { SiteNav } from "@/components/landing/SiteNav";
 import { getMessages, isLocale, locales, type Locale } from "@/lib/i18n";
+import { buildLocalePageMetadata } from "@/lib/seo-metadata";
 import { getServiceDetail, isServiceSlug, serviceSlugs } from "@/lib/service-details";
 
 export const dynamic = "force-static";
@@ -13,6 +15,18 @@ type Props = {
 
 export function generateStaticParams() {
   return locales.flatMap((locale) => serviceSlugs.map((slug) => ({ locale, slug })));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale: rawLocale, slug: rawSlug } = await params;
+  if (!isLocale(rawLocale) || !isServiceSlug(rawSlug)) return {};
+  const locale = rawLocale as Locale;
+  const detail = getServiceDetail(rawSlug, locale);
+  return buildLocalePageMetadata(locale, {
+    title: detail.title,
+    description: detail.lead,
+    path: `/${locale}/services/${rawSlug}`,
+  });
 }
 
 export default async function ServiceDetailPage({ params }: Props) {

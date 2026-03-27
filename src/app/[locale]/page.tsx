@@ -3,12 +3,13 @@ import { AboutSection } from "@/components/landing/AboutSection";
 import { ContactSection } from "@/components/landing/ContactSection";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { PackagesSection } from "@/components/landing/PackagesSection";
-import { PortfolioSection } from "@/components/landing/PortfolioSection";
 import { ServicesSection } from "@/components/landing/ServicesSection";
 import { SiteFooter } from "@/components/landing/SiteFooter";
 import { SiteNav } from "@/components/landing/SiteNav";
 import { VisionSection } from "@/components/landing/VisionSection";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { getMessages, isLocale, type Locale } from "@/lib/i18n";
+import { buildHomeJsonLd } from "@/lib/seo-jsonld";
 
 export const dynamic = "force-static";
 
@@ -24,14 +25,14 @@ export default async function LocaleHome({ params }: Props) {
 
   return (
     <>
+      <JsonLd data={buildHomeJsonLd(locale)} />
       <SiteNav locale={locale} t={t} />
       <main>
         <HeroSection t={t.hero} />
         <AboutSection t={t.about} />
-        <ServicesSection locale={locale} t={t.services} />
         <VisionSection t={t.vision} />
+        <ServicesSection locale={locale} t={t.services} />
         <PackagesSection locale={locale} t={t.packages} />
-        <PortfolioSection t={t.portfolio} />
         <ContactSection locale={locale} t={t.contact} />
       </main>
       <SiteFooter locale={locale} t={t} />

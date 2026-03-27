@@ -105,16 +105,16 @@ export type Messages = {
 const messages: Record<Locale, Messages> = {
   en: {
     meta: {
-      title: "Hive Digital Solutions",
+      title: "Hive Digital Solutions — Software & Digital Agency in Aleppo, Syria",
       description:
-        "Hive Digital Solutions crafts immersive digital experiences, product strategy, and engineering at enterprise scale.",
+        "Hive Digital Solutions is a software development and digital solutions company in Aleppo, Syria. We deliver web development, mobile apps, custom systems, ERP-style workflows, and digital transformation for Syrian and regional businesses.",
     },
     nav: {
       brand: "Hive",
       home: "Home",
-      about: "About",
+      about: "About Us",
       services: "Services",
-      vision: "Workflow",
+      vision: "Why Choose Us",
       packages: "Packages",
       portfolio: "Portfolio",
       contact: "Contact",
@@ -125,7 +125,7 @@ const messages: Record<Locale, Messages> = {
     hero: {
       kicker: "Hive Digital Solutions",
       title: "All you need",
-      titleAccent: "One Hive",
+      titleAccent: "in One Hive",
       subtitle:
         "We build web, mobile, and custom software solutions that help businesses launch faster and scale with confidence.",
       primary: "Get a Free Consultation",
@@ -133,12 +133,12 @@ const messages: Record<Locale, Messages> = {
       imageAlt: "Hive — digital studio hero visual",
     },
     about: {
-      kicker: "About",
-      title: "Our Concept",
+      kicker: "About Us",
+      title: "About Us",
       subtitle:
-        "Our approach is inspired by the honeycomb: each part works in harmony within one connected system.",
+        "Our approach is inspired by the honeycomb, where every part works in harmony within one integrated system.",
       body:
-        "We are a digital solutions company delivering integrated services. We help clients focus on growth while we handle the technical complexity with clarity, precision, and long-term support.",
+        "We are a company delivering integrated digital solutions and services, enabling our clients to focus on growing their business while we handle the technical side with efficiency and clarity.",
       pillars: ["Who We Are", "Concept", "Commitment"],
       stat1: "Quality First",
       stat1Label: "Excellence in every detail",
@@ -190,8 +190,8 @@ const messages: Record<Locale, Messages> = {
       ],
     },
     vision: {
-      kicker: "Workflow",
-      title: "How It Works",
+      kicker: "How We Work",
+      title: "Why Choose Us",
       body:
         "We run online-first delivery, secure electronic payments, on-ground implementation when needed, and continuous support plans that keep your systems stable and evolving.",
     },
@@ -230,8 +230,8 @@ const messages: Record<Locale, Messages> = {
           featured: true,
         },
         {
-          name: "Enterprise Solution",
-          price: "Custom",
+          name: "Enterprise Solutions",
+          price: "On Request",
           description:
             "A complete digital ecosystem for maximum impact.",
           features: [
@@ -262,7 +262,7 @@ const messages: Record<Locale, Messages> = {
       kicker: "Contact",
       title: "Contact Us",
       subtitle: "Tell us what you need. We respond within 24 hours.",
-      channelsTitle: "Direct lines",
+      channelsTitle: "Direct Contact",
       ariaPhone: "Phone",
       ariaEmail: "Email",
       ariaWhatsApp: "WhatsApp",
@@ -279,7 +279,7 @@ const messages: Record<Locale, Messages> = {
       privacy: "We respect your privacy—no spam, ever.",
     },
     footer: {
-      rights: "© Hive Digital Solutions. All rights reserved.",
+      rights: "© Hive for Digital Solutions. All rights reserved.",
       tagline: "Building digital ecosystems that scale.",
       sitemapTitle: "Sitemap",
       contactTitle: "Contact",
@@ -287,16 +287,16 @@ const messages: Record<Locale, Messages> = {
   },
   ar: {
     meta: {
-        title: "هايڤ للحلول الرقمية",
+      title: "هايڤ للحلول الرقمية — شركة برمجيات وحلول رقمية في حلب، سوريا",
       description:
-        "هايڤ لحلول الرقمية تصمم وتنفّذ تجارب رقمية غامرة واستراتيجية منتجات وهندسة على مستوى المؤسسات.",
+        "شركة برمجة وحلول رقمية في حلب، سوريا: تطوير مواقع وتطبيقات، أنظمة مخصّصة، وتحوّل رقمي للشركات في سوريا والمنطقة. خدمات تطوير ويب، تطبيقات موبايل، وأنظمة داخلية بمعايير احترافية.",
     },
     nav: {
       brand: "Hive",
       home: "الرئيسية",
       about: "من نحن",
       services: "الخدمات",
-      vision: "آلية العمل",
+      vision: "لماذا تختارنا",
       packages: "الباقات",
       portfolio: "الأعمال",
       contact: "تواصل",
@@ -307,7 +307,7 @@ const messages: Record<Locale, Messages> = {
     hero: {
       kicker: "هايڤ للحلول الرقمية",
       title: "كل ما تحتاجه",
-      titleAccent: "خلية واحدة",
+      titleAccent: "في خلية واحدة",
       subtitle:
         "نطوّر تطبيقات الويب والموبايل والحلول البرمجية المخصّصة لمساعدة أعمالك على الانطلاق والنمو بثقة.",
       primary: "احصل على استشارة مجانية",
@@ -373,7 +373,7 @@ const messages: Record<Locale, Messages> = {
     },
     vision: {
       kicker: "آلية العمل",
-      title: "كيف نعمل",
+      title: "لماذا تختارنا",
       body:
         "نعتمد تشغيلًا رقميًا بالكامل، مدفوعات إلكترونية آمنة، تنفيذًا ميدانيًا عند الحاجة، وخطط دعم مستمرة تضمن استقرار وتطور حلولك.",
     },

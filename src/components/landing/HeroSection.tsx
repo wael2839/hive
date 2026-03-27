@@ -16,13 +16,13 @@ export function HeroSection({ t }: Props) {
         <div className="hive-hero-hex-grid-dark absolute inset-0" />
         <div className="hive-hero-hex-grid-light absolute inset-0" />
         <div className="hive-hero-vignette absolute inset-0" />
-        <div className="hive-hero-hex-highlight absolute inset-0" />
+        <div className="hive-hero-hex-highlight hive-hero-hex-highlight--dark absolute inset-0" />
+        <div className="hive-hero-hex-highlight hive-hero-hex-highlight--light absolute inset-0" />
       </div>
 
       <div className="relative mx-auto flex min-h-[calc(100svh-7rem)] w-full max-w-4xl items-center justify-center px-4 pb-24 sm:px-6 lg:px-8">
         <div className="relative flex w-full min-w-0 flex-col items-center text-center">
-          <p className="hive-cta-hex hive-badge-hex rounded-md hive-cta-hex--outline mb-4 inline-flex items-center gap-2 bg-[var(--hive-pill-bg)] px-4 py-2 text-sm font-semibold tracking-[0.04em] text-hive-gold-light sm:px-5 sm:py-2.5 sm:text-base">
-            <span className="h-1.5 w-1.5 shrink-0 rounded-md bg-hive-gold" />
+          <p className="hive-cta-hex hive-badge-hex rounded-md  mb-4 inline-flex items-center gap-2 bg-[var(--hive-pill-bg)] px-4 py-2 text-sm font-bold  text-hive-gold-light sm:px-8 sm:py-2.5 sm:text-5xl border-0">
             {t.kicker}
           </p>
           <h1 className="mt-4 text-balance text-[2.1rem] font-extrabold leading-[1.12] tracking-tight sm:text-5xl sm:leading-[1.06] lg:text-6xl">

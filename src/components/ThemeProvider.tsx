@@ -12,7 +12,6 @@ export function ThemeProvider({ children }: Props) {
       attribute="class"
       defaultTheme="dark"
       enableSystem={false}
-      disableTransitionOnChange
     >
       {children}
     </NextThemesProvider>

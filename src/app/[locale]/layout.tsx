@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { DocumentLocale } from "@/components/landing/DocumentLocale";
 import { getMessages, isLocale, locales, type Locale } from "@/lib/i18n";
+import { buildLocalePageMetadata, localeTitleTemplate } from "@/lib/seo-metadata";
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -19,16 +20,18 @@ export async function generateMetadata({
 }: Props): Promise<Metadata> {
   const { locale: raw } = await params;
   if (!isLocale(raw)) return {};
-  const m = getMessages(raw);
-  return {
+  const locale = raw as Locale;
+  const m = getMessages(locale);
+  const base = buildLocalePageMetadata(locale, {
     title: m.meta.title,
     description: m.meta.description,
-    alternates: {
-      canonical: `/${raw}`,
-      languages: {
-        en: "/en",
-        ar: "/ar",
-      },
+    path: `/${locale}`,
+  });
+  return {
+    ...base,
+    title: {
+      default: m.meta.title,
+      template: localeTitleTemplate(locale),
     },
   };
 }
