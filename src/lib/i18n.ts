@@ -88,10 +88,18 @@ export type Messages = {
     ariaLinkedin: string;
     name: string;
     email: string;
-    company: string;
-    message: string;
+    phone: string;
+    phonePlaceholder: string;
+    phoneCountryAria: string;
+    phoneCountryListAria: string;
+    service: string;
+    servicePlaceholder: string;
+    serviceOther: string;
+    projectDetails: string;
     send: string;
+    sending: string;
     sent: string;
+    error: string;
     privacy: string;
   };
   footer: {
@@ -178,7 +186,7 @@ const messages: Record<Locale, Messages> = {
           more: "We manage your social presence with strategic content, audience growth plans, and targeted paid campaigns.",
         },
         {
-          title: "Office Solutions",
+          title: "Office Services",
           desc: "Productivity tools, internal systems, and automation that streamline operations.",
           more: "We automate repetitive tasks and build internal tools to improve productivity and reduce operational bottlenecks.",
         },
@@ -271,11 +279,19 @@ const messages: Record<Locale, Messages> = {
       ariaTiktok: "TikTok",
       ariaLinkedin: "LinkedIn",
       name: "Full name",
-      email: "Work email",
-      company: "Company",
-      message: "Project details",
-      send: "Get Started",
-      sent: "Message received",
+      email: "Email address",
+      phone: "Mobile number",
+      phonePlaceholder: "9xx xxx xxxx",
+      phoneCountryAria: "Country code",
+      phoneCountryListAria: "Open country list",
+      service: "Service",
+      servicePlaceholder: "Select a service",
+      serviceOther: "Other service",
+      projectDetails: "Project details",
+      send: "Send message",
+      sending: "Sending…",
+      sent: "Message sent",
+      error: "Could not send. Please try again or contact us directly.",
       privacy: "We respect your privacy—no spam, ever.",
     },
     footer: {
@@ -295,8 +311,8 @@ const messages: Record<Locale, Messages> = {
       brand: "Hive",
       home: "الرئيسية",
       about: "من نحن",
-      services: "الخدمات",
       vision: "لماذا تختارنا",
+      services: "الخدمات",
       packages: "الباقات",
       portfolio: "الأعمال",
       contact: "تواصل",
@@ -360,7 +376,7 @@ const messages: Record<Locale, Messages> = {
           more: "ندير حضورك الرقمي عبر محتوى مدروس وخطط نمو للجمهور وحملات إعلانية موجّهة.",
         },
         {
-          title: "حلول مكتبية",
+          title: "خدمات مكتبية",
           desc: "أتمتة ونظم داخلية ترفع الكفاءة وتبسط التشغيل.",
           more: "نؤتمت المهام المتكررة ونبني أدوات داخلية تعزز الإنتاجية وتقلل اختناقات التشغيل.",
         },
@@ -453,11 +469,19 @@ const messages: Record<Locale, Messages> = {
       ariaTiktok: "تيك توك",
       ariaLinkedin: "لينكدإن",
       name: "الاسم الكامل",
-      email: "البريد المهني",
-      company: "الشركة",
-      message: "تفاصيل المشروع",
-      send: "ابدأ الآن",
-      sent: "تم استلام الرسالة",
+      email: "البريد الإلكتروني",
+      phone: "رقم الجوال",
+      phonePlaceholder: "9xx xxx xxxx",
+      phoneCountryAria: "رمز الدولة",
+      phoneCountryListAria: "قائمة الدول",
+      service: "الخدمة",
+      servicePlaceholder: "اختر الخدمة",
+      serviceOther: "خدمة أخرى",
+      projectDetails: "تفاصيل المشروع",
+      send: "إرسال الرسالة",
+      sending: "جاري الإرسال…",
+      sent: "تم إرسال الرسالة",
+      error: "تعذّر الإرسال. حاول مرة أخرى أو تواصل معنا مباشرة.",
       privacy: "نحترم خصوصيتك—لا رسائل مزعجة.",
     },
     footer: {

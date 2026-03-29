@@ -31,7 +31,11 @@ export default async function LocaleHome({ params }: Props) {
         <VisionSection t={t.vision} />
         <ServicesSection locale={locale} t={t.services} />
         <PackagesSection locale={locale} t={t.packages} />
-        <ContactSection locale={locale} t={t.contact} />
+        <ContactSection
+          locale={locale}
+          contact={t.contact}
+          serviceTitles={t.services.items.map((item) => item.title)}
+        />
       </main>
       <SiteFooter locale={locale} t={t} />
     </>

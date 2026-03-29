@@ -6,7 +6,7 @@ export const serviceSlugs = [
   "desktop-apps",
   "visual-identity",
   "social-media",
-  "office-solutions",
+  "office-services",
   "google-maps",
 ] as const;
 
@@ -140,9 +140,9 @@ const details: Record<ServiceSlug, Record<Locale, ServiceDetail>> = {
       ],
     },
   },
-  "office-solutions": {
+  "office-services": {
     ar: {
-      title: "الحلول المكتبية",
+      title: "خدمات مكتبية",
       flowLabel: "مراحل الخدمة",
       lead: "نطوّر أدوات داخلية ذكية لتقليل العمل اليدوي، تنظيم العمليات، ورفع كفاءة فرق العمل يومًا بعد يوم.",
       steps: [
@@ -153,7 +153,7 @@ const details: Record<ServiceSlug, Record<Locale, ServiceDetail>> = {
       ],
     },
     en: {
-      title: "Office Solutions",
+      title: "Office Services",
       flowLabel: "Service Process",
       lead: "We develop smart internal tools to reduce manual work, streamline operations, and improve team efficiency day after day.",
       steps: [

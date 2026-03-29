@@ -10,8 +10,8 @@ import { ThemeToggle } from "./ThemeToggle";
 const anchors = [
   { id: "hero", key: "home" as const },
   { id: "about", key: "about" as const },
-  { id: "services", key: "services" as const },
   { id: "vision", key: "vision" as const },
+  { id: "services", key: "services" as const },
   { id: "packages", key: "packages" as const },
   { id: "contact", key: "contact" as const },
 ];
@@ -29,10 +29,17 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4 lg:px-8">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-lg border border-hive-border bg-[var(--hive-nav-bg)] px-4 py-3 backdrop-blur-xl sm:px-5 lg:px-6">
+        <div
+          className={`mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-lg border border-hive-border bg-[var(--hive-nav-bg)] px-4 py-2 backdrop-blur-xl sm:px-5 lg:px-6 ${
+            locale === "ar"
+              ? "max-lg:flex-row max-lg:[direction:ltr] lg:flex-row lg:[direction:inherit]"
+              : "max-lg:flex-row-reverse max-lg:[direction:ltr] lg:flex-row lg:[direction:inherit]"
+          }`}
+        >
           <Link
             href={`/${locale}#hero`}
             className="flex min-w-0 max-w-[min(100%,18rem)] shrink-0 items-center gap-2 py-0.5 sm:max-w-none sm:gap-2.5"
+            dir={locale === "ar" ? "rtl" : "ltr"}
             onClick={() => setOpen(false)}
           >
             <HiveLogo
@@ -49,19 +56,26 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
           <nav
             className="hidden items-center gap-1 lg:flex"
             aria-label="Primary"
+            dir={locale === "ar" ? "rtl" : "ltr"}
           >
             {anchors.map((a) => (
               <Link
                 key={a.id}
                 href={`/${locale}#${a.id}`}
-                className="rounded-md px-3 py-2 text-sm text-hive-off-white/80 light:text-neutral-700 transition-colors hover:bg-[var(--hive-hover-surface)] hover:text-hive-gold"
+                className="rounded-md px-3 py-2 text-sm font-semibold text-hive-off-white/80 light:text-neutral-700 transition-colors hover:bg-[var(--hive-hover-surface)] hover:text-hive-gold"
               >
                 {t.nav[a.key]}
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div
+            className={`flex items-center gap-2 sm:gap-3 ${
+              locale === "en"
+                ? "max-lg:flex-row-reverse lg:flex-row"
+                : "flex-row"
+            }`}
+          >
             <ThemeToggle
               switchToLight={t.nav.themeSwitchToLight}
               switchToDark={t.nav.themeSwitchToDark}
@@ -123,12 +137,24 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
           onClick={() => setOpen(false)}
         />
         <aside
-          className={`absolute inset-y-0 end-0 w-[min(88vw,22rem)] border-s border-hive-border bg-[var(--hive-nav-bg)] p-5 backdrop-blur-xl transition-transform duration-300 ease-out ${
-            open ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`absolute inset-y-0 w-[min(88vw,22rem)] border-hive-border bg-[var(--hive-nav-bg)] p-5 backdrop-blur-xl transition-transform duration-300 ease-out ${
+            locale === "ar"
+              ? "right-0 border-l"
+              : "left-0 border-r"
+          } ${open ? "translate-x-0" : locale === "ar" ? "translate-x-full" : "-translate-x-full"}`}
         >
-            <div className="mb-5 flex items-center justify-between">
-              <span className="text-sm font-semibold text-hive-off-white/85">{t.nav.brand}</span>
+            <div
+              className={`mb-5 flex items-center justify-between ${
+                locale === "ar" ? "flex-row" : "flex-row-reverse"
+              }`}
+              dir="ltr"
+            >
+              <span
+                className="text-sm font-semibold text-hive-off-white/85"
+                dir={locale === "ar" ? "rtl" : "ltr"}
+              >
+                {t.nav.brand}
+              </span>
               <button
                 type="button"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition-colors hover:bg-[var(--hive-hover-surface)]"
@@ -149,7 +175,11 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
               </button>
             </div>
 
-            <nav className="flex flex-col gap-1.5" aria-label="Mobile primary">
+            <nav
+              className="flex flex-col gap-1.5"
+              aria-label="Mobile primary"
+              dir={locale === "ar" ? "rtl" : "ltr"}
+            >
               {anchors.map((a) => (
                 <Link
                   key={a.id}
