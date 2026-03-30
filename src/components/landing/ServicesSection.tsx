@@ -38,7 +38,7 @@ export function ServicesSection({
   return (
     <section
       id="services"
-      className="bg-[var(--hive-bg2)]  relative border-t border-hive-border-subtle py-15 sm:py-15"
+      className="bg-[var(--hive-bg2)]  relative py-15 sm:py-15 scroll-mt-28 sm:scroll-mt-20"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>

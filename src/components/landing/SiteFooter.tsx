@@ -24,10 +24,7 @@ export function SiteFooter({ locale, t }: Props) {
 
   return (
     <footer className="relative border-t border-hive-border bg-[var(--hive-bg)]">
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-hive-gold/25 to-transparent"
-        aria-hidden
-      />
+      
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
           <div className="max-w-md shrink-0">

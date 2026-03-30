@@ -4,6 +4,7 @@ import { ContactSection } from "@/components/landing/ContactSection";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { PackagesSection } from "@/components/landing/PackagesSection";
 import { ServicesSection } from "@/components/landing/ServicesSection";
+import { SectionDivider } from "@/components/landing/SectionDivider";
 import { SiteFooter } from "@/components/landing/SiteFooter";
 import { SiteNav } from "@/components/landing/SiteNav";
 import { VisionSection } from "@/components/landing/VisionSection";
@@ -27,16 +28,22 @@ export default async function LocaleHome({ params }: Props) {
       <SiteNav locale={locale} t={t} />
       <main>
         <HeroSection t={t.hero} />
+        <SectionDivider />
         <AboutSection t={t.about} locale={locale} />
+        <SectionDivider />
         <VisionSection t={t.vision} />
+        <SectionDivider />
         <ServicesSection locale={locale} t={t.services} />
+        <SectionDivider />
         <PackagesSection locale={locale} t={t.packages} />
+        <SectionDivider />
         <ContactSection
           locale={locale}
           contact={t.contact}
           serviceTitles={t.services.items.map((item) => item.title)}
         />
       </main>
+      <SectionDivider />
       <SiteFooter locale={locale} t={t} />
     </>
   );

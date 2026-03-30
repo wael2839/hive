@@ -5,8 +5,9 @@ type Props = {
 
 export default function SectionTitle({ children, className }: Props) {
   return (
-    <h2 className={`main-title ${className ?? ""}`}>
+    <h2 className={`main-title relative text-4xl! text-hive-gold! ${className ?? ""}`}>
       {children}
+      <div className="absolute left-1/2 transform -translate-x-1/2 w-[150%] mt-2 h-[2px] bg-gradient-to-r from-transparent via-hive-gold/35 to-transparent" />
     </h2>
   );
 }

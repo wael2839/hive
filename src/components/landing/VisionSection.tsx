@@ -26,17 +26,12 @@ export function VisionSection({ t }: { t: Messages["vision"] }) {
   return (
     <section
       id="vision"
-      className="bg-[var(--hive-bg)] relative overflow-hidden border-t border-hive-border-subtle py-15 sm:py-15"
+      className="bg-[var(--hive-bg)] relative overflow-hidden py-15 sm:py-15 scroll-mt-28 sm:scroll-mt-20"
     >
       <div
         ref={bg}
         className="pointer-events-none absolute inset-0 opacity-90"
-        style={{
-          transform: "translate3d(0, var(--parallax, 0px), 0)",
-          transition: "transform 0.1s linear",
-          backgroundImage:
-            "linear-gradient(to bottom, var(--hive-vision-overlay), var(--hive-vision-overlay))",
-        }}
+        
       />
       <div className="pointer-events-none absolute inset-0 hive-noise opacity-50" />
 

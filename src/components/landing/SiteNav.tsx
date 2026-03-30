@@ -143,18 +143,19 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
               : "right-0 border-l"
           } ${open ? "translate-x-0" : locale === "ar" ? "-translate-x-full" : "translate-x-full"}`}
         >
-            <div
-              className={`mb-5 flex items-center justify-between ${
-                locale === "ar" ? "flex-row" : "flex-row-reverse"
-              }`}
-              dir="ltr"
-            >
-              <span
-                className="text-sm font-semibold text-hive-off-white/85"
+            <div className="mb-6 flex items-center justify-between gap-3">
+              <Link
+                href={`/${locale}#hero`}
+                className="inline-flex max-w-[10.5rem] items-center rounded-md border border-hive-border bg-[var(--hive-pill-bg)] px-3 py-2"
                 dir={locale === "ar" ? "rtl" : "ltr"}
+                onClick={() => setOpen(false)}
               >
-                {t.nav.brand}
-              </span>
+                <HiveLogo
+                  heightClass="h-7"
+                  maxWidthClass="max-w-[8.5rem]"
+                  alt={t.meta.title}
+                />
+              </Link>
               <button
                 type="button"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition-colors hover:bg-[var(--hive-hover-surface)]"
@@ -176,7 +177,7 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
             </div>
 
             <nav
-              className="flex flex-col gap-3"
+              className="flex flex-col gap-4"
               aria-label="Mobile primary"
               dir={locale === "ar" ? "rtl" : "ltr"}
             >

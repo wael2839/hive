@@ -98,9 +98,8 @@ export function ContactSection({
   return (
     <section
       id="contact"
-      className="bg-[var(--hive-bg2)]  relative border-t border-hive-border-subtle py-15 sm:py-15"
+      className="bg-[var(--hive-bg2)]  relative py-15 sm:py-15 scroll-mt-28 sm:scroll-mt-20"
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-hive-gold/35 to-transparent" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="flex flex-col items-center text-center">

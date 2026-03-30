@@ -1,4 +1,7 @@
+ "use client";
+
 import { Lightbulb, Sparkles, Target } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { Locale, Messages } from "@/lib/i18n";
 import { ScrollReveal } from "./ScrollReveal";
 import SectionTitle from "../ui/SectionTitle";
@@ -12,6 +15,51 @@ export function AboutSection({
   t: Messages["about"];
   locale: Locale;
 }) {
+  const statsRef = useRef<HTMLDivElement | null>(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const [counts, setCounts] = useState([0, 0, 0]);
+
+  const statTargets = useMemo(() => [10000, 15, 98], []);
+
+  useEffect(() => {
+    const node = statsRef.current;
+    if (!node || hasAnimated) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setHasAnimated(true);
+        observer.disconnect();
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [hasAnimated]);
+
+  useEffect(() => {
+    if (!hasAnimated) return;
+
+    const durationMs = 1400;
+    const start = performance.now();
+    let frame = 0;
+
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / durationMs, 1);
+      const eased = 1 - (1 - progress) * (1 - progress);
+
+      setCounts(statTargets.map((target) => Math.round(target * eased)));
+
+      if (progress < 1) {
+        frame = requestAnimationFrame(tick);
+      }
+    };
+
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [hasAnimated, statTargets]);
+
   const statLabels =
     locale === "ar"
       ? [
@@ -32,7 +80,7 @@ export function AboutSection({
   return (
     <section
       id="about"
-      className="relative overflow-hidden border-t border-hive-border-subtle bg-[var(--hive-bg2)] py-18"
+      className="relative overflow-hidden bg-[var(--hive-bg2)] py-18 scroll-mt-28 sm:scroll-mt-20"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
@@ -53,28 +101,37 @@ export function AboutSection({
                 return (
                   <article
                     key={label}
-                    className=" inline-flex items-center justify-center gap-3 rounded-full border border-hive-border/70 bg-[var(--hive-bg)] px-5 py-2.5 text-[var(--hive-fg)] shadow-[0_8px_24px_rgba(0,0,0,0.12)] backdrop-blur-sm light:bg-white/80 light:shadow-[0_8px_22px_rgba(0,0,0,0.06)]"
+                    className="min-w-36  inline-flex items-center justify-center gap-3 rounded-full border border-hive-border/70 bg-[var(--hive-bg)] px-5 py-2.5 text-[var(--hive-fg)] shadow-[0_8px_24px_rgba(0,0,0,0.12)] backdrop-blur-sm light:bg-white/80 light:shadow-[0_8px_22px_rgba(0,0,0,0.06)]"
                   >
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-hive-gold/20 text-hive-gold light:bg-amber-100 light:text-[#6e5f1a]">
+                    <span className=" inline-flex h-8 w-8 items-center justify-center rounded-full bg-hive-gold/20 text-hive-gold light:bg-amber-100 light:text-[#6e5f1a]">
                       <Icon className="h-4 w-4" />
                     </span>
-                    <span className="font-serif text-lg">{label}</span>
+                    <span className=" text-md sm:text-lg text-center ">{label}</span>
                   </article>
                 );
               })}
             </div>
 
-            <div className="mt-12 grid overflow-hidden rounded-2xl border border-hive-border bg-[var(--hive-bg)] backdrop-blur-sm md:grid-cols-3">
+            <div
+              ref={statsRef}
+              className="mt-12 grid overflow-hidden rounded-2xl border border-hive-border bg-[var(--hive-bg)] backdrop-blur-sm md:grid-cols-3"
+            >
               <div className="px-6 py-8 text-center md:border-e md:border-hive-border">
-                <p className="text-5xl font-semibold tracking-tight text-[var(--hive-fg)]">10k+</p>
+                <p className="text-5xl font-semibold tracking-tight text-[var(--hive-fg)]">
+                  {counts[0] >= 10000 ? "10k+" : `${Math.floor(counts[0] / 1000)}k+`}
+                </p>
                 <p className="mt-2 text-sm text-hive-off-white/60 light:text-neutral-600">{statLabels[0]}</p>
               </div>
               <div className="px-6 py-8 text-center md:border-e md:border-hive-border">
-                <p className="text-5xl font-semibold tracking-tight text-[var(--hive-fg)]">15+</p>
+                <p className="text-5xl font-semibold tracking-tight text-[var(--hive-fg)]">
+                  {counts[1]}+
+                </p>
                 <p className="mt-2 text-sm text-hive-off-white/60 light:text-neutral-600">{statLabels[1]}</p>
               </div>
               <div className="px-6 py-8 text-center">
-                <p className="text-5xl font-semibold tracking-tight text-hive-gold light:text-[#6e5f1a]">98%</p>
+                <p className="text-5xl font-semibold tracking-tight text-hive-gold light:text-[#6e5f1a]">
+                  {counts[2]}%
+                </p>
                 <p className="mt-2 text-sm text-hive-off-white/60 light:text-neutral-600">{statLabels[2]}</p>
               </div>
             </div>
