@@ -26,7 +26,7 @@ export function VisionSection({ t }: { t: Messages["vision"] }) {
   return (
     <section
       id="vision"
-      className="hive-section-main relative overflow-hidden border-t border-hive-border-subtle py-15 sm:py-15"
+      className="bg-[var(--hive-bg)] relative overflow-hidden border-t border-hive-border-subtle py-15 sm:py-15"
     >
       <div
         ref={bg}

@@ -30,10 +30,10 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
     <>
       <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4 lg:px-8">
         <div
-          className={`mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-lg border border-hive-border bg-[var(--hive-nav-bg)] px-4 py-2 backdrop-blur-xl sm:px-5 lg:px-6 ${
+          className={`mx-auto flex max-w-7xl relative items-center justify-between gap-4 rounded-lg border border-hive-border bg-[var(--hive-nav-bg)] px-4 py-2 backdrop-blur-xl sm:px-5 lg:px-6 ${
             locale === "ar"
-              ? "max-lg:flex-row max-lg:[direction:ltr] lg:flex-row lg:[direction:inherit]"
-              : "max-lg:flex-row-reverse max-lg:[direction:ltr] lg:flex-row lg:[direction:inherit]"
+              ? "max-lg:flex-row-reverse max-lg:[direction:ltr] lg:flex-row lg:[direction:inherit]"
+              : "max-lg:flex-row max-lg:[direction:ltr] lg:flex-row lg:[direction:inherit]"
           }`}
         >
           <Link
@@ -54,7 +54,7 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
           </Link>
 
           <nav
-            className="hidden items-center gap-1 lg:flex"
+            className="hidden items-center self-center gap-1 lg:flex absolute left-1/2 transform -translate-x-1/2"
             aria-label="Primary"
             dir={locale === "ar" ? "rtl" : "ltr"}
           >
@@ -71,7 +71,7 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
 
           <div
             className={`flex items-center gap-2 sm:gap-3 ${
-              locale === "en"
+              locale === "ar"
                 ? "max-lg:flex-row-reverse lg:flex-row"
                 : "flex-row"
             }`}
@@ -139,9 +139,9 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
         <aside
           className={`absolute inset-y-0 w-[min(88vw,22rem)] border-hive-border bg-[var(--hive-nav-bg)] p-5 backdrop-blur-xl transition-transform duration-300 ease-out ${
             locale === "ar"
-              ? "right-0 border-l"
-              : "left-0 border-r"
-          } ${open ? "translate-x-0" : locale === "ar" ? "translate-x-full" : "-translate-x-full"}`}
+              ? "left-0 border-r"
+              : "right-0 border-l"
+          } ${open ? "translate-x-0" : locale === "ar" ? "-translate-x-full" : "translate-x-full"}`}
         >
             <div
               className={`mb-5 flex items-center justify-between ${
@@ -176,7 +176,7 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
             </div>
 
             <nav
-              className="flex flex-col gap-1.5"
+              className="flex flex-col gap-3"
               aria-label="Mobile primary"
               dir={locale === "ar" ? "rtl" : "ltr"}
             >
@@ -184,7 +184,7 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
                 <Link
                   key={a.id}
                   href={`/${locale}#${a.id}`}
-                  className="rounded-md px-3 py-2.5 text-sm font-medium text-hive-off-white/85 transition-colors hover:bg-[var(--hive-hover-surface)] hover:text-hive-gold"
+                  className="rounded-md px-3 py-2.5 text-sm font-medium text-hive-off-white/85 transition-colors hover:bg-[var(--hive-hover-surface)] hover:text-hive-gold ring-hive-gold/50 ring-1"
                   onClick={() => setOpen(false)}
                 >
                   {t.nav[a.key]}

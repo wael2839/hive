@@ -102,6 +102,7 @@
   --hive-gold: #bda957;
   --hive-gold-light: #ffe88c;
   --hive-bg: #191919;
+  --hive-bg2: #292727d5;
   --hive-fg: #eaeaea;
   --hive-border: rgba(255, 255, 255, 0.1);
   --hive-border-subtle: rgba(255, 255, 255, 0.05);
@@ -130,6 +131,7 @@ html.light {
   --hive-gold: #6e5f1a;
   --hive-gold-light: #8a7524;
   --hive-bg: #eeeeee;
+  --hive-bg2: #f7f7f7;
   --hive-fg: #0a0a0a;
   --hive-border: rgba(0, 0, 0, 0.2);
   --hive-border-subtle: rgba(0, 0, 0, 0.12);

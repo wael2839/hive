@@ -23,7 +23,7 @@ export function SiteFooter({ locale, t }: Props) {
   const nav = t.nav;
 
   return (
-    <footer className="relative border-t border-hive-border bg-hive-black">
+    <footer className="relative border-t border-hive-border bg-[var(--hive-bg)]">
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-hive-gold/25 to-transparent"
         aria-hidden

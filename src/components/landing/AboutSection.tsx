@@ -1,64 +1,82 @@
-import type { Messages } from "@/lib/i18n";
+import { Lightbulb, Sparkles, Target } from "lucide-react";
+import type { Locale, Messages } from "@/lib/i18n";
 import { ScrollReveal } from "./ScrollReveal";
 import SectionTitle from "../ui/SectionTitle";
 
-const statKeys = [
-  { valueKey: "stat1" as const, labelKey: "stat1Label" as const },
-  { valueKey: "stat2" as const, labelKey: "stat2Label" as const },
-  { valueKey: "stat3" as const, labelKey: "stat3Label" as const },
-];
+const featureIcons = [Sparkles, Lightbulb, Target];
 
-export function AboutSection({ t }: { t: Messages["about"] }) {
+export function AboutSection({
+  t,
+  locale,
+}: {
+  t: Messages["about"];
+  locale: Locale;
+}) {
+  const statLabels =
+    locale === "ar"
+      ? [
+          "إجمالي المشاريع المكتملة",
+          "سنوات من الخبرة",
+          "معدل رضا العملاء",
+        ]
+      : [
+          "Total Projects Completed",
+          "Years of experience",
+          "Client Satisfaction Rate",
+        ];
+  const featureLabels =
+    locale === "ar"
+      ? ["إبداع", "ابتكار", "استراتيجية"]
+      : ["Creativity", "Innovation", "Strategy"];
+
   return (
     <section
       id="about"
-      className="hive-section-main relative overflow-hidden border-t border-hive-border-subtle py-15 sm:py-15"
+      className="relative overflow-hidden border-t border-hive-border-subtle bg-[var(--hive-bg)] py-18"
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-hive-gold/35 to-transparent" />
-
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="flex flex-col items-center text-center">
-            <SectionTitle>{t.kicker}</SectionTitle>
-           
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-hive-off-white/65 light:text-neutral-600 sm:text-lg">
-              {t.subtitle}
+            <SectionTitle>{t.title}</SectionTitle>
+
+            <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-hive-off-white leading-10 light:text-neutral-600 sm:text-3xl">
+              {t.body}
             </p>
           </div>
         </ScrollReveal>
 
         <ScrollReveal delayMs={70}>
-          <div className="mx-auto mt-8 max-w-3xl lg:mt-8">
-            <p className="text-pretty text-start text-lg leading-9 text-hive-off-white/85 light:text-neutral-800">
-              {t.body}
-            </p>
+          <div className="mx-auto mt-10 max-w-5xl">
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-10 lg:gap-20">
+              {featureLabels.map((label, idx) => {
+                const Icon = featureIcons[idx] ?? Sparkles;
+                return (
+                  <article
+                    key={label}
+                    className=" inline-flex items-center justify-center gap-3 rounded-full border border-hive-border/70 bg-[var(--hive-card-glass)] px-5 py-2.5 text-[var(--hive-fg)] shadow-[0_8px_24px_rgba(0,0,0,0.12)] backdrop-blur-sm light:bg-white/80 light:shadow-[0_8px_22px_rgba(0,0,0,0.06)]"
+                  >
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-hive-gold/20 text-hive-gold light:bg-amber-100 light:text-[#6e5f1a]">
+                      <Icon className="h-4 w-4" />
+                    </span>
+                    <span className="font-serif text-lg">{label}</span>
+                  </article>
+                );
+              })}
+            </div>
 
-            {/* <div className="mt-10 flex flex-wrap justify-center gap-2.5">
-              {t.pillars.map((label) => (
-                <span
-                  key={label}
-                  className="hive-cta-hex hive-badge-hex rounded-md hive-cta-hex--outline inline-flex items-center bg-[var(--hive-pill-bg)] px-4 py-2 text-xs font-semibold uppercase tracking-wider text-hive-off-white/90 light:bg-white/90 light:text-neutral-800"
-                >
-                  {label}
-                </span>
-              ))}
-            </div> */}
-
-            <div className="mt-14 grid gap-4 sm:grid-cols-3">
-              {statKeys.map(({ valueKey, labelKey }) => (
-                <div
-                  key={labelKey}
-                  className="group relative min-h-[148px] overflow-hidden rounded-md border border-hive-border bg-[var(--hive-card-glass)] p-6 text-center transition-colors duration-300 hover:border-hive-gold/25 light:hover:border-[#c4b896]/40 sm:text-start"
-                >
-                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-hive-gold/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <p className="text-xl font-bold tracking-tight text-transparent bg-gradient-to-r from-hive-gold-light via-hive-gold to-[#8a7a45] bg-clip-text sm:text-2xl light:from-[#6e5f1a] light:via-[#8a7524] light:to-[#5c4a12]">
-                    {t[valueKey]}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-hive-off-white/65 light:text-neutral-600">
-                    {t[labelKey]}
-                  </p>
-                </div>
-              ))}
+            <div className="mt-12 grid overflow-hidden rounded-2xl border border-hive-border bg-[var(--hive-card-glass)] backdrop-blur-sm md:grid-cols-3">
+              <div className="px-6 py-8 text-center md:border-e md:border-hive-border">
+                <p className="text-5xl font-semibold tracking-tight text-[var(--hive-fg)]">10k+</p>
+                <p className="mt-2 text-sm text-hive-off-white/60 light:text-neutral-600">{statLabels[0]}</p>
+              </div>
+              <div className="px-6 py-8 text-center md:border-e md:border-hive-border">
+                <p className="text-5xl font-semibold tracking-tight text-[var(--hive-fg)]">15+</p>
+                <p className="mt-2 text-sm text-hive-off-white/60 light:text-neutral-600">{statLabels[1]}</p>
+              </div>
+              <div className="px-6 py-8 text-center">
+                <p className="text-5xl font-semibold tracking-tight text-hive-gold light:text-[#6e5f1a]">98%</p>
+                <p className="mt-2 text-sm text-hive-off-white/60 light:text-neutral-600">{statLabels[2]}</p>
+              </div>
             </div>
           </div>
         </ScrollReveal>

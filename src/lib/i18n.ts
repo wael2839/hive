@@ -132,8 +132,8 @@ const messages: Record<Locale, Messages> = {
     },
     hero: {
       kicker: "Hive Digital Solutions",
-      title: "All you need",
-      titleAccent: "in One Hive",
+      title: `" All you need ،`,
+      titleAccent: `One Hive "`,
       subtitle:
         "We build web, mobile, and custom software solutions that help businesses launch faster and scale with confidence.",
       primary: "Get a Free Consultation",
@@ -322,8 +322,8 @@ const messages: Record<Locale, Messages> = {
     },
     hero: {
       kicker: "هايڤ للحلول الرقمية",
-      title: "كل ما تحتاجه",
-      titleAccent: "في خلية واحدة",
+      title: `" كل ما تحتاجه ،`,
+      titleAccent: `خلية واحدة "`,
       subtitle:
         "نطوّر تطبيقات الويب والموبايل والحلول البرمجية المخصّصة لمساعدة أعمالك على الانطلاق والنمو بثقة.",
       primary: "احصل على استشارة مجانية",
