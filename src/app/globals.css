@@ -128,8 +128,8 @@
 html.light {
   color-scheme: light;
   /* ذهبي أغمق للنصوص والتمييز — يبقى زر التدرج عبر --hive-btn-* */
-  --hive-gold: #6e5f1a;
-  --hive-gold-light: #8a7524;
+  --hive-gold: #bda957;
+  --hive-gold-light: #bda957;
   --hive-bg: #eeeeee;
   --hive-bg2: #f7f7f7;
   --hive-fg: #0a0a0a;

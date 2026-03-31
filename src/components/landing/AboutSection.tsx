@@ -145,7 +145,7 @@ export function AboutSection({
                 <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-hive-gold/20 text-hive-gold light:bg-amber-100 light:text-[#6e5f1a]">
                   <BadgeCheck className="h-5 w-5" />
                 </span>
-                <p className="text-5xl font-semibold tracking-tight text-hive-gold light:text-[#6e5f1a]">
+                <p className="text-5xl font-semibold tracking-tight text-hive-gold light:text-hive-gold">
                   {counts[2]}%
                 </p>
                 <p className="mt-2 text-sm text-hive-off-white/60 light:text-neutral-600">{statLabels[2]}</p>
