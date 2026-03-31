@@ -108,7 +108,7 @@ export function AboutSection({
                 return (
                   <article
                     key={label}
-                    className="min-w-36  inline-flex items-center justify-center gap-3 rounded-full border border-hive-border/70 bg-[var(--hive-bg)] px-5 py-2.5 text-[var(--hive-fg)] shadow-[0_8px_24px_rgba(0,0,0,0.12)] backdrop-blur-sm light:bg-white/80 light:shadow-[0_8px_22px_rgba(0,0,0,0.06)]"
+                    className="min-w-36  inline-flex items-center justify-center gap-3 rounded-full border border-hive-border/70 bg-[var(--hive-bg)]! px-5 py-2.5 text-[var(--hive-fg)] shadow-[0_8px_24px_rgba(0,0,0,0.12)] backdrop-blur-sm light:bg-white/80 light:shadow-[0_8px_22px_rgba(0,0,0,0.06)]"
                   >
                     <span className=" inline-flex h-8 w-8 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-white  light:text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
                       <Icon className="h-4 w-4 " strokeWidth={2.5} />
