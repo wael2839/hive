@@ -22,16 +22,16 @@ export function HeroSection({ t }: Props) {
 
       <div className="relative mx-auto flex min-h-[calc(100svh-7rem)] w-full max-w-4xl items-center justify-center px-4 pb-24 sm:px-6 lg:px-8">
         <div className="relative flex w-full min-w-0 flex-col items-center text-center">
-          <p className="hive-cta-hex hive-badge-hex rounded-md  mb-4 inline-flex items-center gap-2 bg-[var(--hive-pill-bg)] px-4 py-2 text-sm font-bold  text-hive-gold sm:px-8 sm:py-2.5 sm:text-4xl border-0">
+          <p className="hive-cta-hex hive-badge-hex rounded-md  mb-4 inline-flex items-center gap-2 bg-[var(--hive-pill-bg)] px-4 py-2 text-sm font-bold  text-hive-gold-light light:text-hive-gold sm:px-8 sm:py-2.5 sm:text-4xl border-0">
             {t.kicker}
           </p>
           <h1 className="mt-4 w-full flex flex-col justify-center items-center text-balance text-[2.1rem] font-extrabold leading-[1.12] tracking-tight sm:text-5xl sm:leading-[1.06] lg:text-6xl">
-            <span className="block text-hive-off-white text-start me-[25%]"><span className="text-hive-gold text-6xl sm:text-8xl">&quot;</span>{t.title}<span >&#1548;</span></span>
-            <span className="mt-4 block bg-hive-gold bg-clip-text text-transparent animate-hive-float sm:mt-6  text-start ms-[25%]">
+            <span className="block text-hive-off-white text-start me-[25%]"><span className="text-hive-gold-light light:text-hive-gold text-6xl sm:text-8xl">&quot;</span>{t.title}<span >&#1548;</span></span>
+            <span className="mt-4 block bg-hive-gold-light light:bg-hive-gold bg-clip-text text-transparent animate-hive-float sm:mt-6  text-start ms-[25%]">
               {t.titleAccent}
             </span>
           </h1>
-          <p className="mt-6 max-w-3xl text-base leading-8 text-hive-off-white/75 light:text-neutral-700 sm:text-lg">
+          <p className="mt-6 max-w-3xl text-base leading-8 text-hive-off-white/75 light:text-neutral-700 sm:text-2xl">
             {t.subtitle}
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
