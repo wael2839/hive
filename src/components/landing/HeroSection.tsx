@@ -9,7 +9,7 @@ export function HeroSection({ t }: Props) {
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] overflow-hidden bg-hive-black light:bg-white pt-28"
+      className="relative min-h-[100svh] overflow-hidden bg-hive-black light:bg-[#F0F0F0] pt-28"
     >
       <HeroHexCursorEffect />
       <div className="pointer-events-none absolute inset-0" aria-hidden>
@@ -26,8 +26,8 @@ export function HeroSection({ t }: Props) {
             {t.kicker}
           </p>
           <h1 className="mt-4 w-full flex flex-col justify-center items-center text-balance text-[2.1rem] font-extrabold leading-[1.12] tracking-tight sm:text-5xl sm:leading-[1.06] lg:text-6xl">
-            <span className="block text-hive-off-white text-start me-[25%]">{t.title}</span>
-            <span className="mt-4 block bg-gradient-to-r from-hive-gold-light via-hive-gold to-[#8a7a45] bg-clip-text text-transparent animate-hive-float sm:mt-6 light:from-[#5c4a12] light:via-[#735f18] light:to-[#3a300c] text-start ms-[25%]">
+            <span className="block text-hive-off-white text-start me-[25%]"><span className="text-hive-gold text-8xl">&quot;</span>{t.title}<span className="text-hive-gold">&#1548;</span></span>
+            <span className="mt-4 block bg-hive-gold bg-clip-text text-transparent animate-hive-float sm:mt-6  text-start ms-[25%]">
               {t.titleAccent}
             </span>
           </h1>

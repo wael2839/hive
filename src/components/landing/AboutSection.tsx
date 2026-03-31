@@ -1,6 +1,13 @@
  "use client";
 
-import { Lightbulb, Sparkles, Target } from "lucide-react";
+import {
+  BadgeCheck,
+  CalendarClock,
+  FolderCheck,
+  Lightbulb,
+  Sparkles,
+  Target,
+} from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Locale, Messages } from "@/lib/i18n";
 import { ScrollReveal } from "./ScrollReveal";
@@ -19,7 +26,7 @@ export function AboutSection({
   const [hasAnimated, setHasAnimated] = useState(false);
   const [counts, setCounts] = useState([0, 0, 0]);
 
-  const statTargets = useMemo(() => [10000, 15, 98], []);
+  const statTargets = useMemo(() => [50, 5, 98], []);
 
   useEffect(() => {
     const node = statsRef.current;
@@ -80,7 +87,7 @@ export function AboutSection({
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-[var(--hive-bg2)] py-18 scroll-mt-28 sm:scroll-mt-20"
+      className="relative overflow-hidden bg-[var(--hive-bg2)] py-18 scroll-mt-28 sm:scroll-mt-10"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
@@ -117,18 +124,27 @@ export function AboutSection({
               className="mt-12 grid overflow-hidden rounded-2xl border border-hive-border bg-[var(--hive-bg)] backdrop-blur-sm md:grid-cols-3"
             >
               <div className="px-6 py-8 text-center md:border-e md:border-hive-border">
+                <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-hive-gold/20 text-hive-gold light:bg-amber-100 light:text-[#6e5f1a]">
+                  <FolderCheck className="h-5 w-5" />
+                </span>
                 <p className="text-5xl font-semibold tracking-tight text-[var(--hive-fg)]">
-                  {counts[0] >= 10000 ? "10k+" : `${Math.floor(counts[0] / 1000)}k+`}
+                  {counts[0]}+
                 </p>
                 <p className="mt-2 text-sm text-hive-off-white/60 light:text-neutral-600">{statLabels[0]}</p>
               </div>
               <div className="px-6 py-8 text-center md:border-e md:border-hive-border">
+                <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-hive-gold/20 text-hive-gold light:bg-amber-100 light:text-[#6e5f1a]">
+                  <CalendarClock className="h-5 w-5" />
+                </span>
                 <p className="text-5xl font-semibold tracking-tight text-[var(--hive-fg)]">
                   {counts[1]}+
                 </p>
                 <p className="mt-2 text-sm text-hive-off-white/60 light:text-neutral-600">{statLabels[1]}</p>
               </div>
               <div className="px-6 py-8 text-center">
+                <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-hive-gold/20 text-hive-gold light:bg-amber-100 light:text-[#6e5f1a]">
+                  <BadgeCheck className="h-5 w-5" />
+                </span>
                 <p className="text-5xl font-semibold tracking-tight text-hive-gold light:text-[#6e5f1a]">
                   {counts[2]}%
                 </p>

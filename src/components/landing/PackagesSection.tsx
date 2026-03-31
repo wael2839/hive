@@ -12,7 +12,7 @@ export function PackagesSection({ locale, t }: Props) {
   return (
     <section
       id="packages"
-      className="bg-[var(--hive-bg)]  relative py-15 sm:py-15 scroll-mt-28 sm:scroll-mt-20"
+      className="bg-[var(--hive-bg)]  relative py-15 sm:py-15 scroll-mt-28 sm:scroll-mt-10"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
