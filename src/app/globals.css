@@ -284,7 +284,7 @@ html.light .hive-section-alt {
 }
 
 .hive-hero-hex-grid-light {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='31.176' height='54' viewBox='0 0 31.176 54'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='1' stroke-width='1.05'%3E%3Cpath d='M15.588 0L31.176 9V27L15.588 36L0 27V9L15.588 0Z'/%3E%3Cpath d='M0 27L15.588 36V54L0 63L-15.588 54V36L0 27Z'/%3E%3Cpath d='M31.176 27L46.764 36V54L31.176 63L15.588 54V36L31.176 27Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='31.176' height='54' viewBox='0 0 31.176 54'%3E%3Cg fill='none' stroke='%23f9f9f9' stroke-opacity='1' stroke-width='1.05'%3E%3Cpath d='M15.588 0L31.176 9V27L15.588 36L0 27V9L15.588 0Z'/%3E%3Cpath d='M0 27L15.588 36V54L0 63L-15.588 54V36L0 27Z'/%3E%3Cpath d='M31.176 27L46.764 36V54L31.176 63L15.588 54V36L31.176 27Z'/%3E%3C/g%3E%3C/svg%3E");
   color: rgb(255, 255, 255);
   opacity: 0;
   pointer-events: none;
@@ -329,7 +329,7 @@ html.light .hive-hero-hex-grid-light {
 }
 
 .hive-hero-hex-highlight--light {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='31.176' height='54' viewBox='0 0 31.176 54'%3E%3Cg fill='none' stroke='%236e5f1a' stroke-opacity='1' stroke-width='1.15' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M15.588 0L31.176 9V27L15.588 36L0 27V9L15.588 0Z'/%3E%3Cpath d='M0 27L15.588 36V54L0 63L-15.588 54V36L0 27Z'/%3E%3Cpath d='M31.176 27L46.764 36V54L31.176 63L15.588 54V36L31.176 27Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='31.176' height='54' viewBox='0 0 31.176 54'%3E%3Cg fill='none' stroke='%23bda957' stroke-opacity='1' stroke-width='1.15' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M15.588 0L31.176 9V27L15.588 36L0 27V9L15.588 0Z'/%3E%3Cpath d='M0 27L15.588 36V54L0 63L-15.588 54V36L0 27Z'/%3E%3Cpath d='M31.176 27L46.764 36V54L31.176 63L15.588 54V36L31.176 27Z'/%3E%3C/g%3E%3C/svg%3E");
   opacity: calc(var(--hive-hero-hover, 0) * var(--hive-hero-highlight-alpha-light));
 }
 

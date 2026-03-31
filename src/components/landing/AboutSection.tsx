@@ -142,7 +142,7 @@ export function AboutSection({
                 <p className="mt-2 text-sm text-hive-off-white/60 light:text-neutral-600">{statLabels[1]}</p>
               </div>
               <div className="px-6 py-8 text-center">
-                <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
+                <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-white light:text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
                   <BadgeCheck className="h-5 w-5" />
                 </span>
                 <p className="text-5xl font-semibold tracking-tight text-hive-gold-light light:text-hive-gold">
