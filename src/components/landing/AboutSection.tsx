@@ -110,8 +110,8 @@ export function AboutSection({
                     key={label}
                     className="min-w-36  inline-flex items-center justify-center gap-3 rounded-full border border-hive-border/70 bg-[var(--hive-bg)] px-5 py-2.5 text-[var(--hive-fg)] shadow-[0_8px_24px_rgba(0,0,0,0.12)] backdrop-blur-sm light:bg-white/80 light:shadow-[0_8px_22px_rgba(0,0,0,0.06)]"
                   >
-                    <span className=" inline-flex h-8 w-8 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
-                      <Icon className="h-4 w-4 " />
+                    <span className=" inline-flex h-8 w-8 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-white  light:text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
+                      <Icon className="h-4 w-4 " strokeWidth={2.5} />
                     </span>
                     <span className=" text-md sm:text-lg text-center ">{label}</span>
                   </article>
@@ -124,8 +124,8 @@ export function AboutSection({
               className="mt-12 grid overflow-hidden rounded-2xl border border-hive-border bg-[var(--hive-bg)] backdrop-blur-sm md:grid-cols-3"
             >
               <div className="px-6 py-8 text-center md:border-e md:border-hive-border">
-                <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
-                  <FolderCheck className="h-5 w-5" />
+                <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-white  light:text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
+                  <FolderCheck className="h-5 w-5" strokeWidth={2.5} />
                 </span>
                 <p className="text-5xl font-semibold tracking-tight text-[var(--hive-fg)]">
                   {counts[0]}+
@@ -133,8 +133,8 @@ export function AboutSection({
                 <p className="mt-2 text-sm text-hive-off-white/60 light:text-neutral-600">{statLabels[0]}</p>
               </div>
               <div className="px-6 py-8 text-center md:border-e md:border-hive-border">
-                <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
-                  <CalendarClock className="h-5 w-5" />
+                <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-white  light:text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
+                  <CalendarClock className="h-5 w-5" strokeWidth={2.5} />
                 </span>
                 <p className="text-5xl font-semibold tracking-tight text-[var(--hive-fg)]">
                   {counts[1]}+
@@ -142,10 +142,10 @@ export function AboutSection({
                 <p className="mt-2 text-sm text-hive-off-white/60 light:text-neutral-600">{statLabels[1]}</p>
               </div>
               <div className="px-6 py-8 text-center">
-                <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-white light:text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
-                  <BadgeCheck className="h-5 w-5" />
+                <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-white  light:text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
+                  <BadgeCheck className="h-5 w-5" strokeWidth={2.5} />
                 </span>
-                <p className="text-5xl font-semibold tracking-tight text-hive-gold-light light:text-hive-gold">
+                <p className="text-5xl font-semibold tracking-tight text-[var(--hive-fg)]">
                   {counts[2]}%
                 </p>
                 <p className="mt-2 text-sm text-hive-off-white/60 light:text-neutral-600">{statLabels[2]}</p>
