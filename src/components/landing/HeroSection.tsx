@@ -9,7 +9,7 @@ export function HeroSection({ t }: Props) {
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] overflow-hidden bg-hive-black light:bg-[#fbfbfbf] pt-28"
+      className="relative min-h-[100svh] overflow-hidden bg-hive-black light:bg-[#fbfbfb] pt-28"
     >
       <HeroHexCursorEffect />
       <div className="pointer-events-none absolute inset-0" aria-hidden>
