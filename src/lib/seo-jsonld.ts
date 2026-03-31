@@ -4,6 +4,7 @@ import { serviceSlugs } from "@/lib/service-details";
 
 const ORG_ID = () => `${getSiteUrl()}/#organization`;
 const LOCAL_ID = () => `${getSiteUrl()}/#localbusiness`;
+const WEBSITE_ID = () => `${getSiteUrl()}/#website`;
 
 export type JsonLdGraph = Record<string, unknown>;
 
@@ -20,6 +21,7 @@ export function buildHomeJsonLd(locale: Locale): { "@context": string; "@graph":
     "@type": "Organization",
     "@id": ORG_ID(),
     name,
+    alternateName: locale === "ar" ? SITE_NAME : SITE_NAME_AR,
     url: base,
     logo: `${base}/hive_logo_new_dark.png`,
     description,
@@ -53,7 +55,18 @@ export function buildHomeJsonLd(locale: Locale): { "@context": string; "@graph":
       { "@type": "Country", name: "Syria" },
       { "@type": "AdministrativeArea", name: "Aleppo" },
     ],
+    inLanguage: locale === "ar" ? "ar" : "en",
     parentOrganization: { "@id": ORG_ID() },
+  };
+
+  const website: JsonLdGraph = {
+    "@type": "WebSite",
+    "@id": WEBSITE_ID(),
+    url: base,
+    name,
+    alternateName: locale === "ar" ? SITE_NAME : SITE_NAME_AR,
+    inLanguage: ["ar", "en"],
+    publisher: { "@id": ORG_ID() },
   };
 
   const services: JsonLdGraph[] = serviceSlugs.map((slug) => ({
@@ -68,7 +81,7 @@ export function buildHomeJsonLd(locale: Locale): { "@context": string; "@graph":
 
   return {
     "@context": "https://schema.org",
-    "@graph": [organization, localBusiness, ...services],
+    "@graph": [organization, website, localBusiness, ...services],
   };
 }
 

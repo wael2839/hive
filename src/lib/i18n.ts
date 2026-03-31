@@ -113,9 +113,9 @@ export type Messages = {
 const messages: Record<Locale, Messages> = {
   en: {
     meta: {
-      title: "Hive Digital Solutions — Software & Digital Agency in Aleppo, Syria",
+      title: "Hive Digital Solutions | Web & Mobile Development in Aleppo, Syria",
       description:
-        "Hive Digital Solutions is a software development and digital solutions company in Aleppo, Syria. We deliver web development, mobile apps, custom systems, ERP-style workflows, and digital transformation for Syrian and regional businesses.",
+        "Hive Digital Solutions is a digital agency in Aleppo, Syria providing web development, mobile app development, branding, and custom software solutions for businesses in Syria and the region.",
     },
     nav: {
       brand: "Hive",
@@ -303,9 +303,9 @@ const messages: Record<Locale, Messages> = {
   },
   ar: {
     meta: {
-      title: "هايڤ للحلول الرقمية — شركة برمجيات وحلول رقمية في حلب، سوريا",
+      title: "هايڤ للحلول الرقمية | تطوير مواقع وتطبيقات في حلب، سوريا",
       description:
-        "شركة برمجة وحلول رقمية في حلب، سوريا: تطوير مواقع وتطبيقات، أنظمة مخصّصة، وتحوّل رقمي للشركات في سوريا والمنطقة. خدمات تطوير ويب، تطبيقات موبايل، وأنظمة داخلية بمعايير احترافية.",
+        "هايڤ للحلول الرقمية في حلب، سوريا: تطوير مواقع وتطبيقات موبايل، برمجة أنظمة مخصّصة، وهوية بصرية للشركات في سوريا والمنطقة.",
     },
     nav: {
       brand: "Hive",

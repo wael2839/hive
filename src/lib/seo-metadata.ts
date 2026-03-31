@@ -14,16 +14,20 @@ export function buildLocalePageMetadata(
   const baseUrl = new URL(base);
   const path = opts.path.startsWith("/") ? opts.path : `/${opts.path}`;
   const url = `${base}${path}`;
+  const enPath = swapLocaleInPath(path, "en");
+  const arPath = swapLocaleInPath(path, "ar");
+  const keywords = buildLocaleKeywords(locale);
 
   return {
     metadataBase: baseUrl,
     title: opts.title,
     description: opts.description,
+    keywords,
     alternates: {
       canonical: path,
       languages: {
-        "ar-SY": `${base}/ar`,
-        en: `${base}/en`,
+        "ar-SY": `${base}${arPath}`,
+        en: `${base}${enPath}`,
         "x-default": `${base}/ar`,
       },
     },
@@ -50,4 +54,68 @@ export function buildLocalePageMetadata(
 
 export function localeTitleTemplate(locale: Locale): string {
   return locale === "ar" ? "%s | هايڤ للحلول الرقمية" : "%s | Hive Digital Solutions";
+}
+
+function swapLocaleInPath(path: string, target: Locale): string {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return normalized.replace(/^\/(ar|en)(?=\/|$)/, `/${target}`);
+}
+
+function buildLocaleKeywords(locale: Locale): string[] {
+  if (locale === "ar") {
+    return [
+      "هايڤ للحلول الرقمية",
+      "شركة برمجة في حلب",
+      "شركة برمجة في سوريا",
+      "تطوير مواقع في حلب",
+      "تطوير مواقع في سوريا",
+      "تصميم مواقع احترافية",
+      "تطوير تطبيقات موبايل",
+      "تطوير تطبيقات أندرويد و iOS",
+      "برمجة أنظمة مخصصة",
+      "حلول رقمية للشركات",
+      "تحول رقمي للشركات",
+      "خدمات برمجية في حلب",
+      "خدمات برمجية في سوريا",
+      "تصميم هوية بصرية",
+      "إدارة سوشيال ميديا",
+      "أتمتة مكتبية للشركات",
+      "Google Maps SEO",
+      "شركة تقنية في حلب",
+      "وكالة رقمية في سوريا",
+      "تطوير برمجيات في الشرق الأوسط",
+      "software company in Syria",
+      "software company in Aleppo",
+      "web development Syria",
+      "mobile app development Syria",
+      "digital agency Aleppo",
+    ];
+  }
+
+  return [
+    "Hive Digital Solutions",
+    "software company in Aleppo",
+    "software company in Syria",
+    "web development Aleppo",
+    "web development Syria",
+    "mobile app development Syria",
+    "mobile app development Aleppo",
+    "custom software development",
+    "digital transformation services",
+    "digital agency in Syria",
+    "branding and visual identity",
+    "UI UX design agency",
+    "ERP workflow automation",
+    "office automation solutions",
+    "social media management agency",
+    "Google Maps SEO services",
+    "outsourcing software development MENA",
+    "full stack development company",
+    "enterprise software solutions",
+    "web and mobile development company",
+    "شركة برمجة في حلب",
+    "شركة برمجة في سوريا",
+    "تطوير مواقع في سوريا",
+    "تطوير تطبيقات في حلب",
+  ];
 }
