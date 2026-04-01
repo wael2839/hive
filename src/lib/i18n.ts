@@ -53,7 +53,7 @@ export type Messages = {
   vision: {
     kicker: string;
     title: string;
-    body: string;
+    cards: { title: string; body: string }[];
   };
   packages: {
     kicker: string;
@@ -200,8 +200,23 @@ const messages: Record<Locale, Messages> = {
     vision: {
       kicker: "How We Work",
       title: "Why Choose Us",
-      body:
-        "We run online-first delivery, secure electronic payments, on-ground implementation when needed, and continuous support plans that keep your systems stable and evolving.",
+      cards: [
+        {
+          title: "Turning ideas into digital reality",
+          body:
+            "We have the passion and experience to transform even complex ideas into software products that feel simple and easy to use.",
+        },
+        {
+          title: "Innovation-first approach",
+          body:
+            "We use modern engineering tools to deliver technical excellence in loading speed, SEO compatibility, and strong security.",
+        },
+        {
+          title: "Transparent collaboration",
+          body:
+            "Our workflow keeps you involved throughout development, ensuring the final product matches exactly what you envision.",
+        },
+      ],
     },
     packages: {
       kicker: "Packages",
@@ -390,8 +405,23 @@ const messages: Record<Locale, Messages> = {
     vision: {
       kicker: "آلية العمل",
       title: "لماذا تختارنا",
-      body:
-        "نعتمد تشغيلًا رقميًا بالكامل، مدفوعات إلكترونية آمنة، تنفيذًا ميدانيًا عند الحاجة، وخطط دعم مستمرة تضمن استقرار وتطور حلولك.",
+      cards: [
+        {
+          title: "تحويل الأفكار إلى واقع رقمي",
+          body:
+            "نمتلك الشغف والخبرة لتحويل أكثر الأفكار تعقيداً إلى تطبيقات برمجية بسيطة وسهلة الاستخدام.",
+        },
+        {
+          title: "نهج يركز على الابتكار",
+          body:
+            "نستخدم أدوات برمجية حديثة تضمن لك التفوق التقني، من حيث سرعة التحميل، التوافق مع محركات البحث، والأمان العالي.",
+        },
+        {
+          title: "الشفافية في التعامل",
+          body:
+            "نعتمد منهجية عمل واضحة تشركك في مراحل التطوير، لضمان أن المنتج النهائي يتطابق تماماً مع ما تحلم به.",
+        },
+      ],
     },
     packages: {
       kicker: "باقاتنا",

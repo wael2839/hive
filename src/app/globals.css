@@ -225,6 +225,66 @@ body {
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--hive-gold) 45%, transparent);
 }
 
+/* Vision: flat-top regular hex (1:√3/2); border/inner colors match former rounded cards */
+.hive-vision-hex-card {
+  --hive-vision-hex-bw: 2px;
+  --hive-vision-hex-clip: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  width: 100%;
+  max-width: min(100%, 28rem);
+  margin-inline: auto;
+}
+
+.hive-vision-hex-card__shell {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 17.5rem;
+  flex: 1 1 auto;
+  flex-direction: column;
+  /* 1 : √3/2 للسداسي المنتظم المسطح؛ مع ارتفاع محدد من الشبكة يتبع صف الصف */
+  aspect-ratio: 1 / 0.8660254;
+}
+
+.hive-vision-hex-card__frame {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  clip-path: var(--hive-vision-hex-clip);
+  background-color: color-mix(in srgb, var(--hive-gold) 100%, var(--hive-border));
+}
+
+.hive-vision-hex-card__inner {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  display: flex;
+  margin: var(--hive-vision-hex-bw);
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  clip-path: var(--hive-vision-hex-clip);
+  background-color: var(--hive-bg2);
+  padding: 0rem 0rem;
+  text-align: center;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 640px) {
+  .hive-vision-hex-card__shell {
+    min-height: 18rem;
+  }
+
+  .hive-vision-hex-card__inner {
+    padding: 2.5rem 2rem;
+  }
+}
+
 @keyframes hive-float {
   0%,
   100% {
