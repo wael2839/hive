@@ -94,7 +94,7 @@ export function AboutSection({
           <div className="flex flex-col items-center text-center">
             <SectionTitle>{t.title}</SectionTitle>
 
-            <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-hive-off-white leading-10 light:text-neutral-600 sm:text-2xl">
+            <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-hive-off-white leading-10  sm:text-2xl">
               {t.body}
             </p>
           </div>

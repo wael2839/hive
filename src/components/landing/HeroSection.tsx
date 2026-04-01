@@ -31,7 +31,7 @@ export function HeroSection({ t }: Props) {
               {t.titleAccent}
             </span>
           </h1>
-          <p className="mt-6 max-w-3xl text-base leading-8 text-hive-off-white/75 light:text-neutral-700 sm:text-2xl">
+          <p className="mt-6 max-w-3xl text-base leading-8 text-hive-off-white  sm:text-2xl">
             {t.subtitle}
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
