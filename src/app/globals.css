@@ -225,63 +225,156 @@ body {
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--hive-gold) 45%, transparent);
 }
 
-/* Vision: flat-top regular hex (1:√3/2); border/inner colors match former rounded cards */
+/* Vision: بطاقات سداسية عبر SVG (VisionHexCard.tsx) */
 .hive-vision-hex-card {
-  --hive-vision-hex-bw: 2px;
-  --hive-vision-hex-clip: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   width: 100%;
-  max-width: min(100%, 28rem);
+  max-width: min(calc(100vw - 2rem), 21rem);
   margin-inline: auto;
 }
 
-.hive-vision-hex-card__shell {
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  min-height: 17.5rem;
-  flex: 1 1 auto;
-  flex-direction: column;
-  /* 1 : √3/2 للسداسي المنتظم المسطح؛ مع ارتفاع محدد من الشبكة يتبع صف الصف */
-  aspect-ratio: 1 / 0.8660254;
-}
-
-.hive-vision-hex-card__frame {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  clip-path: var(--hive-vision-hex-clip);
-  background-color: color-mix(in srgb, var(--hive-gold) 100%, var(--hive-border));
-}
-
-.hive-vision-hex-card__inner {
-  position: relative;
-  z-index: 1;
-  box-sizing: border-box;
-  display: flex;
-  margin: var(--hive-vision-hex-bw);
-  flex: 1 1 auto;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
-  clip-path: var(--hive-vision-hex-clip);
-  background-color: var(--hive-bg2);
-  padding: 0rem 0rem;
-  text-align: center;
-  min-height: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+@media (min-width: 480px) {
+  .hive-vision-hex-card {
+    max-width: min(calc(100vw - 2.5rem), 23.5rem);
+  }
 }
 
 @media (min-width: 640px) {
-  .hive-vision-hex-card__shell {
-    min-height: 18rem;
+  .hive-vision-hex-card {
+    max-width: min(100%, 26rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hive-vision-hex-card {
+    max-width: min(100%, 28rem);
+  }
+}
+
+.hive-vision-hex-card__wrap {
+  position: relative;
+  width: 100%;
+  /* ارتفاع صريح من نسبة السداسي حتى لا ينهار inset-0 على الجوال */
+  aspect-ratio: 100 / 86.6025403784;
+}
+
+.hive-vision-hex-svg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hive-vision-hex-svg__border {
+  fill: color-mix(in srgb, var(--hive-gold) 100%, var(--hive-border));
+}
+
+.hive-vision-hex-svg__face {
+  fill: var(--hive-bg2);
+}
+
+.hive-vision-hex-card__content {
+  box-sizing: border-box;
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-inline: clamp(0.7rem, 3vw, 1.6rem);
+  padding-top: clamp(1.25rem, 4vw, 2.05rem);
+  padding-bottom: clamp(0.85rem, 2.8vw, 1.45rem);
+  gap: clamp(0.4rem, 1.6vw, 0.75rem);
+  text-align: center;
+  pointer-events: auto;
+  -webkit-clip-path: var(--vision-hex-clip-sm, none);
+  clip-path: var(--vision-hex-clip-sm, none);
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 639px) {
+  .hive-vision-hex-card__content {
+    padding-inline: clamp(0.65rem, 2.8vw, 1.3rem);
+    padding-top: clamp(1.05rem, 3.5vw, 1.65rem);
+    padding-bottom: clamp(0.7rem, 2.4vw, 1.15rem);
+    gap: clamp(0.45rem, 1.8vw, 0.65rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hive-vision-hex-card__content {
+    /* سداسي حادّ الرأس: هامش أكبر تحت القمة حتى لا يُقصّ العنوان */
+    padding-top: clamp(1.55rem, 3.6vw, 2.75rem);
+    padding-inline: clamp(0.8rem, 2.4vw, 1.75rem);
+    -webkit-clip-path: var(--vision-hex-clip-lg, none);
+    clip-path: var(--vision-hex-clip-lg, none);
+  }
+}
+
+.hive-vision-hex-card__title {
+  flex-shrink: 0;
+  margin: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+  word-break: break-word;
+  font-weight: 800;
+  line-height: 1.28;
+  letter-spacing: 0.01em;
+  color: var(--hive-fg);
+  font-size: clamp(0.9rem, 2.4vw + 0.35rem, 1.28rem);
+}
+
+@media (min-width: 640px) {
+  .hive-vision-hex-card__title {
+    font-size: clamp(0.98rem, 1.65vw + 0.42rem, 1.34rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hive-vision-hex-card__title {
+    font-size: clamp(1.02rem, 1.05vw + 0.55rem, 1.38rem);
+  }
+}
+
+.hive-vision-hex-card__body {
+  margin: 0;
+  flex: 1 1 auto;
+  min-height: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+  word-break: break-word;
+  line-height: 1.62;
+  font-size: clamp(0.78rem, 1.85vw + 0.2rem, 0.98rem);
+}
+
+@media (min-width: 640px) {
+  .hive-vision-hex-card__body {
+    font-size: clamp(0.82rem, 1.2vw + 0.28rem, 1.02rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hive-vision-hex-card__body {
+    font-size: clamp(0.86rem, 0.65vw + 0.48rem, 1.04rem);
+    line-height: 1.65;
+  }
+}
+
+/* أواخر القواعد: تخطي أحجام sm+ على الجوال فقط */
+@media (max-width: 639px) {
+  .hive-vision-hex-card__title {
+    font-size: clamp(0.9375rem, 3.6vw + 0.42rem, 1.2rem);
+    line-height: 1.3;
   }
 
-  .hive-vision-hex-card__inner {
-    padding: 2.5rem 2rem;
+  .hive-vision-hex-card__body {
+    font-size: clamp(0.8375rem, 2.9vw + 0.42rem, 1rem);
+    line-height: 1.58;
+    min-height: min(7.5rem, 26vh);
   }
 }
 

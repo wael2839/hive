@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import type { Messages } from "@/lib/i18n";
 import { ScrollReveal } from "./ScrollReveal";
 import SectionTitle from "../ui/SectionTitle";
+import { VisionHexCard } from "./VisionHexCard";
 
 export function VisionSection({ t }: { t: Messages["vision"] }) {
   const c0 = t.cards[0];
@@ -40,54 +41,16 @@ export function VisionSection({ t }: { t: Messages["vision"] }) {
 
       <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
         <ScrollReveal>
-          <div className="flex flex-col items-center text-center mb-30!">
+          <div className="mb-10 flex flex-col items-center text-center sm:mb-12">
             <SectionTitle>{t.title}</SectionTitle>
           </div>
         </ScrollReveal>
 
         <ScrollReveal delayMs={80}>
-          <div className="mx-auto  overflow-y-visible mt-12 grid max-w-6xl gap-6 sm:gap-7 md:grid-cols-3 md:items-stretch md:gap-8">
-            <article className="hive-vision-hex-card flex h-full w-full flex-col  ">
-              <div className="hive-vision-hex-card__shell ">
-                <div className="hive-vision-hex-card__frame" aria-hidden />
-                <div className="hive-vision-hex-card__inner ">
-                  <h3 className=" max-w-full text-balance break-words text-base font-bold leading-snug text-[var(--hive-fg)] sm:text-lg">
-                    {c0?.title}
-                  </h3>
-                  <p className="mt-3 max-w-full text-pretty break-words text-sm leading-relaxed text-hive-off-white/88 light:text-neutral-700">
-                    {c0?.body}
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <article className="hive-vision-hex-card flex h-full w-full flex-col  ">
-              <div className="hive-vision-hex-card__shell">
-                <div className="hive-vision-hex-card__frame" aria-hidden />
-                <div className="hive-vision-hex-card__inner">
-                  <h3 className="max-w-full text-balance break-words text-base font-bold leading-snug text-[var(--hive-fg)] sm:text-lg">
-                    {c1?.title}
-                  </h3>
-                  <p className="mt-3 max-w-full text-pretty break-words text-sm leading-relaxed text-hive-off-white/88 light:text-neutral-700">
-                    {c1?.body}
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <article className="hive-vision-hex-card flex h-full w-full flex-col ">
-              <div className="hive-vision-hex-card__shell">
-                <div className="hive-vision-hex-card__frame" aria-hidden />
-                <div className="hive-vision-hex-card__inner">
-                  <h3 className="max-w-full text-balance break-words text-base font-bold leading-snug text-[var(--hive-fg)] sm:text-lg">
-                    {c2?.title}
-                  </h3>
-                  <p className="mt-3 max-w-full text-pretty break-words text-sm leading-relaxed text-hive-off-white/88 light:text-neutral-700">
-                    {c2?.body}
-                  </p>
-                </div>
-              </div>
-            </article>
+          <div className="mx-auto mt-12 grid max-w-6xl gap-6 overflow-y-visible sm:gap-7 lg:grid-cols-3 md:items-stretch md:gap-8">
+            <VisionHexCard title={c0?.title ?? ""} body={c0?.body ?? ""} />
+            <VisionHexCard title={c1?.title ?? ""} body={c1?.body ?? ""} />
+            <VisionHexCard title={c2?.title ?? ""} body={c2?.body ?? ""} />
           </div>
         </ScrollReveal>
       </div>
