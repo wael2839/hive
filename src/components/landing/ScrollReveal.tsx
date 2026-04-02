@@ -15,18 +15,47 @@ export function ScrollReveal({ children, className = "", delayMs = 0 }: Props) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(
+
+    let io: IntersectionObserver | null = null;
+
+    const revealIfInView = () => {
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+      const visible =
+        r.top < vh * 0.98 &&
+        r.bottom > vh * 0.02 &&
+        r.width > 0 &&
+        r.height > 0;
+      if (visible) {
+        setVisible(true);
+        io?.disconnect();
+      }
+    };
+
+    io = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
           setVisible(true);
-          io.disconnect();
+          io?.disconnect();
         }
       },
       /* بدون هامش سالب أسفل — على الجوال كان العنصر أحياناً لا يُعتبر ظاهراً فتبقى opacity-0 */
       { threshold: 0.05, rootMargin: "0px 0px 32px 0px" },
     );
     io.observe(el);
-    return () => io.disconnect();
+
+    /** بعد الرجوع من الصفحة السابقة (bfcache) قد لا يُستدعَى IntersectionObserver من جديد */
+    const onPageShow = (e: PageTransitionEvent) => {
+      if (e.persisted) {
+        requestAnimationFrame(() => revealIfInView());
+      }
+    };
+    window.addEventListener("pageshow", onPageShow);
+
+    return () => {
+      io?.disconnect();
+      window.removeEventListener("pageshow", onPageShow);
+    };
   }, []);
 
   return (

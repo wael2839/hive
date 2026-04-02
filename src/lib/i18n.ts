@@ -526,7 +526,7 @@ const messages: Record<Locale, Messages> = {
     },
     footer: {
       rights: "© Hive Digital Solutions {year} جميع الحقوق محفوظة.",
-      tagline: "نبني أنظمة رقمية قابلة للتوسع.",
+      tagline: "نبني أنظمة رقمية قابلة للتوسع",
       brandIntro:
         "هايف لحلول الرقمية تصمّم وتبني تجارب ويب وموبايل وأتمتة تدعم نمو علامتك بوضوح ودعم مستمر على المدى الطويل.",
       sitemapTitle: "روابط سريعة",
