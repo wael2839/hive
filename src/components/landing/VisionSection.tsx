@@ -39,7 +39,7 @@ export function VisionSection({ t }: { t: Messages["vision"] }) {
       />
       <div className="pointer-events-none absolute inset-0 hive-noise opacity-50" />
 
-      <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="mb-10 flex flex-col items-center text-center sm:mb-12">
             <SectionTitle>{t.title}</SectionTitle>
@@ -47,7 +47,7 @@ export function VisionSection({ t }: { t: Messages["vision"] }) {
         </ScrollReveal>
 
         <ScrollReveal delayMs={80}>
-          <div className="mx-auto mt-12 grid max-w-6xl gap-6 overflow-y-visible sm:gap-7 lg:grid-cols-3 md:items-stretch md:gap-8">
+          <div className="mx-auto mt-8 grid max-w-none gap-3 overflow-y-visible sm:mt-10 sm:gap-4 md:items-stretch lg:mt-12 lg:grid-cols-3 lg:gap-8 ">
             <VisionHexCard title={c0?.title ?? ""} body={c0?.body ?? ""} />
             <VisionHexCard title={c1?.title ?? ""} body={c1?.body ?? ""} />
             <VisionHexCard title={c2?.title ?? ""} body={c2?.body ?? ""} />

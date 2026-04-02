@@ -31,8 +31,8 @@ export function VisionHexCard({ title, body }: Props) {
   } as CSSProperties;
 
   return (
-    <article className="hive-vision-hex-card flex w-full flex-col lg:h-full lg:min-h-0">
-      <div className="hive-vision-hex-card__wrap relative w-full" style={wrapStyle}>
+    <article className="hive-vision-hex-card  flex w-full flex-col lg:h-full lg:min-h-0">
+      <div className="hive-vision-hex-card__wrap relative w-full " style={wrapStyle}>
         <svg
           className="hive-vision-hex-svg"
           viewBox={`0 0 ${VB_W} ${VB_H}`}
@@ -63,7 +63,11 @@ export function VisionHexCard({ title, body }: Props) {
           </g>
         </svg>
         <div className="hive-vision-hex-card__content absolute inset-0 z-10">
-          <h3 className="hive-vision-hex-card__title">{title}</h3>
+          <h3 className="hive-vision-hex-card__title mb-2! relative">{title}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-[100%] mt-1 h-[3px] bg-gradient-to-r from-transparent via-hive-gold/35 to-transparent" />
+
+          </h3>
+          
           <p className="hive-vision-hex-card__body text-hive-off-white/88 light:text-neutral-700">{body}</p>
         </div>
       </div>

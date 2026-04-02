@@ -228,25 +228,25 @@ body {
 /* Vision: بطاقات سداسية عبر SVG (VisionHexCard.tsx) */
 .hive-vision-hex-card {
   width: 100%;
-  max-width: min(calc(100vw - 2rem), 21rem);
+  max-width: min(calc(100vw - 0.25rem), 27rem);
   margin-inline: auto;
 }
 
 @media (min-width: 480px) {
   .hive-vision-hex-card {
-    max-width: min(calc(100vw - 2.5rem), 23.5rem);
+    max-width: min(calc(100vw - 0.75rem), 28rem);
   }
 }
 
 @media (min-width: 640px) {
   .hive-vision-hex-card {
-    max-width: min(100%, 26rem);
+    max-width: min(100%, 30rem);
   }
 }
 
 @media (min-width: 1024px) {
   .hive-vision-hex-card {
-    max-width: min(100%, 28rem);
+    max-width: min(100%, 33rem);
   }
 }
 
@@ -255,6 +255,13 @@ body {
   width: 100%;
   /* ارتفاع صريح من نسبة السداسي حتى لا ينهار inset-0 على الجوال */
   aspect-ratio: 100 / 86.6025403784;
+}
+
+@media (max-width: 639px) {
+  .hive-vision-hex-card__wrap {
+    /* أقرب للسداسي الطبيعي من 100/104 لتقليل الفراغ الرأسي بين البطاقات */
+    aspect-ratio: 100 / 92;
+  }
 }
 
 .hive-vision-hex-svg {
@@ -279,11 +286,11 @@ body {
   min-height: 0;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding-inline: clamp(0.7rem, 3vw, 1.6rem);
-  padding-top: clamp(1.25rem, 4vw, 2.05rem);
-  padding-bottom: clamp(0.85rem, 2.8vw, 1.45rem);
-  gap: clamp(0.4rem, 1.6vw, 0.75rem);
+  justify-content: center;
+  padding-inline: clamp(0.75rem, 2.2vw, 1.55rem);
+  padding-top: clamp(1.15rem, 2.6vw, 1.95rem);
+  padding-bottom: clamp(0.9rem, 2.2vw, 1.4rem);
+  gap: clamp(0.45rem, 1.2vw, 0.75rem);
   text-align: center;
   pointer-events: auto;
   -webkit-clip-path: var(--vision-hex-clip-sm, none);
@@ -293,10 +300,11 @@ body {
 
 @media (max-width: 639px) {
   .hive-vision-hex-card__content {
-    padding-inline: clamp(0.65rem, 2.8vw, 1.3rem);
-    padding-top: clamp(1.05rem, 3.5vw, 1.65rem);
-    padding-bottom: clamp(0.7rem, 2.4vw, 1.15rem);
-    gap: clamp(0.45rem, 1.8vw, 0.65rem);
+    /* هامش جانبي يكفي للقصّ دون padding رأسي كبير يوسّع الإحساس بفراغ بين السداسيات */
+    padding-inline: clamp(0.82rem, 4.5vw, 1.15rem);
+    padding-top: clamp(0.45rem, 2.2vw, 0.78rem);
+    padding-bottom: clamp(0.45rem, 2.2vw, 0.78rem);
+    gap: clamp(0.2rem, 1.4vw, 0.42rem);
   }
 }
 
@@ -311,70 +319,79 @@ body {
 }
 
 .hive-vision-hex-card__title {
-  flex-shrink: 0;
+  flex: 0 1 auto;
   margin: 0;
   max-width: 100%;
   overflow-wrap: anywhere;
   text-wrap: balance;
   word-break: break-word;
   font-weight: 800;
-  line-height: 1.28;
+  line-height: 1.32;
   letter-spacing: 0.01em;
   color: var(--hive-fg);
-  font-size: clamp(0.9rem, 2.4vw + 0.35rem, 1.28rem);
-}
-
-@media (min-width: 640px) {
-  .hive-vision-hex-card__title {
-    font-size: clamp(0.98rem, 1.65vw + 0.42rem, 1.34rem);
-  }
+  font-size: clamp(0.98rem, 1.1vw + 0.78rem, 1.28rem);
 }
 
 @media (min-width: 1024px) {
   .hive-vision-hex-card__title {
-    font-size: clamp(1.02rem, 1.05vw + 0.55rem, 1.38rem);
+    line-height: 1.3;
+    font-size: clamp(1rem, 0.62vw + 0.86rem, 1.36rem);
   }
 }
 
 .hive-vision-hex-card__body {
   margin: 0;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-height: 0;
   max-width: 100%;
   overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior: contain;
+  overflow-y: hidden;
   overflow-wrap: anywhere;
   text-wrap: pretty;
   word-break: break-word;
-  line-height: 1.62;
-  font-size: clamp(0.78rem, 1.85vw + 0.2rem, 0.98rem);
-}
-
-@media (min-width: 640px) {
-  .hive-vision-hex-card__body {
-    font-size: clamp(0.82rem, 1.2vw + 0.28rem, 1.02rem);
-  }
+  line-height: 1.56;
+  font-size: clamp(0.84rem, 0.62vw + 0.72rem, 1.02rem);
 }
 
 @media (min-width: 1024px) {
   .hive-vision-hex-card__body {
-    font-size: clamp(0.86rem, 0.65vw + 0.48rem, 1.04rem);
-    line-height: 1.65;
+    line-height: 1.62;
+    font-size: clamp(0.87rem, 0.35vw + 0.78rem, 1.05rem);
   }
 }
 
-/* أواخر القواعد: تخطي أحجام sm+ على الجوال فقط */
-@media (max-width: 639px) {
+/* iPad / تابلت: كان الخط يبدو صغيرًا بين الجوال والـ lg */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .hive-vision-hex-card__content {
+    padding-inline: clamp(0.9rem, 2.2vw, 1.7rem);
+    gap: clamp(0.5rem, 1.4vw, 0.85rem);
+  }
+
   .hive-vision-hex-card__title {
-    font-size: clamp(0.9375rem, 3.6vw + 0.42rem, 1.2rem);
-    line-height: 1.3;
+    font-size: clamp(1.06rem, 1.15vw + 0.88rem, 1.34rem);
+    line-height: 1.31;
   }
 
   .hive-vision-hex-card__body {
-    font-size: clamp(0.8375rem, 2.9vw + 0.42rem, 1rem);
-    line-height: 1.58;
-    min-height: min(7.5rem, 26vh);
+    font-size: clamp(0.94rem, 0.85vw + 0.76rem, 1.08rem);
+    line-height: 1.6;
+  }
+}
+
+/* الجوال: خط أوضح داخل السداسي */
+@media (max-width: 639px) {
+  .hive-vision-hex-card__title {
+    font-size: clamp(1.06rem, 3.35vw + 0.52rem, 1.26rem);
+    line-height: 1.33;
+    max-width: 86%;
+  }
+
+  .hive-vision-hex-card__body {
+    font-size: clamp(0.96rem, 2.55vw + 0.54rem, 1.07rem);
+    line-height: 1.6;
+    min-height: 0;
+    overflow-y: hidden;
+    max-width: 88%;
   }
 }
 
@@ -554,122 +571,107 @@ html.light .hive-hero-hex-grid-light {
   transition: transform 0.35s ease;
 }
 
-.svc-card::before,
-.svc-card::after {
+.svc-card::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 0;
   border-radius: var(--radius-md);
   pointer-events: none;
-  transition: all 0.35s ease;
-}
-
-.svc-card::before {
+  transition: border-color 0.35s ease, background 0.35s ease;
   background: color-mix(in srgb, var(--hive-fg) 6%, transparent);
   border: 1px solid color-mix(in srgb, var(--hive-gold) 24%, var(--hive-border));
-}
-
-.svc-card::after {
-  width: 0;
-  background: color-mix(in srgb, var(--hive-gold) 18%, transparent);
 }
 
 .svc-card:hover {
   transform: translateY(-8px);
 }
 
-.svc-card:hover::after {
-  width: 100%;
-}
-
 .svc-card__data {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
 }
 
-.svc-card__image {
+.svc-card__media {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  flex-shrink: 0;
   border-radius: var(--radius-md) var(--radius-md) 0 0;
   border: 1px solid color-mix(in srgb, var(--hive-gold) 24%, var(--hive-border));
   border-bottom: 0;
   overflow: hidden;
+}
+
+.svc-card__image {
+  position: relative;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0;
+  border: none;
+  overflow: hidden;
   transition: filter 0.35s ease;
 }
 
-.svc-card:hover .svc-card__image {
-  filter: grayscale(1);
-}
-
-.svc-card__image-overlay {
+/* زر «المزيد» فوق الصورة — بلا حاوية خارجية */
+.svc-card__top-more {
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 78% 24%, rgba(255, 232, 140, 0.22), transparent 45%),
-    radial-gradient(circle at 24% 72%, rgba(189, 169, 87, 0.22), transparent 50%);
-}
-
-.svc-card__social {
-  position: absolute;
-  right: 0.7rem;
   top: 1.1rem;
+  right: 0.7rem;
+  left: auto;
   z-index: 3;
-  width: 64px;
-  max-width: 64px;
-  display: flex;
-  flex-direction: column;
+  max-width: calc(100% - 1.4rem);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.55rem 0.25rem;
-  border-radius: 10px;
-  border: 1px solid rgba(189, 169, 87, 0.22);
-  background: rgba(255, 255, 255, 0.04);
-  box-sizing: border-box;
-  transform: translateX(115%);
-  opacity: 0;
-  pointer-events: none;
-  transition: transform 0.35s ease, opacity 0.28s ease;
-}
-
-.svc-card:hover .svc-card__social,
-.svc-card:focus-within .svc-card__social {
-  transform: translateX(0);
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.svc-card__social a {
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
+  min-height: 36px;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-align: center;
   text-decoration: none;
-  color: var(--hive-gold-light);
-  background: rgba(0, 0, 0, 0.42);
-  border: 1px solid rgba(189, 169, 87, 0.45);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-  transition: all 0.35s ease;
+  white-space: nowrap;
+  border-radius: 10px;
+  color: #111;
+  background: linear-gradient(135deg, var(--hive-btn-from), var(--hive-btn-to));
+  border: 1px solid rgba(189, 169, 87, 0.65);
+  box-shadow: 0 10px 22px rgba(189, 169, 87, 0.32);
+  transition: opacity 0.2s ease, filter 0.2s ease;
 }
 
-.svc-card__social a:hover {
+.svc-card__top-more:hover {
+  filter: brightness(1.05);
+}
+
+.svc-card__top-more:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--hive-gold) 65%, transparent);
+  outline-offset: 2px;
+}
+
+html.light .svc-card__top-more {
   color: #111;
   background: linear-gradient(135deg, var(--hive-btn-from), var(--hive-btn-to));
   border-color: rgba(189, 169, 87, 0.65);
   box-shadow: 0 10px 22px rgba(189, 169, 87, 0.32);
 }
 
-html.light .svc-card__social a {
-  color: #1f1a12;
-  background: rgba(255, 255, 255, 0.88);
-  border-color: rgba(110, 95, 26, 0.5);
-  box-shadow: 0 8px 16px rgba(30, 24, 10, 0.14);
+.svc-card:hover .svc-card__image {
+  filter: grayscale(1);
 }
 
 .svc-card__info {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
   padding: 1rem 1.1rem 1.2rem;
   border: 1px solid color-mix(in srgb, var(--hive-gold) 24%, var(--hive-border));
   border-top: 0;
@@ -692,7 +694,7 @@ html.light .svc-card__social a {
 }
 
 .svc-card__more {
-  margin: 0 0 0.7rem;
+  margin: 0;
   font-size: 0.84rem;
   line-height: 1.58;
   color: color-mix(in srgb, var(--hive-fg) 78%, transparent);
@@ -701,27 +703,6 @@ html.light .svc-card__social a {
   -webkit-line-clamp: 3;
   line-clamp: 3;
   overflow: hidden;
-}
-
-.svc-card__btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  border-radius: var(--radius-md);
-  border: 1px solid color-mix(in srgb, var(--hive-gold) 38%, transparent);
-  color: var(--hive-gold-light);
-  padding: 0.52rem 1rem;
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  transition: all 0.22s ease;
-}
-
-.svc-card:hover .svc-card__btn,
-.svc-card:focus-within .svc-card__btn {
-  border-color: var(--hive-gold-light);
-  color: var(--hive-gold-light);
 }
 
 /* Service details pages */

@@ -1,18 +1,6 @@
 import Image from "next/image";
-import type { Messages } from "@/lib/i18n";
+import type { Locale, Messages } from "@/lib/i18n";
 import { serviceSlugs } from "@/lib/service-details";
-import {
-  Briefcase,
-  Code,
-  Hash,
-  Mail,
-  MapPin,
-  Monitor,
-  PenTool,
-  Smartphone,
-  Tags,
-  type LucideIcon,
-} from "lucide-react";
 import { ScrollReveal } from "./ScrollReveal";
 import SectionTitle from "../ui/SectionTitle";
 
@@ -26,15 +14,7 @@ const serviceImages = [
   "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1200&q=80",
 ];
 
-const serviceIcons: LucideIcon[] = [Code, Smartphone, Monitor, PenTool, Hash, Briefcase, MapPin];
-
-export function ServicesSection({
-  locale,
-  t,
-}: {
-  locale: "ar" | "en";
-  t: Messages["services"];
-}) {
+export function ServicesSection({ locale, t }: { locale: Locale; t: Messages["services"] }) {
   return (
     <section
       id="services"
@@ -47,40 +27,31 @@ export function ServicesSection({
           </div>
         </ScrollReveal>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {t.items.map((item, i) => (
-            <ScrollReveal key={item.title} delayMs={60 + i * 40}>
-              <article className="svc-card group">
+            <ScrollReveal key={item.title} delayMs={60 + i * 40} className="h-full min-h-0">
+              <article className="svc-card flex h-full min-h-0 flex-col">
                 <div className="svc-card__data">
-                  <Image
-                    className="svc-card__image"
-                    src={serviceImages[i % serviceImages.length]}
-                    alt={item.title}
-                    width={1200}
-                    height={675}
-                    style={{ objectFit: "cover" }}
-                  />
-                  <div className="svc-card__social">
-                    <a href="#contact" aria-label="Contact">
-                      {(() => {
-                        const Icon = serviceIcons[i % serviceIcons.length];
-                        return <Icon size={16} strokeWidth={1.8} />;
-                      })()}
-                    </a>
-                    <a href="#contact" aria-label="Contact us">
-                      <Mail size={16} strokeWidth={1.8} />
-                    </a>
-                    <a href="#packages" aria-label="View packages">
-                      <Tags size={16} strokeWidth={1.8} />
+                  <div className="svc-card__media">
+                    <Image
+                      className="svc-card__image"
+                      src={serviceImages[i % serviceImages.length]}
+                      alt={item.title}
+                      width={1200}
+                      height={675}
+                      style={{ objectFit: "cover" }}
+                    />
+                    <a
+                      className="svc-card__top-more"
+                      href={`/${locale}/services/${serviceSlugs[i % serviceSlugs.length]}`}
+                    >
+                      {t.moreCta}
                     </a>
                   </div>
                   <div className="svc-card__info">
                     <h3 className="svc-card__title">{item.title}</h3>
                     <p className="svc-card__desc">{item.desc}</p>
                     <p className="svc-card__more">{item.more}</p>
-                    <a href={`/${locale}/services/${serviceSlugs[i % serviceSlugs.length]}`} className="svc-card__btn">
-                      {t.moreCta}
-                    </a>
                   </div>
                 </div>
               </article>
