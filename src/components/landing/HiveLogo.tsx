@@ -44,7 +44,9 @@ export function HiveLogo({
           alt={alt}
           width={REF_W}
           height={REF_H}
-          priority={priority}
+          priority={!!priority}
+          loading={priority ? undefined : "lazy"}
+          fetchPriority={priority ? "high" : "low"}
           className={`${heightClass} w-auto ${maxWidthClass} object-contain object-left rtl:object-right`}
           sizes="(max-width: 640px) 168px, 192px"
         />
@@ -55,7 +57,9 @@ export function HiveLogo({
             alt={alt}
             width={REF_W}
             height={REF_H}
-            priority={priority}
+            priority={!!priority}
+            loading={priority ? undefined : "lazy"}
+            fetchPriority={priority ? "high" : "low"}
             className={`${heightClass} w-auto ${maxWidthClass} object-contain object-left rtl:object-right light:hidden`}
             sizes="(max-width: 640px) 168px, 192px"
           />
@@ -64,7 +68,9 @@ export function HiveLogo({
             alt={alt}
             width={REF_W}
             height={REF_H}
-            priority={priority}
+            priority={false}
+            loading="lazy"
+            fetchPriority="low"
             className={`${heightClass} hidden w-auto ${maxWidthClass} object-contain object-left rtl:object-right light:block`}
             sizes="(max-width: 640px) 168px, 192px"
           />
