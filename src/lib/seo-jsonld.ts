@@ -92,7 +92,7 @@ function serviceNameLabel(slug: string, locale: Locale): string {
     "desktop-apps": { en: "Desktop software development", ar: "تطوير برامج سطح المكتب" },
     "visual-identity": { en: "Visual identity & branding", ar: "الهوية البصرية والعلامة" },
     "social-media": { en: "Social media management", ar: "إدارة السوشيال ميديا" },
-    "office-solutions": { en: "Office automation & internal systems", ar: "أتمتة مكتبية وأنظمة داخلية" },
+    "office-services": { en: "Office automation & internal systems", ar: "أتمتة مكتبية وأنظمة داخلية" },
     "google-maps": { en: "Google Maps & local SEO", ar: "خرائط Google وتحسين الظهور المحلي" },
   };
   const row = labels[slug];
