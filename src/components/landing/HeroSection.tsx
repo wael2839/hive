@@ -36,13 +36,13 @@ export function HeroSection({ t }: Props) {
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a
-              href="#portfolio"
+              href="#contact"
               className="hive-cta-hex rounded-md inline-flex items-center justify-center bg-gradient-to-r from-hive-btn-from to-hive-btn-to px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
             >
               {t.primary}
             </a>
             <a
-              href="#about"
+              href="#services"
               className="hive-cta-hex rounded-md inline-flex items-center justify-center bg-[var(--hive-pill-bg)] px-8 py-3 text-sm font-semibold text-hive-off-white transition hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
             >
               {t.secondary}
