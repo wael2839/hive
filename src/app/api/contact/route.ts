@@ -10,6 +10,13 @@ import { serviceSlugs, type ServiceSlug } from "@/lib/service-details";
 
 export const runtime = "nodejs";
 
+/** على Vercel يحدّ مدة التنفيذ؛ على VPS يمكن تجاهله. */
+export const maxDuration = 60;
+
+/** يمنع انتظار SMTP إلى ما لا نهاية فيُغلق البروكسي بـ 504 قبل أن يُرجع المسار 502. */
+const SMTP_CONNECTION_MS = 12_000;
+const SMTP_SOCKET_MS = 22_000;
+
 const MAX_NAME = 200;
 const MAX_EMAIL = 320;
 const MAX_DETAILS = 10_000;
@@ -125,6 +132,9 @@ export async function POST(req: Request) {
       port: smtp.port,
       secure: smtp.secure,
       auth: { user: smtp.user, pass: smtp.pass },
+      connectionTimeout: SMTP_CONNECTION_MS,
+      greetingTimeout: SMTP_CONNECTION_MS,
+      socketTimeout: SMTP_SOCKET_MS,
     });
 
     await transporter.sendMail({
