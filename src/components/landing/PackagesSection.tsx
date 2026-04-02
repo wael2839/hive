@@ -65,6 +65,7 @@ export function PackagesSection({ locale, t }: Props) {
                   ))}
                 </ul>
                 <Link
+                  prefetch={false}
                   href={`/${locale}#contact`}
                   className={`mt-8 inline-flex w-full items-center justify-center rounded-md px-6 py-3 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold ${
                     item.featured

@@ -37,6 +37,7 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
           }`}
         >
           <Link
+            prefetch={false}
             href={`/${locale}#hero`}
             className="flex min-w-0 max-w-[min(100%,18rem)] shrink-0 items-center gap-2 py-0.5 sm:max-w-none sm:gap-2.5"
             dir={locale === "ar" ? "rtl" : "ltr"}
@@ -60,6 +61,7 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
           >
             {anchors.map((a) => (
               <Link
+                prefetch={false}
                 key={a.id}
                 href={`/${locale}#${a.id}`}
                 className="rounded-md px-3 py-2 text-sm font-semibold text-hive-off-white/80 light:text-neutral-700 transition-colors hover:bg-[var(--hive-hover-surface)] hover:text-hive-gold"
@@ -145,6 +147,7 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
         >
             <div className="mb-6 flex items-center justify-between gap-3">
               <Link
+                prefetch={false}
                 href={`/${locale}#hero`}
                 className="inline-flex max-w-[10.5rem] items-center rounded-md border border-hive-border bg-[var(--hive-pill-bg)] px-3 py-2"
                 dir={locale === "ar" ? "rtl" : "ltr"}
@@ -183,6 +186,7 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
             >
               {anchors.map((a) => (
                 <Link
+                  prefetch={false}
                   key={a.id}
                   href={`/${locale}#${a.id}`}
                   className="rounded-md px-3 py-2.5 text-sm font-medium text-hive-off-white/85 transition-colors hover:bg-[var(--hive-hover-surface)] hover:text-hive-gold ring-hive-gold/50 ring-1"

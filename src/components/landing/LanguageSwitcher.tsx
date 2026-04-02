@@ -26,7 +26,7 @@ export function LanguageSwitcher({ active }: { active: Locale }) {
           <Link
             key={locale}
             href={href}
-            prefetch
+            prefetch={false}
             className={`relative rounded-md px-3 py-1 text-xs font-semibold tracking-wide transition-colors ${
               isOn
                 ? "text-neutral-900"

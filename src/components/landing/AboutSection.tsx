@@ -1,19 +1,19 @@
- "use client";
+"use client";
 
 import {
-  BadgeCheck,
-  CalendarClock,
-  FolderCheck,
-  Lightbulb,
-  Sparkles,
-  Target,
-} from "lucide-react";
+  IconBadgeCheck,
+  IconCalendarClock,
+  IconFolderCheck,
+  IconLightbulb,
+  IconSparkles,
+  IconTarget,
+} from "@/components/icons/MiniUiIcons";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Locale, Messages } from "@/lib/i18n";
 import { ScrollReveal } from "./ScrollReveal";
 import SectionTitle from "../ui/SectionTitle";
 
-const featureIcons = [Sparkles, Lightbulb, Target];
+const featureIcons = [IconSparkles, IconLightbulb, IconTarget];
 
 export function AboutSection({
   t,
@@ -104,14 +104,14 @@ export function AboutSection({
           <div className="mx-auto mt-10 max-w-5xl">
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-10 lg:gap-20">
               {featureLabels.map((label, idx) => {
-                const Icon = featureIcons[idx] ?? Sparkles;
+                const Icon = featureIcons[idx] ?? IconSparkles;
                 return (
                   <article
                     key={label}
                     className="min-w-36  inline-flex items-center justify-center gap-3 rounded-full border border-hive-border/70 bg-[var(--hive-bg)]! px-5 py-2.5 text-[var(--hive-fg)] shadow-[0_8px_24px_rgba(0,0,0,0.12)] backdrop-blur-sm light:bg-white/80 light:shadow-[0_8px_22px_rgba(0,0,0,0.06)]"
                   >
                     <span className=" inline-flex h-8 w-8 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-white  light:text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
-                      <Icon className="h-4 w-4 " strokeWidth={2} />
+                      <Icon className="h-4 w-4" />
                     </span>
                     <span className=" text-md sm:text-lg text-center ">{label}</span>
                   </article>
@@ -125,7 +125,7 @@ export function AboutSection({
             >
               <div className="px-6 py-8 text-center md:border-e md:border-hive-border">
                 <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-white  light:text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
-                  <FolderCheck className="h-5 w-5" strokeWidth={2} />
+                  <IconFolderCheck className="h-5 w-5" />
                 </span>
                 <p className="text-5xl font-semibold tracking-tight text-[var(--hive-fg)]">
                   {counts[0]}+
@@ -134,7 +134,7 @@ export function AboutSection({
               </div>
               <div className="px-6 py-8 text-center md:border-e md:border-hive-border">
                 <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-white  light:text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
-                  <CalendarClock className="h-5 w-5" strokeWidth={2} />
+                  <IconCalendarClock className="h-5 w-5" />
                 </span>
                 <p className="text-5xl font-semibold tracking-tight text-[var(--hive-fg)]">
                   {counts[1]}+
@@ -143,7 +143,7 @@ export function AboutSection({
               </div>
               <div className="px-6 py-8 text-center">
                 <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-white  light:text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
-                  <BadgeCheck className="h-5 w-5" strokeWidth={2} />
+                  <IconBadgeCheck className="h-5 w-5" />
                 </span>
                 <p className="text-5xl font-semibold tracking-tight text-[var(--hive-fg)]">
                   {counts[2]}%

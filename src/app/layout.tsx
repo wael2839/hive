@@ -28,12 +28,7 @@ const defaultHtmlDir = defaultLocale === "ar" ? "rtl" : "ltr";
 
 export const metadata: Metadata = {
   icons: {
-    icon: [
-      { url: "/hive_logo_new_dark.png" },
-      { url: "/hive_logo_new_dark.png", sizes: "32x32", type: "image/png" },
-      { url: "/hive_logo_new_dark.png", sizes: "48x48", type: "image/png" },
-      { url: "/hive_logo_new_dark.png", sizes: "192x192", type: "image/png" },
-    ],
+    icon: [{ url: "/hive_logo_new_dark.png", type: "image/png" }],
     shortcut: "/hive_logo_new_dark.png",
     apple: "/hive_logo_new_dark.png",
   },

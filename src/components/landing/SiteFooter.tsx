@@ -1,5 +1,5 @@
-import { Globe, Send } from "lucide-react";
 import Link from "next/link";
+import { IconGlobe, IconSend } from "@/components/icons/MiniUiIcons";
 import {
   IconFacebook,
   IconInstagram,
@@ -49,6 +49,7 @@ export function SiteFooter({ locale, t }: Props) {
           {/* العمود 1 — الهوية: شعار أعلى منتصف النص */}
           <div className="flex flex-col items-center text-center sm:col-span-2 lg:col-span-1">
             <Link
+              prefetch={false}
               href={`/${locale}#hero`}
               className="inline-flex outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-hive-gold focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--hive-bg)]"
             >
@@ -73,13 +74,17 @@ export function SiteFooter({ locale, t }: Props) {
               <ul className="flex flex-col gap-2.5">
                 {quickLinks.map((a) => (
                   <li key={a.id}>
-                    <Link href={`/${locale}#${a.id}`} className={linkMutedClass}>
+                    <Link
+                      prefetch={false}
+                      href={`/${locale}#${a.id}`}
+                      className={linkMutedClass}
+                    >
                       {nav[a.key]}
                     </Link>
                   </li>
                 ))}
                 <li>
-                  <Link href={`/${locale}`} className={linkMutedClass}>
+                  <Link prefetch={false} href={`/${locale}`} className={linkMutedClass}>
                     {nav.allLinks}
                   </Link>
                 </li>
@@ -97,6 +102,7 @@ export function SiteFooter({ locale, t }: Props) {
                 return (
                   <li key={slug}>
                     <Link
+                      prefetch={false}
                       href={`/${locale}/services/${slug}`}
                       className={linkMutedClass}
                     >
@@ -113,8 +119,8 @@ export function SiteFooter({ locale, t }: Props) {
             <p className="text-sm font-semibold text-hive-gold">{f.contactTitle}</p>
             <ul className="mt-4 flex flex-col gap-3">
               <li>
-                <Link href={`/${locale}#contact`} className={contactRowClass}>
-                  <Send className="size-4 shrink-0 text-hive-gold" strokeWidth={1.75} />
+                <Link prefetch={false} href={`/${locale}#contact`} className={contactRowClass}>
+                  <IconSend className="size-4 shrink-0 text-hive-gold" />
                   <span>{f.contactForm}</span>
                 </Link>
               </li>
@@ -244,11 +250,12 @@ export function SiteFooter({ locale, t }: Props) {
               <IconLinkedIn className="size-5" />
             </a>
             <Link
+              prefetch={false}
               href={`/${locale}`}
               aria-label={nav.home}
               className={socialBarClass}
             >
-              <Globe className="size-5" strokeWidth={1.75} />
+              <IconGlobe className="size-5" />
             </Link>
           </div>
         </div>

@@ -6,13 +6,13 @@ import SectionTitle from "../ui/SectionTitle";
 
 /** أبعاد أصغر للشبكة (أداء LCP/الشبكة على الجوال) — `sizes` يطابق أعمدة البطاقات */
 const serviceImages = [
-  "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=640&q=75",
-  "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=640&q=75",
-  "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=640&q=75",
-  "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=640&q=75",
-  "https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=640&q=75",
-  "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=640&q=75",
-  "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=640&q=75",
+  "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=560&q=70",
+  "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=560&q=70",
+  "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=560&q=70",
+  "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=560&q=70",
+  "https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=560&q=70",
+  "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=560&q=70",
+  "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=560&q=70",
 ];
 
 export function ServicesSection({ locale, t }: { locale: Locale; t: Messages["services"] }) {
@@ -38,9 +38,11 @@ export function ServicesSection({ locale, t }: { locale: Locale; t: Messages["se
                       className="svc-card__image"
                       src={serviceImages[i % serviceImages.length]}
                       alt={item.title}
-                      width={640}
-                      height={360}
+                      width={560}
+                      height={315}
                       sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                      quality={72}
+                      fetchPriority="low"
                       style={{ objectFit: "cover" }}
                     />
                     <a
