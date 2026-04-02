@@ -13,7 +13,7 @@ type Props = {
 };
 
 const triggerClass =
-  "flex w-full items-center justify-between gap-3 rounded-md border border-hive-border bg-[var(--hive-bg)] px-4 py-3 text-start text-sm outline-none transition focus:border-hive-gold/50 focus:outline-none light:bg-white light:text-neutral-900";
+  "flex h-[44px] w-full items-center justify-between gap-3 rounded-md border border-hive-border bg-[var(--hive-bg)] px-3.5 py-2 text-start text-sm outline-none transition focus:border-hive-gold/50 focus:outline-none light:bg-white light:text-neutral-900";
 
 const listClass =
   "absolute z-30 mt-1 max-h-60 w-full overflow-auto rounded-md border border-hive-border bg-[var(--hive-bg)] py-1 light:bg-white";
@@ -67,7 +67,7 @@ export function ContactServiceSelect({
   }
 
   return (
-    <div ref={rootRef} className="relative mt-2">
+    <div ref={rootRef} className="relative mt-1.5">
       <input type="hidden" name={name} value={value} />
 
       <button

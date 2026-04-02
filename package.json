@@ -17,6 +17,7 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "libphonenumber-js": "^1.12.41",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/nodemailer": "^7.0.11",

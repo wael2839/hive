@@ -35,7 +35,7 @@ export function PackagesSection({ locale, t }: Props) {
                 }`}
               >
                 {item.featured ? (
-                  <p className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-md border border-hive-gold/40 bg-hive-black px-3 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-hive-gold-light light:bg-[#e6e6e0] light:text-[#5c4a12]">
+                  <p className="absolute -top-3.5 left-1/2 z-10 -translate-x-1/2 rounded-lg border border-hive-gold/45 bg-hive-black px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-hive-gold-light shadow-sm sm:-top-4 sm:px-4 sm:py-2 sm:text-[13px] light:bg-[#e6e6e0] light:text-[#5c4a12]">
                     {t.badgePopular}
                   </p>
                 ) : null}

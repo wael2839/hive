@@ -1,17 +1,34 @@
+import { Globe, Send } from "lucide-react";
 import Link from "next/link";
+import {
+  IconFacebook,
+  IconInstagram,
+  IconLinkedIn,
+  IconMail,
+  IconTikTok,
+  IconWhatsApp,
+} from "@/components/icons/ContactChannelIcons";
 import { siteContact } from "@/config/site-contact";
 import type { Locale, Messages } from "@/lib/i18n";
+import { serviceSlugs } from "@/lib/service-details";
 import { HiveLogo } from "./HiveLogo";
 
-const footerAnchors = [
+const quickLinks = [
   { id: "hero", key: "home" as const },
   { id: "about", key: "about" as const },
   { id: "services", key: "services" as const },
-  { id: "vision", key: "vision" as const },
   { id: "packages", key: "packages" as const },
-  { id: "portfolio", key: "portfolio" as const },
   { id: "contact", key: "contact" as const },
-];
+] as const;
+
+const socialBarClass =
+  "flex h-11 w-11 items-center justify-center rounded-lg border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:border-hive-gold/45 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold";
+
+const contactRowClass =
+  "group flex items-center gap-2.5 text-start text-sm text-hive-off-white/85 transition-colors hover:text-hive-gold-light light:text-neutral-700 light:hover:text-hive-gold";
+
+const linkMutedClass =
+  "text-sm text-hive-off-white/80 transition-colors hover:text-hive-gold-light light:text-neutral-700 light:hover:text-hive-gold";
 
 type Props = {
   locale: Locale;
@@ -21,92 +38,219 @@ type Props = {
 export function SiteFooter({ locale, t }: Props) {
   const f = t.footer;
   const nav = t.nav;
+  const c = t.contact;
+  const year = new Date().getFullYear();
+  const rightsText = f.rights.replace("{year}", String(year));
 
   return (
     <footer className="relative border-t border-hive-border bg-[var(--hive-bg)]">
-      
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
-          <div className="max-w-md shrink-0">
+      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10 xl:gap-12">
+          {/* العمود 1 — الهوية: شعار أعلى منتصف النص */}
+          <div className="flex flex-col items-center text-center sm:col-span-2 lg:col-span-1">
             <Link
               href={`/${locale}#hero`}
-              className="inline-block outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-hive-gold focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--hive-bg)]"
+              className="inline-flex outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-hive-gold focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--hive-bg)]"
             >
               <HiveLogo
-                heightClass="h-7 sm:h-8"
-                maxWidthClass="max-w-[180px] sm:max-w-[200px]"
+                heightClass="h-8 sm:h-9"
+                maxWidthClass="max-w-[200px] sm:max-w-[220px]"
                 alt={t.meta.title}
               />
             </Link>
-            <p className="mt-3 line-clamp-3 text-sm leading-snug text-hive-off-white/55 light:text-neutral-600">
-              {t.meta.description}
-            </p>
-            <p className="mt-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-hive-gold/80 light:text-[#5c4a12]">
+            <h2 className="mt-4 max-w-sm text-lg font-bold leading-snug text-hive-gold sm:text-xl">
               {f.tagline}
+            </h2>
+            <p className="mt-3 max-w-sm text-sm leading-7 text-hive-off-white/75 light:text-neutral-600">
+              {f.brandIntro}
             </p>
           </div>
 
-          <div className="grid flex-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:max-w-lg">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-hive-gold-light/90">
-                {f.sitemapTitle}
-              </p>
-              <nav aria-label={f.sitemapTitle} className="mt-3">
-                <ul className="space-y-1.5">
-                  {footerAnchors.map((a) => (
-                    <li key={a.id}>
-                      <Link
-                        href={`/${locale}#${a.id}`}
-                        className="text-sm text-hive-off-white/70 transition-colors hover:text-hive-gold-light light:text-neutral-700"
-                      >
-                        {nav[a.key]}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
-
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-hive-gold-light/90">
-                {f.contactTitle}
-              </p>
-              <ul className="mt-3 space-y-2">
+          {/* العمود 2 — روابط سريعة */}
+          <div className="text-start">
+            <p className="text-sm font-semibold text-hive-gold">{f.sitemapTitle}</p>
+            <nav aria-label={f.sitemapTitle} className="mt-4">
+              <ul className="flex flex-col gap-2.5">
+                {quickLinks.map((a) => (
+                  <li key={a.id}>
+                    <Link href={`/${locale}#${a.id}`} className={linkMutedClass}>
+                      {nav[a.key]}
+                    </Link>
+                  </li>
+                ))}
                 <li>
-                  <Link
-                    href={`/${locale}#contact`}
-                    className="text-sm text-hive-off-white/70 transition-colors hover:text-hive-gold-light light:text-neutral-700"
-                  >
-                    {nav.contact}
+                  <Link href={`/${locale}`} className={linkMutedClass}>
+                    {nav.allLinks}
                   </Link>
                 </li>
-                <li>
-                  <a
-                    href={siteContact.email.href}
-                    className="text-sm text-hive-off-white/70 transition-colors hover:text-hive-gold-light light:text-neutral-700"
-                    dir="ltr"
-                  >
-                    {siteContact.email.display}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={siteContact.phone.href}
-                    className="text-sm text-hive-off-white/70 transition-colors hover:text-hive-gold-light light:text-neutral-700"
-                    dir="ltr"
-                  >
-                    {siteContact.phone.display}
-                  </a>
-                </li>
               </ul>
-            </div>
+            </nav>
+          </div>
+
+          {/* العمود 3 — خدماتنا */}
+          <div className="text-start">
+            <p className="text-sm font-semibold text-hive-gold">{f.servicesTitle}</p>
+            <ul className="mt-4 flex flex-col gap-2.5">
+              {serviceSlugs.map((slug, i) => {
+                const title = t.services.items[i]?.title;
+                if (!title) return null;
+                return (
+                  <li key={slug}>
+                    <Link
+                      href={`/${locale}/services/${slug}`}
+                      className={linkMutedClass}
+                    >
+                      {title}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          {/* العمود 4 — تواصل */}
+          <div className="text-start">
+            <p className="text-sm font-semibold text-hive-gold">{f.contactTitle}</p>
+            <ul className="mt-4 flex flex-col gap-3">
+              <li>
+                <Link href={`/${locale}#contact`} className={contactRowClass}>
+                  <Send className="size-4 shrink-0 text-hive-gold" strokeWidth={1.75} />
+                  <span>{f.contactForm}</span>
+                </Link>
+              </li>
+              <li>
+                <a
+                  href={siteContact.whatsapp.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={contactRowClass}
+                >
+                  <IconWhatsApp className="size-4 shrink-0 text-hive-gold" />
+                  <span className="flex min-w-0 flex-col text-start">
+                    <span>{c.ariaWhatsApp}</span>
+                    <span
+                      dir="ltr"
+                      className="text-xs text-hive-off-white/50 light:text-neutral-500"
+                    >
+                      {siteContact.phone.display}
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteContact.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={contactRowClass}
+                >
+                  <IconFacebook className="size-4 shrink-0 text-hive-gold" />
+                  <span>{c.ariaFacebook}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteContact.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={contactRowClass}
+                >
+                  <IconInstagram className="size-4 shrink-0 text-hive-gold" />
+                  <span>{c.ariaInstagram}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteContact.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={contactRowClass}
+                >
+                  <IconLinkedIn className="size-4 shrink-0 text-hive-gold" />
+                  <span>{c.ariaLinkedin}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteContact.social.tiktok}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={contactRowClass}
+                >
+                  <IconTikTok className="size-4 shrink-0 text-hive-gold" />
+                  <span>{c.ariaTiktok}</span>
+                </a>
+              </li>
+              <li>
+                <a href={siteContact.email.href} className={contactRowClass}>
+                  <IconMail className="size-4 shrink-0 text-hive-gold" />
+                  <span dir="ltr" className="min-w-0 break-all">
+                    {siteContact.email.display}
+                  </span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-hive-border-subtle pt-5 sm:flex-row sm:items-center">
-          <p className="text-center text-xs text-hive-off-white/45 sm:text-pretty sm:text-start light:text-neutral-500">
-            {f.rights}
+        <div className="mt-14 border-t border-hive-border-subtle pt-8">
+          <p className="text-center text-xs text-hive-off-white/45 light:text-neutral-500">
+            {rightsText}
           </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={siteContact.whatsapp.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={c.ariaWhatsApp}
+              className={socialBarClass}
+            >
+              <IconWhatsApp className="size-5" />
+            </a>
+            <a
+              href={siteContact.social.tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={c.ariaTiktok}
+              className={socialBarClass}
+            >
+              <IconTikTok className="size-5" />
+            </a>
+            <a
+              href={siteContact.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={c.ariaInstagram}
+              className={socialBarClass}
+            >
+              <IconInstagram className="size-5" />
+            </a>
+            <a
+              href={siteContact.social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={c.ariaFacebook}
+              className={socialBarClass}
+            >
+              <IconFacebook className="size-5" />
+            </a>
+            <a
+              href={siteContact.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={c.ariaLinkedin}
+              className={socialBarClass}
+            >
+              <IconLinkedIn className="size-5" />
+            </a>
+            <Link
+              href={`/${locale}`}
+              aria-label={nav.home}
+              className={socialBarClass}
+            >
+              <Globe className="size-5" strokeWidth={1.75} />
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

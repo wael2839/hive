@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/i18n";
+import { COUNTRY_DIAL_RAW } from "./country-dial-raw";
 
 export type CountryDialEntry = {
   iso: string;
@@ -10,46 +11,45 @@ export type CountryDialEntry = {
 /** Default country for the contact phone field */
 export const DEFAULT_COUNTRY_ISO = "SY";
 
-export const COUNTRY_DIAL_CODES: CountryDialEntry[] = [
-  { iso: "SY", dial: "963", nameEn: "Syria", nameAr: "سوريا" },
-  { iso: "SA", dial: "966", nameEn: "Saudi Arabia", nameAr: "السعودية" },
-  { iso: "AE", dial: "971", nameEn: "United Arab Emirates", nameAr: "الإمارات" },
-  { iso: "EG", dial: "20", nameEn: "Egypt", nameAr: "مصر" },
-  { iso: "JO", dial: "962", nameEn: "Jordan", nameAr: "الأردن" },
-  { iso: "LB", dial: "961", nameEn: "Lebanon", nameAr: "لبنان" },
-  { iso: "IQ", dial: "964", nameEn: "Iraq", nameAr: "العراق" },
-  { iso: "PS", dial: "970", nameEn: "Palestine", nameAr: "فلسطين" },
-  { iso: "KW", dial: "965", nameEn: "Kuwait", nameAr: "الكويت" },
-  { iso: "QA", dial: "974", nameEn: "Qatar", nameAr: "قطر" },
-  { iso: "BH", dial: "973", nameEn: "Bahrain", nameAr: "البحرين" },
-  { iso: "OM", dial: "968", nameEn: "Oman", nameAr: "عُمان" },
-  { iso: "YE", dial: "967", nameEn: "Yemen", nameAr: "اليمن" },
-  { iso: "LY", dial: "218", nameEn: "Libya", nameAr: "ليبيا" },
-  { iso: "TN", dial: "216", nameEn: "Tunisia", nameAr: "تونس" },
-  { iso: "DZ", dial: "213", nameEn: "Algeria", nameAr: "الجزائر" },
-  { iso: "MA", dial: "212", nameEn: "Morocco", nameAr: "المغرب" },
-  { iso: "SD", dial: "249", nameEn: "Sudan", nameAr: "السودان" },
-  { iso: "TR", dial: "90", nameEn: "Türkiye", nameAr: "تركيا" },
-  { iso: "IR", dial: "98", nameEn: "Iran", nameAr: "إيران" },
-  { iso: "US", dial: "1", nameEn: "United States", nameAr: "الولايات المتحدة" },
-  { iso: "CA", dial: "1", nameEn: "Canada", nameAr: "كندا" },
-  { iso: "GB", dial: "44", nameEn: "United Kingdom", nameAr: "المملكة المتحدة" },
-  { iso: "DE", dial: "49", nameEn: "Germany", nameAr: "ألمانيا" },
-  { iso: "FR", dial: "33", nameEn: "France", nameAr: "فرنسا" },
-  { iso: "IT", dial: "39", nameEn: "Italy", nameAr: "إيطاليا" },
-  { iso: "ES", dial: "34", nameEn: "Spain", nameAr: "إسبانيا" },
-  { iso: "NL", dial: "31", nameEn: "Netherlands", nameAr: "هولندا" },
-  { iso: "SE", dial: "46", nameEn: "Sweden", nameAr: "السويد" },
-  { iso: "AU", dial: "61", nameEn: "Australia", nameAr: "أستراليا" },
-  { iso: "IN", dial: "91", nameEn: "India", nameAr: "الهند" },
-  { iso: "PK", dial: "92", nameEn: "Pakistan", nameAr: "باكستان" },
-  { iso: "CN", dial: "86", nameEn: "China", nameAr: "الصين" },
-  { iso: "JP", dial: "81", nameEn: "Japan", nameAr: "اليابان" },
-  { iso: "KR", dial: "82", nameEn: "South Korea", nameAr: "كوريا الجنوبية" },
-  { iso: "RU", dial: "7", nameEn: "Russia", nameAr: "روسيا" },
-  { iso: "BR", dial: "55", nameEn: "Brazil", nameAr: "البرازيل" },
-  { iso: "MX", dial: "52", nameEn: "Mexico", nameAr: "المكسيك" },
-];
+const enRegionNames = new Intl.DisplayNames(["en"], { type: "region" });
+const arRegionNames = new Intl.DisplayNames(["ar"], { type: "region" });
+
+function regionLabel(iso: string, lang: "en" | "ar"): string {
+  try {
+    const dn = lang === "en" ? enRegionNames : arRegionNames;
+    return dn.of(iso) ?? iso;
+  } catch {
+    return iso;
+  }
+}
+
+function buildEntry(iso: string, dial: string): CountryDialEntry {
+  return {
+    iso,
+    dial,
+    nameEn: regionLabel(iso, "en"),
+    nameAr: regionLabel(iso, "ar"),
+  };
+}
+
+/** +1 territories/countries: US & CA first so dial-resolution prefers them */
+function nanpOrder(a: CountryDialEntry, b: CountryDialEntry): number {
+  const rank = (iso: string) => {
+    if (iso === "US") return 0;
+    if (iso === "CA") return 1;
+    return 2;
+  };
+  const ra = rank(a.iso);
+  const rb = rank(b.iso);
+  if (ra !== rb) return ra - rb;
+  return a.iso.localeCompare(b.iso);
+}
+
+const allBuilt = COUNTRY_DIAL_RAW.map((r) => buildEntry(r.iso, r.dial));
+const nonNanp = allBuilt.filter((e) => e.dial !== "1");
+const nanp = allBuilt.filter((e) => e.dial === "1").sort(nanpOrder);
+
+export const COUNTRY_DIAL_CODES: CountryDialEntry[] = [...nonNanp, ...nanp];
 
 const byIso = new Map(COUNTRY_DIAL_CODES.map((c) => [c.iso, c]));
 
@@ -58,14 +58,17 @@ export function getCountryByIso(iso: string): CountryDialEntry | undefined {
 }
 
 export function getCountriesSorted(locale: Locale): CountryDialEntry[] {
-  const sy = COUNTRY_DIAL_CODES.find((c) => c.iso === DEFAULT_COUNTRY_ISO)!;
+  const def = COUNTRY_DIAL_CODES.find((c) => c.iso === DEFAULT_COUNTRY_ISO);
+  if (!def) {
+    throw new Error(`Missing default country ${DEFAULT_COUNTRY_ISO} in COUNTRY_DIAL_CODES`);
+  }
   const rest = COUNTRY_DIAL_CODES.filter((c) => c.iso !== DEFAULT_COUNTRY_ISO).sort(
     (a, b) =>
       locale === "ar"
         ? a.nameAr.localeCompare(b.nameAr, "ar")
         : a.nameEn.localeCompare(b.nameEn),
   );
-  return [sy, ...rest];
+  return [def, ...rest];
 }
 
 /** ISO 3166-1 alpha-2 → flag emoji (fallback where images are not used) */

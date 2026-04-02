@@ -3,21 +3,21 @@
  */
 export const siteContact = {
   phone: {
-    display: "+966 50 000 0000",
-    href: "tel:+966500000000",
+    display: "+963 947 735 745",
+    href: "tel:+963947735745",
   },
   email: {
-    display: "hello@hivedigital.com",
-    href: "mailto:hello@hivedigital.com",
+    display: "contact@hive-digital-solutions.com",
+    href: "mailto:contact@hive-digital-solutions.com",
   },
   whatsapp: {
     /** رقم واتساب بدون + أو مسافات لرابط wa.me */
-    href: "https://wa.me/966500000000",
+    href: "https://wa.me/963947735745",
   },
   social: {
-    instagram: "https://www.instagram.com/",
-    facebook: "https://www.facebook.com/",
-    tiktok: "https://www.tiktok.com/@",
-    linkedin: "https://www.linkedin.com/company/",
+    instagram: "https://www.instagram.com/hive_digital_solutions/",
+    facebook: "https://www.facebook.com/hiveds",
+    tiktok: "https://www.tiktok.com/@hivedigitalsolutions",
+    linkedin: "https://www.linkedin.com/company/hivedigitalsolutions",
   },
 } as const;

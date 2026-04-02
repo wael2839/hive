@@ -11,6 +11,7 @@ import {
   resolveCountryFromDialDigits,
 } from "@/lib/country-dial-codes";
 import type { Locale } from "@/lib/i18n";
+import countryPhonePlaceholders from "@/lib/country-phone-placeholders.json";
 
 type Props = {
   locale: Locale;
@@ -22,10 +23,10 @@ type Props = {
 };
 
 const shellClass =
-  "flex h-[50px] w-max max-w-full shrink-0 items-stretch overflow-hidden rounded-md border border-hive-border bg-[var(--hive-bg)] outline-none transition focus-within:border-hive-gold/50 light:bg-white";
+  "flex h-[44px] w-max max-w-full shrink-0 items-stretch overflow-hidden rounded-md border border-hive-border bg-[var(--hive-bg)] outline-none transition focus-within:border-hive-gold/50 light:bg-white";
 
 const dialInputClass =
-  "w-[5.25rem] shrink-0 border-0 bg-transparent px-1 py-2 text-start text-sm text-hive-off-white outline-none ring-0 focus:ring-0 sm:w-[3rem] light:text-neutral-900";
+  "w-[3.5rem] shrink-0 border-0 bg-transparent px-0.5 py-2 text-start text-sm text-hive-off-white outline-none ring-0 focus:ring-0 sm:w-[3rem] sm:px-1 light:text-neutral-900";
 
 const listClass =
   "absolute z-30 mt-1 max-h-60 min-w-[min(100vw-2rem,18rem)] w-max max-w-[min(100vw-2rem,20rem)] overflow-auto rounded-md border border-hive-border bg-[var(--hive-bg)] py-1 light:bg-white";
@@ -37,7 +38,7 @@ const optionSelectedClass =
   "bg-neutral-800 text-hive-gold-light light:bg-amber-100 light:text-neutral-900";
 
 const telClass =
-  "min-h-[50px] min-w-0 flex-1 rounded-md border border-hive-border bg-[var(--hive-bg)] px-4 py-3 text-sm text-hive-off-white outline-none transition placeholder:text-hive-off-white/35 focus:border-hive-gold/50 focus:outline-none light:bg-white light:text-neutral-900 light:placeholder:text-neutral-500";
+  "min-h-[44px] min-w-0 flex-1 rounded-md border border-hive-border bg-[var(--hive-bg)] px-3.5 py-2.5 text-sm text-hive-off-white outline-none transition placeholder:text-hive-off-white/35 focus:border-hive-gold/50 focus:outline-none light:bg-white light:text-neutral-900 light:placeholder:text-neutral-500";
 
 export function ContactPhoneField({
   locale,
@@ -68,6 +69,10 @@ export function ContactPhoneField({
     if (!n) return "";
     return `+${entry.dial}${n}`;
   }, [entry.dial, national]);
+
+  const nationalPlaceholder =
+    (countryPhonePlaceholders as Record<string, string | undefined>)[iso] ??
+    phonePlaceholder;
 
   useEffect(() => {
     const form = rootRef.current?.closest("form");
@@ -114,14 +119,14 @@ export function ContactPhoneField({
         {phoneLabel}
       </span>
       <div
-        className="mt-2 flex flex-col gap-2 sm:flex-row sm:items-stretch"
+        className="mt-1.5 flex flex-row flex-nowrap items-stretch gap-2"
         dir="ltr"
       >
         <input type="hidden" name="phone" value={composed} />
 
         <div ref={countryWrapRef} className="relative w-max max-w-full shrink-0">
           <div className={shellClass}>
-            <span className="flex shrink-0 items-center border-e border-hive-border px-1.5 light:border-neutral-200">
+            <span className="flex shrink-0 items-center border-e border-hive-border px-1 sm:px-1.5 light:border-neutral-200">
               <Image
                 src={countryFlagSrc(entry.iso, "24x18")}
                 width={24}
@@ -163,7 +168,7 @@ export function ContactPhoneField({
             />
             <button
               type="button"
-              className="flex shrink-0 items-center border-s border-hive-border px-1.5 text-hive-gold transition hover:bg-[var(--hive-hover-surface)] light:border-neutral-200"
+              className="flex shrink-0 items-center border-s border-hive-border px-1 sm:px-1.5 text-hive-gold transition hover:bg-[var(--hive-hover-surface)] light:border-neutral-200"
               aria-label={countryListAria}
               aria-expanded={countryOpen}
               aria-controls={listId}
@@ -241,7 +246,7 @@ export function ContactPhoneField({
           type="tel"
           autoComplete="tel-national"
           inputMode="numeric"
-          placeholder={phonePlaceholder}
+          placeholder={nationalPlaceholder}
           value={national}
           dir="ltr"
           className={telClass}

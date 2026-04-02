@@ -18,6 +18,7 @@ export type Messages = {
     packages: string;
     portfolio: string;
     contact: string;
+    allLinks: string;
     cta: string;
     themeSwitchToLight: string;
     themeSwitchToDark: string;
@@ -105,8 +106,11 @@ export type Messages = {
   footer: {
     rights: string;
     tagline: string;
+    brandIntro: string;
     sitemapTitle: string;
+    servicesTitle: string;
     contactTitle: string;
+    contactForm: string;
   };
 };
 
@@ -126,6 +130,7 @@ const messages: Record<Locale, Messages> = {
       packages: "Packages",
       portfolio: "Portfolio",
       contact: "Contact",
+      allLinks: "All links",
       cta: "Get Started",
       themeSwitchToLight: "Switch to light mode",
       themeSwitchToDark: "Switch to dark mode",
@@ -296,7 +301,7 @@ const messages: Record<Locale, Messages> = {
       name: "Full name",
       email: "Email address",
       phone: "Mobile number",
-      phonePlaceholder: "9xx xxx xxxx",
+      phonePlaceholder: "National number (no country code)",
       phoneCountryAria: "Country code",
       phoneCountryListAria: "Open country list",
       service: "Service",
@@ -310,10 +315,14 @@ const messages: Record<Locale, Messages> = {
       privacy: "We respect your privacy—no spam, ever.",
     },
     footer: {
-      rights: "© Hive for Digital Solutions. All rights reserved.",
-      tagline: "Building digital ecosystems that scale.",
-      sitemapTitle: "Sitemap",
+      rights: "© Hive Digital Solutions {year}. All rights reserved.",
+      tagline: "We build scalable digital systems.",
+      brandIntro:
+        "Hive Digital Solutions designs and builds web, mobile, and automation experiences that support your brand growth with clarity and sustained long-term support.",
+      sitemapTitle: "Quick links",
+      servicesTitle: "Our services",
       contactTitle: "Contact",
+      contactForm: "Contact form",
     },
   },
   ar: {
@@ -331,6 +340,7 @@ const messages: Record<Locale, Messages> = {
       packages: "الباقات",
       portfolio: "الأعمال",
       contact: "تواصل",
+      allLinks: "جميع الروابط",
       cta: "ابدأ الآن",
       themeSwitchToLight: "التبديل إلى الوضع الفاتح",
       themeSwitchToDark: "التبديل إلى الوضع الداكن",
@@ -501,7 +511,7 @@ const messages: Record<Locale, Messages> = {
       name: "الاسم الكامل",
       email: "البريد الإلكتروني",
       phone: "رقم الجوال",
-      phonePlaceholder: "9xx xxx xxxx",
+      phonePlaceholder: "الرقم الوطني (بدون مفتاح الدولة)",
       phoneCountryAria: "رمز الدولة",
       phoneCountryListAria: "قائمة الدول",
       service: "الخدمة",
@@ -515,10 +525,14 @@ const messages: Record<Locale, Messages> = {
       privacy: "نحترم خصوصيتك—لا رسائل مزعجة.",
     },
     footer: {
-      rights: "© هايڤ لحلول الرقمية. جميع الحقوق محفوظة.",
-      tagline: "نبني منظومات رقمية قابلة للتوسع.",
-      sitemapTitle: "الصفحات",
+      rights: "© Hive Digital Solutions {year} جميع الحقوق محفوظة.",
+      tagline: "نبني أنظمة رقمية قابلة للتوسع.",
+      brandIntro:
+        "هايف لحلول الرقمية تصمّم وتبني تجارب ويب وموبايل وأتمتة تدعم نمو علامتك بوضوح ودعم مستمر على المدى الطويل.",
+      sitemapTitle: "روابط سريعة",
+      servicesTitle: "خدماتنا",
       contactTitle: "تواصل",
+      contactForm: "نموذج التواصل",
     },
   },
 };

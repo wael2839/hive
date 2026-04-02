@@ -21,7 +21,7 @@ import { ScrollReveal } from "./ScrollReveal";
 import SectionTitle from "../ui/SectionTitle";
 
 const inputClass =
-  "mt-2 w-full rounded-md border border-hive-border bg-[var(--hive-input-bg)] px-4 py-3 text-hive-off-white outline-none transition placeholder:text-hive-off-white/35 light:placeholder:text-neutral-500 focus:border-hive-gold/50 focus:outline-none light:text-neutral-900";
+  "mt-1.5 w-full rounded-md border border-hive-border bg-[var(--hive-input-bg)] px-3.5 py-2.5 text-sm text-hive-off-white outline-none transition placeholder:text-hive-off-white/35 light:placeholder:text-neutral-500 focus:border-hive-gold/50 focus:outline-none light:text-neutral-900";
 
 export function ContactSection({
   locale,
@@ -110,20 +110,23 @@ export function ContactSection({
           </div>
         </ScrollReveal>
 
-        <div className="mt-12 flex flex-col gap-10 lg:mt-14 lg:flex-row lg:items-start lg:gap-12">
-        <ScrollReveal delayMs={80} className={`w-full min-w-0 flex-1 ${formOrderClass}`}>
+        <div className="mt-12 flex flex-col gap-10 lg:mt-14 lg:flex-row lg:items-start lg:justify-center lg:gap-10 xl:gap-12">
+        <ScrollReveal
+          delayMs={80}
+          className={`w-full min-w-0 lg:max-w-xl lg:flex-none ${formOrderClass}`}
+        >
           <form
             onSubmit={onSubmit}
-            className="space-y-6 rounded-md border border-hive-border bg-[var(--hive-card-glass)] p-8 backdrop-blur-md sm:p-10"
+            className="space-y-4 rounded-md border border-hive-border bg-[var(--hive-card-glass)] p-6 backdrop-blur-md sm:p-7 lg:p-6"
             dir={locale === "ar" ? "rtl" : "ltr"}
           >
             {status === "sent" ? (
-              <p className="rounded-md border border-hive-gold/35 bg-hive-gold/10 px-4 py-3 text-sm text-hive-off-white light:border-hive-gold/50 light:bg-amber-50 light:text-neutral-800">
+              <p className="rounded-md border border-hive-gold/35 bg-hive-gold/10 px-3 py-2 text-sm text-hive-off-white light:border-hive-gold/50 light:bg-amber-50 light:text-neutral-800">
                 {c.sent}
               </p>
             ) : null}
             {status === "error" ? (
-              <p className="rounded-md border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-hive-off-white light:text-red-900">
+              <p className="rounded-md border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-hive-off-white light:text-red-900">
                 {c.error}
               </p>
             ) : null}
@@ -141,7 +144,7 @@ export function ContactSection({
               />
             </label>
 
-            <div className="grid gap-6 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               <label className="min-w-0 block text-sm font-medium text-hive-off-white/85 light:text-neutral-800">
                 {c.email}
                 <input
@@ -190,7 +193,7 @@ export function ContactSection({
                 name="details"
                 required
                 minLength={10}
-                rows={6}
+                rows={4}
                 className={`${inputClass} resize-y`}
                 onChange={() => {
                   if (status === "sent" || status === "error") setStatus("idle");
@@ -198,14 +201,14 @@ export function ContactSection({
               />
             </label>
 
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-xs text-hive-off-white/45 light:text-neutral-500">
                 {c.privacy}
               </p>
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="hive-cta-hex rounded-md inline-flex items-center justify-center bg-gradient-to-r from-hive-btn-from to-hive-btn-to px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold disabled:pointer-events-none disabled:opacity-60"
+                className="hive-cta-hex rounded-md inline-flex items-center justify-center bg-gradient-to-r from-hive-btn-from to-hive-btn-to px-6 py-2.5 text-sm font-semibold text-neutral-900 transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold disabled:pointer-events-none disabled:opacity-60"
               >
                 {status === "sending" ? c.sending : c.send}
               </button>
@@ -213,7 +216,10 @@ export function ContactSection({
           </form>
         </ScrollReveal>
 
-        <ScrollReveal delayMs={40} className={`w-full min-w-0 flex-1 lg:max-w-md ${channelsOrderClass}`}>
+        <ScrollReveal
+          delayMs={40}
+          className={`w-full min-w-0 lg:max-w-md lg:flex-none ${channelsOrderClass}`}
+        >
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-hive-gold-light/90">
               {c.channelsTitle}
