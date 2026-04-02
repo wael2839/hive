@@ -101,6 +101,8 @@ export type Messages = {
     sending: string;
     sent: string;
     error: string;
+    /** عندما لا تُضبط متغيرات SMTP على الخادم (استجابة 503) */
+    errorUnavailable: string;
     privacy: string;
   };
   footer: {
@@ -312,6 +314,8 @@ const messages: Record<Locale, Messages> = {
       sending: "Sending…",
       sent: "Message sent",
       error: "Could not send. Please try again or contact us directly.",
+      errorUnavailable:
+        "The contact form isn’t set up on the server yet (email delivery). Please email us directly using the address on this page.",
       privacy: "We respect your privacy—no spam, ever.",
     },
     footer: {
@@ -522,6 +526,8 @@ const messages: Record<Locale, Messages> = {
       sending: "جاري الإرسال…",
       sent: "تم إرسال الرسالة",
       error: "تعذّر الإرسال. حاول مرة أخرى أو تواصل معنا مباشرة.",
+      errorUnavailable:
+        "نموذج التواصل غير مهيأ على الخادم بعد (إرسال البريد). راسلنا مباشرة عبر البريد أو الهاتف الظاهر في الصفحة.",
       privacy: "نحترم خصوصيتك—لا رسائل مزعجة.",
     },
     footer: {

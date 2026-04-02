@@ -99,7 +99,10 @@ export async function POST(req: Request) {
     console.error(
       "[contact] SMTP not configured: set SMTP_HOST, SMTP_USER, SMTP_PASS, CONTACT_TO_EMAIL (and optionally SMTP_PORT, SMTP_FROM, SMTP_SECURE)",
     );
-    return NextResponse.json({ ok: false }, { status: 503 });
+    return NextResponse.json(
+      { ok: false, code: "smtp_not_configured" as const },
+      { status: 503 },
+    );
   }
 
   const serviceLabel = serviceTitle(locale, serviceId);

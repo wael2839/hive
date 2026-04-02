@@ -36,6 +36,10 @@ export function ContactSection({
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle",
   );
+  /** تمييز رسالة 503 (SMTP غير مهيأ) عن أخطاء الإرسال العامة */
+  const [errorVariant, setErrorVariant] = useState<"default" | "unavailable">(
+    "default",
+  );
 
   const serviceOptions = serviceSlugs.map((slug, i) => ({
     id: slug,
@@ -64,6 +68,7 @@ export function ContactSection({
       !serviceId ||
       details.length < 10
     ) {
+      setErrorVariant("default");
       setStatus("error");
       return;
     }
@@ -82,10 +87,24 @@ export function ContactSection({
           locale,
         }),
       });
-      if (!res.ok) throw new Error("bad status");
+      if (!res.ok) {
+        let variant: "default" | "unavailable" = "default";
+        if (res.status === 503) {
+          const data = (await res.json().catch(() => null)) as {
+            code?: string;
+          } | null;
+          if (data?.code === "smtp_not_configured") {
+            variant = "unavailable";
+          }
+        }
+        setErrorVariant(variant);
+        setStatus("error");
+        return;
+      }
       setStatus("sent");
       form.reset();
     } catch {
+      setErrorVariant("default");
       setStatus("error");
     }
   }
@@ -127,7 +146,9 @@ export function ContactSection({
             ) : null}
             {status === "error" ? (
               <p className="rounded-md border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-hive-off-white light:text-red-900">
-                {c.error}
+                {errorVariant === "unavailable"
+                  ? c.errorUnavailable
+                  : c.error}
               </p>
             ) : null}
 
