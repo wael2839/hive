@@ -165,7 +165,7 @@ html.light {
   --radius-2xl: calc(var(--hive-radius) + 0.25rem);
   --radius-3xl: calc(var(--hive-radius) + 0.5rem);
   --font-sans: var(--font-ubuntu-arabic), system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono);
+  --font-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Menlo, monospace;
 }
 
 @layer utilities {

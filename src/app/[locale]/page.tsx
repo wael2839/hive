@@ -1,16 +1,44 @@
+import nextDynamic from "next/dynamic";
 import { notFound } from "next/navigation";
-import { AboutSection } from "@/components/landing/AboutSection";
-import { ContactSection } from "@/components/landing/ContactSection";
 import { HeroSection } from "@/components/landing/HeroSection";
-import { PackagesSection } from "@/components/landing/PackagesSection";
-import { ServicesSection } from "@/components/landing/ServicesSection";
 import { SectionDivider } from "@/components/landing/SectionDivider";
-import { SiteFooter } from "@/components/landing/SiteFooter";
 import { SiteNav } from "@/components/landing/SiteNav";
-import { VisionSection } from "@/components/landing/VisionSection";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getMessages, isLocale, type Locale } from "@/lib/i18n";
 import { buildHomeJsonLd } from "@/lib/seo-jsonld";
+
+const AboutSection = nextDynamic(() =>
+  import("@/components/landing/AboutSection").then((m) => ({
+    default: m.AboutSection,
+  })),
+);
+const VisionSection = nextDynamic(() =>
+  import("@/components/landing/VisionSection").then((m) => ({
+    default: m.VisionSection,
+  })),
+);
+const ServicesSection = nextDynamic(() =>
+  import("@/components/landing/ServicesSection").then((m) => ({
+    default: m.ServicesSection,
+  })),
+);
+const PackagesSection = nextDynamic(() =>
+  import("@/components/landing/PackagesSection").then((m) => ({
+    default: m.PackagesSection,
+  })),
+);
+const ContactSection = nextDynamic(() =>
+  import("@/components/landing/ContactSection").then((m) => ({
+    default: m.ContactSection,
+  })),
+);
+const SiteFooter = nextDynamic(() =>
+  import("@/components/landing/SiteFooter").then((m) => ({
+    default: m.SiteFooter,
+  })),
+);
+
+export const dynamic = "force-static";
 
 type Props = {
   params: Promise<{ locale: string }>;

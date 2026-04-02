@@ -15,16 +15,27 @@ export function VisionSection({ t }: { t: Messages["vision"] }) {
   useEffect(() => {
     const el = bg.current;
     if (!el) return;
-    const onScroll = () => {
+    let raf = 0;
+    const applyParallax = () => {
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight || 1;
       const p = 1 - Math.min(Math.max((rect.top + rect.height / 2) / (vh + rect.height), 0), 1);
       const y = (p - 0.5) * 36;
       el.style.setProperty("--parallax", `${y}px`);
     };
-    onScroll();
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        applyParallax();
+      });
+    };
+    applyParallax();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (

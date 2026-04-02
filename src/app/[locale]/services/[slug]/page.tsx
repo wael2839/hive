@@ -11,6 +11,8 @@ type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
 
+export const dynamic = "force-static";
+
 export function generateStaticParams() {
   return locales.flatMap((locale) => serviceSlugs.map((slug) => ({ locale, slug })));
 }

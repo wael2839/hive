@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
@@ -19,11 +18,6 @@ const ubuntuArabic = localFont({
   ],
   variable: "--font-ubuntu-arabic",
   display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -47,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="h-full">
       <body
-        className={`${ubuntuArabic.variable} ${geistMono.variable} min-h-full antialiased bg-hive-black text-hive-off-white`}
+        className={`${ubuntuArabic.variable} min-h-full antialiased bg-hive-black text-hive-off-white`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>
