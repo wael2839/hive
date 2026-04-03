@@ -495,7 +495,7 @@ html.light .hive-hero-hex-grid-light {
     rgba(0, 0, 0, 0.14) 82%,
     transparent 100%
   );
-  transition: opacity 220ms ease;
+  /* opacity يُحدَّث عبر --hive-hero-hover في JS؛ transition هنا تعطّل التلاشي التدريجي */
 }
 
 .hive-hero-hex-highlight--dark {
@@ -520,7 +520,7 @@ html.light .hive-hero-hex-grid-light {
       rgba(0, 0, 0, 0.16) 86%,
       transparent 100%
     );
-    transition: opacity 140ms ease-out;
+    /* التلاشي عبر --hive-hero-hover في HeroHexCursorEffect (نفس منحنى سطح المكتب) */
   }
 }
 

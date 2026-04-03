@@ -2,40 +2,15 @@
 
 import { useEffect } from "react";
 
+/**
+ * تأثير تتبع موضع التوهج على شبكة الـ hero.
+ * مسار واحد: حلقة RAF (تموضع سلس + تلاشٍ expo).
+ * على اللمس: لا نستخدم pointerleave للخروج (غالباً مزيف/مجدول فوراً)، بل pointerup بالتقاط على document.
+ */
 export function HeroHexCursorEffect() {
   useEffect(() => {
     const hero = document.getElementById("hero");
     if (!hero) return;
-
-    const isCoarsePointer =
-      typeof window !== "undefined" &&
-      window.matchMedia("(hover: none), (pointer: coarse)").matches;
-
-    /** على الشاشات اللمسية: تحديث مباشر بدون حلقة requestAnimationFrame لتقليل ضغط المعالج (TBT). */
-    if (isCoarsePointer) {
-      const apply = (x: number, y: number, hover: number) => {
-        hero.style.setProperty("--hive-hero-mx", `${x}px`);
-        hero.style.setProperty("--hive-hero-my", `${y}px`);
-        hero.style.setProperty("--hive-hero-hover", `${hover}`);
-      };
-
-      const onPointerDown = (event: PointerEvent) => {
-        const rect = hero.getBoundingClientRect();
-        apply(event.clientX - rect.left, event.clientY - rect.top, 1);
-      };
-
-      const onPointerLeave = () => {
-        hero.style.setProperty("--hive-hero-hover", "0");
-      };
-
-      hero.addEventListener("pointerdown", onPointerDown);
-      hero.addEventListener("pointerleave", onPointerLeave);
-
-      return () => {
-        hero.removeEventListener("pointerdown", onPointerDown);
-        hero.removeEventListener("pointerleave", onPointerLeave);
-      };
-    }
 
     let rafId = 0;
     let targetX = 0;
@@ -46,6 +21,10 @@ export function HeroHexCursorEffect() {
     let isInside = false;
     let isTicking = false;
     let lingerUntil = 0;
+
+    let touchEngaged = false;
+    let activeTouchId: number | null = null;
+
     const MAIN_FOLLOW = 0.16;
     const HOVER_IN_OUT = 0.08;
     const LEAVE_LINGER_MS = 220;
@@ -89,6 +68,31 @@ export function HeroHexCursorEffect() {
       startTick();
     };
 
+    const onPointerDownCapture = (event: PointerEvent) => {
+      const t = event.target;
+      if (!(t instanceof Node) || !hero.contains(t)) return;
+
+      isInside = true;
+      if (event.pointerType === "touch") {
+        if (!touchEngaged) {
+          touchEngaged = true;
+          activeTouchId = event.pointerId;
+        }
+      }
+      const rect = hero.getBoundingClientRect();
+      updateCursorVars(event.clientX - rect.left, event.clientY - rect.top);
+    };
+
+    const onDocumentPointerEndCapture = (event: PointerEvent) => {
+      if (event.pointerType !== "touch") return;
+      if (!touchEngaged || event.pointerId !== activeTouchId) return;
+      touchEngaged = false;
+      activeTouchId = null;
+      isInside = false;
+      lingerUntil = performance.now() + LEAVE_LINGER_MS;
+      startTick();
+    };
+
     const onPointerMove = (event: PointerEvent) => {
       const rect = hero.getBoundingClientRect();
       isInside = true;
@@ -101,21 +105,28 @@ export function HeroHexCursorEffect() {
       updateCursorVars(event.clientX - rect.left, event.clientY - rect.top);
     };
 
-    const onPointerLeave = () => {
+    const onPointerLeave = (event: PointerEvent) => {
+      if (event.pointerType === "touch") return;
       isInside = false;
       lingerUntil = performance.now() + LEAVE_LINGER_MS;
       startTick();
     };
 
+    hero.addEventListener("pointerdown", onPointerDownCapture, true);
     hero.addEventListener("pointermove", onPointerMove);
     hero.addEventListener("pointerenter", onPointerEnter);
     hero.addEventListener("pointerleave", onPointerLeave);
+    document.addEventListener("pointerup", onDocumentPointerEndCapture, true);
+    document.addEventListener("pointercancel", onDocumentPointerEndCapture, true);
 
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
+      hero.removeEventListener("pointerdown", onPointerDownCapture, true);
       hero.removeEventListener("pointermove", onPointerMove);
       hero.removeEventListener("pointerenter", onPointerEnter);
       hero.removeEventListener("pointerleave", onPointerLeave);
+      document.removeEventListener("pointerup", onDocumentPointerEndCapture, true);
+      document.removeEventListener("pointercancel", onDocumentPointerEndCapture, true);
     };
   }, []);
 
