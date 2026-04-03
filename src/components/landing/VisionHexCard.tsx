@@ -12,7 +12,7 @@ const POINTS_FLAT = `25,0 75,0 100,${MID} 75,${VB_H} 25,${VB_H} 0,${MID}`;
 /** Pointy-top hex in same box: vertices top & bottom (lg+ / 1024px). */
 const POINTS_POINTY = `50,0 100,${Q} 100,${VB_H - Q} 50,${VB_H} 0,${VB_H - Q} 0,${Q}`;
 
-const INNER = `translate(${VB_W / 2},${MID}) scale(0.965) translate(${-VB_W / 2},${-MID})`;
+const INNER = `translate(${VB_W / 2},${MID}) scale(0.995) translate(${-VB_W / 2},${-MID})`;
 
 type Props = {
   title: string;
