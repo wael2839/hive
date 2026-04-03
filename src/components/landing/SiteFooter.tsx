@@ -25,7 +25,7 @@ const socialBarClass =
   "flex h-11 w-11 items-center justify-center rounded-lg border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:border-hive-gold/45 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold";
 
 const contactRowClass =
-  "group flex items-center gap-2.5 text-start text-sm text-hive-off-white/85 transition-colors hover:text-hive-gold-light light:text-neutral-700 light:hover:text-hive-gold";
+  "group flex items-center justify-center gap-2.5 text-center text-sm text-hive-off-white/85 transition-colors hover:text-hive-gold-light sm:justify-start sm:text-start light:text-neutral-700 light:hover:text-hive-gold";
 
 const linkMutedClass =
   "text-sm text-hive-off-white/80 transition-colors hover:text-hive-gold-light light:text-neutral-700 light:hover:text-hive-gold";
@@ -68,10 +68,10 @@ export function SiteFooter({ locale, t }: Props) {
           </div>
 
           {/* العمود 2 — روابط سريعة */}
-          <div className="text-start">
+          <div className="text-center sm:text-start">
             <p className="text-sm font-semibold text-hive-gold">{f.sitemapTitle}</p>
             <nav aria-label={f.sitemapTitle} className="mt-4">
-              <ul className="flex flex-col gap-2.5">
+              <ul className="flex flex-col items-center gap-2.5 sm:items-start">
                 {quickLinks.map((a) => (
                   <li key={a.id}>
                     <Link
@@ -93,9 +93,9 @@ export function SiteFooter({ locale, t }: Props) {
           </div>
 
           {/* العمود 3 — خدماتنا */}
-          <div className="text-start">
+          <div className="text-center sm:text-start">
             <p className="text-sm font-semibold text-hive-gold">{f.servicesTitle}</p>
-            <ul className="mt-4 flex flex-col gap-2.5">
+            <ul className="mt-4 flex flex-col items-center gap-2.5 sm:items-start">
               {serviceSlugs.map((slug, i) => {
                 const title = t.services.items[i]?.title;
                 if (!title) return null;
@@ -115,9 +115,9 @@ export function SiteFooter({ locale, t }: Props) {
           </div>
 
           {/* العمود 4 — تواصل */}
-          <div className="text-start">
+          <div className="text-center sm:text-start">
             <p className="text-sm font-semibold text-hive-gold">{f.contactTitle}</p>
-            <ul className="mt-4 flex flex-col gap-3">
+            <ul className="mt-4 flex flex-col items-center gap-3 sm:items-start">
               <li>
                 <Link prefetch={false} href={`/${locale}#contact`} className={contactRowClass}>
                   <IconSend className="size-4 shrink-0 text-hive-gold" />
@@ -132,7 +132,7 @@ export function SiteFooter({ locale, t }: Props) {
                   className={contactRowClass}
                 >
                   <IconWhatsApp className="size-4 shrink-0 text-hive-gold" />
-                  <span className="flex min-w-0 flex-col text-start">
+                  <span className="flex min-w-0 flex-col text-center sm:text-start">
                     <span>{c.ariaWhatsApp}</span>
                     <span
                       dir="ltr"
