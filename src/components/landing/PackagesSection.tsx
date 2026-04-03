@@ -12,7 +12,7 @@ export function PackagesSection({ locale, t }: Props) {
   return (
     <section
       id="packages"
-      className="bg-[var(--hive-bg)]  relative py-15 sm:py-15 scroll-mt-28 sm:scroll-mt-10"
+      className="relative bg-[var(--hive-bg)] py-15 sm:py-15 scroll-mt-28 sm:scroll-mt-10"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
@@ -45,7 +45,7 @@ export function PackagesSection({ locale, t }: Props) {
                 <p className="mt-3 text-2xl font-bold tracking-tight text-hive-gold-light sm:text-3xl">
                   {item.price}
                 </p>
-                <p className="mt-4 flex-1 text-sm leading-7 text-hive-off-white/70 light:text-neutral-600">
+                <p className="mt-4 text-sm leading-7 text-hive-off-white/70 light:text-neutral-600">
                   {item.description}
                 </p>
                 <ul className="mt-6 space-y-2.5 border-t border-hive-border-subtle pt-6">
@@ -64,10 +64,11 @@ export function PackagesSection({ locale, t }: Props) {
                     </li>
                   ))}
                 </ul>
+                <div className="mt-8 min-h-2 flex-1" aria-hidden />
                 <Link
                   prefetch={false}
                   href={`/${locale}#contact`}
-                  className={`mt-8 inline-flex w-full items-center justify-center rounded-md px-6 py-3 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold ${
+                  className={`inline-flex w-full items-center justify-center rounded-md px-6 py-3 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold ${
                     item.featured
                       ? "bg-gradient-to-r from-hive-btn-from to-hive-btn-to text-neutral-900 hover:brightness-110"
                       : "border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white hover:border-hive-gold/40 hover:text-hive-gold-light"
@@ -83,5 +84,3 @@ export function PackagesSection({ locale, t }: Props) {
     </section>
   );
 }
-
-

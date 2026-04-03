@@ -24,6 +24,7 @@ export function VisionHexCard({ title, body }: Props) {
   const uid = useId().replace(/:/g, "");
   const clipFlat = `vision-hex-flat-${uid}`;
   const clipPointy = `vision-hex-pointy-${uid}`;
+  const shadowFilter = `vision-hex-shadow-${uid}`;
 
   const wrapStyle = {
     "--vision-hex-clip-sm": `url(#${clipFlat})`,
@@ -46,16 +47,49 @@ export function VisionHexCard({ title, body }: Props) {
             <clipPath id={clipPointy} clipPathUnits="objectBoundingBox">
               <polygon points="0.5,0 1,0.25 1,0.75 0.5,1 0,0.75 0,0.25" />
             </clipPath>
+            {/* ظل ذهبي على شكل السداسي: feMerge يضع الظل تحت الرسم */}
+            <filter
+              id={shadowFilter}
+              x="-60%"
+              y="-60%"
+              width="220%"
+              height="220%"
+              colorInterpolationFilters="sRGB"
+            >
+              <feDropShadow
+                in="SourceAlpha"
+                dx="0"
+                dy="2"
+                stdDeviation="1.6"
+                floodColor="#bda957"
+                floodOpacity="0.22"
+                result="s1"
+              />
+              <feDropShadow
+                in="SourceAlpha"
+                dx="0"
+                dy="5"
+                stdDeviation="3.5"
+                floodColor="#bda957"
+                floodOpacity="0.12"
+                result="s2"
+              />
+              <feMerge>
+                <feMergeNode in="s2" />
+                <feMergeNode in="s1" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
           </defs>
 
-          <g className="lg:hidden">
+          <g className="lg:hidden" filter={`url(#${shadowFilter})`}>
             <polygon className="hive-vision-hex-svg__border" points={POINTS_FLAT} />
             <g transform={INNER}>
               <polygon className="hive-vision-hex-svg__face" points={POINTS_FLAT} />
             </g>
           </g>
 
-          <g className="hidden lg:block">
+          <g className="hidden lg:block" filter={`url(#${shadowFilter})`}>
             <polygon className="hive-vision-hex-svg__border" points={POINTS_POINTY} />
             <g transform={INNER}>
               <polygon className="hive-vision-hex-svg__face" points={POINTS_POINTY} />
