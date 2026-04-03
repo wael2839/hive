@@ -3,7 +3,7 @@
 import { useId } from "react";
 import type { CSSProperties } from "react";
 
-/** Flat-top regular hex: عرض 100، ارتفاع √3/2×100 (لا نستخدم مربعًا 100×100 لأنه يشوّه الشكل). */
+/** Flat-top regular hex: عرض 100، ارتفاع √3/2×100 (لا نستخدم مربعا 100×100 لأنه يشوه الشكل). */
 const VB_W = 100;
 const VB_H = 86.60254037844386;
 const MID = VB_H / 2;

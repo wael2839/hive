@@ -4,8 +4,8 @@ import { useEffect } from "react";
 
 /**
  * تأثير تتبع موضع التوهج على شبكة الـ hero.
- * مسار واحد: حلقة RAF (تموضع سلس + تلاشٍ expo).
- * على اللمس: لا نستخدم pointerleave للخروج (غالباً مزيف/مجدول فوراً)، بل pointerup بالتقاط على document.
+ * مسار واحد: حلقة RAF (تموضع سلس + تلاش expo).
+ * على اللمس: لا نستخدم pointerleave للخروج (غالبا مزيف/مجدول فورا)، بل pointerup بالتقاط على document.
  */
 export function HeroHexCursorEffect() {
   useEffect(() => {

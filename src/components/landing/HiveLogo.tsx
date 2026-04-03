@@ -23,7 +23,7 @@ type Props = {
 const REF_W = 156;
 const REF_H = 47;
 
-/** إذا لم يُمرَّر variant، يُختار تلقائياً حسب الثيم: داكن → dark، فاتح → light */
+/** إذا لم يمرر variant، يختار تلقائيا حسب الثيم: داكن → dark، فاتح → light */
 export function HiveLogo({
   variant: forcedVariant,
   className = "",

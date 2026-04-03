@@ -4,7 +4,7 @@ import { locales } from "@/lib/i18n";
 
 /**
  * POST /api/revalidate?secret=YOUR_SECRET
- * يُستخدم عند تفعيل ISR (revalidate على مسار ما). مع SSG الصارم الحالي، التحديث يكون بالبناء من جديد.
+ * يستخدم عند تفعيل ISR (revalidate على مسار ما). مع SSG الصارم الحالي، التحديث يكون بالبناء من جديد.
  * Set REVALIDATE_SECRET in production env.
  */
 export async function POST(request: NextRequest) {

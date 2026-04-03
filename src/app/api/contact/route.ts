@@ -10,10 +10,10 @@ import { serviceSlugs, type ServiceSlug } from "@/lib/service-details";
 
 export const runtime = "nodejs";
 
-/** على Vercel يحدّ مدة التنفيذ؛ على VPS يمكن تجاهله. */
+/** على Vercel يحد مدة التنفيذ؛ على VPS يمكن تجاهله. */
 export const maxDuration = 60;
 
-/** يمنع انتظار SMTP إلى ما لا نهاية فيُغلق البروكسي بـ 504 قبل أن يُرجع المسار 502. */
+/** يمنع انتظار SMTP إلى ما لا نهاية فيغلق البروكسي بـ 504 قبل أن يرجع المسار 502. */
 const SMTP_CONNECTION_MS = 12_000;
 const SMTP_SOCKET_MS = 22_000;
 
@@ -184,7 +184,7 @@ function contactEmailLabels(locale: Locale) {
       lang: "لغة النموذج",
       details: "تفاصيل المشروع",
       footer: "يمكنك الرد مباشرة على المرسل عبر «رد» على هذه الرسالة.",
-      idNote: "المعرّف:",
+      idNote: "المعرف:",
     };
   }
   return {

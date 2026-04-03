@@ -120,7 +120,7 @@
   --hive-portfolio-bottom: rgba(25, 25, 25, 0.88);
   --hive-hero-highlight-alpha-dark: 1;
   --hive-hero-highlight-alpha-light: 0;
-  /* قياسات شبكة خلية النحل المعتمدة (لا تغيّر إلا عند إعادة معايرة كاملة) */
+  /* قياسات شبكة خلية النحل المعتمدة (لا تغير إلا عند إعادة معايرة كاملة) */
   --hive-hero-hex-tile-w: 62.352px;
   --hive-hero-hex-tile-h: 108px;
   --hive-hero-hex-opacity-dark: 0.58;
@@ -305,7 +305,7 @@ body {
 
 @media (max-width: 639px) {
   .hive-vision-hex-card__content {
-    /* هامش جانبي يكفي للقصّ دون padding رأسي كبير يوسّع الإحساس بفراغ بين السداسيات */
+    /* هامش جانبي يكفي للقص دون padding رأسي كبير يوسع الإحساس بفراغ بين السداسيات */
     padding-inline: clamp(0.82rem, 4.5vw, 1.15rem);
     padding-top: clamp(0.45rem, 2.2vw, 0.78rem);
     padding-bottom: clamp(0.45rem, 2.2vw, 0.78rem);
@@ -315,7 +315,7 @@ body {
 
 @media (min-width: 1024px) {
   .hive-vision-hex-card__content {
-    /* سداسي حادّ الرأس: هامش أكبر تحت القمة حتى لا يُقصّ العنوان */
+    /* سداسي حاد الرأس: هامش أكبر تحت القمة حتى لا يقص العنوان */
     padding-top: clamp(1.55rem, 3.6vw, 2.75rem);
     padding-inline: clamp(0.8rem, 2.4vw, 1.75rem);
     -webkit-clip-path: var(--vision-hex-clip-lg, none);
@@ -365,7 +365,7 @@ body {
   }
 }
 
-/* iPad / تابلت: كان الخط يبدو صغيرًا بين الجوال والـ lg */
+/* iPad / تابلت: كان الخط يبدو صغيرا بين الجوال والـ lg */
 @media (min-width: 640px) and (max-width: 1023px) {
   .hive-vision-hex-card__content {
     padding-inline: clamp(0.9rem, 2.2vw, 1.7rem);
@@ -495,7 +495,7 @@ html.light .hive-hero-hex-grid-light {
     rgba(0, 0, 0, 0.14) 82%,
     transparent 100%
   );
-  /* opacity يُحدَّث عبر --hive-hero-hover في JS؛ transition هنا تعطّل التلاشي التدريجي */
+  /* opacity يحدث عبر --hive-hero-hover في JS؛ transition هنا تعطل التلاشي التدريجي */
 }
 
 .hive-hero-hex-highlight--dark {

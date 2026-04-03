@@ -20,11 +20,11 @@ const ubuntuArabic = localFont({
   ],
   variable: "--font-ubuntu-arabic",
   display: "swap",
-  /** يقلّل قفزات التخطيط عند استبدال خط النظام بـ Ubuntu */
+  /** يقلل قفزات التخطيط عند استبدال خط النظام بـ Ubuntu */
   adjustFontFallback: "Arial",
 });
 
-/** يُحدَّث فوراً من السكربت أدناى حسب المسار — للبناء الثابت لا يتوفر pathname على الخادم */
+/** يحدث فورا من السكربت أدناى حسب المسار — للبناء الثابت لا يتوفر pathname على الخادم */
 const defaultHtmlLang = defaultLocale;
 const defaultHtmlDir = defaultLocale === "ar" ? "rtl" : "ltr";
 

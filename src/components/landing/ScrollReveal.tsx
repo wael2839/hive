@@ -39,12 +39,12 @@ export function ScrollReveal({ children, className = "", delayMs = 0 }: Props) {
           io?.disconnect();
         }
       },
-      /* بدون هامش سالب أسفل — على الجوال كان العنصر أحياناً لا يُعتبر ظاهراً فتبقى opacity-0 */
+      /* بدون هامش سالب أسفل — على الجوال كان العنصر أحيانا لا يعتبر ظاهرا فتبقى opacity-0 */
       { threshold: 0.05, rootMargin: "0px 0px 32px 0px" },
     );
     io.observe(el);
 
-    /** بعد الرجوع من الصفحة السابقة (bfcache) قد لا يُستدعَى IntersectionObserver من جديد */
+    /** بعد الرجوع من الصفحة السابقة (bfcache) قد لا يستدعى IntersectionObserver من جديد */
     const onPageShow = (e: PageTransitionEvent) => {
       if (e.persisted) {
         requestAnimationFrame(() => revealIfInView());
