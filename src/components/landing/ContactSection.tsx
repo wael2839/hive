@@ -253,53 +253,6 @@ export function ContactSection({
             <h3 className="mb-4 text-center text-lg font-bold leading-snug text-hive-gold-light sm:text-xl light:text-hive-gold text-balance">
               {c.channelsTitle}
             </h3>
-            <ul className="mb-8 flex w-full list-none flex-wrap items-center justify-center gap-3 p-0">
-              <li>
-                <a
-                  href={siteContact.social.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={c.ariaInstagram}
-                  className="flex h-11 w-11 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
-                >
-                  <IconInstagram className="h-5 w-5" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href={siteContact.social.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={c.ariaFacebook}
-                  className="flex h-11 w-11 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
-                >
-                  <IconFacebook className="h-5 w-5" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href={siteContact.social.tiktok}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={c.ariaTiktok}
-                  className="flex h-11 w-11 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
-                >
-                  <IconTikTok className="h-5 w-5" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href={siteContact.social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={c.ariaLinkedin}
-                  className="flex h-11 w-11 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
-                >
-                  <IconLinkedIn className="h-5 w-5" />
-                </a>
-              </li>
-            </ul>
-
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 lg:grid-cols-1">
               <a
                 href={siteContact.phone.href}
@@ -332,6 +285,53 @@ export function ContactSection({
                 </span>
               </a>
             </div>
+
+            <ul className="mt-8 flex w-full list-none flex-wrap items-center justify-center gap-4 p-0">
+              <li>
+                <a
+                  href={siteContact.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={c.ariaInstagram}
+                  className="flex h-12 w-12 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                >
+                  <IconInstagram className="h-6 w-6" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteContact.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={c.ariaFacebook}
+                  className="flex h-12 w-12 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                >
+                  <IconFacebook className="h-6 w-6" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteContact.social.tiktok}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={c.ariaTiktok}
+                  className="flex h-12 w-12 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                >
+                  <IconTikTok className="h-6 w-6" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteContact.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={c.ariaLinkedin}
+                  className="flex h-12 w-12 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                >
+                  <IconLinkedIn className="h-6 w-6" />
+                </a>
+              </li>
+            </ul>
           </div>
         </ScrollReveal>
         </div>

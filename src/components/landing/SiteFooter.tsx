@@ -84,7 +84,7 @@ export function SiteFooter({ locale, t }: Props) {
                   </li>
                 ))}
                 <li>
-                  <Link prefetch={false} href={`/${locale}`} className={linkMutedClass}>
+                  <Link prefetch={false} href={`/${locale}/links`} className={linkMutedClass}>
                     {nav.allLinks}
                   </Link>
                 </li>
