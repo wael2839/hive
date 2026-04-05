@@ -15,6 +15,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     });
+    entries.push({
+      url: `${base}/${locale}/links`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    });
     for (const slug of serviceSlugs) {
       entries.push({
         url: `${base}/${locale}/services/${slug}`,

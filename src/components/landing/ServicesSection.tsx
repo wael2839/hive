@@ -30,8 +30,12 @@ export function ServicesSection({ locale, t }: { locale: Locale; t: Messages["se
 
         <div className="mt-14 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {t.items.map((item, i) => (
-            <ScrollReveal key={item.title} delayMs={60 + i * 40} className="h-full min-h-0">
-              <article className="svc-card flex h-full min-h-0 flex-col">
+            <ScrollReveal
+              key={item.title}
+              delayMs={60 + i * 40}
+              className="h-full min-h-0 w-full min-w-0 self-stretch"
+            >
+              <article className="svc-card flex h-full min-h-0 w-full flex-col">
                 <div className="svc-card__data">
                   <div className="svc-card__media">
                     <Image
@@ -54,8 +58,9 @@ export function ServicesSection({ locale, t }: { locale: Locale; t: Messages["se
                   </div>
                   <div className="svc-card__info">
                     <h3 className="svc-card__title">{item.title}</h3>
-                    <p className="svc-card__desc">{item.desc}</p>
-                    <p className="svc-card__more">{item.more}</p>
+                    <p className="svc-card__excerpt">
+                      {item.desc} {item.more}
+                    </p>
                   </div>
                 </div>
               </article>

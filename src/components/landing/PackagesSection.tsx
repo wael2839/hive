@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { IconPackageFeatureCheck } from "@/components/icons/MiniUiIcons";
 import type { Locale, Messages } from "@/lib/i18n";
 import { ScrollReveal } from "./ScrollReveal";
 import SectionTitle from "../ui/SectionTitle";
@@ -39,31 +40,39 @@ export function PackagesSection({ locale, t }: Props) {
                     {t.badgePopular}
                   </p>
                 ) : null}
-                <h3 className="min-h-[3.5rem] text-lg font-semibold leading-7 text-hive-off-white">
+                <h3 className="min-h-[3.5rem] text-center text-balance text-2xl font-bold leading-snug tracking-tight text-hive-gold-light sm:text-3xl light:text-hive-gold">
                   {item.name}
                 </h3>
-                <p className="mt-3 text-2xl font-bold tracking-tight text-hive-gold-light sm:text-3xl">
-                  {item.price}
-                </p>
-                <p className="mt-4 text-sm leading-7 text-hive-off-white/70 light:text-neutral-600">
+                <p className="mx-auto mt-4 max-w-prose text-center text-balance text-sm leading-7 text-hive-off-white/70 light:text-neutral-600">
                   {item.description}
                 </p>
-                <ul className="mt-6 space-y-2.5 border-t border-hive-border-subtle pt-6">
-                  {item.features.map((line) => (
-                    <li
-                      key={line}
-                      className="flex gap-2.5 text-sm text-hive-off-white/80 light:text-neutral-700"
-                    >
-                      <span
-                        className="mt-0.5 shrink-0 text-hive-gold"
-                        aria-hidden
+                {item.features && item.features.length > 0 ? (
+                  <ul className="mt-6 space-y-2.5 border-t border-hive-border-subtle pt-6">
+                    {item.features.map((line) => (
+                      <li
+                        key={line}
+                        className="flex items-start gap-3 text-sm text-hive-off-white/80 light:text-neutral-700"
                       >
-                        ✓
-                      </span>
-                      <span>{line}</span>
-                    </li>
-                  ))}
-                </ul>
+                        <span
+                          className="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full border border-hive-gold/50 bg-[color-mix(in_srgb,var(--hive-gold)_16%,transparent)] text-hive-gold-light light:border-[#bda957]/55 light:bg-[color-mix(in_srgb,var(--hive-gold)_12%,transparent)] light:text-[#5c4a12]"
+                          aria-hidden
+                        >
+                          <IconPackageFeatureCheck className="size-3.5" />
+                        </span>
+                        <span className="min-w-0 pt-0.5 leading-7">{line}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="mt-6 border-t border-hive-border-subtle pt-6">
+                    <p className="text-center text-base font-extrabold leading-snug tracking-tight text-hive-gold-light sm:text-lg light:text-hive-gold">
+                      {t.tailoredPackageHook}
+                    </p>
+                    <p className="mx-auto mt-3 max-w-prose text-center text-balance text-sm leading-7 text-hive-off-white/80 light:text-neutral-700">
+                      {t.tailoredPackageNote}
+                    </p>
+                  </div>
+                )}
                 <div className="mt-8 min-h-2 flex-1" aria-hidden />
                 <Link
                   prefetch={false}

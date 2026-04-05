@@ -61,11 +61,14 @@ export type Messages = {
     title: string;
     subtitle: string;
     badgePopular: string;
+    /** يُعرض بدل قائمة البنود عندما لا توجد `features` على الباقة */
+    tailoredPackageHook: string;
+    tailoredPackageNote: string;
     items: {
       name: string;
       price: string;
       description: string;
-      features: string[];
+      features?: string[];
       cta: string;
       featured?: boolean;
     }[];
@@ -79,6 +82,7 @@ export type Messages = {
     kicker: string;
     title: string;
     subtitle: string;
+    formTitle: string;
     channelsTitle: string;
     ariaPhone: string;
     ariaEmail: string;
@@ -114,6 +118,14 @@ export type Messages = {
     contactTitle: string;
     contactForm: string;
   };
+  /** صفحة ثابتة المسار `/links` (عرض بلغة الموقع الافتراضية) */
+  linksPage: {
+    title: string;
+    description: string;
+    heading: string;
+    intro: string;
+    websiteLinkLabel: string;
+  };
 };
 
 const messages: Record<Locale, Messages> = {
@@ -127,9 +139,9 @@ const messages: Record<Locale, Messages> = {
       brand: "Hive",
       home: "Home",
       about: "About Us",
-      services: "Services",
+      services: "Our Services",
       vision: "Why Choose Us",
-      packages: "Packages",
+      packages: "Our Packages",
       portfolio: "Portfolio",
       contact: "Contact",
       allLinks: "All links",
@@ -227,10 +239,13 @@ const messages: Record<Locale, Messages> = {
     },
     packages: {
       kicker: "Packages",
-      title: "Choose Your Package",
+      title: "Our Packages",
       subtitle:
         "From your first digital presence to enterprise-wide systems—tiers aligned with how you grow.",
       badgePopular: "Most popular",
+      tailoredPackageHook: "Customize your package, your way.",
+      tailoredPackageNote:
+        "This package is designed specifically for complex technical needs. Contact us and we will deliver the services you need, aligned with your organization's workflows.",
       items: [
         {
           name: "Essential Presence",
@@ -262,14 +277,9 @@ const messages: Record<Locale, Messages> = {
         },
         {
           name: "Enterprise Solutions",
-          price: "On Request",
+          price: "Customized",
           description:
             "End-to-end digitization for smarter, coordinated management.",
-          features: [
-            "Full commercial stack: Everything in package (2), included.",
-            "Staff management: Desktop app for HR workflows and operations.",
-            "Office templates: Professional Word sets (contracts, letters, invoices) for consistent corporate branding.",
-          ],
           cta: "Contact Us",
         },
       ],
@@ -291,7 +301,8 @@ const messages: Record<Locale, Messages> = {
     contact: {
       kicker: "Contact",
       title: "Contact Us",
-      subtitle: "Tell us what you need. We respond within 24 hours.",
+      subtitle: "Tell us what you need.",
+      formTitle: "Request your service",
       channelsTitle: "Direct Contact",
       ariaPhone: "Phone",
       ariaEmail: "Email",
@@ -328,6 +339,14 @@ const messages: Record<Locale, Messages> = {
       contactTitle: "Contact",
       contactForm: "Contact form",
     },
+    linksPage: {
+      title: "Hive Digital Solutions Links",
+      description:
+        "Quick links to our website, phone, WhatsApp, email, and social channels.",
+      heading: "Hive Digital Solutions Links",
+      intro: "All our official pages in one place.",
+      websiteLinkLabel: "Our website",
+    },
   },
   ar: {
     meta: {
@@ -340,8 +359,8 @@ const messages: Record<Locale, Messages> = {
       home: "الرئيسية",
       about: "من نحن",
       vision: "لماذا تختارنا",
-      services: "الخدمات",
-      packages: "الباقات",
+      services: "خدماتنا",
+      packages: "باقاتنا",
       portfolio: "الأعمال",
       contact: "تواصل",
       allLinks: "جميع الروابط",
@@ -439,10 +458,13 @@ const messages: Record<Locale, Messages> = {
     },
     packages: {
       kicker: "باقاتنا",
-      title: "اختر الباقة المناسبة",
+      title: "باقاتنا",
       subtitle:
         "من أول تمثيل رقمي وحتى أنظمة المؤسسات — باقات تتوافق مع مرحلة نموك.",
       badgePopular: "الأكثر طلبا",
+      tailoredPackageHook: "خصّص باقتك بنفسك.",
+      tailoredPackageNote:
+        "هذه الباقة صممت خصيصاً لتلبية احتياجاتك التقنية المعقدة. تواصل معنا لنقدّم لك الخدمات التي تحتاجها بما يتوافق مع دورة عمل مؤسستك.",
       items: [
         {
           name: "باقة الحضور الأساسي",
@@ -472,13 +494,8 @@ const messages: Record<Locale, Messages> = {
         },
         {
           name: "باقة الحلول المؤسساتية",
-          price: "حسب الطلب",
+          price: "مخصصة",
           description: "الرقمنة الشاملة لإدارة ذكية ومتكاملة",
-          features: [
-            "النظام التجاري الشامل: تتضمن كافة ميزات الباقة رقم (2) بالكامل.",
-            "إدارة الموظفين: تطوير تطبيق سطح مكتب مخصص لإدارة شؤون الموظفين وتنظيم سير العمل.",
-            "الحلول الإدارية: تصميم قوالب احترافية (Word) تشمل (العقود، المراسلات الرسمية، والفواتير) لضمان طابع مؤسساتي موحد.",
-          ],
           cta: "تواصل معنا",
         },
       ],
@@ -500,7 +517,8 @@ const messages: Record<Locale, Messages> = {
     contact: {
       kicker: "تواصل",
       title: "تواصل معنا",
-      subtitle: "أخبرنا بما تحتاجه، ونرد خلال 24 ساعة.",
+      subtitle: "أخبرنا بما تحتاجه، ",
+      formTitle: "اطلب خدمتك",
       channelsTitle: "تواصل مباشر",
       ariaPhone: "الهاتف",
       ariaEmail: "البريد الإلكتروني",
@@ -525,17 +543,25 @@ const messages: Record<Locale, Messages> = {
       error: "تعذر الإرسال. حاول مرة أخرى أو تواصل معنا مباشرة.",
       errorUnavailable:
         "نموذج التواصل غير مهيأ على الخادم بعد (إرسال البريد). راسلنا مباشرة عبر البريد أو الهاتف الظاهر في الصفحة.",
-      privacy: "نحترم خصوصيتك—لا رسائل مزعجة.",
+      privacy: "نحترم خصوصيتك.",
     },
     footer: {
       rights: "© Hive Digital Solutions {year} جميع الحقوق محفوظة.",
       tagline: "نبني أنظمة رقمية قابلة للتوسع",
       brandIntro:
-        "هايف لحلول الرقمية تصمم وتبني تجارب ويب وموبايل وأتمتة تدعم نمو علامتك بوضوح ودعم مستمر على المدى الطويل.",
+        "هايف للحلول الرقمية تصمم وتبني تجارب ويب وموبايل وأتمتة تدعم نمو علامتك بوضوح ودعم مستمر على المدى الطويل.",
       sitemapTitle: "روابط سريعة",
       servicesTitle: "خدماتنا",
       contactTitle: "تواصل",
       contactForm: "نموذج التواصل",
+    },
+    linksPage: {
+      title: "هايڤ للحلول الرقمية — روابط",
+      description:
+        "روابط سريعة للموقع والهاتف وواتساب والبريد ووسائل التواصل.",
+      heading: "روابط هايڤ للحلول الرقمية",
+      intro: "كل صفحاتنا الرسمية في مكان واحد..",
+      websiteLinkLabel: "موقعنا الالكتروني",
     },
   },
 };

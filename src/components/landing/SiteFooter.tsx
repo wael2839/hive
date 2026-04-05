@@ -43,7 +43,7 @@ export function SiteFooter({ locale, t }: Props) {
   const rightsText = f.rights.replace("{year}", String(year));
 
   return (
-    <footer className="relative border-t border-hive-border bg-[var(--hive-bg)]">
+    <footer className="relative ">
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10 xl:gap-12">
           {/* العمود 1 — الهوية: شعار أعلى منتصف النص */}
@@ -126,21 +126,13 @@ export function SiteFooter({ locale, t }: Props) {
               </li>
               <li>
                 <a
-                  href={siteContact.whatsapp.href}
+                  href={siteContact.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={contactRowClass}
                 >
-                  <IconWhatsApp className="size-4 shrink-0 text-hive-gold" />
-                  <span className="flex min-w-0 flex-col text-center sm:text-start">
-                    <span>{c.ariaWhatsApp}</span>
-                    <span
-                      dir="ltr"
-                      className="text-xs text-hive-off-white/50 light:text-neutral-500"
-                    >
-                      {siteContact.phone.display}
-                    </span>
-                  </span>
+                  <IconInstagram className="size-4 shrink-0 text-hive-gold" />
+                  <span>{c.ariaInstagram}</span>
                 </a>
               </li>
               <li>
@@ -156,13 +148,13 @@ export function SiteFooter({ locale, t }: Props) {
               </li>
               <li>
                 <a
-                  href={siteContact.social.instagram}
+                  href={siteContact.social.tiktok}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={contactRowClass}
                 >
-                  <IconInstagram className="size-4 shrink-0 text-hive-gold" />
-                  <span>{c.ariaInstagram}</span>
+                  <IconTikTok className="size-4 shrink-0 text-hive-gold" />
+                  <span>{c.ariaTiktok}</span>
                 </a>
               </li>
               <li>
@@ -178,13 +170,21 @@ export function SiteFooter({ locale, t }: Props) {
               </li>
               <li>
                 <a
-                  href={siteContact.social.tiktok}
+                  href={siteContact.whatsapp.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={contactRowClass}
                 >
-                  <IconTikTok className="size-4 shrink-0 text-hive-gold" />
-                  <span>{c.ariaTiktok}</span>
+                  <IconWhatsApp className="size-4 shrink-0 text-hive-gold" />
+                  <span className="flex min-w-0 flex-col text-center sm:text-start">
+                    <span>{c.ariaWhatsApp}</span>
+                    <span
+                      dir="ltr"
+                      className="text-xs text-hive-off-white/50 light:text-neutral-500"
+                    >
+                      {siteContact.phone.display}
+                    </span>
+                  </span>
                 </a>
               </li>
               <li>
@@ -205,24 +205,6 @@ export function SiteFooter({ locale, t }: Props) {
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <a
-              href={siteContact.whatsapp.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={c.ariaWhatsApp}
-              className={socialBarClass}
-            >
-              <IconWhatsApp className="size-5" />
-            </a>
-            <a
-              href={siteContact.social.tiktok}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={c.ariaTiktok}
-              className={socialBarClass}
-            >
-              <IconTikTok className="size-5" />
-            </a>
-            <a
               href={siteContact.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
@@ -241,6 +223,15 @@ export function SiteFooter({ locale, t }: Props) {
               <IconFacebook className="size-5" />
             </a>
             <a
+              href={siteContact.social.tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={c.ariaTiktok}
+              className={socialBarClass}
+            >
+              <IconTikTok className="size-5" />
+            </a>
+            <a
               href={siteContact.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
@@ -248,6 +239,15 @@ export function SiteFooter({ locale, t }: Props) {
               className={socialBarClass}
             >
               <IconLinkedIn className="size-5" />
+            </a>
+            <a
+              href={siteContact.whatsapp.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={c.ariaWhatsApp}
+              className={socialBarClass}
+            >
+              <IconWhatsApp className="size-5" />
             </a>
             <Link
               prefetch={false}

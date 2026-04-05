@@ -109,10 +109,11 @@ export function ContactSection({
     }
   }
 
+  /** جوال: التواصل المباشر أولاً ثم النموذج — lg: كما كان حسب اتجاه الصف */
   const formOrderClass =
-    locale === "ar" ? "lg:order-2" : "lg:order-1";
+    locale === "ar" ? "order-2 lg:order-2" : "order-2 lg:order-1";
   const channelsOrderClass =
-    locale === "ar" ? "lg:order-1" : "lg:order-2";
+    locale === "ar" ? "order-1 lg:order-1" : "order-1 lg:order-2";
 
   return (
     <section
@@ -134,7 +135,14 @@ export function ContactSection({
           delayMs={80}
           className={`w-full min-w-0 lg:max-w-xl lg:flex-none ${formOrderClass}`}
         >
+          <h3
+            id="contact-form-heading"
+            className="mb-4 text-center text-lg font-bold leading-snug text-hive-gold-light sm:text-xl light:text-hive-gold"
+          >
+            {c.formTitle}
+          </h3>
           <form
+            aria-labelledby="contact-form-heading"
             onSubmit={onSubmit}
             className="space-y-4 rounded-md border border-hive-border bg-[var(--hive-card-glass)] p-6 backdrop-blur-md sm:p-7 lg:p-6"
             dir={locale === "ar" ? "rtl" : "ltr"}
@@ -242,50 +250,17 @@ export function ContactSection({
           className={`w-full min-w-0 lg:max-w-md lg:flex-none ${channelsOrderClass}`}
         >
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-hive-gold-light/90">
+            <h3 className="mb-4 text-center text-lg font-bold leading-snug text-hive-gold-light sm:text-xl light:text-hive-gold text-balance">
               {c.channelsTitle}
-            </p>
-            <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3 lg:grid-cols-1">
-              <a
-                href={siteContact.phone.href}
-                aria-label={c.ariaPhone}
-                className="flex items-center gap-3 rounded-md border border-hive-border bg-[var(--hive-pill-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
-              >
-                <IconPhone className="h-5 w-5 shrink-0 text-hive-gold-light" />
-                <span dir="ltr" className="min-w-0 truncate font-medium">
-                  {siteContact.phone.display}
-                </span>
-              </a>
-              <a
-                href={siteContact.email.href}
-                aria-label={c.ariaEmail}
-                className="flex items-center gap-3 rounded-md border border-hive-border bg-[var(--hive-pill-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
-              >
-                <IconMail className="h-5 w-5 shrink-0 text-hive-gold-light" />
-                <span dir="ltr" className="min-w-0 truncate font-medium">
-                  {siteContact.email.display}
-                </span>
-              </a>
-              <a
-                href={siteContact.whatsapp.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={c.ariaWhatsApp}
-                className="flex items-center gap-3 rounded-md border border-hive-border bg-[var(--hive-pill-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
-              >
-                <IconWhatsApp className="h-5 w-5 shrink-0 text-hive-gold-light" />
-                <span className="font-medium">{c.ariaWhatsApp}</span>
-              </a>
-            </div>
-
-            <ul className="mt-8 flex list-none flex-wrap items-center justify-start gap-3 p-0">
+            </h3>
+            <ul className="mb-8 flex w-full list-none flex-wrap items-center justify-center gap-3 p-0">
               <li>
                 <a
                   href={siteContact.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={c.ariaInstagram}
-                  className="flex h-11 w-11 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                  className="flex h-11 w-11 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
                 >
                   <IconInstagram className="h-5 w-5" />
                 </a>
@@ -296,7 +271,7 @@ export function ContactSection({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={c.ariaFacebook}
-                  className="flex h-11 w-11 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                  className="flex h-11 w-11 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
                 >
                   <IconFacebook className="h-5 w-5" />
                 </a>
@@ -307,7 +282,7 @@ export function ContactSection({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={c.ariaTiktok}
-                  className="flex h-11 w-11 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                  className="flex h-11 w-11 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
                 >
                   <IconTikTok className="h-5 w-5" />
                 </a>
@@ -318,12 +293,45 @@ export function ContactSection({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={c.ariaLinkedin}
-                  className="flex h-11 w-11 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                  className="flex h-11 w-11 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
                 >
                   <IconLinkedIn className="h-5 w-5" />
                 </a>
               </li>
             </ul>
+
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 lg:grid-cols-1">
+              <a
+                href={siteContact.phone.href}
+                aria-label={c.ariaPhone}
+                className="flex items-center gap-3 rounded-md border border-hive-border bg-[var(--hive-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+              >
+                <IconPhone className="h-5 w-5 shrink-0 text-hive-gold-light" />
+                <span dir="ltr" className="min-w-0 truncate font-medium">
+                  {siteContact.phone.display}
+                </span>
+              </a>
+              <a
+                href={siteContact.whatsapp.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={c.ariaWhatsApp}
+                className="flex items-center gap-3 rounded-md border border-hive-border bg-[var(--hive-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+              >
+                <IconWhatsApp className="h-5 w-5 shrink-0 text-hive-gold-light" />
+                <span className="font-medium">{c.ariaWhatsApp}</span>
+              </a>
+              <a
+                href={siteContact.email.href}
+                aria-label={c.ariaEmail}
+                className="flex items-center gap-3 rounded-md border border-hive-border bg-[var(--hive-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+              >
+                <IconMail className="h-5 w-5 shrink-0 text-hive-gold-light" />
+                <span dir="ltr" className="min-w-0 truncate font-medium">
+                  {siteContact.email.display}
+                </span>
+              </a>
+            </div>
           </div>
         </ScrollReveal>
         </div>

@@ -255,15 +255,15 @@ body {
 .hive-vision-hex-card__wrap {
   position: relative;
   width: 100%;
-  /* ارتفاع صريح من نسبة السداسي حتى لا ينهار inset-0 على الجوال */
+  /* سداسي منتظم مسطح الرأس: عرض / ارتفاع = 2 / √3 */
   aspect-ratio: 100 / 86.6025403784;
   overflow: visible;
 }
 
-@media (max-width: 639px) {
+@media (min-width: 1024px) {
   .hive-vision-hex-card__wrap {
-    /* أقرب للسداسي الطبيعي من 100/104 لتقليل الفراغ الرأسي بين البطاقات */
-    aspect-ratio: 100 / 92;
+    /* سداسي منتظم حاد الرأس: عرض / ارتفاع = √3 / 2 */
+    aspect-ratio: 86.6025403784 / 100;
   }
 }
 
@@ -282,7 +282,8 @@ body {
 
 .hive-vision-hex-svg__face {
   /* نفس خلفية قسم الرؤية (يتبع الثيم عبر --hive-bg) */
-  fill: var(--hive-bg);
+  /* background-color: var(--hive-bg2); */
+  fill: var(--hive-bg2);
 }
 
 .hive-vision-hex-card__content {
@@ -584,7 +585,8 @@ html.light .hive-hero-hex-grid-light {
   border-radius: var(--radius-md);
   pointer-events: none;
   transition: border-color 0.35s ease, background 0.35s ease;
-  background: color-mix(in srgb, var(--hive-fg) 6%, transparent);
+  /* مغاير لخلفية قسم الخدمات (--hive-bg2) عبر لون القاعدة الرئيسي */
+  background: var(--hive-bg);
   border: 1px solid color-mix(in srgb, var(--hive-gold) 24%, var(--hive-border));
 }
 
@@ -645,10 +647,9 @@ html.light .hive-hero-hex-grid-light {
   text-decoration: none;
   white-space: nowrap;
   border-radius: 10px;
-  color: #111;
+  color: #fff;
   background: linear-gradient(135deg, var(--hive-btn-from), var(--hive-btn-to));
   border: 1px solid rgba(189, 169, 87, 0.65);
-  box-shadow: 0 10px 22px rgba(189, 169, 87, 0.32);
   transition: opacity 0.2s ease, filter 0.2s ease;
 }
 
@@ -662,10 +663,9 @@ html.light .hive-hero-hex-grid-light {
 }
 
 html.light .svc-card__top-more {
-  color: #111;
+  color: #0a0a0a;
   background: linear-gradient(135deg, var(--hive-btn-from), var(--hive-btn-to));
   border-color: rgba(189, 169, 87, 0.65);
-  box-shadow: 0 10px 22px rgba(189, 169, 87, 0.32);
 }
 
 .svc-card:hover .svc-card__image {
@@ -678,36 +678,49 @@ html.light .svc-card__top-more {
   flex-direction: column;
   min-height: 0;
   padding: 1rem 1.1rem 1.2rem;
+  background: var(--hive-bg);
   border: 1px solid color-mix(in srgb, var(--hive-gold) 24%, var(--hive-border));
   border-top: 0;
   border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
 
+/* عنوان البطاقة — سطران كحد أقصى */
 .svc-card__title {
   margin: 0 0 0.45rem;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
   font-size: 1.12rem;
   font-weight: 700;
   line-height: 1.3;
   color: var(--hive-gold);
+  text-align: center;
+  text-wrap: balance;
+  min-height: calc(1.12rem * 1.3 * 2);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 
-.svc-card__desc {
-  margin: 0 0 0.35rem;
+/* نص واحد تحت العنوان — 3 أسطر فقط + … عند تجاوز النص */
+.svc-card__excerpt {
+  margin: 0;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
   font-size: 0.9rem;
   line-height: 1.65;
   color: color-mix(in srgb, var(--hive-fg) 92%, transparent);
-}
-
-.svc-card__more {
-  margin: 0;
-  font-size: 0.84rem;
-  line-height: 1.58;
-  color: color-mix(in srgb, var(--hive-fg) 78%, transparent);
+  min-height: calc(0.9rem * 1.65 * 3);
+  max-height: calc(0.9rem * 1.65 * 3);
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   line-clamp: 3;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Service details pages */

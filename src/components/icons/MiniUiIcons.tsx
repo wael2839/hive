@@ -83,3 +83,18 @@ export function IconBadgeCheck({ className }: IconProps) {
     </svg>
   );
 }
+
+/** علامة صح بخط سميك — تُعرض داخل حاوية دائرية في قوائم الباقات */
+export function IconPackageFeatureCheck({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 14 14" className={className} aria-hidden fill="none">
+      <path
+        d="M2.75 7.1 5.45 9.8 11.25 4"
+        stroke="currentColor"
+        strokeWidth="2.15"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}

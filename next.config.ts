@@ -31,6 +31,12 @@ const nextConfig: NextConfig = {
         destination: `/${defaultLocale}`,
         permanent: true,
       },
+      /** رابط ثابت للمشاركة الخارجية — يوجّه إلى صفحة الروابط بلغة الموقع الافتراضية */
+      {
+        source: "/links",
+        destination: `/${defaultLocale}/links`,
+        permanent: false,
+      },
     ];
   },
 };

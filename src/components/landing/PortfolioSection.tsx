@@ -11,7 +11,7 @@ export function PortfolioSection({ t }: { t: Messages["portfolio"] }) {
   return (
     <section
       id="portfolio"
-      className="hive-section-main relative border-t border-hive-border-subtle py-15 sm:py-15"
+      className="hive-section-main relative py-15 sm:py-15"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>

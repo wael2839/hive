@@ -27,7 +27,7 @@ export function LanguageSwitcher({ active }: { active: Locale }) {
             key={locale}
             href={href}
             prefetch={false}
-            className={`relative rounded-md px-3 py-1 text-xs font-semibold tracking-wide transition-colors ${
+            className={`relative inline-flex items-center justify-center rounded-md px-3 py-1 text-xs font-semibold tracking-wide transition-colors ${
               isOn
                 ? "text-neutral-900"
                 : "text-hive-off-white/70 light:text-neutral-600 hover:text-hive-gold-light"
@@ -46,4 +46,3 @@ export function LanguageSwitcher({ active }: { active: Locale }) {
     </div>
   );
 }
-

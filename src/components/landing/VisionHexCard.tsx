@@ -3,23 +3,30 @@
 import { useId } from "react";
 import type { CSSProperties } from "react";
 
-/** Flat-top regular hex: عرض 100، ارتفاع √3/2×100 (لا نستخدم مربعا 100×100 لأنه يشوه الشكل). */
-const VB_W = 100;
-const VB_H = 86.60254037844386;
-const MID = VB_H / 2;
-const Q = VB_H / 4;
-const POINTS_FLAT = `25,0 75,0 100,${MID} 75,${VB_H} 25,${VB_H} 0,${MID}`;
-/** Pointy-top hex in same box: vertices top & bottom (lg+ / 1024px). */
-const POINTS_POINTY = `50,0 100,${Q} 100,${VB_H - Q} 50,${VB_H} 0,${VB_H - Q} 0,${Q}`;
+const SQRT3 = Math.sqrt(3);
 
-const INNER = `translate(${VB_W / 2},${MID}) scale(0.995) translate(${-VB_W / 2},${-MID})`;
+/** مسطح الرأس: عرض 100، ارتفاع 100·√3/2، ضلع = 50 */
+const FLAT_W = 100;
+const FLAT_H = (FLAT_W * SQRT3) / 2;
+const FLAT_MID = FLAT_H / 2;
+const POINTS_FLAT = `25,0 75,0 100,${FLAT_MID} 75,${FLAT_H} 25,${FLAT_H} 0,${FLAT_MID}`;
+
+/** حاد الرأس: نفس طول الضلع S = 50 → عرض S√3، ارتفاع 2S */
+const S = FLAT_W / 2;
+const POINTY_W = S * SQRT3;
+const POINTY_H = 2 * S;
+const MID_PY = POINTY_W / 2;
+const POINTS_POINTY = `${MID_PY},0 ${POINTY_W},${S / 2} ${POINTY_W},${(3 * S) / 2} ${MID_PY},${POINTY_H} 0,${(3 * S) / 2} 0,${S / 2}`;
+
+const INNER_FLAT = `translate(${FLAT_W / 2},${FLAT_MID}) scale(0.995) translate(${-FLAT_W / 2},${-FLAT_MID})`;
+const INNER_POINTY = `translate(${MID_PY},${POINTY_H / 2}) scale(0.995) translate(${-MID_PY},${-POINTY_H / 2})`;
 
 type Props = {
   title: string;
   body: string;
 };
 
-/** Vision card: flat-top below 1024px, pointy-top from 1024px (Tailwind lg). */
+/** بطاقة الرؤية: سداسي منتظم مسطح الرأس تحت lg، وسداسي منتظم حاد الرأس من lg */
 export function VisionHexCard({ title, body }: Props) {
   const uid = useId().replace(/:/g, "");
   const clipFlat = `vision-hex-flat-${uid}`;
@@ -34,12 +41,7 @@ export function VisionHexCard({ title, body }: Props) {
   return (
     <article className="hive-vision-hex-card  flex w-full flex-col lg:h-full lg:min-h-0">
       <div className="hive-vision-hex-card__wrap relative w-full " style={wrapStyle}>
-        <svg
-          className="hive-vision-hex-svg"
-          viewBox={`0 0 ${VB_W} ${VB_H}`}
-          preserveAspectRatio="xMidYMid meet"
-          aria-hidden
-        >
+        <svg className="hive-vision-hex-svg" aria-hidden overflow="visible">
           <defs>
             <clipPath id={clipFlat} clipPathUnits="objectBoundingBox">
               <polygon points="0.25,0 0.75,0 1,0.5 0.75,1 0.25,1 0,0.5" />
@@ -47,7 +49,6 @@ export function VisionHexCard({ title, body }: Props) {
             <clipPath id={clipPointy} clipPathUnits="objectBoundingBox">
               <polygon points="0.5,0 1,0.25 1,0.75 0.5,1 0,0.75 0,0.25" />
             </clipPath>
-            {/* ظل ذهبي على شكل السداسي: feMerge يضع الظل تحت الرسم */}
             <filter
               id={shadowFilter}
               x="-60%"
@@ -83,25 +84,39 @@ export function VisionHexCard({ title, body }: Props) {
           </defs>
 
           <g className="lg:hidden" filter={`url(#${shadowFilter})`}>
-            <polygon className="hive-vision-hex-svg__border" points={POINTS_FLAT} />
-            <g transform={INNER}>
-              <polygon className="hive-vision-hex-svg__face" points={POINTS_FLAT} />
-            </g>
+            <svg
+              viewBox={`0 0 ${FLAT_W} ${FLAT_H}`}
+              width="100%"
+              height="100%"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <polygon className="hive-vision-hex-svg__border" points={POINTS_FLAT} />
+              <g transform={INNER_FLAT}>
+                <polygon className="hive-vision-hex-svg__face" points={POINTS_FLAT} />
+              </g>
+            </svg>
           </g>
 
           <g className="hidden lg:block" filter={`url(#${shadowFilter})`}>
-            <polygon className="hive-vision-hex-svg__border" points={POINTS_POINTY} />
-            <g transform={INNER}>
-              <polygon className="hive-vision-hex-svg__face" points={POINTS_POINTY} />
-            </g>
+            <svg
+              viewBox={`0 0 ${POINTY_W} ${POINTY_H}`}
+              width="100%"
+              height="100%"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <polygon className="hive-vision-hex-svg__border" points={POINTS_POINTY} />
+              <g transform={INNER_POINTY}>
+                <polygon className="hive-vision-hex-svg__face" points={POINTS_POINTY} />
+              </g>
+            </svg>
           </g>
         </svg>
         <div className="hive-vision-hex-card__content absolute inset-0 z-10">
-          <h3 className="hive-vision-hex-card__title mb-2! relative">{title}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-[100%] mt-1 h-[3px] bg-gradient-to-r from-transparent via-hive-gold/35 to-transparent" />
-
+          <h3 className="hive-vision-hex-card__title mb-2! relative">
+            {title}
+            <div className="absolute left-1/2 mt-1 h-[3px] w-[100%] -translate-x-1/2 transform bg-gradient-to-r from-transparent via-hive-gold/35 to-transparent" />
           </h3>
-          
+
           <p className="hive-vision-hex-card__body text-hive-off-white/88 light:text-neutral-700">{body}</p>
         </div>
       </div>
