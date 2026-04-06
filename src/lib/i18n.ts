@@ -526,7 +526,7 @@ const messages: Record<Locale, Messages> = {
       ariaInstagram: "إنستغرام",
       ariaFacebook: "فيسبوك",
       ariaTiktok: "تيك توك",
-      ariaLinkedin: "لينكدإن",
+      ariaLinkedin: "لينكد إن",
       name: "الاسم الكامل",
       email: "البريد الإلكتروني",
       phone: "رقم الجوال",
@@ -559,7 +559,7 @@ const messages: Record<Locale, Messages> = {
       title: "هايڤ للحلول الرقمية — روابط",
       description:
         "روابط سريعة للموقع والهاتف وواتساب والبريد ووسائل التواصل.",
-      heading: "روابط هايڤ للحلول الرقمية",
+      heading: "روابط التواصل",
       intro: "كل صفحاتنا الرسمية في مكان واحد..",
       websiteLinkLabel: "تصفح موقعنا",
     },

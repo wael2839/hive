@@ -81,7 +81,6 @@ export default async function LocaleLinksPage({ params }: Props) {
     {
       href: siteContact.phone.href,
       label: c.ariaPhone,
-      sub: siteContact.phone.display,
       Icon: IconPhone,
     },
     {
@@ -93,7 +92,6 @@ export default async function LocaleLinksPage({ params }: Props) {
     {
       href: siteContact.email.href,
       label: c.ariaEmail,
-      sub: siteContact.email.display,
       Icon: IconMail,
     },
   ];
@@ -108,10 +106,6 @@ export default async function LocaleLinksPage({ params }: Props) {
         <h1 className="text-center text-2xl font-extrabold text-hive-gold-light sm:text-3xl">
           {lp.heading}
         </h1>
-        <p className="mx-auto mt-3 max-w-md text-center text-sm leading-7 text-hive-off-white/75 light:text-neutral-600">
-          {lp.intro}
-        </p>
-
         <nav
           aria-label={lp.heading}
           className="mt-10 flex flex-col gap-3"
