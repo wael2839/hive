@@ -21,7 +21,7 @@ import { ScrollReveal } from "./ScrollReveal";
 import SectionTitle from "../ui/SectionTitle";
 
 const inputClass =
-  "mt-1.5 w-full rounded-md border border-hive-border bg-[var(--hive-input-bg)] px-3.5 py-2.5 text-sm text-hive-off-white outline-none transition placeholder:text-hive-off-white/35 light:placeholder:text-neutral-500 focus:border-hive-gold/50 focus:outline-none light:text-neutral-900";
+  "mt-1.5 w-full rounded-md border border-hive-border bg-[var(--hive-input-bg)] px-3.5 py-2.5 text-sm text-hive-off-white outline-none transition placeholder:text-hive-off-white/35 light:placeholder:text-neutral-500 focus:border-hive-gold-light focus:outline-none light:text-neutral-900";
 
 export function ContactSection({
   locale,
@@ -148,7 +148,7 @@ export function ContactSection({
             dir={locale === "ar" ? "rtl" : "ltr"}
           >
             {status === "sent" ? (
-              <p className="rounded-md border border-hive-gold/35 bg-hive-gold/10 px-3 py-2 text-sm text-hive-off-white light:border-hive-gold/50 light:bg-amber-50 light:text-neutral-800">
+              <p className="rounded-md border border-hive-gold-light/35 bg-hive-gold/10 px-3 py-2 text-sm text-hive-off-white light:border-hive-gold-light/50 light:bg-amber-50 light:text-neutral-800">
                 {c.sent}
               </p>
             ) : null}
@@ -160,7 +160,7 @@ export function ContactSection({
               </p>
             ) : null}
 
-            <label className="block text-sm font-medium text-hive-off-white/85 light:text-neutral-800">
+            <label className="block text-sm font-medium text-hive-off-white light:text-hive-off-white">
               {c.name}
               <input
                 name="fullName"
@@ -174,7 +174,7 @@ export function ContactSection({
             </label>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <label className="min-w-0 block text-sm font-medium text-hive-off-white/85 light:text-neutral-800">
+              <label className="min-w-0 block text-sm font-medium text-hive-off-white light:text-hive-off-white">
                 {c.email}
                 <input
                   name="email"
@@ -204,7 +204,7 @@ export function ContactSection({
               </div>
             </div>
 
-            <label className="block text-sm font-medium text-hive-off-white/85 light:text-neutral-800">
+            <label className="block text-sm font-medium text-hive-off-white light:text-hive-off-white">
               {c.service}
               <ContactServiceSelect
                 name="serviceId"
@@ -216,7 +216,7 @@ export function ContactSection({
               />
             </label>
 
-            <label className="block text-sm font-medium text-hive-off-white/85 light:text-neutral-800">
+            <label className="block text-sm font-medium text-hive-off-white light:text-hive-off-white">
               {c.projectDetails}
               <textarea
                 name="details"
@@ -237,7 +237,7 @@ export function ContactSection({
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="hive-cta-hex rounded-md inline-flex items-center justify-center bg-gradient-to-r from-hive-btn-from to-hive-btn-to px-6 py-2.5 text-sm font-semibold text-neutral-900 transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold disabled:pointer-events-none disabled:opacity-60"
+                className="hive-cta-hex rounded-md inline-flex items-center justify-center bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] px-6 py-2.5 text-sm font-semibold text-neutral-900 transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold-light disabled:pointer-events-none disabled:opacity-60 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]"
               >
                 {status === "sending" ? c.sending : c.send}
               </button>
@@ -257,7 +257,7 @@ export function ContactSection({
               <a
                 href={siteContact.phone.href}
                 aria-label={c.ariaPhone}
-                className="flex items-center gap-3 rounded-md border border-hive-border bg-[var(--hive-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                className="flex items-center gap-3 rounded-md border border-hive-border bg-[var(--hive-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold-light/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
               >
                 <IconPhone className="h-5 w-5 shrink-0 text-hive-gold-light" />
                 <span dir="ltr" className="min-w-0 truncate font-medium">
@@ -269,7 +269,7 @@ export function ContactSection({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={c.ariaWhatsApp}
-                className="flex items-center gap-3 rounded-md border border-hive-border bg-[var(--hive-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                className="flex items-center gap-3 rounded-md border border-hive-border bg-[var(--hive-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold-light/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
               >
                 <IconWhatsApp className="h-5 w-5 shrink-0 text-hive-gold-light" />
                 <span className="font-medium">{c.ariaWhatsApp}</span>
@@ -277,7 +277,7 @@ export function ContactSection({
               <a
                 href={siteContact.email.href}
                 aria-label={c.ariaEmail}
-                className="flex items-center gap-3 rounded-md border border-hive-border bg-[var(--hive-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                className="flex items-center gap-3 rounded-md border border-hive-border bg-[var(--hive-bg)] px-4 py-3 text-sm text-hive-off-white transition hover:border-hive-gold-light/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
               >
                 <IconMail className="h-5 w-5 shrink-0 text-hive-gold-light" />
                 <span dir="ltr" className="min-w-0 truncate font-medium">
@@ -293,7 +293,7 @@ export function ContactSection({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={c.ariaInstagram}
-                  className="flex h-12 w-12 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                  className="flex h-12 w-12 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold-light/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
                 >
                   <IconInstagram className="h-6 w-6" />
                 </a>
@@ -304,7 +304,7 @@ export function ContactSection({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={c.ariaFacebook}
-                  className="flex h-12 w-12 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                  className="flex h-12 w-12 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold-light/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
                 >
                   <IconFacebook className="h-6 w-6" />
                 </a>
@@ -315,7 +315,7 @@ export function ContactSection({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={c.ariaTiktok}
-                  className="flex h-12 w-12 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                  className="flex h-12 w-12 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold-light/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
                 >
                   <IconTikTok className="h-6 w-6" />
                 </a>
@@ -326,7 +326,7 @@ export function ContactSection({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={c.ariaLinkedin}
-                  className="flex h-12 w-12 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                  className="flex h-12 w-12 items-center justify-center rounded-md border border-hive-border bg-[var(--hive-bg)] text-hive-off-white transition hover:border-hive-gold-light/50 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
                 >
                   <IconLinkedIn className="h-6 w-6" />
                 </a>

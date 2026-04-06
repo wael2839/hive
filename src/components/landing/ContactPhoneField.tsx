@@ -23,7 +23,7 @@ type Props = {
 };
 
 const shellClass =
-  "flex h-[44px] w-max max-w-full shrink-0 items-stretch overflow-hidden rounded-md border border-hive-border bg-[var(--hive-bg)] outline-none transition focus-within:border-hive-gold/50 light:bg-white";
+  "flex h-[44px] w-max max-w-full shrink-0 items-stretch overflow-hidden rounded-md border border-hive-border bg-[var(--hive-bg)] outline-none transition focus-within:border-hive-gold-light light:bg-white";
 
 const dialInputClass =
   "w-[3.5rem] shrink-0 border-0 bg-transparent px-0.5 py-2 text-start text-sm text-hive-off-white outline-none ring-0 focus:ring-0 sm:w-[3rem] sm:px-1 light:text-neutral-900";
@@ -38,7 +38,7 @@ const optionSelectedClass =
   "bg-neutral-800 text-hive-gold-light light:bg-amber-100 light:text-neutral-900";
 
 const telClass =
-  "min-h-[44px] min-w-0 flex-1 rounded-md border border-hive-border bg-[var(--hive-bg)] px-3.5 py-2.5 text-sm text-hive-off-white outline-none transition placeholder:text-hive-off-white/35 focus:border-hive-gold/50 focus:outline-none light:bg-white light:text-neutral-900 light:placeholder:text-neutral-500";
+  "min-h-[44px] min-w-0 flex-1 rounded-md border border-hive-border bg-[var(--hive-bg)] px-3.5 py-2.5 text-sm text-hive-off-white outline-none transition placeholder:text-hive-off-white/35 focus:border-hive-gold-light focus:outline-none light:bg-white light:text-neutral-900 light:placeholder:text-neutral-500";
 
 export function ContactPhoneField({
   locale,
@@ -114,7 +114,7 @@ export function ContactPhoneField({
     <div ref={rootRef} className="block" role="group" aria-labelledby={groupLabelId}>
       <span
         id={groupLabelId}
-        className="block text-sm font-medium text-hive-off-white/85 light:text-neutral-800"
+        className="block text-sm font-medium text-hive-off-white light:text-hive-off-white"
       >
         {phoneLabel}
       </span>

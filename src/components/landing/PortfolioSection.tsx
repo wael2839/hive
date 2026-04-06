@@ -36,7 +36,7 @@ export function PortfolioSection({ t }: { t: Messages["portfolio"] }) {
                   className="group mb-5 w-full break-inside-avoid text-start focus:outline-none"
                 >
                   <div
-                    className={`relative overflow-hidden rounded-md border transition duration-500 ${isActive ? "border-hive-gold/50" : "border-hive-border"}`}
+                    className={`relative overflow-hidden rounded-md border transition duration-500 ${isActive ? "border-hive-gold-light/50" : "border-hive-border"}`}
                   >
                     <div
                       className={`relative ${h} w-full max-w-none overflow-hidden rounded-md bg-gradient-to-br from-hive-border/30 to-transparent light:from-hive-border/40`}

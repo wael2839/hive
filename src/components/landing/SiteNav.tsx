@@ -64,7 +64,7 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
                 prefetch={false}
                 key={a.id}
                 href={`/${locale}#${a.id}`}
-                className="rounded-md px-3 py-2 text-sm font-semibold text-hive-off-white/80 light:text-neutral-700 transition-colors hover:bg-[var(--hive-hover-surface)] hover:text-hive-gold"
+                className="rounded-md px-3 py-2 text-sm font-semibold text-hive-off-white/80 light:text-neutral-700 transition-colors hover:bg-[var(--hive-hover-surface)] hover:text-hive-gold-light"
               >
                 {t.nav[a.key]}
               </Link>
@@ -189,7 +189,7 @@ export function SiteNav({ locale, t }: { locale: Locale; t: Messages }) {
                   prefetch={false}
                   key={a.id}
                   href={`/${locale}#${a.id}`}
-                  className="rounded-md px-3 py-2.5 text-sm font-medium text-hive-off-white/85 transition-colors hover:bg-[var(--hive-hover-surface)] hover:text-hive-gold ring-hive-gold/50 ring-1"
+                  className="rounded-md px-3 py-2.5 text-sm font-medium text-hive-off-white/85 transition-colors hover:bg-[var(--hive-hover-surface)] hover:text-hive-gold-light ring-hive-gold/50 ring-1"
                   onClick={() => setOpen(false)}
                 >
                   {t.nav[a.key]}

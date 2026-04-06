@@ -561,7 +561,7 @@ const messages: Record<Locale, Messages> = {
         "روابط سريعة للموقع والهاتف وواتساب والبريد ووسائل التواصل.",
       heading: "روابط هايڤ للحلول الرقمية",
       intro: "كل صفحاتنا الرسمية في مكان واحد..",
-      websiteLinkLabel: "موقعنا الالكتروني",
+      websiteLinkLabel: "تصفح موقعنا",
     },
   },
 };

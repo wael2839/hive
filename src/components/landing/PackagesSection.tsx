@@ -31,12 +31,12 @@ export function PackagesSection({ locale, t }: Props) {
               <article
                 className={`relative flex h-full flex-col rounded-md border p-7 transition-colors ${
                   item.featured
-                    ? "border-hive-gold/45 bg-[var(--hive-card-glass)] shadow-[0_0_0_1px_rgba(189,169,87,0.12)] light:border-[#c4b896]/50 light:shadow-[0_0_40px_-12px_rgba(110,95,26,0.15)]"
+                    ? "border-hive-gold-light bg-[var(--hive-card-glass)] "
                     : "border-hive-border bg-[var(--hive-card-glass)] hover:border-hive-border-subtle"
                 }`}
               >
                 {item.featured ? (
-                  <p className="absolute -top-3.5 left-1/2 z-10 -translate-x-1/2 rounded-lg border border-hive-gold/45 bg-hive-black px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-hive-gold-light shadow-sm sm:-top-4 sm:px-4 sm:py-2 sm:text-[13px] light:bg-[#e6e6e0] light:text-[#5c4a12]">
+                  <p className="absolute -top-3.5 left-1/2 z-10 -translate-x-1/2 rounded-lg border border-hive-gold-light/45 bg-hive-black px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-hive-gold-light shadow-sm sm:-top-4 sm:px-4 sm:py-2 sm:text-[13px] light:bg-[#e6e6e0] light:text-[#5c4a12]">
                     {t.badgePopular}
                   </p>
                 ) : null}
@@ -54,7 +54,7 @@ export function PackagesSection({ locale, t }: Props) {
                         className="flex items-start gap-3 text-sm text-hive-off-white/80 light:text-neutral-700"
                       >
                         <span
-                          className="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full border border-hive-gold/50 bg-[color-mix(in_srgb,var(--hive-gold)_16%,transparent)] text-hive-gold-light light:border-[#bda957]/55 light:bg-[color-mix(in_srgb,var(--hive-gold)_12%,transparent)] light:text-[#5c4a12]"
+                          className="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full border border-hive-gold-light/50 bg-[color-mix(in_srgb,var(--hive-gold)_16%,transparent)] text-hive-gold-light light:border-[#bda957]/55 light:bg-[color-mix(in_srgb,var(--hive-gold)_12%,transparent)] light:text-[#5c4a12]"
                           aria-hidden
                         >
                           <IconPackageFeatureCheck className="size-3.5" />
@@ -77,10 +77,10 @@ export function PackagesSection({ locale, t }: Props) {
                 <Link
                   prefetch={false}
                   href={`/${locale}#contact`}
-                  className={`inline-flex w-full items-center justify-center rounded-md px-6 py-3 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold ${
+                  className={`inline-flex w-full items-center justify-center rounded-md px-6 py-3 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold-light ${
                     item.featured
                       ? "bg-gradient-to-r from-hive-btn-from to-hive-btn-to text-neutral-900 hover:brightness-110"
-                      : "border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white hover:border-hive-gold/40 hover:text-hive-gold-light"
+                      : "border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white hover:border-hive-gold-light/40 hover:text-hive-gold-light"
                   }`}
                 >
                   {item.cta}

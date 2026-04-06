@@ -22,13 +22,13 @@ const quickLinks = [
 ] as const;
 
 const socialBarClass =
-  "flex h-11 w-11 items-center justify-center rounded-lg border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:border-hive-gold/45 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold";
+  "flex h-11 w-11 items-center justify-center rounded-lg border border-hive-border bg-[var(--hive-pill-bg)] text-hive-off-white transition hover:border-hive-gold-light/45 hover:text-hive-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold";
 
 const contactRowClass =
-  "group flex items-center justify-center gap-2.5 text-center text-sm text-hive-off-white/85 transition-colors hover:text-hive-gold-light sm:justify-start sm:text-start light:text-neutral-700 light:hover:text-hive-gold";
+  "group flex items-center justify-center gap-2.5 text-center text-sm text-hive-off-white/85 transition-colors hover:text-hive-gold-light sm:justify-start sm:text-start light:text-neutral-700";
 
 const linkMutedClass =
-  "text-sm text-hive-off-white/80 transition-colors hover:text-hive-gold-light light:text-neutral-700 light:hover:text-hive-gold";
+  "text-sm text-hive-off-white/80 transition-colors hover:text-hive-gold-light light:text-neutral-700";
 
 type Props = {
   locale: Locale;
@@ -59,7 +59,7 @@ export function SiteFooter({ locale, t }: Props) {
                 alt={t.meta.title}
               />
             </Link>
-            <h2 className="mt-4 max-w-sm text-lg font-bold leading-snug text-hive-gold sm:text-xl">
+            <h2 className="mt-4 max-w-sm text-lg font-bold leading-snug text-hive-gold-light sm:text-xl">
               {f.tagline}
             </h2>
             <p className="mt-3 max-w-sm text-sm leading-7 text-hive-off-white/75 light:text-neutral-600">
@@ -69,7 +69,7 @@ export function SiteFooter({ locale, t }: Props) {
 
           {/* العمود 2 — روابط سريعة */}
           <div className="text-center sm:text-start">
-            <p className="text-sm font-semibold text-hive-gold">{f.sitemapTitle}</p>
+            <p className="text-sm font-semibold text-hive-gold-light">{f.sitemapTitle}</p>
             <nav aria-label={f.sitemapTitle} className="mt-4">
               <ul className="flex flex-col items-center gap-2.5 sm:items-start">
                 {quickLinks.map((a) => (
@@ -94,7 +94,7 @@ export function SiteFooter({ locale, t }: Props) {
 
           {/* العمود 3 — خدماتنا */}
           <div className="text-center sm:text-start">
-            <p className="text-sm font-semibold text-hive-gold">{f.servicesTitle}</p>
+            <p className="text-sm font-semibold text-hive-gold-light">{f.servicesTitle}</p>
             <ul className="mt-4 flex flex-col items-center gap-2.5 sm:items-start">
               {serviceSlugs.map((slug, i) => {
                 const title = t.services.items[i]?.title;
@@ -116,11 +116,11 @@ export function SiteFooter({ locale, t }: Props) {
 
           {/* العمود 4 — تواصل */}
           <div className="text-center sm:text-start">
-            <p className="text-sm font-semibold text-hive-gold">{f.contactTitle}</p>
+            <p className="text-sm font-semibold text-hive-gold-light">{f.contactTitle}</p>
             <ul className="mt-4 flex flex-col items-center gap-3 sm:items-start">
               <li>
                 <Link prefetch={false} href={`/${locale}#contact`} className={contactRowClass}>
-                  <IconSend className="size-4 shrink-0 text-hive-gold" />
+                  <IconSend className="size-4 shrink-0 text-hive-gold-light" />
                   <span>{f.contactForm}</span>
                 </Link>
               </li>
@@ -131,7 +131,7 @@ export function SiteFooter({ locale, t }: Props) {
                   rel="noopener noreferrer"
                   className={contactRowClass}
                 >
-                  <IconInstagram className="size-4 shrink-0 text-hive-gold" />
+                  <IconInstagram className="size-4 shrink-0 text-hive-gold-light" />
                   <span>{c.ariaInstagram}</span>
                 </a>
               </li>
@@ -142,7 +142,7 @@ export function SiteFooter({ locale, t }: Props) {
                   rel="noopener noreferrer"
                   className={contactRowClass}
                 >
-                  <IconFacebook className="size-4 shrink-0 text-hive-gold" />
+                  <IconFacebook className="size-4 shrink-0 text-hive-gold-light" />
                   <span>{c.ariaFacebook}</span>
                 </a>
               </li>
@@ -153,7 +153,7 @@ export function SiteFooter({ locale, t }: Props) {
                   rel="noopener noreferrer"
                   className={contactRowClass}
                 >
-                  <IconTikTok className="size-4 shrink-0 text-hive-gold" />
+                  <IconTikTok className="size-4 shrink-0 text-hive-gold-light" />
                   <span>{c.ariaTiktok}</span>
                 </a>
               </li>
@@ -164,7 +164,7 @@ export function SiteFooter({ locale, t }: Props) {
                   rel="noopener noreferrer"
                   className={contactRowClass}
                 >
-                  <IconLinkedIn className="size-4 shrink-0 text-hive-gold" />
+                  <IconLinkedIn className="size-4 shrink-0 text-hive-gold-light" />
                   <span>{c.ariaLinkedin}</span>
                 </a>
               </li>
@@ -175,7 +175,7 @@ export function SiteFooter({ locale, t }: Props) {
                   rel="noopener noreferrer"
                   className={contactRowClass}
                 >
-                  <IconWhatsApp className="size-4 shrink-0 text-hive-gold" />
+                  <IconWhatsApp className="size-4 shrink-0 text-hive-gold-light" />
                   <span className="flex min-w-0 flex-col text-center sm:text-start">
                     <span>{c.ariaWhatsApp}</span>
                     <span
@@ -189,7 +189,7 @@ export function SiteFooter({ locale, t }: Props) {
               </li>
               <li>
                 <a href={siteContact.email.href} className={contactRowClass}>
-                  <IconMail className="size-4 shrink-0 text-hive-gold" />
+                  <IconMail className="size-4 shrink-0 text-hive-gold-light" />
                   <span dir="ltr" className="min-w-0 break-all">
                     {siteContact.email.display}
                   </span>

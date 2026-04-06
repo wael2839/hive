@@ -105,7 +105,7 @@ export default async function LocaleLinksPage({ params }: Props) {
         id="links-main"
         className="mx-auto max-w-lg px-4 pb-16 pt-28 sm:pt-32"
       >
-        <h1 className="text-center text-2xl font-extrabold text-hive-gold-light sm:text-3xl light:text-hive-gold">
+        <h1 className="text-center text-2xl font-extrabold text-hive-gold-light sm:text-3xl">
           {lp.heading}
         </h1>
         <p className="mx-auto mt-3 max-w-md text-center text-sm leading-7 text-hive-off-white/75 light:text-neutral-600">
@@ -124,9 +124,9 @@ export default async function LocaleLinksPage({ params }: Props) {
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
               aria-label={label}
-              className="flex items-center gap-3 rounded-md border border-hive-border bg-[var(--hive-bg)] px-4 py-3.5 text-sm text-hive-off-white transition hover:border-hive-gold/40 light:text-neutral-900"
+              className="flex items-center gap-3 rounded-md border border-hive-border bg-[var(--hive-bg)] px-4 py-3.5 text-sm text-hive-off-white transition hover:border-hive-gold-light/40 light:text-neutral-900"
             >
-              <Icon className="h-5 w-5 shrink-0 text-hive-gold-light light:text-hive-gold" />
+              <Icon className="h-5 w-5 shrink-0 text-hive-gold-light" />
               <span className="flex min-w-0 flex-col gap-0.5">
                 <span className="font-semibold">{label}</span>
                 {sub ? (
@@ -141,7 +141,7 @@ export default async function LocaleLinksPage({ params }: Props) {
           <Link
             prefetch={false}
             href={homeHref}
-            className="hive-cta-hex mt-2 inline-flex w-full items-center justify-center rounded-md bg-gradient-to-r from-hive-btn-from to-hive-btn-to px-4 py-3.5 text-center text-sm font-semibold text-neutral-900 transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+            className="hive-cta-hex mt-2 inline-flex w-full items-center justify-center rounded-md bg-gradient-to-r from-hive-btn-from to-hive-btn-to px-4 py-3.5 text-center text-sm font-semibold text-neutral-900 transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold-light"
           >
             {lp.websiteLinkLabel}
           </Link>
