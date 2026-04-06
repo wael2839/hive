@@ -359,8 +359,8 @@ const messages: Record<Locale, Messages> = {
       home: "الرئيسية",
       about: "من نحن",
       vision: "لماذا تختارنا",
-      services: "خدماتنا",
-      packages: "باقاتنا",
+      services: "الخدمات",
+      packages: "الباقات",
       portfolio: "الأعمال",
       contact: "تواصل",
       allLinks: "جميع الروابط",
@@ -375,7 +375,7 @@ const messages: Record<Locale, Messages> = {
       subtitle:
         "نطور تطبيقات الويب والموبايل والحلول البرمجية المخصصة لمساعدة أعمالك على الانطلاق والنمو بثقة.",
       primary: "احصل على استشارة مجانية",
-      secondary: "استعرض خدماتنا",
+      secondary: "استعرض الخدمات",
       imageAlt: "هايڤ — صورة تعريفية للاستوديو الرقمي",
     },
     about: {
@@ -394,8 +394,8 @@ const messages: Record<Locale, Messages> = {
       stat3Label: "من البداية حتى التسليم",
     },
     services: {
-      kicker: "خدماتنا",
-      title: "خدماتنا",
+      kicker: "الخدمات",
+      title: "الخدمات",
       moreCta: "تفاصيل",
       items: [
         {
@@ -457,8 +457,8 @@ const messages: Record<Locale, Messages> = {
       ],
     },
     packages: {
-      kicker: "باقاتنا",
-      title: "باقاتنا",
+      kicker: "الباقات",
+      title: "الباقات",
       subtitle:
         "من أول تمثيل رقمي وحتى أنظمة المؤسسات — باقات تتوافق مع مرحلة نموك.",
       badgePopular: "الأكثر طلبا",
@@ -551,7 +551,7 @@ const messages: Record<Locale, Messages> = {
       brandIntro:
         "هايف للحلول الرقمية تصمم وتبني تجارب ويب وموبايل وأتمتة تدعم نمو علامتك بوضوح ودعم مستمر على المدى الطويل.",
       sitemapTitle: "روابط سريعة",
-      servicesTitle: "خدماتنا",
+      servicesTitle: "الخدمات",
       contactTitle: "تواصل",
       contactForm: "نموذج التواصل",
     },
