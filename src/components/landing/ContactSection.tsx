@@ -230,10 +230,7 @@ export function ContactSection({
               />
             </label>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-xs text-hive-off-white/45 light:text-neutral-500">
-                {c.privacy}
-              </p>
+            <div className="flex justify-end">
               <button
                 type="submit"
                 disabled={status === "sending"}
