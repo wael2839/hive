@@ -537,7 +537,7 @@ const messages: Record<Locale, Messages> = {
       servicePlaceholder: "اختر الخدمة",
       serviceOther: "خدمة أخرى",
       projectDetails: "تفاصيل المشروع",
-      send: "إرسال الرسالة",
+      send: "إرسال",
       sending: "جاري الإرسال…",
       sent: "تم إرسال الرسالة",
       error: "تعذر الإرسال. حاول مرة أخرى أو تواصل معنا مباشرة.",
