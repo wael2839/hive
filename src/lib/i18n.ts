@@ -35,7 +35,6 @@ export type Messages = {
   about: {
     kicker: string;
     title: string;
-    subtitle: string;
     body: string;
     pillars: [string, string, string];
     stat1: string;
@@ -139,20 +138,20 @@ const messages: Record<Locale, Messages> = {
       brand: "Hive",
       home: "Home",
       about: "About Us",
-      services: "Our Services",
+      services: "Services",
       vision: "Why Choose Us",
-      packages: "Our Packages",
-      portfolio: "Portfolio",
-      contact: "Contact",
-      allLinks: "All links",
+      packages: "Packages",
+      portfolio: "Selected work",
+      contact: "Contact Us",
+      allLinks: "Contact Links",
       cta: "Get Started",
       themeSwitchToLight: "Switch to light mode",
       themeSwitchToDark: "Switch to dark mode",
     },
     hero: {
       kicker: "Hive Digital Solutions",
-      title: `" All you need ،`,
-      titleAccent: `One Hive "`,
+      title: `All you need`,
+      titleAccent: `One Hive`,
       subtitle:
         "We build web, mobile, and custom software solutions that help businesses launch faster and scale with confidence.",
       primary: "Get a Free Consultation",
@@ -162,10 +161,8 @@ const messages: Record<Locale, Messages> = {
     about: {
       kicker: "About Us",
       title: "About Us",
-      subtitle:
-        "Our approach is inspired by the honeycomb, where every part works in harmony within one integrated system.",
-      body:
-        "We are a company delivering integrated digital solutions and services, enabling our clients to focus on growing their business while we handle the technical side with efficiency and clarity.",
+       body:
+        "We are a company that provides integrated digital solutions and services, enabling our clients to focus on growing their businesses while we efficiently and transparently handle the technical aspects.",
       pillars: ["Who We Are", "Concept", "Commitment"],
       stat1: "Quality First",
       stat1Label: "Excellence in every detail",
@@ -176,7 +173,7 @@ const messages: Record<Locale, Messages> = {
     },
     services: {
       kicker: "Services",
-      title: "Our Services",
+      title: "Services",
       moreCta: "Details",
       items: [
         {
@@ -217,29 +214,29 @@ const messages: Record<Locale, Messages> = {
       ],
     },
     vision: {
-      kicker: "How We Work",
+      kicker: "Why choose us",
       title: "Why Choose Us",
       cards: [
         {
-          title: "Turning ideas into digital reality",
+          title: "Quality First",
           body:
-            "We have the passion and experience to transform even complex ideas into software products that feel simple and easy to use.",
+            "We prioritize quality in everything we deliver, focusing on details to ensure professional results that meet expectations. Our goal is to provide real value with a lasting impact, not just complete the work."
         },
         {
-          title: "Innovation-first approach",
+          title: "One Partner for All Your Needs",
           body:
-            "We use modern engineering tools to deliver technical excellence in loading speed, SEO compatibility, and strong security.",
+            "We offer a wide range of digital solutions under one roof, saving time and effort while reducing the need to deal with multiple parties. We understand your vision to deliver cohesive solutions that support your goals.",
         },
         {
-          title: "Transparent collaboration",
+          title: "Integrated Work",
           body:
-            "Our workflow keeps you involved throughout development, ensuring the final product matches exactly what you envision.",
+            "All project aspects are coordinated in an organized way to ensure consistency from start to finish, reflected in the final quality and execution speed. We offer interconnected solutions that fully serve your objectives.",
         },
       ],
     },
     packages: {
       kicker: "Packages",
-      title: "Our Packages",
+      title: "Packages",
       subtitle:
         "From your first digital presence to enterprise-wide systems—tiers aligned with how you grow.",
       badgePopular: "Most popular",
@@ -286,7 +283,7 @@ const messages: Record<Locale, Messages> = {
     },
     portfolio: {
       kicker: "Selected work",
-      title: "Portfolio",
+      title: "Selected work",
       items: [
         { name: "Aurum Finance", tag: "Fintech" },
         { name: "Vertex Health", tag: "Healthcare" },
@@ -299,7 +296,7 @@ const messages: Record<Locale, Messages> = {
       ],
     },
     contact: {
-      kicker: "Contact",
+      kicker: "Contact Us",
       title: "Contact Us",
       subtitle: "Tell us what you need.",
       formTitle: "Request your service",
@@ -321,7 +318,7 @@ const messages: Record<Locale, Messages> = {
       servicePlaceholder: "Select a service",
       serviceOther: "Other service",
       projectDetails: "Project details",
-      send: "Send message",
+      send: "Send",
       sending: "Sending…",
       sent: "Message sent",
       error: "Could not send. Please try again or contact us directly.",
@@ -335,17 +332,17 @@ const messages: Record<Locale, Messages> = {
       brandIntro:
         "Hive Digital Solutions designs and builds web, mobile, and automation experiences that support your brand growth with clarity and sustained long-term support.",
       sitemapTitle: "Quick links",
-      servicesTitle: "Our services",
-      contactTitle: "Contact",
-      contactForm: "Contact form",
+      servicesTitle: "Services",
+      contactTitle: "Contact Us",
+      contactForm: "Request your service",
     },
     linksPage: {
-      title: "Hive Digital Solutions Links",
+      title: " Contact Links",
       description:
         "Quick links to our website, phone, WhatsApp, email, and social channels.",
-      heading: "Hive Digital Solutions Links",
+      heading: "Contact Links",
       intro: "All our official pages in one place.",
-      websiteLinkLabel: "Our website",
+      websiteLinkLabel: "Browse our website",
     },
   },
   ar: {
@@ -362,8 +359,8 @@ const messages: Record<Locale, Messages> = {
       services: "الخدمات",
       packages: "الباقات",
       portfolio: "الأعمال",
-      contact: "تواصل",
-      allLinks: "جميع الروابط",
+      contact: "تواصل معنا",
+      allLinks: "روابط التواصل",
       cta: "ابدأ الآن",
       themeSwitchToLight: "التبديل إلى الوضع الفاتح",
       themeSwitchToDark: "التبديل إلى الوضع الداكن",
@@ -381,8 +378,6 @@ const messages: Record<Locale, Messages> = {
     about: {
       kicker: "من نحن",
       title: "من نحن",
-      subtitle:
-        "أسلوبنا يشبه خلية النحل، حيث يعمل كل جزء بتناغم ضمن منظومة متكاملة.",
       body:
         "نحن شركة تقدم حلولا وخدمات رقمية متكاملة، ونمكن عملاءنا من التركيز على تنمية أعمالهم بينما نتولى الجوانب التقنية بكفاءة ووضوح.",
       pillars: ["من نحن", "المفهوم", "الالتزام"],
@@ -436,7 +431,7 @@ const messages: Record<Locale, Messages> = {
       ],
     },
     vision: {
-      kicker: "آلية العمل",
+      kicker: "لماذا تختارنا",
       title: "لماذا تختارنا",
       cards: [
         {
@@ -515,7 +510,7 @@ const messages: Record<Locale, Messages> = {
       ],
     },
     contact: {
-      kicker: "تواصل",
+      kicker: "تواصل معنا",
       title: "تواصل معنا",
       subtitle: "أخبرنا بما تحتاجه، ",
       formTitle: "اطلب خدمتك",
@@ -552,11 +547,11 @@ const messages: Record<Locale, Messages> = {
         "هايف للحلول الرقمية تصمم وتبني تجارب ويب وموبايل وأتمتة تدعم نمو علامتك بوضوح ودعم مستمر على المدى الطويل.",
       sitemapTitle: "روابط سريعة",
       servicesTitle: "الخدمات",
-      contactTitle: "تواصل",
-      contactForm: "نموذج التواصل",
+      contactTitle: "تواصل معنا",
+      contactForm: "اطلب خدمتك",
     },
     linksPage: {
-      title: "هايڤ للحلول الرقمية — روابط",
+      title: "روابط التواصل",
       description:
         "روابط سريعة للموقع والهاتف وواتساب والبريد ووسائل التواصل.",
       heading: "روابط التواصل",

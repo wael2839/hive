@@ -642,6 +642,16 @@ html.light .hive-hero-hex-grid-light {
   transition: opacity 0.2s ease, filter 0.2s ease;
 }
 
+[dir="ltr"] .svc-card__top-more {
+  left: 0.7rem;
+  right: auto;
+}
+
+[dir="rtl"] .svc-card__top-more {
+  right: 0.7rem;
+  left: auto;
+}
+
 .svc-card__top-more:hover {
   filter: brightness(1.05);
 }
