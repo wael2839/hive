@@ -50,6 +50,22 @@ export type Messages = {
     moreCta: string;
     items: { title: string; desc: string; more: string }[];
   };
+  serviceDetail: {
+    breadcrumbLabel: string;
+    breadcrumbBack: string;
+    sectionKicker: string;
+    importanceTitle: string;
+    featuresTitle: string;
+    differenceTitle: string;
+    processTitle: string;
+    processSubtitle: string;
+    summaryTitle: string;
+    summaryBody: string;
+    timelineLabel: string;
+    stepsCountLabel: string;
+    primaryCta: string;
+    secondaryCta: string;
+  };
   vision: {
     kicker: string;
     title: string;
@@ -212,6 +228,24 @@ const messages: Record<Locale, Messages> = {
           more: "We optimize location visibility through map integrations, business profile setup, and customer navigation experience.",
         },
       ],
+    },
+    serviceDetail: {
+      breadcrumbLabel: "Service page",
+      breadcrumbBack: "Back to services",
+      sectionKicker: "How we deliver this service",
+      importanceTitle: "Why this service matters",
+      featuresTitle: "What we deliver in this service",
+      differenceTitle: "How we create the difference",
+      processTitle: "Clear process. Measurable outcomes.",
+      processSubtitle:
+        "A practical workflow tailored to your business, focused on speed, quality, and long-term reliability.",
+      summaryTitle: "Project Summary",
+      summaryBody:
+        "Every service follows a structured approach with transparent updates and delivery milestones.",
+      timelineLabel: "Service implementation timeline",
+      stepsCountLabel: "Delivery steps",
+      primaryCta: "Start your request",
+      secondaryCta: "Talk to our team",
     },
     vision: {
       kicker: "Why choose us",
@@ -429,6 +463,24 @@ const messages: Record<Locale, Messages> = {
           more: "نحسن ظهور موقعك عبر تكامل الخرائط وإعداد الملف التجاري وتجربة تنقل العملاء.",
         },
       ],
+    },
+    serviceDetail: {
+      breadcrumbLabel: "صفحة الخدمة",
+      breadcrumbBack: "العودة إلى الخدمات",
+      sectionKicker: "كيف ننفذ هذه الخدمة",
+      importanceTitle: "أهمية هذه الخدمة لمشروعك",
+      featuresTitle: "الميّزات التي نقدمها في هذه الخدمة",
+      differenceTitle: "كيف نصنع الفارق",
+      processTitle: "خطوات واضحة. نتائج قابلة للقياس.",
+      processSubtitle:
+        "مسار عمل عملي مصمم لطبيعة نشاطك، يركز على السرعة والجودة والاستقرار على المدى الطويل.",
+      summaryTitle: "ملخص التنفيذ",
+      summaryBody:
+        "كل خدمة لدينا تمر بمنهجية واضحة مع تحديثات شفافة ونقاط تسليم مرحلية.",
+      timelineLabel: "المخطط الزمني لتنفيذ الخدمة",
+      stepsCountLabel: "عدد مراحل التنفيذ",
+      primaryCta: "ابدأ طلبك الآن",
+      secondaryCta: "تحدث مع فريقنا",
     },
     vision: {
       kicker: "لماذا تختارنا",
