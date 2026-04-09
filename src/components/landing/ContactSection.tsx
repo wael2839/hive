@@ -14,11 +14,19 @@ import { siteContact } from "@/config/site-contact";
 import { CONTACT_SERVICE_OTHER } from "@/lib/contact-constants";
 import { isValidContactPhone } from "@/lib/country-dial-codes";
 import type { Locale, Messages } from "@/lib/i18n";
-import { serviceSlugs } from "@/lib/service-details";
 import { ContactPhoneField } from "./ContactPhoneField";
 import { ContactServiceSelect } from "./ContactServiceSelect";
 import { ScrollReveal } from "./ScrollReveal";
 import SectionTitle from "../ui/SectionTitle";
+
+const serviceSlugs = [
+  "web-apps",
+  "mobile-apps",
+  "desktop-apps",
+  "visual-identity",
+  "office-services",
+  "google-maps",
+] as const;
 
 const inputClass =
   "mt-1.5 w-full rounded-md border border-hive-border bg-[var(--hive-input-bg)] px-3.5 py-2.5 text-sm text-hive-off-white outline-none transition placeholder:text-hive-off-white/35 light:placeholder:text-neutral-500 focus:border-hive-gold-light focus:outline-none light:text-neutral-900";

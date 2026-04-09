@@ -194,8 +194,8 @@ const messages: Record<Locale, Messages> = {
       items: [
         {
           title: "Web Apps",
-          desc: "Modern web applications built for performance, scalability, and seamless user experience.",
-          more: "We build tailored web platforms with secure architecture, intuitive dashboards, and integrations that fit your workflow.",
+          desc: "Modern web applications and websites built for speed, trust, and seamless user experience.",
+          more: "We build tailored websites and web platforms with secure architecture, intuitive dashboards, and integrations that fit your workflow.",
         },
         {
           title: "Mobile Apps",
@@ -211,11 +211,6 @@ const messages: Record<Locale, Messages> = {
           title: "Visual Identity",
           desc: "Logos, color systems, typography, and brand guidelines that make you unforgettable.",
           more: "We design cohesive brand identities that align your message across logo, typography, colors, and digital touchpoints.",
-        },
-        {
-          title: "Social Media",
-          desc: "Strategic content creation, management, and advertising across major platforms.",
-          more: "We manage your social presence with strategic content, audience growth plans, and targeted paid campaigns.",
         },
         {
           title: "Office Services",
@@ -234,8 +229,8 @@ const messages: Record<Locale, Messages> = {
       breadcrumbBack: "Back to services",
       sectionKicker: "How we deliver this service",
       importanceTitle: "Why this service matters",
-      featuresTitle: "What we deliver in this service",
-      differenceTitle: "How we create the difference",
+      featuresTitle: "Features",
+      differenceTitle: "Execution Process",
       processTitle: "Clear process. Measurable outcomes.",
       processSubtitle:
         "A practical workflow tailored to your business, focused on speed, quality, and long-term reliability.",
@@ -428,9 +423,9 @@ const messages: Record<Locale, Messages> = {
       moreCta: "تفاصيل",
       items: [
         {
-          title: "تطبيقات الويب",
-          desc: "تطبيقات ويب حديثة مبنية للأداء، القابلية للتوسع، وتجربة مستخدم سلسة.",
-          more: "نبني منصات ويب مخصصة ببنية آمنة ولوحات تحكم واضحة وتكاملات تناسب سير عملك.",
+          title: "تطبيقات الويب والمواقع الإلكترونية",
+          desc: "تطبيقات ويب ومواقع إلكترونية حديثة مبنية للسرعة، والثقة، وتجربة مستخدم سلسة.",
+          more: "نبني مواقع ومنصات ويب مخصصة ببنية آمنة، ولوحات تحكم واضحة، وتكاملات تناسب سير عملك.",
         },
         {
           title: "تطبيقات الموبايل",
@@ -446,11 +441,6 @@ const messages: Record<Locale, Messages> = {
           title: "الهوية البصرية",
           desc: "شعارات وأنظمة ألوان وخطوط ودليل بصري متكامل.",
           more: "نصمم هوية بصرية متكاملة توحد رسالتك عبر الشعار والخطوط والألوان وجميع نقاط التفاعل الرقمية.",
-        },
-        {
-          title: "إدارة السوشيال ميديا",
-          desc: "إدارة وصناعة محتوى وإعلانات رقمية عبر المنصات الأساسية.",
-          more: "ندير حضورك الرقمي عبر محتوى مدروس وخطط نمو للجمهور وحملات إعلانية موجهة.",
         },
         {
           title: "خدمات مكتبية",
@@ -469,8 +459,8 @@ const messages: Record<Locale, Messages> = {
       breadcrumbBack: "العودة إلى الخدمات",
       sectionKicker: "كيف ننفذ هذه الخدمة",
       importanceTitle: "أهمية هذه الخدمة لمشروعك",
-      featuresTitle: "الميّزات التي نقدمها في هذه الخدمة",
-      differenceTitle: "كيف نصنع الفارق",
+      featuresTitle: "الميّزات",
+      differenceTitle: "منهجية التنفيذ",
       processTitle: "خطوات واضحة. نتائج قابلة للقياس.",
       processSubtitle:
         "مسار عمل عملي مصمم لطبيعة نشاطك، يركز على السرعة والجودة والاستقرار على المدى الطويل.",
@@ -532,7 +522,7 @@ const messages: Record<Locale, Messages> = {
           features: [
             "الهوية البصرية: بناء هوية بصرية كاملة واحترافية تشمل (اللوغو، الخطوط، الألوان، وتصميم البانرات).",
             "المتجر الإلكتروني: برمجة متجر إلكتروني متطور يتضمن (لوحة تحكم كاملة، عرض الخدمات، ونظام إدارة الطلبات).",
-            "تطبيق الجوال: تصميم وتطوير تطبيق جوال مخصص للمتجر لتسهيل تجربة العميل.",
+            "تطبيق الموبايل: تصميم وتطوير تطبيق موبايل مخصص للمتجر لتسهيل تجربة العميل.",
             "خرائط Google: إضافة وتوثيق النشاط التجاري على الخرائط لضمان الموثوقية.",
             "وسائل التواصل: تصميم قوالب إبداعية موحدة لكافة منصات التواصل الاجتماعي الخاصة بك.",
           ],

@@ -1,17 +1,94 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import type { LucideIcon } from "lucide-react";
+import {
+  Blocks,
+  Gauge,
+  LayoutTemplate,
+  Link2,
+  Palette,
+  ShieldCheck,
+  Smartphone,
+  Users,
+} from "lucide-react";
 import { SiteFooter } from "@/components/landing/SiteFooter";
 import { SiteNav } from "@/components/landing/SiteNav";
 import { getMessages, isLocale, locales, type Locale } from "@/lib/i18n";
 import { buildLocalePageMetadata } from "@/lib/seo-metadata";
-import { getServiceDetail, isServiceSlug, serviceSlugs } from "@/lib/service-details";
+import { getServiceDetail, isServiceSlug, serviceSlugs } from "../../../../lib/service-details";
+import { SectionDivider } from "@/components/landing/SectionDivider";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
 
 export const dynamic = "force-static";
+
+function getFeatureIcon(featureText: string): LucideIcon {
+  const text = featureText.toLowerCase();
+
+  if (
+    text.includes("متجاوب") ||
+    text.includes("responsive") ||
+    text.includes("ux") ||
+    text.includes("واجهة") ||
+    text.includes("واجهات")
+  ) {
+    return LayoutTemplate;
+  }
+  if (
+    text.includes("ios") ||
+    text.includes("android") ||
+    text.includes("mobile") ||
+    text.includes("الجوال") ||
+    text.includes("الموبايل")
+  ) {
+    return Smartphone;
+  }
+  if (
+    text.includes("أمن") ||
+    text.includes("secure") ||
+    text.includes("security") ||
+    text.includes("auth") ||
+    text.includes("صلاحيات")
+  ) {
+    return ShieldCheck;
+  }
+  if (
+    text.includes("ربط") ||
+    text.includes("تكامل") ||
+    text.includes("integration") ||
+    text.includes("api")
+  ) {
+    return Link2;
+  }
+  if (
+    text.includes("أداء") ||
+    text.includes("سرعة") ||
+    text.includes("performance") ||
+    text.includes("kpi")
+  ) {
+    return Gauge;
+  }
+  if (
+    text.includes("هوية") ||
+    text.includes("logo") ||
+    text.includes("brand") ||
+    text.includes("visual")
+  ) {
+    return Palette;
+  }
+  if (
+    text.includes("فريق") ||
+    text.includes("عملاء") ||
+    text.includes("team") ||
+    text.includes("users")
+  ) {
+    return Users;
+  }
+  return Blocks;
+}
 
 export function generateStaticParams() {
   return locales.flatMap((locale) => serviceSlugs.map((slug) => ({ locale, slug })));
@@ -36,7 +113,6 @@ export default async function ServiceDetailPage({ params }: Props) {
   const locale = rawLocale as Locale;
   const t = getMessages(locale);
   const detail = getServiceDetail(rawSlug, locale);
-  const stepsCount = detail.steps.length;
 
   return (
     <>
@@ -44,34 +120,33 @@ export default async function ServiceDetailPage({ params }: Props) {
       <main className="border-t border-hive-border-subtle bg-[var(--hive-bg)] text-[var(--hive-fg)]">
         <div className="relative overflow-hidden">
           <div className="pointer-events-none absolute inset-0 opacity-65">
-            <div className="absolute -start-28 top-10 h-72 w-72 rounded-full bg-[radial-gradient(circle,_color-mix(in_srgb,var(--hive-gold)_28%,transparent)_0%,transparent_68%)] blur-2xl" />
+            <div className="absolute -start-28 top-10 h-72 w-72 rounded-full bg-[radial-gradient(circle,_color-mix(in_srgb,var(--hive-gold-light)_28%,transparent)_0%,transparent_68%)] blur-2xl" />
             <div className="absolute -end-20 bottom-16 h-72 w-72 rounded-full bg-[radial-gradient(circle,_color-mix(in_srgb,var(--hive-gold-light)_22%,transparent)_0%,transparent_70%)] blur-2xl" />
           </div>
-          <div className="relative mx-auto grid w-full max-w-[1220px] gap-8 px-4 pb-16 pt-[calc(var(--header-height,72px)+2.2rem)] sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.38fr)] lg:gap-10 lg:px-8 lg:pb-20">
-            <section className="rounded-3xl border border-hive-border bg-[color-mix(in_srgb,var(--hive-card-glass)_85%,transparent)] p-5 backdrop-blur-sm sm:p-7 lg:p-9">
-              <div className="mb-6 flex flex-wrap items-center gap-2 text-xs text-[color-mix(in_srgb,var(--hive-fg)_72%,transparent)] sm:text-sm">
-                <span className="rounded-full border border-hive-border-subtle bg-[var(--hive-pill-bg)] px-3 py-1">
-                  {t.serviceDetail.breadcrumbLabel}
-                </span>
-                <span aria-hidden>•</span>
-                <Link
+          
+          <div className="relative mx-auto grid w-full max-w-[1220px] gap-8 px-4 pb-10 pt-[calc(var(--header-height,72px)+2.2rem)] sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.38fr)] lg:gap-10 lg:px-8 lg:pb-10">
+          
+            <section className="relative rounded-3xl border border-hive-border bg-[color-mix(in_srgb,var(--hive-card-glass)_85%,transparent)] p-5 backdrop-blur-sm sm:p-7 lg:p-9">
+            {/* <Link
                   href={`/${locale}#services`}
-                  className="underline-offset-4 transition hover:text-[var(--hive-gold)] hover:underline"
+                  className="absolute -top-[25px] start-[25px] underline-offset-4 transition hover:text-[var(--hive-gold-light)] hover:underline"
                 >
                   {t.serviceDetail.breadcrumbBack}
-                </Link>
+                </Link> */}
+              <div className="mb-6 flex flex-wrap items-center gap-2 text-xs text-[color-mix(in_srgb,var(--hive-fg)_72%,transparent)] sm:text-sm">
+                
+                
               </div>
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--hive-gold)]">{t.serviceDetail.sectionKicker}</p>
-              <h1 className="mt-3 text-balance text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
+              <h1 className="mt-1 text-hive-gold-light text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
                 {detail.title}
               </h1>
               <p className="mt-4 max-w-3xl text-base leading-8 text-[color-mix(in_srgb,var(--hive-fg)_90%,transparent)] sm:text-lg">
                 {detail.lead}
               </p>
               <div className="mt-8 rounded-2xl border border-hive-border-subtle bg-[var(--hive-pill-bg)] p-4 sm:p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--hive-gold)]">
+                {/* <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--hive-gold-light)]">
                   {t.serviceDetail.importanceTitle}
-                </p>
+                </p> */}
                 <p className="mt-2 text-sm leading-8 text-[color-mix(in_srgb,var(--hive-fg)_90%,transparent)] sm:text-base">
                   {detail.importance}
                 </p>
@@ -86,47 +161,42 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <div className="mt-5 flex flex-col gap-3">
                   <Link
                     href={`/${locale}#contact`}
-                    className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-hive-btn-from to-hive-btn-to px-4 py-3 text-sm font-bold text-neutral-900 transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                    className="inline-flex items-center justify-center rounded-md bg-hive-gold-light px-4 py-3 text-sm font-bold text-neutral-900 transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold-light"
                   >
                     {t.serviceDetail.primaryCta}
                   </Link>
                   <Link
                     href={`/${locale}#contact`}
-                    className="inline-flex items-center justify-center rounded-md border border-hive-border bg-[var(--hive-pill-bg)] px-4 py-3 text-sm font-semibold transition hover:border-[color-mix(in_srgb,var(--hive-gold)_45%,var(--hive-border))] hover:text-[var(--hive-gold)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold"
+                    className="inline-flex items-center justify-center rounded-md border border-hive-border bg-[var(--hive-pill-bg)] px-4 py-3 text-sm font-semibold transition hover:border-[color-mix(in_srgb,var(--hive-gold-light)_45%,var(--hive-border))] hover:text-[var(--hive-gold-light)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold-light"
                   >
                     {t.serviceDetail.secondaryCta}
                   </Link>
                 </div>
-                <div className="mt-5 rounded-2xl border border-hive-border-subtle bg-[var(--hive-pill-bg)] p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--hive-gold)]">
-                    {t.serviceDetail.stepsCountLabel}
-                  </p>
-                  <p className="mt-2 text-2xl font-bold">{stepsCount}</p>
-                  <p className="mt-1 text-xs text-[color-mix(in_srgb,var(--hive-fg)_72%,transparent)]">
-                    {t.serviceDetail.summaryBody}
-                  </p>
-                </div>
+               
               </div>
             </aside>
           </div>
           <section className="mx-auto w-full max-w-[1220px] px-4 pb-10 sm:px-6 lg:px-8">
             <div className="mb-5 flex items-center justify-between gap-3">
               <h2 className="text-2xl font-extrabold sm:text-3xl">{t.serviceDetail.featuresTitle}</h2>
-              <span className="rounded-full border border-hive-border-subtle bg-[var(--hive-pill-bg)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--hive-gold)]">
-                Core Value
-              </span>
+            
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
-              {detail.highlights.map((item) => (
-                <article
-                  key={item}
-                  className="rounded-2xl border border-hive-border bg-[color-mix(in_srgb,var(--hive-card-glass)_85%,transparent)] p-4 sm:p-5"
-                >
-                  <p className="text-sm leading-7 text-[color-mix(in_srgb,var(--hive-fg)_92%,transparent)] sm:text-[0.97rem]">
-                    {item}
-                  </p>
-                </article>
-              ))}
+              {detail.highlights.map((item) => {
+                const Icon = getFeatureIcon(item);
+                return (
+                  <article key={item} className="rounded-2xl border border-hive-border bg-[color-mix(in_srgb,var(--hive-card-glass)_85%,transparent)] p-4 sm:p-5">
+                    <div className="flex items-start gap-3">
+                      <span className="mt-0.5 inline-grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-[color-mix(in_srgb,var(--hive-gold-light)_45%,transparent)] bg-[color-mix(in_srgb,var(--hive-gold-light)_14%,transparent)] text-[var(--hive-gold-light)]">
+                        <Icon className="h-5 w-5" aria-hidden />
+                      </span>
+                      <p className="text-sm leading-10 text-[color-mix(in_srgb,var(--hive-fg)_92%,transparent)] sm:text-[0.97rem]">
+                        {item}
+                      </p>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </section>
           <section
@@ -135,19 +205,17 @@ export default async function ServiceDetailPage({ params }: Props) {
           >
             <div className="mb-6 flex items-center justify-between gap-3">
               <h2 className="text-2xl font-extrabold sm:text-3xl">{t.serviceDetail.differenceTitle}</h2>
-              <span className="rounded-full border border-hive-border-subtle bg-[var(--hive-pill-bg)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--hive-gold)]">
-                {detail.flowLabel}
-              </span>
+              
             </div>
             <ol className="relative space-y-4 sm:space-y-5">
-              <div
-                className="pointer-events-none absolute bottom-4 top-4 w-px bg-gradient-to-b from-transparent via-[color-mix(in_srgb,var(--hive-gold)_48%,transparent)] to-transparent ms-4 sm:ms-5"
+              {/* <div
+                className="pointer-events-none absolute  bottom-[30px] top-[50px] w- bg-hive-gold-light ms-4 sm:ms-5"
                 aria-hidden
-              />
+              /> */}
               {detail.steps.map((step, idx) => (
                 <li key={step.head} className="relative">
-                  <article className="ms-9 rounded-2xl border border-hive-border bg-[color-mix(in_srgb,var(--hive-card-glass)_85%,transparent)] p-4 transition hover:border-[color-mix(in_srgb,var(--hive-gold)_38%,var(--hive-border))] sm:ms-11 sm:p-5">
-                    <span className="absolute inset-y-0 my-auto ms-[-2.25rem] grid h-7 w-7 place-items-center rounded-full border border-[color-mix(in_srgb,var(--hive-gold)_45%,transparent)] bg-[var(--hive-bg)] text-xs font-extrabold text-[var(--hive-gold)] sm:ms-[-2.75rem] sm:h-8 sm:w-8">
+                  <article className="rounded-2xl border border-hive-border bg-[color-mix(in_srgb,var(--hive-card-glass)_85%,transparent)] p-4 transition hover:border-[color-mix(in_srgb,var(--hive-gold-light)_38%,var(--hive-border))] ms-4 sm:ms-5 sm:p-5">
+                    <span className="absolute inset-y-0 my-auto ms-[-2.25rem] grid h-7 w-7 place-items-center rounded-full border border-[color-mix(in_srgb,var(--hive-gold-light)_60%,transparent)] bg-[linear-gradient(135deg,var(--hive-gold-light)_0%,#d8be63_55%,#a4862e_100%)] text-xs font-extrabold text-neutral-900 shadow-[0_0_0_3px_var(--hive-bg)] sm:ms-[-2.75rem] sm:h-8 sm:w-8">
                       {idx + 1}
                     </span>
                     <h3 className="text-base font-bold text-[var(--hive-gold-light)] sm:text-lg">{step.head}</h3>
@@ -161,6 +229,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           </section>
         </div>
       </main>
+      <SectionDivider/>
       <SiteFooter locale={locale} t={t} />
     </>
   );

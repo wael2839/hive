@@ -366,7 +366,7 @@ body {
   }
 }
 
-/* iPad / تابلت: كان الخط يبدو صغيرا بين الجوال والـ lg */
+/* iPad / تابلت: كان الخط يبدو صغيرا بين الموبايل والـ lg */
 @media (min-width: 640px) and (max-width: 1023px) {
   .hive-vision-hex-card__content {
     padding-inline: clamp(0.9rem, 2.2vw, 1.7rem);
@@ -384,7 +384,7 @@ body {
   }
 }
 
-/* الجوال: خط أوضح داخل السداسي */
+/* الموبايل: خط أوضح داخل السداسي */
 @media (max-width: 639px) {
   .hive-vision-hex-card__title {
     font-size: clamp(1.06rem, 3.35vw + 0.52rem, 1.26rem);

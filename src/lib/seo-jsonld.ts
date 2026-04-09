@@ -87,11 +87,10 @@ export function buildHomeJsonLd(locale: Locale): { "@context": string; "@graph":
 
 function serviceNameLabel(slug: string, locale: Locale): string {
   const labels: Record<string, { en: string; ar: string }> = {
-    "web-apps": { en: "Web application development", ar: "تطوير تطبيقات الويب" },
+    "web-apps": { en: "Web application development", ar: "تطوير تطبيقات الويب والمواقع الإلكترونية" },
     "mobile-apps": { en: "Mobile app development", ar: "تطوير تطبيقات الموبايل" },
     "desktop-apps": { en: "Desktop software development", ar: "تطوير برامج سطح المكتب" },
     "visual-identity": { en: "Visual identity & branding", ar: "الهوية البصرية والعلامة" },
-    "social-media": { en: "Social media management", ar: "إدارة السوشيال ميديا" },
     "office-services": { en: "Office automation & internal systems", ar: "أتمتة مكتبية وأنظمة داخلية" },
     "google-maps": { en: "Google Maps & local SEO", ar: "خرائط Google وتحسين الظهور المحلي" },
   };
