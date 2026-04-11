@@ -281,8 +281,8 @@ body {
 }
 
 .hive-vision-hex-svg__face {
-  /* يطابق خلفية #vision و #packages — ‎--hive-bg‎ */
-  fill: var(--hive-bg);
+  /* مغاير لخلفية #vision (hive-bg) — نفس منطق كروت الباقات: hive-bg2 */
+  fill: var(--hive-bg2);
 }
 
 .hive-vision-hex-card__content {
