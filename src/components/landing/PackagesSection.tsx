@@ -31,12 +31,12 @@ export function PackagesSection({ locale, t }: Props) {
               <article
                 className={`relative flex h-full flex-col rounded-md border p-7 transition-colors ${
                   item.featured
-                    ? "border-hive-gold-light bg-[var(--hive-card-glass)] "
-                    : "border-hive-border bg-[var(--hive-card-glass)] hover:border-hive-border-subtle"
+                    ? "border-hive-gold-light bg-[var(--hive-bg2)] "
+                    : "border-hive-border bg-[var(--hive-bg2)] hover:border-hive-border-subtle"
                 }`}
               >
                 {item.featured ? (
-                  <p className="absolute -top-3.5 left-1/2 z-10 -translate-x-1/2 rounded-lg border border-hive-gold-light/45 bg-[color-mix(in_srgb,var(--hive-bg)_97%,#fff_3%)] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-hive-gold-light shadow-sm sm:-top-4 sm:px-4 sm:py-2 sm:text-[13px] light:bg-[var(--hive-card-glass)]">
+                  <p className="absolute -top-3.5 left-1/2 z-10 -translate-x-1/2 rounded-lg border border-hive-gold-light/45 bg-[var(--hive-bg)] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-hive-gold-light shadow-sm sm:-top-4 sm:px-4 sm:py-2 sm:text-[13px]">
                     {t.badgePopular}
                   </p>
                 ) : null}

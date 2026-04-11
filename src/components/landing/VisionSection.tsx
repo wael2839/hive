@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useRef } from "react";
 import type { Messages } from "@/lib/i18n";
 import { ScrollReveal } from "./ScrollReveal";
 import SectionTitle from "../ui/SectionTitle";
@@ -10,46 +7,12 @@ export function VisionSection({ t }: { t: Messages["vision"] }) {
   const c0 = t.cards[0];
   const c1 = t.cards[1];
   const c2 = t.cards[2];
-  const bg = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = bg.current;
-    if (!el) return;
-    let raf = 0;
-    const applyParallax = () => {
-      const rect = el.getBoundingClientRect();
-      const vh = window.innerHeight || 1;
-      const p = 1 - Math.min(Math.max((rect.top + rect.height / 2) / (vh + rect.height), 0), 1);
-      const y = (p - 0.5) * 36;
-      el.style.setProperty("--parallax", `${y}px`);
-    };
-    const onScroll = () => {
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        raf = 0;
-        applyParallax();
-      });
-    };
-    applyParallax();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, []);
 
   return (
     <section
       id="vision"
-      className="bg-[var(--hive-bg)] relative overflow-x-hidden py-15 sm:py-15 scroll-mt-28 sm:scroll-mt-40"
+      className="relative overflow-x-hidden bg-[var(--hive-bg)] py-15 sm:py-15 scroll-mt-28 sm:scroll-mt-40"
     >
-      <div
-        ref={bg}
-        className="pointer-events-none absolute inset-0 opacity-90"
-        
-      />
-      <div className="pointer-events-none absolute inset-0 hive-noise opacity-50" />
-
       <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="mb-10 flex flex-col items-center text-center sm:mb-12">
@@ -68,5 +31,3 @@ export function VisionSection({ t }: { t: Messages["vision"] }) {
     </section>
   );
 }
-
-

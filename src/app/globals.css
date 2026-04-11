@@ -281,9 +281,8 @@ body {
 }
 
 .hive-vision-hex-svg__face {
-  /* نفس خلفية قسم الرؤية (يتبع الثيم عبر --hive-bg) */
-  /* background-color: var(--hive-bg2); */
-  fill: var(--hive-bg2);
+  /* يطابق خلفية #vision و #packages — ‎--hive-bg‎ */
+  fill: var(--hive-bg);
 }
 
 .hive-vision-hex-card__content {
@@ -576,6 +575,30 @@ html.light .hive-hero-hex-grid-light {
   background: transparent;
   border: 1px solid var(--hive-gold-light);
   transition: transform 0.35s ease;
+}
+
+/*
+ * قسم الخدمات: لون الكارد عكس خلفية القسم (light/dark عبر --hive-bg / --hive-bg2).
+ * - غيّر className الخلفية على #services مع نفس القيمة في data-hive-services-surface.
+ * - surface="bg2" + قسم bg-[var(--hive-bg2)] → الكارد بالكامل var(--hive-bg)
+ * - surface="bg" + قسم bg-[var(--hive-bg)] → الكارد بالكامل var(--hive-bg2)
+ */
+#services[data-hive-services-surface="bg2"] .svc-card {
+  background: var(--hive-bg);
+}
+
+#services[data-hive-services-surface="bg2"] .svc-card__media,
+#services[data-hive-services-surface="bg2"] .svc-card__info {
+  background: transparent;
+}
+
+#services[data-hive-services-surface="bg"] .svc-card {
+  background: var(--hive-bg2);
+}
+
+#services[data-hive-services-surface="bg"] .svc-card__media,
+#services[data-hive-services-surface="bg"] .svc-card__info {
+  background: transparent;
 }
 
 
