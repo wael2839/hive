@@ -366,7 +366,7 @@ body {
   }
 }
 
-/* iPad / تابلت: كان الخط يبدو صغيرا بين الموبايل والـ lg */
+/* iPad / تابلت: كان الخط يبدو صغيرا بين الجوال والـ lg */
 @media (min-width: 640px) and (max-width: 1023px) {
   .hive-vision-hex-card__content {
     padding-inline: clamp(0.9rem, 2.2vw, 1.7rem);
@@ -597,21 +597,20 @@ html.light .hive-hero-hex-grid-light {
   position: relative;
   width: 100%;
   flex-shrink: 0;
+  /* نسبة ثابتة للرأس البصري — توازن أفضل من 16:9 مع منطقة النص */
+  aspect-ratio: 4 / 3;
   border-radius: var(--radius-md) var(--radius-md) 0 0;
-  border: 1px solid var(--hive-gold-light) ;
+  border: 1px solid var(--hive-gold-light);
   border-bottom: 0;
   overflow: hidden;
+  background: color-mix(in srgb, var(--hive-bg2) 88%, var(--hive-gold) 12%);
 }
 
 .svc-card__image {
-  position: relative;
   z-index: 0;
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 0;
-  border: none;
-  overflow: hidden;
+  object-fit: contain;
+  object-position: center;
+  padding: 0.5rem 0.65rem;
   transition: filter 0.35s ease;
 }
 

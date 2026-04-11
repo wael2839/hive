@@ -97,7 +97,7 @@ const details: Record<ServiceSlug, Record<Locale, ServiceDetail>> = {
   "desktop-apps": {
     ar: {
       title: "تطبيقات سطح المكتب",
-      lead: "نطور أنظمة Desktop قوية لإدارة العمليات و (الانظمة) الداخلية بسرعة واستقرار وتحكم كامل بالبيانات.",
+      lead: "نطور أنظمة Desktop قوية لإدارة العمليات و الانظمة الداخلية بسرعة واستقرار وتحكم كامل بالبيانات.",
       importance: "تطبيقات سطح المكتب مناسبة للعمليات الثقيلة داخل الشركات، وتمنحك سرعة عالية واعتمادية أكبر في بيئات العمل الداخلية.",
       highlights: [
         "واجهات عملية واضحة تقلل الوقت الضائع في المهام المتكررة",
@@ -114,7 +114,7 @@ const details: Record<ServiceSlug, Record<Locale, ServiceDetail>> = {
     },
     en: {
       title: "Desktop Applications",
-      lead: "We build robust desktop systems for internal operations and (systems) where speed, reliability, and full control are essential.",
+      lead: "We build robust desktop systems for internal operations and systems where speed, reliability, and full control are essential.",
       importance: "Desktop software is ideal for heavy internal workflows, giving teams stable performance and stronger operational control.",
       highlights: [
         "Practical interfaces for faster daily operations",
@@ -132,14 +132,14 @@ const details: Record<ServiceSlug, Record<Locale, ServiceDetail>> = {
   },
   "visual-identity": {
     ar: {
-      title: "الهوية البصرية",
+      title: "التصميم البصري",
       lead: "نبني هوية بصرية متكاملة تعكس شخصية مشروعك وتوحد حضوره في كل نقاط التواصل.",
       importance: "الهوية البصرية تتجاوز كونها مجرد مظهر، فهي وسيلة أساسية لبناء الثقة وترسيخ حضور علامتك في ذهن العميل مع كل نقطة تواصل.",
       highlights: [
         "تصميم شعار ونظام ألوان وخطوط متسق",
         "لغة بصرية موحدة عبر المنصات الرقمية والمطبوعة",
-        "تطبيقات عملية للهوية على المحتوى والعروض",
-        "دليل استخدام واضح لضمان ثبات الهوية",
+        "تطبيقات عملية للتصميم البصري على المحتوى والعروض",
+        "دليل استخدام واضح لضمان ثبات التصميم",
       ],
       steps: [
         { head: " تحليل البراند", text: "نحدد شخصية العلامة والجمهور ونبرة التواصل." },

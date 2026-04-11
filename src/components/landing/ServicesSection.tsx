@@ -1,19 +1,20 @@
 import Image from "next/image";
 import type { Locale, Messages } from "@/lib/i18n";
-import { serviceSlugs } from "@/lib/service-details";
+import { serviceSlugs, type ServiceSlug } from "@/lib/service-details";
 import { ScrollReveal } from "./ScrollReveal";
 import SectionTitle from "../ui/SectionTitle";
 
-/** أبعاد أصغر للشبكة (أداء LCP/الشبكة على الجوال) — `sizes` يطابق أعمدة البطاقات */
-const serviceImages = [
-  "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=560&q=70",
-  "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=560&q=70",
-  "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=560&q=70",
-  "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=560&q=70",
-  "https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=560&q=70",
-  "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=560&q=70",
-  "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=560&q=70",
-];
+/** صور الخدمات من `public/` — مرتبطة بـ `serviceSlugs` */
+const SERVICE_IMAGES: Record<ServiceSlug, string> = {
+  "web-apps": "/webapps.png",
+  "mobile-apps": "/mobileapps.png",
+  "desktop-apps": "/desktopapps.png",
+  "visual-identity": "/graphicdesign.png",
+  "office-services": "/desktopservices.png",
+  "google-maps": "/googlemaps.png",
+};
+
+/** أبعاد أصغر للشبكة (أداء LCP/الشبكة على الموبايل) — `sizes` يطابق أعمدة البطاقات */
 
 export function ServicesSection({ locale, t }: { locale: Locale; t: Messages["services"] }) {
   return (
@@ -29,43 +30,44 @@ export function ServicesSection({ locale, t }: { locale: Locale; t: Messages["se
         </ScrollReveal>
 
         <div className="mt-14 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {t.items.map((item, i) => (
-            <ScrollReveal
-              key={item.title}
-              delayMs={60 + i * 40}
-              className="h-full min-h-0 w-full min-w-0 self-stretch"
-            >
-              <article className="svc-card flex h-full min-h-0 w-full flex-col">
-                <div className="svc-card__data">
-                  <div className="svc-card__media">
-                    <Image
-                      className="svc-card__image"
-                      src={serviceImages[i % serviceImages.length]}
-                      alt={item.title}
-                      width={560}
-                      height={315}
-                      sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                      quality={72}
-                      fetchPriority="low"
-                      style={{ objectFit: "cover" }}
-                    />
-                    <a
-                      className="svc-card__top-more"
-                      href={`/${locale}/services/${serviceSlugs[i % serviceSlugs.length]}`}
-                    >
-                      {t.moreCta}
-                    </a>
+          {t.items.map((item, i) => {
+            const slug = serviceSlugs[i % serviceSlugs.length];
+            return (
+              <ScrollReveal
+                key={item.title}
+                delayMs={60 + i * 40}
+                className="h-full min-h-0 w-full min-w-0 self-stretch"
+              >
+                <article className="svc-card flex h-full min-h-0 w-full flex-col">
+                  <div className="svc-card__data">
+                    <div className="svc-card__media">
+                      <Image
+                        className="svc-card__image"
+                        src={SERVICE_IMAGES[slug]}
+                        alt={item.title}
+                        fill
+                        sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                        quality={72}
+                        fetchPriority={i === 0 ? "high" : "low"}
+                      />
+                      <a
+                        className="svc-card__top-more"
+                        href={`/${locale}/services/${slug}`}
+                      >
+                        {t.moreCta}
+                      </a>
+                    </div>
+                    <div className="svc-card__info">
+                      <h3 className="svc-card__title">{item.title}</h3>
+                      <p className="svc-card__excerpt">
+                        {item.desc} {item.more}
+                      </p>
+                    </div>
                   </div>
-                  <div className="svc-card__info">
-                    <h3 className="svc-card__title">{item.title}</h3>
-                    <p className="svc-card__excerpt">
-                      {item.desc} {item.more}
-                    </p>
-                  </div>
-                </div>
-              </article>
-            </ScrollReveal>
-          ))}
+                </article>
+              </ScrollReveal>
+            );
+          })}
         </div>
       </div>
     </section>

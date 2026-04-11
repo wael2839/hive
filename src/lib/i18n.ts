@@ -31,6 +31,8 @@ export type Messages = {
     primary: string;
     secondary: string;
     imageAlt: string;
+    /** تلميح التمرير أسفل الهيرو */
+    scrollCue: string;
   };
   about: {
     kicker: string;
@@ -173,6 +175,7 @@ const messages: Record<Locale, Messages> = {
       primary: "Get a Free Consultation",
       secondary: "View Our Services",
       imageAlt: "Hive — digital studio hero visual",
+      scrollCue: "Scroll",
     },
     about: {
       kicker: "About Us",
@@ -193,7 +196,7 @@ const messages: Record<Locale, Messages> = {
       moreCta: "Details",
       items: [
         {
-          title: "Web Apps",
+          title: "Web Apps & Websites",
           desc: "Modern web applications and websites built for speed, trust, and seamless user experience.",
           more: "We build tailored websites and web platforms with secure architecture, intuitive dashboards, and integrations that fit your workflow.",
         },
@@ -208,7 +211,7 @@ const messages: Record<Locale, Messages> = {
           more: "We craft robust desktop tools for business operations, internal systems, and heavy workflows across all major operating systems.",
         },
         {
-          title: "Visual Identity",
+          title: "Visual Design",
           desc: "Logos, color systems, typography, and brand guidelines that make you unforgettable.",
           more: "We design cohesive brand identities that align your message across logo, typography, colors, and digital touchpoints.",
         },
@@ -403,6 +406,7 @@ const messages: Record<Locale, Messages> = {
       primary: "احصل على استشارة مجانية",
       secondary: "استعرض الخدمات",
       imageAlt: "هايڤ — صورة تعريفية للاستوديو الرقمي",
+      scrollCue: "اسحب لأعلى",
     },
     about: {
       kicker: "من نحن",
@@ -438,7 +442,7 @@ const messages: Record<Locale, Messages> = {
           more: "نطور أدوات سطح مكتب قوية لعمليات الأعمال والأنظمة الداخلية وسيناريوهات العمل المكثفة على مختلف الأنظمة.",
         },
         {
-          title: "الهوية البصرية",
+          title: "التصميم البصري",
           desc: "شعارات وأنظمة ألوان وخطوط ودليل بصري متكامل.",
           more: "نصمم هوية بصرية متكاملة توحد رسالتك عبر الشعار والخطوط والألوان وجميع نقاط التفاعل الرقمية.",
         },

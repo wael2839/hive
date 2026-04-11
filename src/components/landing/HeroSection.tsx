@@ -52,9 +52,9 @@ export function HeroSection({ t }: Props) {
 
       </div>
 
-      <div className="pointer-events-none absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.35em] text-hive-off-white/35 light:text-neutral-500">
+      <div className="pointer-events-none absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.35em] text-hive-off-white/35 light:text-neutral-500 rtl:normal-case rtl:tracking-wide">
         <div className="hive-scroll-cue flex flex-col items-center gap-2">
-          <span>Scroll</span>
+          <span>{t.scrollCue}</span>
           <div className="relative flex h-10 w-6 shrink-0 items-center justify-center">
             <span className="hive-scroll-cue-glow rounded-md" aria-hidden />
             <span className="relative z-[1] h-10 w-px bg-gradient-to-b from-hive-gold/60 to-transparent light:from-[#6e5f1a]/70" />
