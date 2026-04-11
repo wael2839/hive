@@ -28,6 +28,7 @@ export function VisionSection({ t }: { t: Messages["vision"] }) {
           </div>
         </ScrollReveal>
       </div>
+      
     </section>
   );
 }
