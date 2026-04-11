@@ -574,6 +574,7 @@ html.light .hive-hero-hex-grid-light {
   border-radius: var(--radius-md);
   overflow: hidden;
   background: transparent;
+  border: 1px solid var(--hive-gold-light);
   transition: transform 0.35s ease;
 }
 
@@ -599,11 +600,8 @@ html.light .hive-hero-hex-grid-light {
   flex-shrink: 0;
   /* نسبة ثابتة للرأس البصري — توازن أفضل من 16:9 مع منطقة النص */
   aspect-ratio: 4 / 3;
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
-  border: 1px solid var(--hive-gold-light);
-  border-bottom: 0;
   overflow: hidden;
-  background: color-mix(in srgb, var(--hive-bg2) 88%, var(--hive-gold) 12%);
+  background: var(--hive-bg2);
 }
 
 .svc-card__image {
@@ -677,9 +675,6 @@ html.light .svc-card__top-more {
   min-height: 0;
   padding: 1rem 1.1rem 1.2rem;
   background: var(--hive-bg);
-  border: 1px solid var(--hive-gold-light);
-  border-top: 0;
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
 
 /* عنوان البطاقة — سطران كحد أقصى */
