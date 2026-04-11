@@ -58,9 +58,11 @@ export function ServicesSection({ locale, t }: { locale: Locale; t: Messages["se
                         {t.moreCta}
                       </a>
                     </div>
-                    <SectionDivider/>
+                    <div className="relative w-[70%] mx-auto">
+                    <SectionDivider className="absolute w-full "/>
+                    </div>
+                    <div className="svc-card__info  ">
 
-                    <div className="svc-card__info">
                       <h3 className="svc-card__title">{item.title}</h3>
                       <p className="svc-card__excerpt">
                         {item.desc} {item.more}
