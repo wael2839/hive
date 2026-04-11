@@ -3,6 +3,7 @@ import type { Locale, Messages } from "@/lib/i18n";
 import { serviceSlugs, type ServiceSlug } from "@/lib/service-details";
 import { ScrollReveal } from "./ScrollReveal";
 import SectionTitle from "../ui/SectionTitle";
+import { SectionDivider } from "./SectionDivider";
 
 /** صور الخدمات من `public/` — مرتبطة بـ `serviceSlugs` */
 const SERVICE_IMAGES: Record<ServiceSlug, string> = {
@@ -57,6 +58,8 @@ export function ServicesSection({ locale, t }: { locale: Locale; t: Messages["se
                         {t.moreCta}
                       </a>
                     </div>
+                    <SectionDivider/>
+
                     <div className="svc-card__info">
                       <h3 className="svc-card__title">{item.title}</h3>
                       <p className="svc-card__excerpt">

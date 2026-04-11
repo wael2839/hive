@@ -601,14 +601,15 @@ html.light .hive-hero-hex-grid-light {
   /* نسبة ثابتة للرأس البصري — توازن أفضل من 16:9 مع منطقة النص */
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: var(--hive-bg2);
+  background: var(--hive-bg);
 }
 
 .svc-card__image {
   z-index: 0;
   object-fit: contain;
   object-position: center;
-  padding: 0.5rem 0.65rem;
+  /* هامش أكبر = صورة أصغر داخل نفس الإطار */
+  padding: clamp(1.45rem, 6.5vw, 2.5rem) clamp(1.55rem, 7vw, 2.65rem);
   transition: filter 0.35s ease;
 }
 
