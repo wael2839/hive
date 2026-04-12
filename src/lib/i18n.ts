@@ -45,6 +45,8 @@ export type Messages = {
     stat2Label: string;
     stat3: string;
     stat3Label: string;
+    /** عداد زيارات الموقع (قسم من نحن) */
+    visitsLabel: string;
   };
   services: {
     kicker: string;
@@ -189,6 +191,7 @@ const messages: Record<Locale, Messages> = {
       stat2Label: "One coordinated team",
       stat3: "Trusted Delivery",
       stat3Label: "From kickoff to handoff",
+      visitsLabel: "Site visits",
     },
     services: {
       kicker: "Services",
@@ -420,6 +423,7 @@ const messages: Record<Locale, Messages> = {
       stat2Label: "فريق واحد بتناغم",
       stat3: "تنفيذ موثوق",
       stat3Label: "من البداية حتى التسليم",
+      visitsLabel: "زيارات الموقع",
     },
     services: {
       kicker: "الخدمات",

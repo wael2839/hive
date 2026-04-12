@@ -4,11 +4,13 @@ import {
   IconBadgeCheck,
   IconCalendarClock,
   IconFolderCheck,
+  IconGlobe,
   IconLightbulb,
   IconSparkles,
   IconTarget,
 } from "@/components/icons/MiniUiIcons";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { formatCompactMetric } from "@/lib/format-compact-metric";
 import type { Locale, Messages } from "@/lib/i18n";
 import { ScrollReveal } from "./ScrollReveal";
 import SectionTitle from "../ui/SectionTitle";
@@ -25,6 +27,7 @@ export function AboutSection({
   const statsRef = useRef<HTMLDivElement | null>(null);
   const [hasAnimated, setHasAnimated] = useState(false);
   const [counts, setCounts] = useState([0, 0, 0]);
+  const [visitCount, setVisitCount] = useState<number | null>(null);
 
   const statTargets = useMemo(() => [10, 5, 98], []);
 
@@ -66,6 +69,41 @@ export function AboutSection({
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
   }, [hasAnimated, statTargets]);
+
+  useEffect(() => {
+    let cancelled = false;
+    const run = async () => {
+      try {
+        const res = await fetch("/api/visitors", { cache: "no-store" });
+        const data = (await res.json()) as { total?: unknown };
+        if (
+          !cancelled &&
+          typeof data.total === "number" &&
+          Number.isFinite(data.total)
+        ) {
+          setVisitCount(Math.max(0, Math.floor(data.total)));
+        }
+        if (typeof sessionStorage === "undefined") return;
+        if (sessionStorage.getItem("hive_visit_counted") === "1") return;
+        const post = await fetch("/api/visitors", { method: "POST", cache: "no-store" });
+        const next = (await post.json()) as { total?: unknown };
+        if (
+          !cancelled &&
+          typeof next.total === "number" &&
+          Number.isFinite(next.total)
+        ) {
+          setVisitCount(Math.max(0, Math.floor(next.total)));
+        }
+        sessionStorage.setItem("hive_visit_counted", "1");
+      } catch {
+        if (!cancelled) setVisitCount(null);
+      }
+    };
+    void run();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const statLabels =
     locale === "ar"
@@ -121,9 +159,9 @@ export function AboutSection({
 
             <div
               ref={statsRef}
-              className="mt-12 grid overflow-hidden rounded-2xl border border-hive-border bg-[var(--hive-bg)] backdrop-blur-sm md:grid-cols-3"
+              className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-hive-border bg-hive-border md:grid-cols-2 lg:grid-cols-4"
             >
-              <div className="px-6 py-8 text-center md:border-e md:border-hive-border">
+              <div className="bg-[var(--hive-bg)] px-6 py-8 text-center backdrop-blur-sm">
                 <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
                   <IconFolderCheck className="h-5 w-5" />
                 </span>
@@ -132,7 +170,7 @@ export function AboutSection({
                 </p>
                 <p className="mt-2 text-sm text-hive-off-white/60 light:text-neutral-600">{statLabels[0]}</p>
               </div>
-              <div className="px-6 py-8 text-center md:border-e md:border-hive-border">
+              <div className="bg-[var(--hive-bg)] px-6 py-8 text-center backdrop-blur-sm">
                 <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
                   <IconCalendarClock className="h-5 w-5" />
                 </span>
@@ -141,7 +179,7 @@ export function AboutSection({
                 </p>
                 <p className="mt-2 text-sm text-hive-off-white/60 light:text-neutral-600">{statLabels[1]}</p>
               </div>
-              <div className="px-6 py-8 text-center">
+              <div className="bg-[var(--hive-bg)] px-6 py-8 text-center backdrop-blur-sm">
                 <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
                   <IconBadgeCheck className="h-5 w-5" />
                 </span>
@@ -149,6 +187,22 @@ export function AboutSection({
                   {counts[2]}%
                 </p>
                 <p className="mt-2 text-sm text-hive-off-white/60 light:text-neutral-600">{statLabels[2]}</p>
+              </div>
+              <div className="bg-[var(--hive-bg)] px-6 py-8 text-center backdrop-blur-sm">
+                <span className="mx-auto mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffe88c_0%,#d3b85a_55%,#8a6f1e_100%)] text-neutral-900 light:bg-[linear-gradient(135deg,var(--hive-btn-to),var(--hive-btn-from))]">
+                  <IconGlobe className="h-5 w-5" />
+                </span>
+                <p
+                  className="text-5xl font-semibold tracking-tight text-[var(--hive-fg)] tabular-nums"
+                  aria-live="polite"
+                >
+                  {visitCount === null
+                    ? "—"
+                    : formatCompactMetric(visitCount, locale)}
+                </p>
+                <p className="mt-2 text-sm text-hive-off-white/60 light:text-neutral-600">
+                  {t.visitsLabel}
+                </p>
               </div>
             </div>
           </div>
