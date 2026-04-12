@@ -26,7 +26,7 @@ export function AboutSection({
   const [hasAnimated, setHasAnimated] = useState(false);
   const [counts, setCounts] = useState([0, 0, 0]);
 
-  const statTargets = useMemo(() => [50, 5, 98], []);
+  const statTargets = useMemo(() => [10, 5, 98], []);
 
   useEffect(() => {
     const node = statsRef.current;
