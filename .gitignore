@@ -20,9 +20,6 @@
 # production
 /build
 
-# عداد الزيارات المحلي (يُنشأ تلقائياً عبر API)
-/data/visitors.json
-
 # misc
 .DS_Store
 .cursor/
