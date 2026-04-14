@@ -219,9 +219,9 @@ const messages: Record<Locale, Messages> = {
           more: "We design cohesive brand identities that align your message across logo, typography, colors, and digital touchpoints.",
         },
         {
-          title: "Office Services",
-          desc: "Productivity tools, internal systems, and automation that streamline operations.",
-          more: "We automate repetitive tasks and build internal tools to improve productivity and reduce operational bottlenecks.",
+          title: "Academic & Office Services",
+          desc: "We provide integrated solutions to support your academic and administrative work, helping you complete tasks with high quality in record time.",
+          more: "",
         },
         {
           title: "Google Maps",
@@ -451,9 +451,9 @@ const messages: Record<Locale, Messages> = {
           more: "نصمم هوية بصرية متكاملة توحد رسالتك عبر الشعار والخطوط والألوان وجميع نقاط التفاعل الرقمية.",
         },
         {
-          title: "خدمات مكتبية",
-          desc: "أتمتة ونظم داخلية ترفع الكفاءة وتبسط التشغيل.",
-          more: "نؤتمت المهام المتكررة ونبني أدوات داخلية تعزز الإنتاجية وتقلل اختناقات التشغيل.",
+          title: "خدمات أكاديمية ومكتبية",
+          desc: "نقدم حلولًا متكاملة لدعم أعمالك الأكاديمية والإدارية، تساعدك على إنجاز مهامك بجودة عالية ووقت قياسي.",
+          more: "",
         },
         {
           title: "خدمات خرائط Google",

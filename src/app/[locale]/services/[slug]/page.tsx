@@ -3,11 +3,24 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { LucideIcon } from "lucide-react";
 import {
+  BadgeCheck,
+  BarChart3,
+  BookOpen,
   Blocks,
+  Briefcase,
+  ClipboardCheck,
+  FileSpreadsheet,
+  FileText,
+  FileUser,
   Gauge,
   LayoutTemplate,
   Link2,
+  MapPinned,
+  Monitor,
   Palette,
+  PenTool,
+  Presentation,
+  Search,
   ShieldCheck,
   Smartphone,
   Users,
@@ -16,7 +29,12 @@ import { SiteFooter } from "@/components/landing/SiteFooter";
 import { SiteNav } from "@/components/landing/SiteNav";
 import { getMessages, isLocale, locales, type Locale } from "@/lib/i18n";
 import { buildLocalePageMetadata } from "@/lib/seo-metadata";
-import { getServiceDetail, isServiceSlug, serviceSlugs } from "../../../../lib/service-details";
+import {
+  getServiceDetail,
+  isServiceSlug,
+  serviceSlugs,
+  type ServiceSlug,
+} from "../../../../lib/service-details";
 import { SectionDivider } from "@/components/landing/SectionDivider";
 
 type Props = {
@@ -25,68 +43,47 @@ type Props = {
 
 export const dynamic = "force-static";
 
-function getFeatureIcon(featureText: string): LucideIcon {
+const FEATURE_ICON_MAP: Record<ServiceSlug, LucideIcon[]> = {
+  "web-apps": [LayoutTemplate, ShieldCheck, Briefcase, LayoutTemplate, Link2],
+  "mobile-apps": [Smartphone, Smartphone, ShieldCheck, Gauge],
+  "desktop-apps": [LayoutTemplate, ShieldCheck, Monitor, Gauge],
+  "visual-identity": [Palette, PenTool, Briefcase, FileText],
+  "office-services": [BookOpen, Presentation, FileSpreadsheet, FileText, FileUser, ClipboardCheck],
+  "google-maps": [MapPinned, Search, BadgeCheck, BarChart3],
+};
+
+function getFeatureIcon(featureText: string, slug: ServiceSlug, itemIndex: number): LucideIcon {
+  const mapped = FEATURE_ICON_MAP[slug]?.[itemIndex];
+  if (mapped) return mapped;
+
   const text = featureText.toLowerCase();
 
-  if (
-    text.includes("متجاوب") ||
-    text.includes("responsive") ||
-    text.includes("ux") ||
-    text.includes("واجهة") ||
-    text.includes("واجهات")
-  ) {
-    return LayoutTemplate;
+  const rules: { icon: LucideIcon; keys: string[] }[] = [
+    { icon: FileSpreadsheet, keys: ["excel", "spreadsheet", "محاسبية", "حسابية", "تنظيمية"] },
+    { icon: Presentation, keys: ["powerpoint", "presentation", "عروض تقديمية"] },
+    { icon: FileUser, keys: ["cv", "resume", "سيرة ذاتية"] },
+    { icon: BookOpen, keys: ["research", "thesis", "بحوث", "أطروحات", "تخرج"] },
+    { icon: FileText, keys: ["word", "reports", "report", "letters", "رسائل", "تقارير", "تنسيق ملفات"] },
+    { icon: ClipboardCheck, keys: ["delivery", "printing", "جاهز للطباعة", "تسليم", "ready for"] },
+    { icon: MapPinned, keys: ["google maps", "maps", "map", "profile setup", "خرائط", "ملف google"] },
+    { icon: Search, keys: ["seo", "visibility", "local", "keywords", "الظهور", "التصنيفات", "محلي"] },
+    { icon: BadgeCheck, keys: ["review", "reviews", "ratings", "تقييمات", "المصداقية", "trust"] },
+    { icon: BarChart3, keys: ["tracking", "monitoring", "performance", "kpi", "تقارير", "متابعة", "تحسين"] },
+    { icon: LayoutTemplate, keys: ["responsive", "ux", "ui", "interface", "متجاوب", "واجهة", "واجهات", "لوحات"] },
+    { icon: Smartphone, keys: ["ios", "android", "mobile", "الموبايل", "الجوال"] },
+    { icon: ShieldCheck, keys: ["secure", "security", "auth", "login", "أمن", "آمن", "صلاحيات"] },
+    { icon: Link2, keys: ["integration", "integrations", "api", "connect", "ربط", "تكامل"] },
+    { icon: Monitor, keys: ["desktop", "operational", "internal", "سطح المكتب", "داخلي", "تشغيلية"] },
+    { icon: Palette, keys: ["logo", "visual", "branding", "brand", "typography", "هوية", "شعار", "بصري"] },
+    { icon: Briefcase, keys: ["business", "marketing", "commercial", "أعمال", "تجارية"] },
+    { icon: Gauge, keys: ["speed", "fast", "scalable", "architecture", "سرعة", "أداء", "قابلة للتوسع"] },
+    { icon: Users, keys: ["team", "users", "clients", "عملاء", "فريق", "مستخدمين"] },
+  ];
+
+  for (const rule of rules) {
+    if (rule.keys.some((key) => text.includes(key))) return rule.icon;
   }
-  if (
-    text.includes("ios") ||
-    text.includes("android") ||
-    text.includes("mobile") ||
-    text.includes("الجوال") ||
-    text.includes("الموبايل")
-  ) {
-    return Smartphone;
-  }
-  if (
-    text.includes("أمن") ||
-    text.includes("secure") ||
-    text.includes("security") ||
-    text.includes("auth") ||
-    text.includes("صلاحيات")
-  ) {
-    return ShieldCheck;
-  }
-  if (
-    text.includes("ربط") ||
-    text.includes("تكامل") ||
-    text.includes("integration") ||
-    text.includes("api")
-  ) {
-    return Link2;
-  }
-  if (
-    text.includes("أداء") ||
-    text.includes("سرعة") ||
-    text.includes("performance") ||
-    text.includes("kpi")
-  ) {
-    return Gauge;
-  }
-  if (
-    text.includes("هوية") ||
-    text.includes("logo") ||
-    text.includes("brand") ||
-    text.includes("visual")
-  ) {
-    return Palette;
-  }
-  if (
-    text.includes("فريق") ||
-    text.includes("عملاء") ||
-    text.includes("team") ||
-    text.includes("users")
-  ) {
-    return Users;
-  }
+
   return Blocks;
 }
 
@@ -111,8 +108,9 @@ export default async function ServiceDetailPage({ params }: Props) {
   if (!isLocale(rawLocale) || !isServiceSlug(rawSlug)) notFound();
 
   const locale = rawLocale as Locale;
+  const slug = rawSlug as ServiceSlug;
   const t = getMessages(locale);
-  const detail = getServiceDetail(rawSlug, locale);
+  const detail = getServiceDetail(slug, locale);
 
   return (
     <>
@@ -152,13 +150,15 @@ export default async function ServiceDetailPage({ params }: Props) {
                 </p>
               </div>
             </section>
-            <aside className="lg:sticky lg:top-[calc(var(--header-height,72px)+1.5rem)] lg:self-start">
-              <div className="rounded-3xl border border-hive-border bg-[color-mix(in_srgb,var(--hive-card-glass)_80%,transparent)] p-5 backdrop-blur-sm sm:p-6">
-                <h2 className="text-lg font-bold">{t.serviceDetail.processTitle}</h2>
-                <p className="mt-3 text-sm leading-7 text-[color-mix(in_srgb,var(--hive-fg)_82%,transparent)]">
-                  {t.serviceDetail.processSubtitle}
-                </p>
-                <div className="mt-5 flex flex-col gap-3">
+            <aside className="h-full">
+              <div className="flex h-full flex-col rounded-3xl border border-hive-border bg-[color-mix(in_srgb,var(--hive-card-glass)_80%,transparent)] p-5 backdrop-blur-sm sm:p-6">
+                <div className="space-y-3">
+                  <h2 className="text-lg font-bold">{t.serviceDetail.processTitle}</h2>
+                  <p className="text-sm leading-7 text-[color-mix(in_srgb,var(--hive-fg)_82%,transparent)]">
+                    {t.serviceDetail.processSubtitle}
+                  </p>
+                </div>
+                <div className="mt-auto flex flex-col gap-3 pt-6">
                   <Link
                     href={`/${locale}#contact`}
                     className="inline-flex items-center justify-center rounded-md bg-hive-gold-light px-4 py-3 text-sm font-bold text-neutral-900 transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hive-gold-light"
@@ -182,8 +182,8 @@ export default async function ServiceDetailPage({ params }: Props) {
             
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
-              {detail.highlights.map((item) => {
-                const Icon = getFeatureIcon(item);
+              {detail.highlights.map((item, itemIndex) => {
+                const Icon = getFeatureIcon(item, slug, itemIndex);
                 return (
                   <article key={item} className="rounded-2xl border border-hive-border bg-[color-mix(in_srgb,var(--hive-card-glass)_85%,transparent)] p-4 sm:p-5">
                     <div className="flex items-start gap-3">
